@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primeiro acesso</title>
-    <script src="./index.js" defer></script>
+    <script src="../../scripts/primeiro-acesso.js" type="module" defer></script>
 
 </head>
+
 <body>
-    <form action="">
+    <form id="primeiro-acesso-form" action="" method="post">
         <fieldset>
             <legend>Primeiro acesso</legend>
-            <label for=""> E-mail
-                <input type="email" name="" id="">
+            <label for="email"> E-mail
+                <input type="email" name="email" id="email" required>
             </label>
-            <label for=""> CPF
-                <input type="number" name="" id="">
+            <label for="cpf"> CPF
+                <input type="number" name="cpf" id="cpf" required>
             </label>
-            <label for=""> Data de nascimento
-                <input type="date" name="" id="">
+            <label for="data-nascimento"> Data de nascimento
+                <input type="date" name="data-nascimento" id="data-nascimento" required>
             </label>
-            <label for=""> Senha
-                <input type="password" name="" id="">
+            <label for="senha"> Senha
+                <input type="password" name="senha" id="senha" required>
             </label>
-            <label for=""> Confirmar senha
-                <input type="password" name="" id="">
+            <label for="confirmar-senha"> Confirmar senha
+                <input type="password" name="" id="confirmar-senha" required>
             </label>
-            <input type="submit" value="Cadastrar">
+            <button type="submit">Cadastrar</button>
         </fieldset>
     </form>
 </body>
+
 </html>
