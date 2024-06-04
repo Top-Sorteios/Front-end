@@ -11,20 +11,22 @@ const inputConfirmarSenha = document.querySelector("#confirmar-senha");
 const cadastrar = async function () {
 
 
-  let url = SERVER_NAME + "primeiro-acesso";
+  let url = SERVER_NAME + "usuarios/primeiro-acesso";
 
+
+  
   const request = await fetch(url, {
     method: "PUT",
-    mode: "cors",
+    
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       email: inputEmail.value,
       cpf: inputCPF.value,
-      datanascimento: inputDataNascimento.value,
+      datanascimento: inputDataNascimento.value.replaceAll("-","/"),
       senha: inputSenha.value,
     }),
   });
-  const response = request.json();
+  const response = await request.json();
   console.log(response);
 };
 
@@ -38,8 +40,10 @@ const limparFormulario= function(){
 formPrimeiroAcesso.addEventListener("submit", (event) => {
   event.preventDefault();
     if(inputSenha.value == inputConfirmarSenha.value){
-        cadastrar();
-        limparFormulario()
+        cadastrar().then(()=>{
+          limparFormulario()
+        });
+       
     }
 
 });

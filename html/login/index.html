@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOP Sorteios</title>
-    <script src="./styles/style.css" defer></script>
+    <script src="../../scripts/login.js" defer type="module"></script>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
     </header>
     <main>
 
-        <form method="post">
+        <form id="form-login" method="post">
             <fieldset>
                 <legend>Login</legend>
                 <label for="email"> E-mail
@@ -22,8 +22,8 @@
                 </label>
 
 
-                <label for="password"> Senha
-                    <input type="password" id="password" name="password" required>
+                <label for="senha"> Senha
+                    <input type="password" id="senha" name="senha" required>
                 </label>
 
                 <button id="submit">Enviar</button>
