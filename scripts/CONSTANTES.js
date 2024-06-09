@@ -1,3 +1,3 @@
-    const SERVER_NAME = "https://grupo-top-sorteios.azurewebsites.net/";
+    const SERVER_NAME = "https://modulo-sorteios.azurewebsites.net/";
 
     export default SERVER_NAME;
