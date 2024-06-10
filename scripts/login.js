@@ -1,7 +1,6 @@
 import SERVER_NAME from "./CONSTANTES.js";
 
 const formLogin = document.querySelector("#form-login");
-
 const inputEmail = document.querySelector("#email");
 const inputSenha = document.querySelector("#senha");
 
@@ -19,17 +18,39 @@ const entrar = async function () {
     });
 
     const response = await request.json();
+    sessionStorage.setItem("email", response.email);
+    sessionStorage.setItem("token", response.token);
 
     if (response.status) {
-      sessionStorage.setItem("email", response.email);
-      sessionStorage.setItem("token", response.token);
-      window.location.assign("../home/inicio.html")
-    }
+      const permissao = await obterPermissao(response.email, response.token);
 
-    console.log(response);
+      switch (permissao.administrador) {
+        case "USER":
+          window.location.assign("../home/inicio.html");
+          break;
+        case "ADMIN":
+          window.location.assign("../home/inicio-admin.html");
+        default:
+          break;
+      }
+    }
   } catch (error) {
-    console.log(error);
+    console.log("O erro foi:" + error);
   }
+};
+
+const obterPermissao = async function (email, token) {
+  let url = `${SERVER_NAME}usuarios/obter/${email}`;
+
+  const request = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+  const response = await request.json();
+  return response;
 };
 
 //serializar = transformar em texto
@@ -38,3 +59,5 @@ formLogin.addEventListener("submit", function (event) {
   event.preventDefault();
   entrar();
 });
+
+export default obterPermissao;
