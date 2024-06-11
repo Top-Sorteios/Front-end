@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./trocar-senha.js"  defer></script>
     <title>rq13</title>
+    <script src="../../scripts/trocar-senha.js" type="module" defer></script>
 </head>
 <body>
     <header>
@@ -14,35 +14,35 @@
         </ul>
     </header>
     <div class="container">
-        <form class="form">
+        <form class="form" id="form-troca-senha">
             <p class="title">Meus dados</p>
             <div class="dl">
                 <label>Nome:</label>
-                <input type="text" placeholder="nome" disabled>
+                <input type="text" id="nome" placeholder="nome" disabled>
             </div>
             <div class="dl">
                 <label>Data de nascimento:</label>
-                <input type="date" placeholder="data" disabled>
+                <input type="date" id="data-nascimento" placeholder="data" disabled>
             </div>
             <div class="dl">
                 <label>CPF:</label>
-                <input type="number" placeholder="000.000.000-00" disabled>
+                <input type="number" id="cpf" placeholder="000.000.000-00" disabled>
             </div>
             <div class="dl">
                 <label>Email:</label>
-                <input type="email" placeholder="exemplo@gmail.com" disabled>
+                <input type="email" id="email" placeholder="exemplo@gmail.com" disabled>
             </div>
             <div class="dl">
                 <label>Turma:</label>
-                <input type="text" placeholder="ads3nc" disabled>
+                <input type="text" id="turma" placeholder="ads3nc" disabled>
             </div>
             <div class="dl">
                 <label>Senha atual:</label>
-                <input type="password" class="senhaAtual">
+                <input type="password" id="senha-atual" required>
             </div>
             <div class="dl">
                 <label>Nova senha:</label>
-                <input type="password" class="novaSenha">
+                <input type="password" id="nova-senha" required>
             </div>
             <button id="submit">Salvar</button>
         </form> 
