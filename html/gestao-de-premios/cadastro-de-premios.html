@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Prêmioss</title>
+    <link rel="stylesheet" href="../../styles/default.css">
+    <link rel="stylesheet" href="../../styles/cadastro-de-premios.css">
+    
+</head>
+
+<body>
+    <header>
+        <h1>
+            Cadastro de prêmios
+        </h1>
+    </header>
+    <main>
+
+        <form action="POST">
+            <fieldset>
+                <legend>Cadastro de prêmios da semana</legend>
+                <label for="">
+                    <input type="image" src="" alt="">
+                </label>
+
+
+                <label for="selecionar-marca"> Selecionar marca
+                    <select placeholder="teste" name="" id="selecionar-marca" required>
+                        <option selected disabled>Escolha uma marca</option>
+                        <option value="">teste</option>
+                    </select>
+                </label>
+
+                <label for="nome-premio" title="Insira o nome do prêmio"> Nome do prêmio
+                    <input id="nome-premio" type="text" placeholder="Insira o nome do prêmio" required>
+                </label>
+                <label for="codigo-sku" title="Insira o código SKU do produto"> Código SKU
+                    <input id="nome-premio" type="text" placeholder="Insira o código SKU" required>
+                </label>
+                <label for="descricao-premio" title="Insira uma descrição do sorteio"> Descrição
+                    <input id="nome-premio" type="text" placeholder="Insira a descrição do prêmio" required>
+                </label>
+
+                <label for="descricao-premio"> Quantidade
+                    <input id="numero-premio" type="number" min="1" value="0" parequired>
+                </label>
+                <label for="criador"> Criado por
+                    <input id="criador" readonly type="text" value="" placeholder="Nome da Pessoa">
+                </label>
+                <label for="data-criacao"> Criado em
+                    <input id="data-criacao" readonly type="datetime-local" value="">
+                </label>
+
+                <input type="submit">
+            </fieldset>
+        </form>
+        <button>Cancelar</button>
+    </main>
+</body>
+
+</html>

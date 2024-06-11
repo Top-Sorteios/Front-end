@@ -1,0 +1,17 @@
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: none;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+input, select {
+    width: 640px;
+}
