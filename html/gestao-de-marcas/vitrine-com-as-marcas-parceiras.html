@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rq14</title>
+    <style>
+        .sorteios {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0px; /* Espaço entre o bloco de sorteio e o botão */
+            height: 10rem;
+        }
+        .fotos {
+            height: 80%; /* Altura ajustada */
+            overflow: hidden;
+        }
+        .fotos img {
+            width: 100%;
+            height: 80%;
+            object-fit: contain; /* Ou 'contain' dependendo do efeito desejado */
+        }
+        .escrita {
+            flex: 1; /* O restante do espaço vai para o texto */
+            margin-left: 2%; /* Espaço entre a imagem e o texto */
+        }
+    </style>
+</head>
+<body>
+    <h1>Sorteios da semana</h1>
+    <div class="sorteios">
+        <div class="fotos">
+            <img src="/img/imagem exemplo.png" alt="Imagem do sorteio">
+        </div>
+        <div class="escrita">
+            <p>Ambev</p>
+            <p>Campanha 2024</p>
+            <p>Par de ingressos para o show</p>
+        </div>
+    </div>
+    <button>Participar</button>
+</body>
+</html>
