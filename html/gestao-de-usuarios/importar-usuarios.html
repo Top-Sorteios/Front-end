@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Importar Usuários</title>
+    <link rel="stylesheet" href="../../styles/importar-usuarios.css">
     <script src="../../scripts/importar-usuarios.js" defer></script>
 </head>
 
@@ -12,12 +13,26 @@
     <header>
         <h1>Importar usuários</h1>
     </header>
-    <form action="" method="post">
-        <label for="importar csv">
-            <input id="importar-csv" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
-
-        </label>
+    <form id="form-importar-usuarios" action="" method="post">
+        <fieldset>
+            <legend>Importar usuários</legend>
+            <label for="importar csv"> Selecionar arquivo
+                <input id="importar-csv" type="file"
+                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required> 
+            </label>
+            <label for="criado-por"> Criado por:
+                <input id="criado-por" type="text" placeholder="Nome" readonly required>
+            </label>
+            <label for=""> Criado em:
+                <input id="criado-em" type="datetime-local" readonly required>
+            </label>
+            <button type="submit">Enviar</button>
+        </fieldset>
     </form>
+    <section class="resultados">
+        <h2>Resultado</h2>
+        <p>Após o envio do arquivo, o resultado aparecerá aqui</p>
+    </section>
 </body>
 
 </html>
