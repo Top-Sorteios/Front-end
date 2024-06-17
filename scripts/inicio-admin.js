@@ -13,7 +13,7 @@ const checarPermissao = async function () {
   const response = await request.json();
 
 
-  if (!response.administrador || response.administrador != "ADMIN") {
+  if (!response.administrador || response.administrador != true) {
     alert("você não tem permisssão pra acessar essa página");
     window.location.replace("../home/");
   }

@@ -25,10 +25,10 @@ const entrar = async function () {
       const permissao = await obterPermissao(response.email, response.token);
 
       switch (permissao.administrador) {
-        case "USER":
+        case false:
           window.location.assign("../home/inicio.html");
           break;
-        case "ADMIN":
+        case true:
           window.location.assign("../home/inicio-admin.html");
         default:
           break;
@@ -50,6 +50,7 @@ const obterPermissao = async function (email, token) {
     },
   });
   const response = await request.json();
+  console.log(response)
   return response;
 };
 

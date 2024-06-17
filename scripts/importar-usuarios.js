@@ -1,4 +1,4 @@
-import SERVER_NAME from "./CONSTANTES";
+import SERVER_NAME from "./CONSTANTES.js";
 
 const formImportarUsuarios = document.querySelector("#form-importar-usuarios");
 
@@ -13,6 +13,8 @@ const importarUsuarios = async function () {
   const request = await fetch(url, {
     method: "POST",
     body: formData,
+      headers: {
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`}
   });
 
   const response = await request.json();
