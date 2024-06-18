@@ -5,27 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primeiro acesso</title>
+    <link rel="stylesheet" href="../../styles/primeiro-acesso.css">
     <script src="../../scripts/primeiro-acesso.js" type="module" defer></script>
 
 </head>
 
 <body>
-    <form id="primeiro-acesso-form" action="" method="post">
-        <fieldset>
-            <legend>Primeiro acesso</legend>
-            <label for="email"> E-mail
+    <form class="form" id="primeiro-acesso-form" action="" method="post">
+        <fieldset class="form__fieldset">
+            <legend class="form__legend">Primeiro acesso</legend>
+            <label class="form__label" for="email"> Email
                 <input type="email" name="email" id="email" required>
             </label>
-            <label for="cpf"> CPF
+            <label class="form__label" for="cpf"> CPF
                 <input type="number" name="cpf" id="cpf" required>
             </label>
-            <label for="data-nascimento"> Data de nascimento
+            <label class="form__label" for="data-nascimento"> Data de nascimento
                 <input type="date" name="data-nascimento" id="data-nascimento" required>
             </label>
-            <label for="senha"> Senha
+            <label class="form__label" for="senha"> Senha
                 <input type="password" name="senha" id="senha" required>
             </label>
-            <label for="confirmar-senha"> Confirmar senha
+            <label class="form__label" for="confirmar-senha"> Confirmar senha
                 <input type="password" name="" id="confirmar-senha" required>
             </label>
             <button type="submit">Cadastrar</button>

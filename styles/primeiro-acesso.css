@@ -1,0 +1,17 @@
+
+
+.form {
+  width: 560px;
+  border: 1px solid #707070;
+  
+}
+
+.form__legend {
+  display: none;
+}
+
+.form__fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}

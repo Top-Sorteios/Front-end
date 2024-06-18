@@ -10,6 +10,7 @@ const entrar = async function () {
   try {
     const request = await fetch(url, {
       method: "POST",
+      mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: inputEmail.value,
