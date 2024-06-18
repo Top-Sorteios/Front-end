@@ -25,36 +25,26 @@
 </head>
 <body>
     <h1>PRÊMIOS</h1>
-    <select name="Selecionar prêmio">
-        <option>Selecionar prêmio</option>
-        <option>Saikos</option>
-        <option>Eduardo</option>
+    <select id="premios-select">
+        <option value="">Selecionar prêmio</option>
+        <!-- Prêmios serão carregados dinamicamente -->
     </select>
-    <button>REALIZAR SORTEIO</button>
-    <pi>Participantes:</pi>
+    <label>
+        <input type="checkbox" id="premio-surpresa"> Prêmio Surpresa
+    </label>
+    <button id="realizar-sorteio-btn">REALIZAR SORTEIO</button>
+    <p>Participantes:</p>
     <div class="scrollable-list">
-        <ul>
-            <li>João Silva</li>
-            <li>Maria Oliveira</li>
-            <li>Pedro Souza</li>
-            <li>Ana Santos</li>
-            <li>José Costa</li>
-            <li>Lucia Martins</li>
-            <li>Rafael Lima</li>
-            <li>Fernanda Almeida</li>
-            <li>Marcos Pereira</li>
-            <li>Juliana Ferreira</li>
-            <li>Gustavo Ramos</li>
-            <li>Beatriz Correia</li>
-            <li>Lucas Fernandes</li>
-            <li>Mariana Cardoso</li>
-            <li>Felipe Duarte</li>
+        <ul id="participantes-list">
+            <!-- Participantes serão carregados dinamicamente -->
         </ul>
     </div>
     <div>
         <h3>SORTEADO</h3>
-        <p>Turma: ads3nc</p>
-        <p>Aderido: Eduardo</p>
+        <p id="turma-sorteada">Turma: </p>
+        <p id="nome-sorteado">Aderido: </p>
     </div>
+
+    <script type="module" src="/scripts/gestao-de-sorteios.js"></script>
 </body>
 </html>
