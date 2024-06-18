@@ -14,11 +14,14 @@ const registrarMarca = async () => {
         method: "POST",
         mode: "cors",
         headers: { "Content-Type": "application/json" },
+        headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`
+        },
         body: JSON.stringify({
             nome: inputNome.value,
             titulo: inputTitulo.value,
-            logo: inputLogo.value,
-            banner: inputBanner.value,
+            // logo: inputLogo.value,
+            // banner: inputBanner.value,
             ordemExibicao: inputOrdemExibicao.value,
         }),
     });
@@ -26,5 +29,5 @@ const registrarMarca = async () => {
 
 formCadastrarMarca.addEventListener("submit", (event) => {
     event.preventDefault();
-      registrarMarca()
-  });
+    registrarMarca()
+});
