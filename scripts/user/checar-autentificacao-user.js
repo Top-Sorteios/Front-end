@@ -3,7 +3,9 @@ import SERVER_NAME from "../CONSTANTES.js";
 const checarAutentificacaoUser = async function (email, token) {
   if (!email || !token) {
     alert("Você não pode acessar essa página sem fazer a autentificação");
-    window.location.replace("");
+    window.location.replace(
+      "https://green-dune-0cd28a70f.5.azurestaticapps.net/"
+    );
   } else {
     try {
       let url = `${SERVER_NAME}usuarios/obter/${email}`;
@@ -21,7 +23,9 @@ const checarAutentificacaoUser = async function (email, token) {
         console.log(response);
       } else {
         alert("Sessão inválida");
-        window.location.replace("./")
+        window.location.replace(
+          "https://green-dune-0cd28a70f.5.azurestaticapps.net/"
+        );
       }
     } catch (error) {
       console.log("meu erro:" + error);

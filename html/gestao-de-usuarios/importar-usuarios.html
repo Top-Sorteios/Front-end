@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Importar Usuários</title>
     <link rel="stylesheet" href="../../styles/importar-usuarios.css">
-    <script src="../../scripts/importar-usuarios.js" type="module" defer></script>
+    <script type="module" src="../../scripts/admin/checar-autentificacao.js" defer></script>
+
+    <script type="module" src="../../scripts/importar-usuarios.js" defer></script>
 </head>
 
 <body>
@@ -18,7 +20,7 @@
             <legend>Importar usuários</legend>
             <label for="importar csv"> Selecionar arquivo
                 <input id="importar-csv" type="file"
-                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required> 
+                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
             </label>
             <label for="criado-por"> Criado por:
                 <input id="criado-por" type="text" placeholder="Nome" readonly required>
