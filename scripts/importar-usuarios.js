@@ -9,6 +9,7 @@ const importarUsuarios = async function () {
   const arquivo = document.querySelector("#importar-csv").files[0];
   const formData = new FormData();
   formData.append("file", arquivo);
+  formData.append("email_autenticado", arquivo);
 
   const request = await fetch(url, {
     method: "POST",
