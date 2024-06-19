@@ -1,3 +1,8 @@
+input:-webkit-autofill {
+  background-color: inherit;
+}
+
+
 html {
   font-family: sans-serif;
 }
@@ -85,4 +90,8 @@ body {
 
 fieldset {
   border: none;
+}
+
+.wrong {
+  background-color: red !important;
 }

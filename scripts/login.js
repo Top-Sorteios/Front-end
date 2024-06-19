@@ -18,25 +18,33 @@ const entrar = async function () {
       }),
     });
 
-    const response = await request.json();
-    sessionStorage.setItem("email", response.email);
-    sessionStorage.setItem("token", response.token);
+    if (request.ok) {
+      const response = await request.json();
+      sessionStorage.setItem("email", response.email);
+      sessionStorage.setItem("token", response.token);
 
-    if (response.status) {
-      const permissao = await obterPermissao(response.email, response.token);
+      if (response.status) {
+        const permissao = await obterPermissao(response.email, response.token);
 
-      switch (permissao.administrador) {
-        case false:
-          window.location.assign("../home/inicio.html");
-          break;
-        case true:
-          window.location.assign("../home/inicio-admin.html");
-        default:
-          break;
+        switch (permissao.administrador) {
+          case false:
+            window.location.assign("../home/inicio.html");
+            break;
+          case true:
+            window.location.assign("../home/inicio-admin.html");
+            break;
+          default:
+            break;
+        }
       }
+    } else if (request.status === 400) {
+      document.location.replace("./primeiro-acesso.html");
+    } else if (request.status === 404) {
+      inputEmail.classList.add("wrong");
+      inputSenha.classList.add("wrong");
     }
-  } catch (error) {
-    console.log("O erro foi:" + error);
+  } catch (error) { 
+    console.log("O erro foi:" + error.status);
   }
 };
 
@@ -50,9 +58,11 @@ const obterPermissao = async function (email, token) {
       "Content-Type": "application/json",
     },
   });
-  const response = await request.json();
-  console.log(response)
-  return response;
+  if (request.ok) {
+    const response = await request.json();
+    console.log(response);
+    return response;
+  }
 };
 
 //serializar = transformar em texto
