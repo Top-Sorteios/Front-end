@@ -9,18 +9,18 @@ const inputBanner = document.getElementById('upload-banner')
 const idMarca = sessionStorage.getItem('idMarca')
 
 
-var inputLogoFile = inputLogo.files[0];
-// var inputBannerFile = inputBanner.files[0];
+// var inputLogoFile = inputLogo.files[0];
+// // var inputBannerFile = inputBanner.files[0];
 
-if (inputLogoFile) {
-    var fileReaderLogo = new FileReader();
+// if (inputLogoFile) {
+//     var fileReaderLogo = new FileReader();
 
-    ReadableStream.onload = function(e) {
-        var arrayBuffer = e.target.result;
-        var bytes = new Uint8Array(arrayBuffer);
-        console.log(bytes)
-    }
-}
+//     ReadableStream.onload = function(e) {
+//         var arrayBuffer = e.target.result;
+//         var bytes = new Uint8Array(arrayBuffer);
+//         console.log(bytes)
+//     }
+// }
 
 
 
@@ -41,43 +41,8 @@ const getDados = async () => {
     inputOrdemExibicao.value = dado.ordemExibicao
 }
 
-// const imgparabyte = (img) => {
-//     var imgFile = img.files[0];
-//     if (imgFile) {
-//         var reader = new FileReader();
-    
-//         reader.onload = function(e) {
-//             var arrayBuffer = e.target.result;
-//             var bytes = new Uint8Array(arrayBuffer);
-//             console.log(bytes)
-//         }
-//         reader.readAsArrayBuffer(inputLogoFile)
-//     }
-// }
-
 
 const cadastrarMarca = async () => {
-
-
-    var inputLogoFile = inputLogo.files[0];
-// var inputBannerFile = inputBanner.files[0];
-
-
-    var reader = new FileReader();
-    
-    reader.onload = function(e) {
-        var arrayBuffer = e.target.result;
-        var bytes = new Uint8Array(arrayBuffer);
-        console.log(arrayBuffer)
-        imgparabyte(inputLogo)
-    }
-    // reader.readAsArrayBuffer(inputLogoFile)
-
-
-
-
-
-
 
     const token = sessionStorage.getItem("token");
     const url = `${SERVER_NAME}marcas/registrar`
@@ -162,7 +127,6 @@ const editarMarca = async () => {
         }
     }
 }
-
 
 
 const deleteMarca = async () => {
