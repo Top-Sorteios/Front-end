@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Marcas Parceiras</title>
+    <link rel="stylesheet" href="../../styles/manter-marca.css">
+    <script src="../../scripts/manter-marca.js" type="module" defer></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- <form action="" method="post"> -->
+        <h2>EDITAR MARCA</h2>
+        <div class="cadastros">
+            <label for="">NOME DA MARCA:</label>
+            <input id="nome-marca" type="text" placeholder="Nome da marca">
+            <span class="error"></span>
+        </div>
+        <div class="cadastros">
+            <label for="">TITULO:</label>
+            <input id="titulo-marca" type="text" placeholder="Titulo">
+            <span class="error"></span>
+        </div>
+        <div class="cadastros">
+            <label for="">ORDEM DE EXIBIÇÃO:</label>
+            <input id="ordem-exibicao" type="number" value="1">
+            <span class="error"></span>
+        </div>
+        <label for="">Upload banner</label>
+        <input id="upload-banner" type="file">
+        <label for="">Upload logo</label>
+        <input id="upload-logo" type="file">
+        <div class="botao">
+            <button id="button-salvar">SALVAR</button>
+            <button id="button-remover">EXCLUIR</button>
+        </div>
+        <!-- </form> -->
+    </div>
+
+    <div class="confirm none">
+        <div>
+            <p>Tem certeza que deseja excluir a marca?</p>
+        </div>
+        <div class="confirm-button">
+            <button id="button-sim">SIM</button>
+            <button id="button-nao">NÃO</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
