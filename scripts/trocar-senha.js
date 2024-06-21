@@ -1,4 +1,4 @@
-import SERVER_NAME from "./CONSTANTES.js";
+import {SERVER_NAME} from "./CONSTANTES.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
     const token = sessionStorage.getItem("token");
