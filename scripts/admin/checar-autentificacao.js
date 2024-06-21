@@ -16,12 +16,14 @@ const checarAutentificacaoAdmin = async function (email, token) {
     });
     const response = await request.json();
     console.log(response);
+
+    if (!response.administrador) {
+      alert("você não tem permisssão pra acessar essa página");
+      window.location.replace("https://green-dune-0cd28a70f.5.azurestaticapps.net/");
+    }
   }
 
-  if (!response.administrador || response.administrador != true) {
-    alert("você não tem permisssão pra acessar essa página");
-    window.location.replace("https://green-dune-0cd28a70f.5.azurestaticapps.net/");
-  }
+ 
 };
 
 window.addEventListener("load", () => {
