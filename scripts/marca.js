@@ -88,7 +88,7 @@ const editarMarca = async () => {
     clearError()
     if (inputNome.value == '') {
         error[0].innerText = 'Preencha o campo nome'
-        inputNome.style.classList.add('wrong')
+        inputNome.classList.add('wrong')
         inputNome.focus()
     } else if (inputTitulo.value == '') {
         error[1].innerText = 'Preencha o campo titulo'
