@@ -1,4 +1,4 @@
-import SERVER_NAME from "./CONSTANTES.js";
+import { SERVER_NAME } from "./CONSTANTES.js";
 
 const checarPermissao = async function () {
   let url = `${SERVER_NAME}usuarios/obter/${sessionStorage.getItem("email")}`;

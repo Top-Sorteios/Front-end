@@ -1,4 +1,4 @@
-import { SERVER_NAME } from "./CONSTANTES.js"; 
+import { SERVER_NAME, SET_EMAIL, SET_TOKEN } from "./CONSTANTES.js"; 
 
 const formLogin = document.querySelector("#form-login");
 const inputEmail = document.querySelector("#email");
@@ -20,8 +20,10 @@ const entrar = async function () {
 
     if (request.ok) {
       const response = await request.json();
-      sessionStorage.setItem("email", response.email);
-      sessionStorage.setItem("token", response.token);
+      // sessionStorage.setItem("email", response.email);
+      SET_EMAIL(response.email)
+      // sessionStorage.setItem("token", response.token);
+      SET_TOKEN(response.token)
 
       if (response.status) {
         const permissao = await obterPermissao(response.email, response.token);

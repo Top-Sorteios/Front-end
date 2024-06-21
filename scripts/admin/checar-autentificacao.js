@@ -29,6 +29,6 @@ const checarAutentificacaoAdmin = async function (email, token) {
 };
 
 window.addEventListener("load", () => {
-  console.log("working");
+  console.log("");
   checarAutentificacaoAdmin(EMAIL, TOKEN);
 });
