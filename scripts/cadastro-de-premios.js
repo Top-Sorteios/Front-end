@@ -1,4 +1,4 @@
-import { EMAIL, SERVER_NAME,TOKEN } from "./CONSTANTES"; 
+import { SERVER_NAME, TOKEN } from "./CONSTANTES";
 const formSelect = document.querySelector("#selecionar-marca");
 
 const obterMarcasSelect = async function () {

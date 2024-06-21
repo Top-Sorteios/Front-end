@@ -1,9 +1,11 @@
-import SERVER_NAME from "../CONSTANTES.js";
+import { EMAIL, SERVER_NAME, TOKEN} from "../CONSTANTES.js";
 
 const checarAutentificacaoAdmin = async function (email, token) {
   if (!email || !token) {
     alert("Você não pode acessar essa página sem fazer a autentificação");
-    window.location.replace("https://green-dune-0cd28a70f.5.azurestaticapps.net/");
+    window.location.replace(
+      "https://green-dune-0cd28a70f.5.azurestaticapps.net/"
+    );
   } else {
     let url = `${SERVER_NAME}usuarios/obter/${email}`;
 
@@ -19,17 +21,14 @@ const checarAutentificacaoAdmin = async function (email, token) {
 
     if (!response.administrador) {
       alert("você não tem permisssão pra acessar essa página");
-      window.location.replace("https://green-dune-0cd28a70f.5.azurestaticapps.net/");
+      window.location.replace(
+        "https://green-dune-0cd28a70f.5.azurestaticapps.net/"
+      );
     }
   }
-
- 
 };
 
 window.addEventListener("load", () => {
   console.log("working");
-  checarAutentificacaoAdmin(
-    sessionStorage.getItem("email"),
-    sessionStorage.getItem("token")
-  );
+  checarAutentificacaoAdmin(EMAIL, TOKEN);
 });

@@ -1,4 +1,4 @@
-import SERVER_NAME from "./CONSTANTES.js";
+import { SERVER_NAME } from "./CONSTANTES.js"; 
 
 const formLogin = document.querySelector("#form-login");
 const inputEmail = document.querySelector("#email");
