@@ -3,13 +3,11 @@ import SERVER_NAME from "./CONSTANTES.js";
 const formImportarUsuarios = document.querySelector("#form-importar-usuarios");
 
 const importarUsuarios = async function () {
-  let url = `${SERVER_NAME}usuarios/importar-usuario/${sessionStorage.getItem(
-    "email"
-  )}`;
+  let url = `${SERVER_NAME}usuarios/importar-usuario`;
   const arquivo = document.querySelector("#importar-csv").files[0];
   const formData = new FormData();
   formData.append("file", arquivo);
-  formData.append("email_autenticado", arquivo);
+  formData.append("email_autenticado", sessionStorage.getItem("email"));
 
   const request = await fetch(url, {
     method: "POST",

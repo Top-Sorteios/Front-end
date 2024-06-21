@@ -1,4 +1,4 @@
-import SERVER_NAME from "./CONSTANTES.js";
+import { EMAIL, SERVER_NAME,TOKEN } from "./CONSTANTES"; 
 const formSelect = document.querySelector("#selecionar-marca");
 
 const obterMarcasSelect = async function () {
@@ -6,7 +6,7 @@ const obterMarcasSelect = async function () {
   const request = await fetch(url, {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      Authorization: `Bearer ${TOKEN}`,
     },
   });
 

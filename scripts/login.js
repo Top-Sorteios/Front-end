@@ -38,12 +38,12 @@ const entrar = async function () {
         }
       }
     } else if (request.status === 400) {
-      document.location.replace("./primeiro-acesso.html");
+      document.location.assign("./primeiro-acesso.html");
     } else if (request.status === 404) {
       inputEmail.classList.add("wrong");
       inputSenha.classList.add("wrong");
     }
-  } catch (error) { 
+  } catch (error) {
     console.log("O erro foi:" + error.status);
   }
 };
