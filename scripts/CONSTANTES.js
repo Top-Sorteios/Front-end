@@ -1,5 +1,5 @@
-    const SERVER_NAME = "https://modulo-sorteios.azurewebsites.net/";
-    const EMAIL = sessionStorage.getItem("email")
-    const TOKEN = sessionStorage.getItem("token");
+const SERVER_NAME = "https://modulo-sorteios.azurewebsites.net/";
+export const EMAIL = sessionStorage.getItem("email");
+export const TOKEN = sessionStorage.getItem("token");
 
-    export {SERVER_NAME, EMAIL, TOKEN}
+export default SERVER_NAME;

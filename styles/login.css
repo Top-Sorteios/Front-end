@@ -3,8 +3,6 @@ input:-webkit-autofill {
 }
 
 body {
-  height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,27 +10,33 @@ body {
 
 .container {
   display: flex;
+  align-items: center;
   border: 1px solid var(--border-color);
   border-radius: 50px;
-  padding: 64px 56px 0 56px;
-  width: 680px;
-  height: 688px;
+  /* padding: 64px 56px 0 56px; */
+  padding: 0 2rem;
+  width: max-content;
+  /* height: 43rem; */
+  height: 25rem;
   flex-direction: column;
-  box-shadow: 0 5px 10px 1px #70707040;
+  box-shadow: var(--shadow);
 }
 
 .header__title {
-  font-size: 48px;
+  font-size: 2rem;
   color: var(--header-color);
   text-align: center;
   font-weight: normal;
-  margin: 0 0 96px 0;
+  /* margin: 0 0 96px 0; */
+  margin: 2rem 0;
 }
 
 .form__fieldset {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .form__legend {
@@ -40,35 +44,36 @@ body {
 }
 
 .form__label {
-  font-size: 32px;
-  gap: 0.2rem;
-  width: fit-content;
-  color: #9e9e9e;
   display: flex;
   flex-direction: column;
+  gap: 0.2rem 0;
+  width: fit-content;
+  font-size: 1rem;
+  color: #9e9e9e;
 }
 
 .form__label input {
-  font-size: 32px;
+  border: none;
+  border-radius: 0.5rem;
   padding: 0.5rem;
   background-color: var(--input-background-color);
-  border: none;
-  height: 72px;
-  width: 568px;
-  border-radius: 15px;
+  height: 2.5rem;
+  width: 30rem;
+  font-size: 1rem;
 }
 
 .form__submit-button {
-  height: 80px;
-  font-size: 32px;
-  background-color: var(--button-background-color);
-  border-radius: 15px;
   border: none;
+  border-radius: 0.5rem;
+  height: 2.5rem;
+  width: 30rem;
+  background-color: var(--button-background-color);
+  font-size: 1rem;
   color: var(--submit-button-color);
 }
 
 .form__link {
-  font-size: 20px;
+  font-size: 0.8rem;
   text-align: right;
   text-decoration: none;
   color: var(--link-color);
@@ -79,12 +84,10 @@ body {
 }
 
 .first-access {
-  font-size: 24px;
+  font-size: 1.5rem;
   text-align: center;
 }
 
 fieldset {
   border: none;
 }
-
-
