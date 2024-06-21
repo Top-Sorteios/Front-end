@@ -1,14 +1,14 @@
-import SERVER_NAME from "./CONSTANTES.js";
+import {SERVER_NAME, TOKEN} from "./CONSTANTES.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const token = sessionStorage.getItem("token");
+    // const token = sessionStorage.getItem("token");
     // const email = sessionStorage.getItem("email");
 
     const url = SERVER_NAME + 'marcas/obter'
     const response = await fetch(url, {
         method: "GET",
         headers: {
-            "Authorization": `Bearer ${token}`,
+            "Authorization": `Bearer ${TOKEN}`,
             "Content-Type": "application/json"
         }
     })
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 })
 
 const createTable = async (item) => {
-    const table = document.getElementById('table-marcas')
+    let table = document.getElementById('table-marcas')
 
     item.forEach(marcas => {
         let tr = document.createElement('tr')
@@ -47,8 +47,7 @@ const createTable = async (item) => {
 
         linkEditar.addEventListener('click', () => {
             sessionStorage.setItem('idMarca', marcas.id)
-            // console.log(sessionStorage.getItem('idMarca'))
-            window.location.assign("../gestao-de-marcas/manter-marca.html");
+            window.location.assign("../gestao-de-marcas/marca.html");
         })
     });
 }
