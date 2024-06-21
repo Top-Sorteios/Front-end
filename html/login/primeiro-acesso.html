@@ -5,29 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primeiro acesso</title>
+    <link rel="stylesheet" href="../../styles/default.css">
     <link rel="stylesheet" href="../../styles/primeiro-acesso.css">
     <script src="../../scripts/primeiro-acesso.js" type="module" defer></script>
 
 </head>
 
 <body>
+    <header><h1>Top</h1></header>
     <form class="form" id="primeiro-acesso-form" action="" method="post">
         <fieldset class="form__fieldset">
             <legend class="form__legend">Primeiro acesso</legend>
             <label class="form__label" for="email"> Email
-                <input type="email" name="email" id="email" required>
+                <input class="form__input" type="email" name="email" id="email" required>
             </label>
             <label class="form__label" for="cpf"> CPF
-                <input type="number" name="cpf" id="cpf" required>
+                <input class="form__input" type="number" name="cpf" id="cpf" required>
             </label>
             <label class="form__label" for="data-nascimento"> Data de nascimento
-                <input type="date" name="data-nascimento" id="data-nascimento" required>
+                <input class="form__input" type="date" name="data-nascimento" id="data-nascimento" required>
             </label>
             <label class="form__label" for="senha"> Senha
-                <input type="password" name="senha" id="senha" required>
+                <input class="form__input" type="password" name="senha" id="senha" required>
             </label>
             <label class="form__label" for="confirmar-senha"> Confirmar senha
-                <input type="password" name="" id="confirmar-senha" required>
+                <input class="form__input" type="password" name="" id="confirmar-senha" required>
             </label>
             <button type="submit">Cadastrar</button>
         </fieldset>
