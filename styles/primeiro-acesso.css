@@ -29,7 +29,7 @@ body {
 }
 
 .form__input {
-  background-color: var(--input-color);
+  background-color: var(--input-background-color);
   border: none;
   height: 2rem;
   border-radius: 0.5rem;

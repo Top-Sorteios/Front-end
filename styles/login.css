@@ -51,7 +51,7 @@ body {
 .form__label input {
   font-size: 32px;
   padding: 0.5rem;
-  background-color: var(--input-color);
+  background-color: var(--input-background-color);
   border: none;
   height: 72px;
   width: 568px;
