@@ -1,11 +1,13 @@
-import { SERVER_NAME, SET_EMAIL, SET_TOKEN } from "./CONSTANTES.js"; 
+import { SERVER_NAME, SET_EMAIL, SET_TOKEN, get } from "./CONSTANTES.js"; 
 
 const formLogin = document.querySelector("#form-login");
 const inputEmail = document.querySelector("#email");
 const inputSenha = document.querySelector("#senha");
 
+
 const entrar = async function () {
   let url = SERVER_NAME + "usuarios/login";
+
 
   try {
     const request = await fetch(url, {

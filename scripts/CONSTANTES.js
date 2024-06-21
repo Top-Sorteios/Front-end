@@ -8,16 +8,23 @@ export const SET_TOKEN = (token) => {
 };
 export const TOKEN = sessionStorage.getItem("token");
 
-// export default SERVER_NAME;
+/*
+Esse método precisa estar dentro de uma função assincrona. Exemplo:
 
-const get = async function (endpoint, auth) {
+const funcao = async function(){
+    const obter = await get("caminho", false);
+    console.log(obter);
+}
+
+*/
+
+export const get = async function (endpoint, auth) {
   const request = await fetch(SERVER_NAME + endpoint, {
     method: "GET",
     headers: {
-      Autorizathion: `${auth ? "Bearer " + TOKEN : undefined}`,
+      Authorization: `${auth == true ? "Bearer " + TOKEN : undefined}`,
     },
   });
-
   if (request.ok) {
     const response = await request.json();
     return response;

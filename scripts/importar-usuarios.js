@@ -1,8 +1,9 @@
-import SERVER_NAME from "./CONSTANTES.js";
+import { SERVER_NAME, get } from "./CONSTANTES.js";
 
 const formImportarUsuarios = document.querySelector("#form-importar-usuarios");
 
 const importarUsuarios = async function () {
+
   let url = `${SERVER_NAME}usuarios/importar-usuario`;
   const arquivo = document.querySelector("#importar-csv").files[0];
   const formData = new FormData();
