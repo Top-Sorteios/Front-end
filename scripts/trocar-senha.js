@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('data-nascimento').value = userData.datanascimento;
         document.getElementById('cpf').value = userData.cpf;
         document.getElementById('email').value = userData.email;
-        document.getElementById('turma').value = userData.turma;        
+        document.getElementById('turma').value = userData.turma.nome;        
 
     } catch (error) {
         console.error('Erro ao obter informações do usuário:', error);
