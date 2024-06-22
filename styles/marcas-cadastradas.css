@@ -17,10 +17,13 @@ body {
     gap: 15px;
 }
 
-.pesquisa button{
-    height: 30px;
-    cursor: pointer;
-    border: none;
+.pesquisa input {
+    width: 250px;
+    height: 32px;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 16px;
+    background-color: var(--input-background-color);
 }
 
 #container {
