@@ -9,21 +9,6 @@ const inputBanner = document.getElementById('upload-banner')
 const idMarca = sessionStorage.getItem('idMarca')
 
 
-// var inputLogoFile = inputLogo.files[0];
-// // var inputBannerFile = inputBanner.files[0];
-
-// if (inputLogoFile) {
-//     var fileReaderLogo = new FileReader();
-
-//     ReadableStream.onload = function(e) {
-//         var arrayBuffer = e.target.result;
-//         var bytes = new Uint8Array(arrayBuffer);
-//         console.log(bytes)
-//     }
-// }
-
-
-
 const getDados = async () => {
     let url = `${SERVER_NAME}/marcas/obter/${idMarca}`
     const response = await fetch(url, {
@@ -58,21 +43,22 @@ const cadastrarMarca = async () => {
         inputOrdemExibicao.classList.add('wrong')
         inputOrdemExibicao.focus()
     } else {
+        const formData = new FormData();
+        formData.append("nome", inputNome.value);
+        formData.append("titulo", inputTitulo.value);
+        formData.append("logo", inputLogo.files[0]);
+        formData.append("banner", inputBanner.files[0]);
+        formData.append("ordemExibicao", inputOrdemExibicao.value);
+        formData.append("criadoPor", 781);
+
         const response = await fetch(url, {
             method: "POST",
-            mode: "cors",
+            // mode: "cors",
             headers: {
-                "Authorization": `Bearer ${TOKEN}`,
-                "Content-Type": "application/json"
+                "Authorization": `Bearer ${TOKEN}`
+                // "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                nome: inputNome.value,
-                titulo: inputTitulo.value,
-                ordemExibicao: inputOrdemExibicao.value,
-                logo: null,
-                banner: null,
-                criadoPor: 781
-            }),
+            body: formData
         });
         if (response.status == 201) {
             alert('Marca cadastrada com sucesso')
@@ -99,22 +85,24 @@ const editarMarca = async () => {
         inputOrdemExibicao.classList.add('wrong')
         inputOrdemExibicao.focus()
     } else {
+        const formData = new FormData();
+        formData.append("nome", inputNome.value);
+        formData.append("titulo", inputTitulo.value);
+        formData.append("logo", inputLogo.files[0]);
+        formData.append("banner", inputBanner.files[0]);
+        formData.append("ordemExibicao", inputOrdemExibicao.value);
+        formData.append("criadoPor", 781);
 
         let url = `${SERVER_NAME}marcas/editar/${idMarca}`
         const response = await fetch(url, {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${TOKEN}`,
-                "Content-Type": "application/json"
+                // "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                nome: inputNome.value,
-                titulo: inputTitulo.value,
-                // logo: inputLogo.value,
-                // banner: inputBanner.value,
-                ordemExibicao: inputOrdemExibicao.value,
-            }),
+            body: formData
         });
+        
         if (response.status == 200) {
             alert('Registro alterado com sucesso')
             window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");

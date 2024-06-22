@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     })
     const dado = await response.json()
+    console.log(dado[10])
     createTable(dado)
 })
 
