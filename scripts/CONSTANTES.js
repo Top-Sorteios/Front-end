@@ -22,11 +22,9 @@ export const get = async function (endpoint, auth) {
   const request = await fetch(SERVER_NAME + endpoint, {
     method: "GET",
     headers: {
+      "Content-Type": "application/json",
       Authorization: `${auth == true ? "Bearer " + TOKEN : undefined}`,
     },
   });
-  if (request.ok) {
-    const response = await request.json();
-    return response;
-  }
+  return request;
 };
