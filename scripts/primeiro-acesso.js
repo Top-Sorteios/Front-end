@@ -1,4 +1,4 @@
-import SERVER_NAME from "./CONSTANTES.js";
+import {SERVER_NAME} from "./CONSTANTES.js";
 
 const formPrimeiroAcesso = document.querySelector("#primeiro-acesso-form");
 

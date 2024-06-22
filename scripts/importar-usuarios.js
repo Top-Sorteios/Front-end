@@ -1,4 +1,4 @@
-import { SERVER_NAME, get } from "./CONSTANTES.js";
+import { SERVER_NAME, EMAIL, get } from "./CONSTANTES.js";
 
 const formImportarUsuarios = document.querySelector("#form-importar-usuarios");
 const resultadosSection = document.querySelector("#resultados");
@@ -9,7 +9,7 @@ const importarUsuarios = async function () {
   const arquivo = document.querySelector("#importar-csv").files[0];
   const formData = new FormData();
   formData.append("file", arquivo);
-  formData.append("email_autenticado", sessionStorage.getItem("email"));
+  formData.append("email_autenticado", EMAIL);
 
   const request = await fetch(url, {
     method: "POST",
@@ -18,10 +18,24 @@ const importarUsuarios = async function () {
       Authorization: `Bearer ${sessionStorage.getItem("token")}`,
     },
   });
+  
+  if (request.status == 201) {
+    resultadosSection.classList.add("right");
+    resultadosTexto.textContent = "Usuários importados com sucesso.";
+  } else if (request.status === 400){
+    resultadosSection.classList.add("wrong");
+    resultadosTexto.textContent = "Seu arquivo não segue o padrão necessário para importação."
+    } else if (request.status === 500){
+    resultadosSection.classList.add("wrong");
+    resultadosTexto.textContent = "O servidor pode estar indisponível. Entre em contato com o suporte ou tente novamente mais tarde."
+    } else {
+    resultadosSection.classList.add("wrong");
+    resultadosTexto.textContent = "Erro desconhecido. Entre em contato com o suporte."
 
-  const response = await request.json();
-  console.log(response);
-  resultadosTexto.textContent = response.mensagem;
+  }
+
+  // const response = await request.json();
+  
 };
 
 formImportarUsuarios.addEventListener("submit", (event) => {

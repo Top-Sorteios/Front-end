@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Importar Usuários</title>
+    <link rel="stylesheet" href="../../styles/default.css">
     <link rel="stylesheet" href="../../styles/importar-usuarios.css">
     <script type="module" src="../../scripts/admin/checar-autentificacao.js" defer></script>
 
@@ -22,16 +23,16 @@
                 <input id="importar-csv" type="file"
                     accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
             </label>
-            <label for="criado-por"> Criado por:
+            <!-- <label for="criado-por"> Criado por:
                 <input id="criado-por" type="text" placeholder="Nome" readonly required>
             </label>
             <label for=""> Criado em:
                 <input id="criado-em" type="datetime-local" readonly required>
-            </label>
+            </label> -->
             <button type="submit">Enviar</button>
         </fieldset>
     </form>
-    <section class="resultados">
+    <section id="resultados" class="resultados">
         <h2>Resultado</h2>
         <p id="resultados-texto">Após o envio do arquivo, o resultado aparecerá aqui</p>
     </section>
