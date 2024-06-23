@@ -1,9 +1,6 @@
 import { SERVER_NAME, TOKEN } from "./CONSTANTES.js";
 
-document.addEventListener('DOMContentLoaded', async () => {
-    // const token = sessionStorage.getItem("token");
-    // const email = sessionStorage.getItem("email");
-
+window.addEventListener('load', async () => {
     const url = SERVER_NAME + 'marcas/obter'
     const response = await fetch(url, {
         method: "GET",
@@ -13,7 +10,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     })
     const dado = await response.json()
-    console.log(dado[10])
     createTable(dado)
 })
 

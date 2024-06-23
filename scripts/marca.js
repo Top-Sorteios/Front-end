@@ -53,10 +53,8 @@ const cadastrarMarca = async () => {
 
         const response = await fetch(url, {
             method: "POST",
-            // mode: "cors",
             headers: {
                 "Authorization": `Bearer ${TOKEN}`
-                // "Content-Type": "application/json"
             },
             body: formData
         });
