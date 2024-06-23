@@ -8,7 +8,7 @@ const inputLogo = document.getElementById('upload-logo')
 const inputBanner = document.getElementById('upload-banner')
 const idMarca = sessionStorage.getItem('idMarca')
 
-
+// Recebe os dados da marca
 const getDados = async () => {
     let url = `${SERVER_NAME}/marcas/obter/${idMarca}`
     const response = await fetch(url, {
@@ -20,12 +20,13 @@ const getDados = async () => {
     })
     const dado = await response.json()
 
+    // adiciona as informações da marca a ser editada no input
     inputNome.value = dado.nome
     inputTitulo.value = dado.titulo
     inputOrdemExibicao.value = dado.ordemExibicao
 }
 
-
+// Função que cadastra a marca
 const cadastrarMarca = async () => {
     const url = `${SERVER_NAME}marcas/registrar`
 
@@ -49,7 +50,7 @@ const cadastrarMarca = async () => {
         formData.append("logo", inputLogo.files[0]);
         formData.append("banner", inputBanner.files[0]);
         formData.append("ordemExibicao", inputOrdemExibicao.value);
-        formData.append("criadoPor", 781);
+        formData.append("criadoPor", 1561);
 
         const response = await fetch(url, {
             method: "POST",
@@ -89,14 +90,13 @@ const editarMarca = async () => {
         formData.append("logo", inputLogo.files[0]);
         formData.append("banner", inputBanner.files[0]);
         formData.append("ordemExibicao", inputOrdemExibicao.value);
-        formData.append("criadoPor", 781);
+        formData.append("criadoPor", 1561);
 
         let url = `${SERVER_NAME}marcas/editar/${idMarca}`
         const response = await fetch(url, {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${TOKEN}`,
-                // "Content-Type": "application/json"
             },
             body: formData
         });
