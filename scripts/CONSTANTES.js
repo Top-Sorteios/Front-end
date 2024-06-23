@@ -1,5 +1,19 @@
 export const SERVER_NAME = "https://modulo-sorteios.azurewebsites.net/";
 export const EMAIL = sessionStorage.getItem("email");
+export const ACAO = sessionStorage.getItem("acao");
+export const PREMIO_ID = sessionStorage.getItem("marca-id");
+export const MARCA_NOME = sessionStorage.getItem("marca-nome");
+
+export const SET_ACAO = (acao) => {
+  sessionStorage.setItem("acao", acao);
+};
+
+export const SET_PREMIO_ID = (id) => {
+  sessionStorage.setItem("marca-id", id);
+};
+export const SET_MARCA_NOME = (nome) => {
+  sessionStorage.setItem("marca-nome", nome);
+};
 export const SET_EMAIL = (email) => {
   sessionStorage.setItem("email", email);
 };
@@ -25,6 +39,18 @@ export const get = async function (endpoint, auth) {
       "Content-Type": "application/json",
       Authorization: `${auth == true ? "Bearer " + TOKEN : undefined}`,
     },
+  });
+  return request;
+};
+
+export const put = async function (endpoint, body) {
+  const request = await fetch(SERVER_NAME + endpoint, {
+    method: "PUT",
+    mode: "cors",
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+    },
+    body: body,
   });
   return request;
 };

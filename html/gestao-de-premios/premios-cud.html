@@ -6,32 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Prêmioss</title>
     <link rel="stylesheet" href="../../styles/default.css">
-    <link rel="stylesheet" href="../../styles/cadastro-de-premios.css">
+    <link rel="stylesheet" href="../../styles/premios-cud.css">
     <script type="module" src="../../scripts/admin/checar-autentificacao.js" defer></script>
-    <script type="module" src="../../scripts/cadastro-de-premios.js" defer></script>
+    <script type="module" src="../../scripts/premios-cud.js" defer></script>
 
 </head>
 
 <body>
     <header>
-        <h1>
-            Cadastro de prêmios
+        <h1 id="titulo">
+            Criar/Alterar/Excluir prêmios da semana
         </h1>
     </header>
     <main>
 
-        <form action="POST">
+        <form action="POST" id="form">
             <fieldset>
-                <legend>Cadastro de prêmios da semana</legend>
+                <legend>Criar/Alterar/Excluir prêmios da semana</legend>
                 <label for="">
-                    <input type="image" src="" alt="">
+                    <input id="inserir-imagem" type="file" accept="image/*">
                 </label>
 
 
                 <label for="selecionar-marca"> Selecionar marca
                     <select placeholder="teste" name="" id="selecionar-marca" required>
-                        <option selected disabled>Escolha uma marca</option>
-                        <option value="">teste</option>
+                        <option  selected disabled>Escolha uma marca</option>
+
                     </select>
                 </label>
 
@@ -39,21 +39,21 @@
                     <input id="nome-premio" type="text" placeholder="Insira o nome do prêmio" required>
                 </label>
                 <label for="codigo-sku" title="Insira o código SKU do produto"> Código SKU
-                    <input id="nome-premio" type="text" placeholder="Insira o código SKU" required>
+                    <input id="codigo-sku" type="text" placeholder="Insira o código SKU" required>
                 </label>
                 <label for="descricao-premio" title="Insira uma descrição do sorteio"> Descrição
-                    <textarea id="nome-premio" type="text" placeholder="Insira a descrição do prêmio"
+                    <textarea id="descricao-premio" type="text" placeholder="Insira a descrição do prêmio"
                         required></textarea>
                 </label>
 
-                <label for="descricao-premio"> Quantidade
+                <label for="numero-premio"> Quantidade
                     <input id="numero-premio" type="number" min="1" value="0" parequired>
                 </label>
                 <label for="criador"> Criado por
                     <input id="criador" readonly type="text" value="" placeholder="Nome da Pessoa">
                 </label>
                 <label for="data-criacao"> Criado em
-                    <input id="data-criacao" readonly type="datetime-local" value="">
+                    <input id="data-criacao" readonly type="datetime" value="">
                 </label>
 
                 <button type="submit">Cadastrar prêmio</button>
