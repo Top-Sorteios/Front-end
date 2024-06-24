@@ -1,6 +1,13 @@
 #marcas-parceiras {
 }
 
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+
 .section__title {
   text-align: center;
   font-size: 2rem;
