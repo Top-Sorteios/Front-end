@@ -65,3 +65,25 @@ export const remove = async function (endpoint) {
   });
   return request;
 };
+
+export const post = async function (endpoint, body, contentType) {
+  const settings = {
+    method: "POST",
+    mode: "cors",
+  };
+
+  if (contentType === "json") {
+    settings.headers = {
+      "Content-Type": "application/json",
+    };
+    settings.body = JSON.stringify(body);
+  } else if (contentType === "formData") {
+    settings.headers = { "Content-Type": " multipart/form-data" };
+    settings.body = body;
+  } else {
+    settings.body = body;
+  }
+
+  const request = await fetch(SERVER_NAME + endpoint, settings);
+  return request;
+};

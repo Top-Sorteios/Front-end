@@ -25,6 +25,8 @@ const criarCardHistorico = function (historico) {
       : "https://placehold.co/320x240"
   );
   sectionHistorico.appendChild(premioImagem);
+  const premioInfo = document.createElement("div");
+  sectionHistorico.appendChild(premioInfo)
 
   const premioNome = document.createElement("h2");
   premioNome.textContent = historico.premioNome;
