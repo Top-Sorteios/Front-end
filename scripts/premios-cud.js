@@ -3,21 +3,29 @@ import {
   MARCA_NOME,
   PREMIO_ID,
   SERVER_NAME,
+  TOKEN,
   get,
   put,
+  remove,
 } from "./CONSTANTES.js";
 
 const titulo = document.querySelector("#titulo");
 const legend = document.querySelector("#form-legend");
+const buttonSalvarEditar = document.querySelector("#button-salvar-editar");
 
+const inserirImagem = document.querySelector("#inserir-imagem").files[0];
 const form = document.querySelector("#form");
+const formFieldset = document.querySelector("#form-fieldset");
 const formSelect = document.querySelector("#selecionar-marca");
 const marca = document.querySelector("#selecionar-marca");
 const nomePremio = document.querySelector("#nome-premio");
 const codigoSku = document.querySelector("#codigo-sku");
 const descricaoPremio = document.querySelector("#descricao-premio");
 const numeroPremio = document.querySelector("#numero-premio");
+
+const criadoPorLabel = document.querySelector("#criador-label");
 const criadoPor = document.querySelector("#criador");
+const criadoEmLabel = document.querySelector("#data-criacao-label");
 const criadoEm = document.querySelector("#data-criacao");
 
 marca.addEventListener("change", () => {
@@ -29,6 +37,7 @@ console.log({
   Ação: ACAO,
   "ID do prêmio": PREMIO_ID,
   "Nome da marca": MARCA_NOME,
+  TOKEN: TOKEN,
 });
 
 //FAZ O GET COM BASE NO ID ARMAZENADO EM "PREMIO_ID"
@@ -43,13 +52,30 @@ const obterPremio = async function (id) {
 
 const definirCampos = function (premio) {
   //PREENCHE AS ENTRADAS COM OS DADOS VINDOS DO PARÂMETRO PRÊMIOS
-  marca.querySelector(`option[value="${MARCA_NOME}"]`).selected = true;
+  titulo.textContent = "Editar prêmio da semana";
+  legend.textContent = "Editar prêmio da semana";
+
   nomePremio.value = premio.nome;
   codigoSku.value = premio.codigoSku;
   descricaoPremio.value = premio.descricao;
   numeroPremio.value = premio.quantidade;
   criadoPor.value = premio.criadoPor;
   criadoEm.value = premio.criadoEm.split("T")[0];
+
+  buttonSalvarEditar.textContent = "Salvar alterações";
+  buttonSalvarEditar.addEventListener("click", (event) => {
+    event.preventDefault();
+    editarPremio();
+  });
+
+  const buttonDeletar = document.createElement("button");
+  buttonDeletar.textContent = "Deletar prêmio";
+  buttonDeletar.addEventListener("click", (event) => {
+    event.preventDefault();
+    removerPremio();
+    // window.location.replace("./premios-da-semana.html");
+  });
+  formFieldset.appendChild(buttonDeletar);
 };
 
 //VERIFICA A AÇÃO A SER FEITA E MOLDA A PÁGINA A PARTIR DELA
@@ -57,12 +83,18 @@ switch (ACAO) {
   case "criar":
     titulo.textContent = "Adicionar novo prêmio da semana";
     legend.textContent = "Adicionar novo prêmio da semana";
+    buttonSalvarEditar.textContent = "Adicionar novo prêmio";
+    buttonSalvarEditar.addEventListener("click", (event) => {
+      event.preventDefault();
+      cadastrarPremio();
+    });
+    criadoEmLabel.remove();
+    criadoPorLabel.remove();
     break;
 
   case "editar":
-    titulo.textContent = "Editar prêmio da semana";
-    legend.textContent = "Editar prêmio da semana";
     obterPremio(PREMIO_ID);
+
     break;
 
   default:
@@ -81,6 +113,10 @@ const obterMarcasSelect = async function () {
       formOption.id = marca.id;
       formSelect.appendChild(formOption);
     });
+
+    if (marca.querySelector(`option[value="${MARCA_NOME}"]`)) {
+      marca.querySelector(`option[value="${MARCA_NOME}"]`).selected = true;
+    }
   }
 };
 
@@ -97,7 +133,7 @@ const editarPremio = async function () {
 
   formData.append("nome", nomePremio.value);
   formData.append("codigoSku", codigoSku.value);
-  formData.append("imagem", null);
+  formData.append("imagem", inserirImagem);
   formData.append("quantidade", numeroPremio.value);
   formData.append("descricao", descricaoPremio.value);
   formData.append(
@@ -117,6 +153,12 @@ const editarPremio = async function () {
   console.log(formData.get("marcaId"));
   console.log(formData.get("criadoPor"));
   console.log(formData.get("criadoEm"));
+};
+
+const removerPremio = async function () {
+  const request = await remove(`premios/${PREMIO_ID}`);
+  const response = await request.json();
+  console.log(response);
 };
 
 window.addEventListener("load", () => {

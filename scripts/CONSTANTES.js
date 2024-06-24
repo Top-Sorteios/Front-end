@@ -54,3 +54,14 @@ export const put = async function (endpoint, body) {
   });
   return request;
 };
+
+export const remove = async function (endpoint) {
+  const request = await fetch(SERVER_NAME + endpoint, {
+    method: "DELETE",
+    mode: "cors",
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+    },
+  });
+  return request;
+};

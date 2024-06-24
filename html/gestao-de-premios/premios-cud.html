@@ -21,16 +21,16 @@
     <main>
 
         <form action="POST" id="form">
-            <fieldset>
+            <fieldset id="form-fieldset">
                 <legend id="form-legend">Criar/Editar/Excluir prêmios da semana</legend>
-                <label for="">
-                    <input id="inserir-imagem" type="file" accept="image/*">
+                <label for="inserir-imagem">
+                    <input id="inserir-imagem" type="file" accept="image/*" max="1">
                 </label>
 
 
                 <label for="selecionar-marca"> Selecionar marca
                     <select placeholder="teste" name="" id="selecionar-marca" required>
-                        <option  selected disabled>Escolha uma marca</option>
+                        <option selected disabled>Escolha uma marca</option>
 
                     </select>
                 </label>
@@ -49,17 +49,19 @@
                 <label for="numero-premio"> Quantidade
                     <input id="numero-premio" type="number" min="1" value="0" parequired>
                 </label>
-                <label for="criador"> Criado por
+                <label for="criador" id="criador-label"> Criado por
                     <input id="criador" readonly type="text" value="" placeholder="Nome da Pessoa">
                 </label>
-                <label for="data-criacao"> Criado em
+                <label for="data-criacao" id="data-criacao-label"> Criado em
                     <input id="data-criacao" readonly type="datetime" value="">
                 </label>
 
-                <button type="submit">Cadastrar prêmio</button>
+                <button id="button-salvar-editar" type="submit">Editar prêmio/Salvar alterações</button>
             </fieldset>
         </form>
-        <button>Cancelar</button>
+        <a href="./premios-da-semana.html">
+            <button>Cancelar</button>
+        </a>
     </main>
 </body>
 
