@@ -1,9 +1,4 @@
-import {
-  SET_ACAO,
-  SET_MARCA_NOME,
-  SET_PREMIO_ID,
-  get,
-} from "./CONSTANTES.js";
+import { SET_ACAO, SET_MARCA_NOME, SET_PREMIO_ID, get } from "./CONSTANTES.js";
 
 const tableBody = document.querySelector("#table-body");
 
@@ -22,6 +17,7 @@ const criarLinha = function (premio) {
 
   const tableCellEditar = document.createElement("td");
   tableCellEditar.textContent = "Editar";
+  tableCellEditar.classList.add("tce__td");
   tableCellEditar.addEventListener("click", () => {
     SET_ACAO("editar");
     SET_PREMIO_ID(premio.id);
@@ -52,4 +48,10 @@ window.addEventListener("load", () => {
   SET_PREMIO_ID(null);
   SET_MARCA_NOME(null);
   obterPremios();
+});
+
+const buttonNovoPremio = document.querySelector("#novo-premio");
+buttonNovoPremio.addEventListener("click", () => {
+  SET_ACAO("criar");
+  window.location.assign("./premios-cud.html");
 });

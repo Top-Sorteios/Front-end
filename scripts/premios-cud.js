@@ -8,6 +8,7 @@ import {
 } from "./CONSTANTES.js";
 
 const titulo = document.querySelector("#titulo");
+const legend = document.querySelector("#form-legend");
 
 const form = document.querySelector("#form");
 const formSelect = document.querySelector("#selecionar-marca");
@@ -53,12 +54,14 @@ const definirCampos = function (premio) {
 
 //VERIFICA A AÇÃO A SER FEITA E MOLDA A PÁGINA A PARTIR DELA
 switch (ACAO) {
-  case null:
+  case "criar":
     titulo.textContent = "Adicionar novo prêmio da semana";
+    legend.textContent = "Adicionar novo prêmio da semana";
     break;
 
   case "editar":
     titulo.textContent = "Editar prêmio da semana";
+    legend.textContent = "Editar prêmio da semana";
     obterPremio(PREMIO_ID);
     break;
 

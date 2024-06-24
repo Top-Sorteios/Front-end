@@ -1,0 +1,30 @@
+#marcas-parceiras {
+}
+
+.section__title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.section__title a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.section__title a:hover {
+  text-decoration: underline;
+}
+#logo-marcas-parceiras {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+#logo-marcas-parceiras img {
+  width: 10rem;
+  max-height: 10rem;
+}
+
+.marcas__logo {
+}

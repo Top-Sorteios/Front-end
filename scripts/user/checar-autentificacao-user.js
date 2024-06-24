@@ -1,4 +1,4 @@
-import SERVER_NAME from "../CONSTANTES.js";
+import {SERVER_NAME} from "../CONSTANTES.js";
 //TODO Fix redirect
 const checarAutentificacaoUser = async function (email, token) {
   if (!email || !token) {
