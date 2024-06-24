@@ -11,6 +11,7 @@ window.addEventListener('load', async () => {
     })
     const dado = await response.json()
     createTable(dado)
+    alterarCorTr()
 })
 
 const createTable = async (item) => {
@@ -49,6 +50,14 @@ const createTable = async (item) => {
             window.location.assign("../gestao-de-marcas/marca.html");
         })
     });
+}
+
+// Função para alterar as cores das linhas (tr)
+const alterarCorTr = () => {
+    const trColor = document.querySelectorAll('.filtrarTr')
+    for (let i = 0; i < trColor.length; i = i + 2) {
+        trColor[i].classList.add('alternado')
+    }
 }
 
 const pesquisar = () => {
