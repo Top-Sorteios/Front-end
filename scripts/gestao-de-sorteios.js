@@ -1,4 +1,4 @@
-import {SERVER_NAME} from "./CONSTANTES.js";
+import { SERVER_NAME } from "./CONSTANTES.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
     const token = sessionStorage.getItem("token");
@@ -10,78 +10,72 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    const premiosSelect = document.getElementById('premios-select');
-    const participantesList = document.getElementById('participantes-list');
-    const realizarSorteioBtn = document.getElementById('realizar-sorteio-btn');
-    const premioSurpresaCheckbox = document.getElementById('premio-surpresa');
-    const turmaSorteadaElement = document.getElementById('turma-sorteada');
-    const nomeSorteadoElement = document.getElementById('nome-sorteado');
-
-    async function obterPremios() {
-        try {
-            const response = await fetch(`${SERVER_NAME}premios/obter`, {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error('Falha ao obter prêmios');
+    // Carregar prêmios
+    try {
+        const premiosResponse = await fetch(`${SERVER_NAME}premios/obter`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
             }
+        });
 
-            const premios = await response.json();
-            premios.forEach(premio => {
-                const option = document.createElement('option');
-                option.value = premio.codigoSku;
-                option.textContent = premio.nome;
-                premiosSelect.appendChild(option);
-            });
-
-        } catch (error) {
-            console.error('Erro ao obter prêmios:', error);
+        if (!premiosResponse.ok) {
+            throw new Error('Falha ao obter prêmios');
         }
+
+        const premios = await premiosResponse.json();
+        const premiosSelect = document.getElementById('premios-select');
+        
+        premios.forEach(premio => {
+            const option = document.createElement('option');
+            option.value = premio.codigoSku;
+            option.textContent = premio.nome;
+            premiosSelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Erro ao carregar prêmios:', error);
     }
 
-    async function obterParticipantes() {
-        try {
-            const response = await fetch(`${SERVER_NAME}sorteios/participantes-do-sorteio`, {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            });
+    // Carregar número de participantes
+    try {
+        const premioSurpresa = document.getElementById('premio-surpresa').checked ? 1 : 0;
 
-            if (!response.ok) {
-                throw new Error('Falha ao obter participantes');
-            }
+        const participantesResponse = await fetch(`${SERVER_NAME}sorteios/participantes-do-sorteio`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ sorteio_surpresa: premioSurpresa })
+        });
 
-            const participantes = await response.json();
-            participantesList.innerHTML = '';
-            participantes.forEach(participante => {
-                const li = document.createElement('li');
-                li.textContent = participante.nome;
-                participantesList.appendChild(li);
-            });
-
-        } catch (error) {
-            console.error('Erro ao obter participantes:', error);
+        if (!participantesResponse.ok) {
+            throw new Error('Falha ao obter número de participantes');
         }
+
+        const participantesData = await participantesResponse.json();
+        const numeroParticipantes = participantesData.total_participando;
+
+        const participantesCount = document.getElementById('numero-participantes');
+        participantesCount.textContent = `Total de participantes: ${numeroParticipantes}`;
+
+    } catch (error) {
+        console.error('Erro ao carregar número de participantes:', error);
     }
 
-    async function realizarSorteio() {
-        const premioSelecionado = premiosSelect.value;
-        const premioSurpresa = premioSurpresaCheckbox.checked;
+    // Realizar sorteio
+    document.getElementById('realizar-sorteio-btn').addEventListener('click', async () => {
+        const selectedPremioSku = document.getElementById('premios-select').value;
+        const premioSurpresa = document.getElementById('premio-surpresa').checked ? 1 : 0;
 
-        if (!premioSelecionado) {
-            alert('Por favor, selecione um prêmio.');
+        if (!selectedPremioSku) {
+            alert('Selecione um prêmio para realizar o sorteio');
             return;
         }
 
         try {
-            const response = await fetch(`${SERVER_NAME}sorteios/sortear`, {
+            const sortearResponse = await fetch(`${SERVER_NAME}sorteios/sortear`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -89,27 +83,22 @@ document.addEventListener('DOMContentLoaded', async () => {
                 },
                 body: JSON.stringify({
                     sorteio_surpresa: premioSurpresa,
-                    email_administrador: email,
-                    codigo_sku: premioSelecionado
+                    email_autenticado: email,
+                    codigo_sku: selectedPremioSku
                 })
             });
 
-            if (!response.ok) {
+            if (!sortearResponse.ok) {
                 throw new Error('Falha ao realizar sorteio');
             }
 
-            const resultado = await response.json();
-            turmaSorteadaElement.textContent = `Turma: ${resultado.turma}`;
-            nomeSorteadoElement.textContent = `Aderido: ${resultado.nome}`;
+            const resultadoSorteio = await sortearResponse.json();
+            document.getElementById('turma-sorteada').textContent = `Turma: ${resultadoSorteio.turma}`;
+            document.getElementById('nome-sorteado').textContent = `Aderido: ${resultadoSorteio.nome}`;
 
         } catch (error) {
             console.error('Erro ao realizar sorteio:', error);
             alert('Erro ao realizar sorteio: ' + error.message);
         }
-    }
-
-    realizarSorteioBtn.addEventListener('click', realizarSorteio);
-
-    await obterPremios();
-    await obterParticipantes();
+    });
 });
