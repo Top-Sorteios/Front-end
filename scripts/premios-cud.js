@@ -5,6 +5,7 @@ import {
   SERVER_NAME,
   TOKEN,
   get,
+  post,
   put,
   remove,
 } from "./CONSTANTES.js";
@@ -13,7 +14,7 @@ const titulo = document.querySelector("#titulo");
 const legend = document.querySelector("#form-legend");
 const buttonSalvarEditar = document.querySelector("#button-salvar-editar");
 
-const inserirImagem = document.querySelector("#inserir-imagem");
+const inserirImagem = document.querySelector("#inserir-imagem").files[0];
 const form = document.querySelector("#form");
 const formFieldset = document.querySelector("#form-fieldset");
 const formSelect = document.querySelector("#selecionar-marca");
@@ -121,11 +122,25 @@ const obterMarcasSelect = async function () {
 };
 
 const cadastrarPremio = async function () {
-  let url = `${SERVER_NAME}premios/registrar`;
+  const formData = new FormData();
 
-  const request = await fetch(url, {
-    method: "POST",
-  });
+  formData.append("nome", nomePremio.value);
+  formData.append("codigoSku", codigoSku.value);
+  formData.append("imagem", inserirImagem);
+  formData.append("quantidade", numeroPremio.value);
+  formData.append("descricao", descricaoPremio.value);
+  formData.append(
+    "marcaId",
+    marca.querySelector(`option[value="${marca.value}"]`).id
+  );
+
+  const request = await post(
+    "premios/registrar",
+    formData,
+    "formData"
+  );
+  const response = await request.json();
+  console.log("Teste")
 };
 
 const editarPremio = async function () {
@@ -133,15 +148,15 @@ const editarPremio = async function () {
 
   formData.append("nome", nomePremio.value);
   formData.append("codigoSku", codigoSku.value);
-  formData.append("imagem", (inserirImagem.files[0]||null));
+  formData.append("imagem", inserirImagem);
   formData.append("quantidade", numeroPremio.value);
   formData.append("descricao", descricaoPremio.value);
   formData.append(
     "marcaId",
     marca.querySelector(`option[value="${marca.value}"]`).id
   );
-  formData.append("criadoPor", criadoPor.value);
-  formData.append("criadoEm", criadoEm.value);
+  // formData.append("criadoPor", criadoPor.value);
+  // formData.append("criadoEm", criadoEm.value);
 
   const request = await put(`premios/editar/${PREMIO_ID}`, formData);
 
@@ -152,8 +167,8 @@ const editarPremio = async function () {
   console.log(formData.get("quantidade"));
   console.log(formData.get("descricao"));
   console.log("ID" + formData.get("marcaId"));
-  console.log(formData.get("criadoPor"));
-  console.log(formData.get("criadoEm"));
+  // console.log(formData.get("criadoPor"));
+  // console.log(formData.get("criadoEm"));
 };
 
 const removerPremio = async function () {
@@ -167,7 +182,7 @@ window.addEventListener("load", () => {
   obterMarcasSelect();
 });
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  editarPremio();
-});
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   editarPremio();
+// });

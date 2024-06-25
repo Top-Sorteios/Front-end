@@ -70,8 +70,8 @@ export const post = async function (endpoint, body, contentType) {
   const settings = {
     method: "POST",
     mode: "cors",
-    headers: {}
-    
+    headers: {},
+    body: undefined,
   };
 
   if (contentType == "json") {
@@ -83,9 +83,9 @@ export const post = async function (endpoint, body, contentType) {
   } else {
     settings.body = body;
   }
-  settings.headers.Authorization = `Bearer ${TOKEN}`
+  settings.headers.Authorization = `Bearer ${TOKEN}`;
 
-  console.log(settings)
+  console.log(settings);
 
   const request = await fetch(SERVER_NAME + endpoint, settings);
   return request;
