@@ -13,7 +13,7 @@ const titulo = document.querySelector("#titulo");
 const legend = document.querySelector("#form-legend");
 const buttonSalvarEditar = document.querySelector("#button-salvar-editar");
 
-const inserirImagem = document.querySelector("#inserir-imagem").files[0];
+const inserirImagem = document.querySelector("#inserir-imagem");
 const form = document.querySelector("#form");
 const formFieldset = document.querySelector("#form-fieldset");
 const formSelect = document.querySelector("#selecionar-marca");
@@ -133,7 +133,7 @@ const editarPremio = async function () {
 
   formData.append("nome", nomePremio.value);
   formData.append("codigoSku", codigoSku.value);
-  formData.append("imagem", inserirImagem);
+  formData.append("imagem", (inserirImagem.files[0]||null));
   formData.append("quantidade", numeroPremio.value);
   formData.append("descricao", descricaoPremio.value);
   formData.append(
@@ -144,21 +144,23 @@ const editarPremio = async function () {
   formData.append("criadoEm", criadoEm.value);
 
   const request = await put(`premios/editar/${PREMIO_ID}`, formData);
+
   const response = await request.json();
-  console.log(formData.get("nome"));
+  console.log("Nome" + formData.get("nome"));
   console.log(formData.get("codigoSku"));
   console.log(formData.get("imagem"));
   console.log(formData.get("quantidade"));
   console.log(formData.get("descricao"));
-  console.log(formData.get("marcaId"));
+  console.log("ID" + formData.get("marcaId"));
   console.log(formData.get("criadoPor"));
   console.log(formData.get("criadoEm"));
 };
 
 const removerPremio = async function () {
   const request = await remove(`premios/${PREMIO_ID}`);
-  const response = await request.json();
-  console.log(response);
+  if (request.status === 200) {
+    window.location.replace("./premios-da-semana.html");
+  }
 };
 
 window.addEventListener("load", () => {
