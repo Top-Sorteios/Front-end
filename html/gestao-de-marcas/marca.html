@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Marcas Parceiras</title>
     <link rel="stylesheet" href="../../styles/marca.css">
+    <link rel="stylesheet" href="../../styles/default.css">
     <script src="../../scripts/admin/checar-autentificacao.js" defer type="module"></script>
     <script src="../../scripts/marca.js" defer type="module"></script>
 </head>
@@ -31,9 +32,15 @@
             <span class="wrong-text"></span>
         </div>
         <label for="">Upload banner</label>
+        <div class="div-imgs">
         <input id="upload-banner" type="file">
+        <img id="preview-banner" src="" alt="Banner">
+    </div>
         <label for="">Upload logo</label>
+        <div class="div-imgs">
         <input id="upload-logo" type="file">
+        <img id="preview-logo" src="" alt="Logo">
+    </div>
         <div class="botao">
             <button id="button-salvar">SALVAR</button>
             <button id="button-remover">EXCLUIR</button>
