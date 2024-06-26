@@ -71,14 +71,13 @@ export const post = async function (endpoint, body, contentType) {
     method: "POST",
     mode: "cors",
     headers: {}
-    
   };
 
   if (contentType == "json") {
     settings.headers["Content-Type"] = "application/json";
     settings.body = JSON.stringify(body);
   } else if (contentType == "formData") {
-    settings.headers["Content-Type"] = "multipart/form-data";
+    // settings.headers["Content-Type"] = "multipart/form-data";
     settings.body = body;
   } else {
     settings.body = body;

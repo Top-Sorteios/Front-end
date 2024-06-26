@@ -5,32 +5,35 @@ import {
   SERVER_NAME,
   TOKEN,
   get,
+  post,
   put,
   remove,
 } from "./CONSTANTES.js";
 
 const titulo = document.querySelector("#titulo");
 const legend = document.querySelector("#form-legend");
-const buttonSalvarEditar = document.querySelector("#button-salvar-editar");
+const buttonSalvarEditar = document.querySelector("#enviar");
 
-const inserirImagem = document.querySelector("#inserir-imagem");
 const form = document.querySelector("#form");
 const formFieldset = document.querySelector("#form-fieldset");
-const formSelect = document.querySelector("#selecionar-marca");
-const marca = document.querySelector("#selecionar-marca");
-const nomePremio = document.querySelector("#nome-premio");
-const codigoSku = document.querySelector("#codigo-sku");
-const descricaoPremio = document.querySelector("#descricao-premio");
-const numeroPremio = document.querySelector("#numero-premio");
 
-const criadoPorLabel = document.querySelector("#criador-label");
-const criadoPor = document.querySelector("#criador");
-const criadoEmLabel = document.querySelector("#data-criacao-label");
-const criadoEm = document.querySelector("#data-criacao");
+const imagem = document.querySelector("#imagem");
+const marcaId = document.querySelector("#marcaId");
+const nome = document.querySelector("#nome");
+const codigoSku = document.querySelector("#codigoSku");
+const descricao = document.querySelector("#descricao");
+const quantidade = document.querySelector("#quantidade");
 
-marca.addEventListener("change", () => {
-  console.log(marca.value);
-  console.log(marca.querySelector(`option[value="${marca.value}"]`).id);
+const criadoPorLabel = document.querySelector("#criadoPorLabel");
+const criadoPor = document.querySelector("#criadoPor");
+const criadoEmLabel = document.querySelector("#criadoEmLabel");
+const criadoEm = document.querySelector("#criadoEm");
+
+marcaId.addEventListener("change", () => {
+  console.log("MARCA VALUE " + marcaId.value);
+  console.log(
+    "MARCA ID " + marcaId.querySelector(`option[value="${marcaId.value}"]`).id
+  );
 });
 
 console.log({
@@ -55,51 +58,25 @@ const definirCampos = function (premio) {
   titulo.textContent = "Editar prêmio da semana";
   legend.textContent = "Editar prêmio da semana";
 
-  nomePremio.value = premio.nome;
+  nome.value = premio.nome;
+  imagem.setAttribute("base64img", premio.imagem);
   codigoSku.value = premio.codigoSku;
-  descricaoPremio.value = premio.descricao;
-  numeroPremio.value = premio.quantidade;
+  descricao.value = premio.descricao;
+  quantidade.value = premio.quantidade;
   criadoPor.value = premio.criadoPor;
   criadoEm.value = premio.criadoEm.split("T")[0];
 
   buttonSalvarEditar.textContent = "Salvar alterações";
-  buttonSalvarEditar.addEventListener("click", (event) => {
-    event.preventDefault();
-    editarPremio();
-  });
 
   const buttonDeletar = document.createElement("button");
   buttonDeletar.textContent = "Deletar prêmio";
   buttonDeletar.addEventListener("click", (event) => {
     event.preventDefault();
     removerPremio();
-    // window.location.replace("./premios-da-semana.html");
+    window.location.replace("./premios-da-semana.html");
   });
   formFieldset.appendChild(buttonDeletar);
 };
-
-//VERIFICA A AÇÃO A SER FEITA E MOLDA A PÁGINA A PARTIR DELA
-switch (ACAO) {
-  case "criar":
-    titulo.textContent = "Adicionar novo prêmio da semana";
-    legend.textContent = "Adicionar novo prêmio da semana";
-    buttonSalvarEditar.textContent = "Adicionar novo prêmio";
-    buttonSalvarEditar.addEventListener("click", (event) => {
-      event.preventDefault();
-      cadastrarPremio();
-    });
-    criadoEmLabel.remove();
-    criadoPorLabel.remove();
-    break;
-
-  case "editar":
-    obterPremio(PREMIO_ID);
-
-    break;
-
-  default:
-    break;
-}
 
 //FAZ O GET DAS MARCAS CADASTRADAS E EXIBE COMO OPÇÃO NO MENU DROPDOWN
 const obterMarcasSelect = async function () {
@@ -111,49 +88,65 @@ const obterMarcasSelect = async function () {
       formOption.value = marca.nome;
       formOption.textContent = marca.nome;
       formOption.id = marca.id;
-      formSelect.appendChild(formOption);
+      marcaId.appendChild(formOption);
     });
 
-    if (marca.querySelector(`option[value="${MARCA_NOME}"]`)) {
-      marca.querySelector(`option[value="${MARCA_NOME}"]`).selected = true;
+    if (marcaId.querySelector(`option[value="${MARCA_NOME}"]`)) {
+      marcaId.querySelector(`option[value="${MARCA_NOME}"]`).selected = true;
     }
   }
 };
 
 const cadastrarPremio = async function () {
   let url = `${SERVER_NAME}premios/registrar`;
+  const formData = new FormData();
+  formData.append("nome", nome.value);
+  formData.append("codigoSku", codigoSku.value);
+  formData.append(
+    "imagem",
+    imagem.files.length > 0
+      ? imagem.files[0]
+      : new Blob([""], { type: "application/octet-stream" })
+  );
+  formData.append("quantidade", quantidade.value);
+  formData.append("descricao", descricao.value);
+  formData.append(
+    "marcaId",
+    parseInt(marcaId.querySelector(`option[value="${marcaId.value}"]`).id)
+  );
 
-  const request = await fetch(url, {
-    method: "POST",
-  });
+  const request = await post("premios/registrar", formData, "formData");
+  if (request.status === 201) {
+    // const response = await request.json();
+    // console.log(response);
+    window.location.replace("./premios-da-semana.html");
+  }
 };
 
 const editarPremio = async function () {
   const formData = new FormData();
-
-  formData.append("nome", nomePremio.value);
+  formData.append("nome", nome.value);
   formData.append("codigoSku", codigoSku.value);
-  formData.append("imagem", (inserirImagem.files[0]||null));
-  formData.append("quantidade", numeroPremio.value);
-  formData.append("descricao", descricaoPremio.value);
+  formData.append(
+    "imagem",
+    imagem.files.length > 0
+      ? imagem.files[0]
+      : new Blob([imagem.getAttribute("base64img")], { type: "image/*" })
+  );
+
+  formData.append("quantidade", quantidade.value);
+  formData.append("descricao", descricao.value);
   formData.append(
     "marcaId",
-    marca.querySelector(`option[value="${marca.value}"]`).id
+    parseInt(marcaId.querySelector(`option[value="${marcaId.value}"]`).id)
   );
-  formData.append("criadoPor", criadoPor.value);
-  formData.append("criadoEm", criadoEm.value);
-
   const request = await put(`premios/editar/${PREMIO_ID}`, formData);
 
-  const response = await request.json();
-  console.log("Nome" + formData.get("nome"));
-  console.log(formData.get("codigoSku"));
-  console.log(formData.get("imagem"));
-  console.log(formData.get("quantidade"));
-  console.log(formData.get("descricao"));
-  console.log("ID" + formData.get("marcaId"));
-  console.log(formData.get("criadoPor"));
-  console.log(formData.get("criadoEm"));
+  if (request.status === 200) {
+    // const response = await request.json();
+    // console.log(response);
+    window.location.replace("./premios-da-semana.html");
+  }
 };
 
 const removerPremio = async function () {
@@ -163,11 +156,41 @@ const removerPremio = async function () {
   }
 };
 
+//Adiciona as marcas disponiveis no select
 window.addEventListener("load", () => {
   obterMarcasSelect();
 });
 
+//VERIFICA A AÇÃO A SER FEITA E MOLDA A PÁGINA A PARTIR DELA
+switch (ACAO) {
+  case "criar":
+    titulo.textContent = "Adicionar novo prêmio da semana";
+    legend.textContent = "Adicionar novo prêmio da semana";
+    buttonSalvarEditar.textContent = "Adicionar novo prêmio";
+
+    criadoEmLabel.remove();
+    criadoPorLabel.remove();
+    break;
+
+  case "editar":
+    obterPremio(PREMIO_ID);
+    break;
+
+  default:
+    break;
+}
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  editarPremio();
+  switch (ACAO) {
+    case "criar":
+      cadastrarPremio();
+      break;
+    case "editar":
+      editarPremio();
+      break;
+    default:
+      window.location.replace("./premios-da-semana.html");
+      break;
+  }
 });
