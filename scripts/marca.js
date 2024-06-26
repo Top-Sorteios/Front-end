@@ -26,6 +26,8 @@ const getDados = async () => {
     inputNome.value = dado.nome
     inputTitulo.value = dado.titulo
     inputOrdemExibicao.value = dado.ordemExibicao
+    inputBanner.setAttribute('base64img', dado.banner);
+    inputLogo.setAttribute('base64img', dado.logo);
     previewLogo.src = `data:image/png;base64,${dado.logo}`
     previewBanner.src = `data:image/png;base64,${dado.banner}`
 }
@@ -92,8 +94,18 @@ const editarMarca = async () => {
         const formData = new FormData();
         formData.append("nome", inputNome.value);
         formData.append("titulo", inputTitulo.value);
-        formData.append("logo", inputLogo.files[0]);
-        formData.append("banner", inputBanner.files[0]);
+        formData.append(
+            "logo",
+            inputLogo.files.length > 0
+              ? inputLogo.files[0]
+              : new Blob([inputLogo.getAttribute("base64img")], { type: "image/*" })
+          );
+          formData.append(
+            "banner",
+            inputBanner.files.length > 0
+              ? inputBanner.files[0]
+              : new Blob([inputBanner.getAttribute("base64img")], { type: "image/*" })
+          );
         formData.append("ordemExibicao", inputOrdemExibicao.value);
         formData.append("criadoPor", 1561);
 
