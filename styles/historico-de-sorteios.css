@@ -34,7 +34,24 @@ main {
 }
 
 .sidebar {
+  width: 400px;
   grid-column: 3/4;
-  padding: 1rem;
+  padding: 1rem 1rem;
   background-color: lightgray;
+}
+
+.container-turmas{
+  width: 100%;
+  height: 100%;
+  padding: 1.2rem 1rem 0 0.5rem;
+
+}
+
+.lines-turmas{
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.lines-turmas input{
+  margin-right: 0.5rem;
 }
