@@ -23,13 +23,16 @@ const getDados = async () => {
     const dado = await response.json()
 
     // adiciona as informações da marca a ser editada no input
-    inputNome.value = dado.nome
-    inputTitulo.value = dado.titulo
-    inputOrdemExibicao.value = dado.ordemExibicao
+    inputNome.value = dado.nome;
+    inputTitulo.value = dado.titulo;
+    inputOrdemExibicao.value = dado.ordemExibicao;
     inputBanner.setAttribute('base64img', dado.banner);
     inputLogo.setAttribute('base64img', dado.logo);
-    previewLogo.src = `data:image/png;base64,${dado.logo}`
-    previewBanner.src = `data:image/png;base64,${dado.banner}`
+    previewLogo.src = `data:image/png;base64,${dado.logo}`;
+    previewBanner.src = `data:image/png;base64,${dado.banner}`;
+
+    console.log(dado.logo)
+    console.log(inputLogo)
 }
 
 // Função que cadastra a marca
@@ -49,12 +52,16 @@ const cadastrarMarca = async () => {
         error[2].innerText = 'Preencha o campo ordem de exibição'
         inputOrdemExibicao.classList.add('wrong')
         inputOrdemExibicao.focus()
+    } else if (inputBanner.files[0] == null) {
+        error[3].innerText = 'Adicione uma imagem'
+    } else if (inputLogo.files[0] == null) {
+        error[4].innerText = 'Adicione uma imagem'
     } else {
         const formData = new FormData();
         formData.append("nome", inputNome.value);
         formData.append("titulo", inputTitulo.value);
-        formData.append("logo", inputLogo.files[0]);
-        formData.append("banner", inputBanner.files[0]);
+        formData.append('logo', inputLogo.files[0])
+        formData.append('banner', inputBanner.files[0])
         formData.append("ordemExibicao", inputOrdemExibicao.value);
         formData.append("criadoPor", 1561);
 
@@ -153,6 +160,8 @@ const clearError = () => {
     error[0].innerText = ''
     error[1].innerText = ''
     error[2].innerText = ''
+    error[3].innerText = ''
+    error[4].innerText = ''
     inputNome.classList.remove('wrong')
     inputTitulo.classList.remove('wrong')
     inputOrdemExibicao.classList.remove('wrong')
