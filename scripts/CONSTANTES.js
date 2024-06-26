@@ -70,22 +70,21 @@ export const post = async function (endpoint, body, contentType) {
   const settings = {
     method: "POST",
     mode: "cors",
-    headers: {},
-    body: undefined,
+    headers: {}
   };
 
   if (contentType == "json") {
     settings.headers["Content-Type"] = "application/json";
     settings.body = JSON.stringify(body);
   } else if (contentType == "formData") {
-    settings.headers["Content-Type"] = "multipart/form-data";
+    // settings.headers["Content-Type"] = "multipart/form-data";
     settings.body = body;
   } else {
     settings.body = body;
   }
-  settings.headers.Authorization = `Bearer ${TOKEN}`;
+  settings.headers.Authorization = `Bearer ${TOKEN}`
 
-  console.log(settings);
+  console.log(settings)
 
   const request = await fetch(SERVER_NAME + endpoint, settings);
   return request;

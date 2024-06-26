@@ -6,7 +6,7 @@ const obterPremios = async function () {
   const request = await get("premios/obter", true);
   const response = await request.json();
   console.log(response);
-  response.forEach((premio) => {
+  response.reverse().forEach((premio) => {
     criarLinha(premio);
   });
 };
