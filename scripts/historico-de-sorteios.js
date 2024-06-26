@@ -1,9 +1,10 @@
 import { get, post } from "./CONSTANTES.js";
 
-const inputBuscarTurma = document.querySelector("#buscar-turma");
-const buttonBuscarTurma = document.querySelector("#botao-buscar-turma");
 
 const sectionHistoricoSorteios = document.querySelector("#historico-sorteios");
+
+const containerTurmas = document.querySelector("#container-turmas");
+
 
 const obterHistorico = async function () {
   const request = await get("sorteios/historico-sorteio", true);
@@ -63,15 +64,37 @@ const criarCardHistorico = function (historico) {
   historicoTexto.appendChild(premioDescricao);
 };
 
-const buscarTurma = async function () {
-  const turmaNome = { turmaNome: inputBuscarTurma.value };
-  const request = await post(
-    "sorteios/historico-sorteio/turma",
-    { turmaNome: inputBuscarTurma.value },
-    "json"
-  );
-  
 
+const obterFiltroTurmas = async function () {
+  const request = await get("turmas/obter", true);
+  const response = await request.json();
+
+  response.forEach((turma) => {
+    console.log(turma);
+    criarFiltroDeTurmas(turma);
+  });
+};
+
+const criarFiltroDeTurmas = function (turma) {
+  const sectionTurmas = document.createElement("div");
+  sectionTurmas.classList.add("lines-turmas");
+  sectionTurmas.title = turma.nome;
+  containerTurmas.appendChild(sectionTurmas);
+
+  const inputTurma = document.createElement("input");
+  inputTurma.type = "checkbox";
+  inputTurma.id = "check-turma"
+  inputTurma.classList.add("checkbox-turma")
+  sectionTurmas.appendChild(inputTurma)
+  
+  const h4Text = document.createElement("label");
+  h4Text.htmlFor = "checkbox-turma"
+  h4Text.textContent = turma.nome;
+  sectionTurmas.appendChild(h4Text);
+};
+
+const buscarTurma = async function () {
+ 
   if (request.status == 200) {
     const response = await request.json();
     sectionHistoricoSorteios.innerHTML = "";
@@ -85,11 +108,14 @@ const buscarTurma = async function () {
   }
 };
 
+
 window.addEventListener("load", () => {
   obterHistorico();
+  obterFiltroTurmas();
 });
 
-buttonBuscarTurma.addEventListener("click", (event) => {
+checkbox.addEventListener("click", (event) => {
   event.preventDefault();
   buscarTurma();
 });
+
