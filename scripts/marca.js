@@ -7,6 +7,8 @@ const inputOrdemExibicao = document.getElementById('ordem-exibicao')
 const inputLogo = document.getElementById('upload-logo')
 const inputBanner = document.getElementById('upload-banner')
 const idMarca = sessionStorage.getItem('idMarca')
+const previewBanner = document.getElementById('preview-banner')
+const previewLogo = document.getElementById('preview-logo')
 
 // Recebe os dados da marca
 const getDados = async () => {
@@ -24,6 +26,8 @@ const getDados = async () => {
     inputNome.value = dado.nome
     inputTitulo.value = dado.titulo
     inputOrdemExibicao.value = dado.ordemExibicao
+    previewLogo.src = `data:image/png;base64,${dado.logo}`
+    previewBanner.src = `data:image/png;base64,${dado.banner}`
 }
 
 // Função que cadastra a marca
@@ -84,6 +88,7 @@ const editarMarca = async () => {
         inputOrdemExibicao.classList.add('wrong')
         inputOrdemExibicao.focus()
     } else {
+
         const formData = new FormData();
         formData.append("nome", inputNome.value);
         formData.append("titulo", inputTitulo.value);
@@ -190,3 +195,25 @@ const openMarca = () => {
     getDados()
     sessionStorage.setItem('idMarca', 0)
 }
+
+function previewImage(input, previewId) {
+    const preview = document.getElementById(previewId);
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        preview.src = e.target.result;
+    }
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+
+inputBanner.addEventListener('change', function() {
+    previewImage(this, 'preview-banner');
+});
+
+inputLogo.addEventListener('change', function() {
+    previewImage(this, 'preview-logo');
+});

@@ -6,6 +6,7 @@ import {
   TOKEN,
   get,
   post,
+  post,
   put,
   remove,
 } from "./CONSTANTES.js";
