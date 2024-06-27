@@ -135,7 +135,6 @@ const deleteMarca = async () => {
         method: 'DELETE',
         headers: {
             "Authorization": `Bearer ${TOKEN}`,
-            "Content-Type": "application/json"
         },
         mode: 'cors'
     })
