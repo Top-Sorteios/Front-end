@@ -155,7 +155,6 @@ const deleteMarca = async () => {
     }
 }
 
-
 const clearError = () => {
     error[0].innerText = ''
     error[1].innerText = ''
