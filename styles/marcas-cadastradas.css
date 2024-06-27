@@ -7,17 +7,6 @@
     background-color: var(--input-background-color);
 }
 
-header {
-    display: flex;
-    flex-direction: column;
-}
-
-header nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
 #container {
     display: flex;
     flex-direction: column;

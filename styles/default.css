@@ -90,10 +90,26 @@ html {
   align-items: center;
   grid-row: 1/2;
   grid-column: 1/-1;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 60px;
+}
+
+.header-admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 60px;
+}
+
+.header__nav-admin {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  align-items: center;
 }
 
 .header__nav {
@@ -116,6 +132,23 @@ html {
 .header__nav-a:hover {
   color: var(--green);
   text-decoration: underline;
+}
+
+.button-sair {
+  width: 100px;
+  height: 32px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  background-color: var(--green);
+  color: var(--button-text-color);
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button-sair:hover {
+  background-color: var(--blue);
+  color: var(--white);
 }
 
 body {
