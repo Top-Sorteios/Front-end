@@ -1,0 +1,167 @@
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+}
+
+header nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+header figure img {
+    width: 300px;
+    height: 40px;
+}
+
+header nav a {
+    color: #000000;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    color: #38c68b;
+    text-decoration: underline;
+}
+
+nav button {
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: #38c68be0;
+    font-size: 16px;
+    color: #002775;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+nav button:hover {
+    background-color: #002775;
+    color: #ffffff;
+}
+
+
+/* Rodape */
+
+footer {
+    background-color: #104fcc ;
+    width: 100%;
+    height: 470px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rodape {
+    display: flex;
+    background-color: #3673ec;
+    width: 92%;
+    height: 390px;
+    border-radius: 35px;
+    padding: 15px;
+}
+
+.logo-link-rodape {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100%;
+}
+
+.logo-link-rodape img {
+    margin-bottom: 10px;
+    width: 270px;
+    height: 40px;
+}
+
+.logo-link-rodape a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 4px;
+    margin-left: 20px;
+    width: 60%;
+}
+
+
+.rodape-endereco {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    justify-content: space-between;
+}
+
+.paragrado-endereco {
+    margin-bottom: 20px;
+}
+
+.contato {
+    margin-bottom: 30px;
+}
+.contato a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+.redes-sociais {
+    display: flex;
+    flex-direction: column;
+    width: 23%;
+    padding: 20px 35px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.redes-sociais a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    width: 50%;
+}
+
+
+.paragrafo-redes-sociais {
+    margin-bottom: 20px;
+}
+
+.rodape-sorteios {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 35px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.rodape-buttom button {
+    width: 240px;
+    height: 42px;
+    border-radius: 20px;
+    color: #ffffff;
+    margin-top: 10px;
+    background-color: #36bf86e0;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.rodape-buttom button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

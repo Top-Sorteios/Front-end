@@ -142,7 +142,6 @@ const deleteMarca = async () => {
         method: 'DELETE',
         headers: {
             "Authorization": `Bearer ${TOKEN}`,
-            "Content-Type": "application/json"
         },
         mode: 'cors'
     })
@@ -154,7 +153,6 @@ const deleteMarca = async () => {
         alert('Não foi possível excluir o registro')
     }
 }
-
 
 const clearError = () => {
     error[0].innerText = ''
