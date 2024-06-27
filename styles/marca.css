@@ -12,9 +12,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background-color: rgb(213, 193, 167); */
     width: 500px;
-    height: 500px;
     gap: 16px;
     border-radius: 40px;
     border: 2px solid #ffffff;

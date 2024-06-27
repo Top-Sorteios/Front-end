@@ -4,10 +4,6 @@ body {
     justify-content: center;
 }
 
-.pesquisa {
-    display: flex;
-}
-
 .pesquisa input {
     width: 250px;
     height: 32px;
