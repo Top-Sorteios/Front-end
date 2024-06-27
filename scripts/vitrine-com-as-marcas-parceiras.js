@@ -1,4 +1,4 @@
-import SERVER_NAME from "./CONSTANTES.js";
+import { SERVER_NAME } from "./CONSTANTES.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
     const token = sessionStorage.getItem("token");
@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    async function obterSorteiosDaSemana() {
+    async function obterMarcasDaVitrine() {
         try {
-            const url = `${SERVER_NAME}sorteios/sorteios-da-semana`;
+            const url = `${SERVER_NAME}marcas/vitrine`;
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
@@ -22,23 +22,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             if (!response.ok) {
-                throw new Error('Falha ao obter sorteios da semana');
+                throw new Error('Falha ao obter marcas da vitrine');
             }
 
-            const sorteios = await response.json();
+            const marcas = await response.json();
             const sorteiosContainer = document.getElementById('sorteios-container');
 
-            sorteios.forEach(sorteio => {
+            sorteiosContainer.innerHTML = ''; // Limpa o container antes de adicionar novo conteúdo
+
+            marcas.forEach(marca => {
                 const sorteioElement = document.createElement('div');
                 sorteioElement.classList.add('sorteios');
 
                 sorteioElement.innerHTML = `
                     <div class="fotos">
-                        <img src="${sorteio.imagem}" alt="Imagem do sorteio">
+                        <img src="${marca.logo || 'default-image-url.jpg'}" alt="Logo da marca">
                     </div>
                     <div class="escrita">
-                        <p>${sorteio.nome}</p>
-                        <p>${sorteio.descricao}</p>
+                        <p>${marca.nome}</p>
+                        <p>${marca.descricao}</p>
                     </div>
                 `;
 
@@ -46,13 +48,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
         } catch (error) {
-            console.error('Erro ao obter sorteios da semana:', error);
+            console.error('Erro ao obter marcas da vitrine:', error);
         }
     }
 
-    async function participarDoSorteio() {
+    document.getElementById('participar-btn').addEventListener('click', async () => {
         try {
-            const url = `${SERVER_NAME}sorteios/participantes-do-sorteio`;
+            const url = "https://modulo-sorteios.azurewebsites.net/usuarios/sorteio/participar";
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    sorteio_surpresa: false
+                    email: email // Enviando o e-mail do usuário como parâmetro
                 })
             });
 
@@ -75,9 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('Erro ao participar do sorteio:', error);
             alert('Erro ao participar do sorteio: ' + error.message);
         }
-    }
+    });
 
-    document.getElementById('participar-btn').addEventListener('click', participarDoSorteio);
-
-    await obterSorteiosDaSemana();
+    await obterMarcasDaVitrine();
 });
