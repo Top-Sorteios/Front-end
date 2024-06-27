@@ -13,20 +13,11 @@
 
 <body>
 
-    <header>
-        <figure>
-            <img class="logo" src="./LOGO-TESTE.webp" alt="">
-        </figure>
-        <nav class="nav-bar">
-            <a href="./inicio.html">Inicio</a>
-            <a href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
-            <a href="">Parceiros</a>
-            <button>Participar dos sorteios</button>
-        </nav>
+    <header class="header-marca">
+        <img src="../../assets/images/logo/LOGO-TESTE.png" class="header__figure-img" alt="">
     </header>
 
     <div class="container">
-        <!-- <form action="" method="post"> -->
         <h2>GERENCIAMENTO DE MARCA</h2>
         <div class="cadastros">
             <label for="">NOME DA MARCA:</label>
@@ -45,48 +36,50 @@
         </div>
         <label for="upload-banner">Upload banner</label>
         <div class="div-imgs">
-        <input id="upload-banner" type="file" max="1" accept="image/*" base64img="">
-        <span class="wrong-text"></span>
-        <img id="preview-banner" src="" alt="Banner">
-    </div>
+            <input id="upload-banner" type="file" max="1" accept="image/*" base64img="">
+            <span class="wrong-text"></span>
+            <img id="preview-banner" src="" alt="Banner">
+        </div>
         <label for="upload-logo">Upload logo</label>
         <div class="div-imgs">
-        <input id="upload-logo" type="file" max="1" accept="image/*" base64img="">
-        <span class="wrong-text"></span>
-        <img id="preview-logo" src="" alt="Logo">
-    </div>
+            <input id="upload-logo" type="file" max="1" accept="image/*" base64img="">
+            <span class="wrong-text"></span>
+            <img id="preview-logo" src="" alt="Logo">
+        </div>
         <div class="botao">
-            <button id="button-salvar">SALVAR</button>
-            <button id="button-remover">EXCLUIR</button>
+            <button class="pq b hov__blue" id="button-salvar">SALVAR</button>
+            <button class="pq b hov__blue" id="button-remover">EXCLUIR</button>
+            <a href="./marcas-cadastradas.html"><button class="pq b hov__blue">VOLTAR</button></a>
         </div>
-        <!-- </form> -->
     </div>
-
-    <div class="confirm none">
-        <div>
-            <p>Tem certeza que deseja excluir a marca?</p>
-        </div>
-        <div class="confirm-button">
-            <button id="button-sim">SIM</button>
-            <button id="button-nao">NÃO</button>
+    <div class="container-excluir none">
+        <div class="confirm">
+            <div>
+                <p>Tem certeza que deseja excluir a marca?</p>
+            </div>
+            <div class="confirm-button">
+                <button class="b pq hov__blue" id="button-sim">SIM</button>
+                <button class="b pq hov__blue" id="button-nao">NÃO</button>
+            </div>
         </div>
     </div>
 
     <footer>
-        <div class="rodape">
-            <div class="logo-link-rodape">
-                <img src="./img-rodape.webp" alt="">
-                <a href="./inicio.html">Inicio</a>
-                <a href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
-                <a href="">Parceiros</a>
-            </div>
-            <div class="rodape-endereco">
+        <div class="footer">
+            <nav class="footer__nav">
+                <img class="footer__nav-img" src="../../assets/images/logo/LOGO-TESTE-branco.png" alt="">
+                <a class="footer__nav-link" href="./inicio.html">Inicio</a>
+                <a class="footer__nav-link" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
+                    sorteios</a>
+                <a class="footer__nav-link" href="">Parceiros</a>
+            </nav>
+            <div class="footer__address">
                 <div class="endereco">
                     <p class="paragrado-endereco">Endereço</p>
                     <p>Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros, São Paulo - SP, 05461-010</p>
                 </div>
-                <div class="contato">
-                    <a href="">info@mysite.com</a>
+                <div class="footer__contact">
+                    <a class="footer_contact-link" href="">info@mysite.com</a>
                     <p>Tel. 123-456-7890</p>
                 </div>
             </div>

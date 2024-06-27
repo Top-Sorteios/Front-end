@@ -169,9 +169,9 @@ const clearError = () => {
 const buttonDelete = document.getElementById('button-remover')
 buttonDelete.addEventListener('click', () => {
     let container = document.querySelector('.container')
-    let confirm = document.querySelector('.confirm')
+    let containerExcluir = document.querySelector('.container-excluir')
     container.classList.add('none')
-    confirm.classList.remove('none')
+    containerExcluir.classList.remove('none')
 })
 
 const buttonSave = document.getElementById('button-salvar')
@@ -192,9 +192,9 @@ buttonSim.addEventListener('click', () => {
 const buttonNao = document.getElementById('button-nao')
 buttonNao.addEventListener('click', () => {
     let container = document.querySelector('.container')
-    let confirm = document.querySelector('.confirm')
+    let containerExcluir = document.querySelector('.container-excluir')
     container.classList.remove('none')
-    confirm.classList.add('none')
+    containerExcluir.classList.add('none')
 })
 
 window.addEventListener('load', () => {

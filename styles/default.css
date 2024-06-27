@@ -37,6 +37,12 @@ html {
   overflow-x: hidden;
 }
 
+.pq {
+    /*Botão pequeno*/
+    width: 120px;
+    height: 32px;
+}
+
 .md {
   /*Botão médio*/
   width: 217px;
