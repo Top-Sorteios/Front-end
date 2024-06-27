@@ -13,23 +13,26 @@
 
 <body>
 
-    <header>
-        <figure>
-            <img class="logo" src="./LOGO-TESTE.webp" alt="">
+    <header class="header-admin">
+        <figure class="header__figure">
+            <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png" alt="logo do sorteio top">
         </figure>
-        <nav class="nav-bar">
-            <a href="./inicio.html">Inicio</a>
-            <a href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
-            <a href="">Parceiros</a>
-            <button>Participar dos sorteios</button>
+        <nav class="header__nav-admin">
+            <a class="header__nav-a hov__underline" href="../home/inicio-admin.html">Inicio</a> 
+            <a class="header__nav-a hov__underline" href="../gestao-de-usuarios/importar-usuarios.html">Carga de usuarios</a>
+            <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
+                sorteios</a>
+            <a class="header__nav-a hov__underline" href="../gestao-de-usuarios/alterar-senha.html">Gestão de conta</a>
+            <a class="header__nav-a-ativo hov__underline" href="../gestao-de-premios/premios-da-semana.html">Prêmios da semana</a>
+            <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/gestao-de-sorteios.html">Sorteios semanais</a>
+            <a class="header__nav-a hov__underline" href="../gestao-de-marcas/marcas-cadastradas.html">Gerenciamento de marcas parceiras</a>
+            <a class="header__nav-a hov__underline" href="./html/login/index.html"></a>
+            <button class="button-sair">Sair</button>  
         </nav>
     </header>
 
-    <header>
-        <h1>Prêmios da semana</h1>
-    </header>
     <main>
-        <button id="novo-premio" class="button-novo-premio">Novo prêmio</button>
+        <h1>Prêmios da semana</h1>
         <table class="table">
             <thead class="table__head">
                 <th class="table__head-th">Editar</th>
@@ -58,23 +61,24 @@
                 </tr> -->
             </tbody>
         </table>
+        <button id="novo-premio" class="button-novo-premio md b hov__blue">Novo prêmio</button>
     </main>
 
     <footer>
-        <div class="rodape">
-            <div class="logo-link-rodape">
-                <img src="./img-rodape.webp" alt="">
-                <a href="./inicio.html">Inicio</a>
-                <a href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
-                <a href="">Parceiros</a>
-            </div>
-            <div class="rodape-endereco">
+        <div class="footer">
+            <nav class="footer__nav">
+                <img class="footer__nav-img"  src="../../assets/images/logo/LOGO-TESTE-branco.png" alt="">
+                <a class="footer__nav-link" href="./inicio.html">Inicio</a>
+                <a class="footer__nav-link" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
+                <a class="footer__nav-link" href="">Parceiros</a>
+            </nav>
+            <div class="footer__address">
                 <div class="endereco">
                     <p class="paragrado-endereco">Endereço</p>
                     <p>Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros, São Paulo - SP, 05461-010</p>
                 </div>
-                <div class="contato">
-                    <a href="">info@mysite.com</a>
+                <div class="footer__contact">
+                    <a class="footer_contact-link" href="">info@mysite.com</a>
                     <p>Tel. 123-456-7890</p>
                 </div>
             </div>

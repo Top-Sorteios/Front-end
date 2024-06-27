@@ -1,14 +1,14 @@
 input:-webkit-autofill {
   background-color: inherit;
 }
-
+/* 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.container {
+.main {
   display: flex;
   align-items: center;
   border: 1px solid var(--border-color);

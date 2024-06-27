@@ -1,0 +1,14 @@
+.container {
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 25%;
+    padding: 30px;
+}
+.form{
+    margin: 0 auto;
+    line-height: 1.9rem;
+}

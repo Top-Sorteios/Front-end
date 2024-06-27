@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!token || !email) {
         alert('Usuário não autenticado');
-        window.location.assign('../login.html');
+        window.location.assign('../login/index.html');
         return;
     }
 

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Marcas Parceiras</title>
-    <link rel="stylesheet" href="../../styles/marca.css">
     <link rel="stylesheet" href="../../styles/default.css">
+    <link rel="stylesheet" href="../../styles/marca.css">
     <script src="../../scripts/admin/checar-autentificacao.js" defer type="module"></script>
     <script src="../../scripts/marca.js" defer type="module"></script>
 </head>
@@ -18,38 +18,43 @@
     </header>
 
     <div class="container">
-        <h2>GERENCIAMENTO DE MARCA</h2>
+        <h2 class="txt-cadastrar">CADASTRAR MARCA</h2>
+        <h2 class="txt-editar">EDITAR MARCA</h2>
         <div class="cadastros">
-            <label for="">NOME DA MARCA:</label>
-            <input id="nome-marca" type="text" placeholder="Nome da marca">
+            <label for="nome-marca" title="Insira o nome da marca.">Nome
+                <input class="i" id="nome-marca" type="text">
+            </label>
             <span class="wrong-text"></span>
         </div>
         <div class="cadastros">
-            <label for="">TITULO:</label>
-            <input id="titulo-marca" type="text" placeholder="Titulo">
+            <label for="titulo-marca" title="Insira o titulo da marca.">Titulo
+                <input class="i" id="titulo-marca" type="text">
+            </label>
             <span class="wrong-text"></span>
         </div>
         <div class="cadastros">
-            <label for="">ORDEM DE EXIBIÇÃO:</label>
-            <input id="ordem-exibicao" type="number" value="1">
+            <label for="ordem-exibicao" title="Defina a ordem de exibição">Ordem de exibição
+                <input class="i" id="ordem-exibicao" type="number" value="1">
+
+            </label>
             <span class="wrong-text"></span>
         </div>
         <label for="upload-banner">Upload banner</label>
         <div class="div-imgs">
-            <input id="upload-banner" type="file" max="1" accept="image/*" base64img="">
+            <input class="" id="upload-banner" type="file" max="1" accept="image/*" base64img="">
             <span class="wrong-text"></span>
             <img id="preview-banner" src="" alt="Banner">
         </div>
-        <label for="upload-logo">Upload logo</label>
+        <label for="upload-logo">Logo</label>
         <div class="div-imgs">
             <input id="upload-logo" type="file" max="1" accept="image/*" base64img="">
             <span class="wrong-text"></span>
             <img id="preview-logo" src="" alt="Logo">
         </div>
         <div class="botao">
-            <button class="pq b hov__blue" id="button-salvar">SALVAR</button>
-            <button class="pq b hov__blue" id="button-remover">EXCLUIR</button>
-            <a href="./marcas-cadastradas.html"><button class="pq b hov__blue">VOLTAR</button></a>
+            <button class="sm b" id="button-salvar">SALVAR</button>
+            <button class="sm b button_wrong" id="button-remover">EXCLUIR</button>
+            <a href="./marcas-cadastradas.html"><button class="sm b button_white">CANCELAR</button></a>
         </div>
     </div>
     <div class="container-excluir none">
@@ -58,8 +63,8 @@
                 <p>Tem certeza que deseja excluir a marca?</p>
             </div>
             <div class="confirm-button">
-                <button class="b pq hov__blue" id="button-sim">SIM</button>
-                <button class="b pq hov__blue" id="button-nao">NÃO</button>
+                <button class="sm b" id="button-sim">SIM</button>
+                <button class="sm b button_wrong" id="button-nao">NÃO</button>
             </div>
         </div>
     </div>

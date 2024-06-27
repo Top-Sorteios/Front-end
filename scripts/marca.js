@@ -207,10 +207,14 @@ window.addEventListener('load', () => {
 
 const newMarca = () => {
     // buttonDelete.classList.add('invisible')
+    const txtEditar = document.querySelector('.txt-editar')
     buttonDelete.style.display = 'none'
+    txtEditar.classList.add('none')
 }
 
 const openMarca = () => {
+    const txtCadastrar = document.querySelector('.txt-cadastrar')
+    txtCadastrar.classList.add('none')
     getDados()
     sessionStorage.setItem('idMarca', 0)
 }

@@ -52,14 +52,6 @@ const createTable = async (item) => {
     });
 }
 
-// Função para alterar as cores das linhas (tr)
-const alterarCorTr = () => {
-    const trColor = document.querySelectorAll('.filtrarTr')
-    for (let i = 0; i < trColor.length; i = i + 2) {
-        trColor[i].classList.add('alternado')
-    }
-}
-
 const pesquisar = () => {
     let inputPesquisa = document.getElementById('input-pesquisa').value.toLowerCase()
     const listMarca = document.querySelectorAll('.filtrarTr')

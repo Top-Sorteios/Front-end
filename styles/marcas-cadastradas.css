@@ -26,45 +26,31 @@ table {
     overflow-x: auto;
 }
 
+thead {
+    background-color: lightgray;
+}
+
 th,
 td {
-    padding: 8px;
+    padding: 1rem;
+    border: 1px solid black;
     text-align: left;
-    border: 1px solid var(--border-color);
 }
 
 tr:hover {
     background-color: var(--green);
 }
 
-.alternado {
-    background-color: rgb(236, 236, 236);
-}
-
 table a {
     text-decoration: none;
-    color: var(--link-color);
+    color: #094bcc;
+    ;
 }
 
 table a:hover {
     text-decoration: underline;
     color: var(--link-selected);
 }
-
-/* #button-nova-marca {
-    width: 170px;
-    height: 40px;
-    border-radius: 15px;
-    background-color: var(--button-background-color);
-    color: #000000;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-#button-nova-marca:hover {
-    background-color: #555252;
-    color: #ffffff;
-} */
 
 .none {
     display: none;

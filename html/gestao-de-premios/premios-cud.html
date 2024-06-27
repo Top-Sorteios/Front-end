@@ -14,84 +14,73 @@
 
 <body>
 
-    <header>
-        <figure>
-            <img class="logo" src="./LOGO-TESTE.webp" alt="">
-        </figure>
-        <nav class="nav-bar">
-            <a href="./inicio.html">Inicio</a>
-            <a href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
-            <a href="">Parceiros</a>
-            <button>Participar dos sorteios</button>
-        </nav>
-    </header>
-
-    <header>
+    <header class="header-marca">
+        <img src="../../assets/images/logo/LOGO-TESTE.png" class="header__figure-img" alt="">
         <h1 id="titulo">
             Criar/Alterar/Excluir prêmios da semana
         </h1>
     </header>
 
     <main>
-
-        <form  id="form">
+        <form id="form">
             <fieldset id="form-fieldset">
                 <legend id="form-legend">Criar/Editar/Excluir prêmios da semana</legend>
-                <label for="imagem">
+                <label class="label" for="imagem">
                     <input id="imagem" type="file" accept="image/*" max="1" base64img="">
                 </label>
 
 
-                <label for="marcaId"> Selecionar marca
-                    <select placeholder="teste" name="" id="marcaId" required>
+                <label class="label" for="marcaId"> Selecionar marca
+                    <select class="i" placeholder="teste" name="" id="marcaId" required>
                         <option selected disabled>Escolha uma marca</option>
                     </select>
                 </label>
 
-                <label for="nome" title="Insira o nome do prêmio"> Nome do prêmio
-                    <input id="nome" type="text" placeholder="Insira o nome do prêmio" required>
+                <label class="label" for="nome" title="Insira o nome do prêmio"> Nome do prêmio
+                    <input class="i" id="nome" type="text" placeholder="Insira o nome do prêmio." required>
                 </label>
-                <label for="codigoSku" title="Insira o código SKU do produto"> Código SKU
-                    <input id="codigoSku" type="text" placeholder="Insira o código SKU" required>
+                <label class="label" for="codigoSku" title="Insira o código SKU do produto"> Código SKU
+                    <input class="i" id="codigoSku" type="text" placeholder="Insira o código SKU." required>
                 </label>
-                <label for="descricao" title="Insira uma descrição do sorteio"> Descrição
-                    <textarea id="descricao" type="text" placeholder="Insira a descrição do prêmio"
-                        required></textarea>
-                </label>
-
-                <label for="quantidade"> Quantidade
-                    <input id="quantidade" type="number" min="1" value="0" parequired>
-                </label>
-                <label for="criadoPor" id="criadoPorLabel"> Criado por
-                    <input id="criadoPor" readonly type="text" value="" placeholder="Nome da Pessoa">
-                </label>
-                <label for="criadoEm" id="criadoEmLabel"> Criado em
-                    <input id="criadoEm" readonly type="datetime" value="">
+                <label class="label" for="descricao" title="Insira uma descrição do sorteio"> Descrição
+                    <textarea class="i txtarea" id="descricao" type="text" placeholder="Insira a descrição do prêmio." required></textarea>
                 </label>
 
-                <button id="enviar" type="submit">Editar prêmio/Salvar alterações</button>
+                <label class="label" for="quantidade" title="Insira a quantidade."> Quantidade
+                    <input class="i" id="quantidade" type="number" min="1" value="0" parequired>
+                </label>
+                <label class="label" for="criadoPor" id="criadoPorLabel" title="Pessoa que criou este prêmio."> Criado por
+                    <input class="i" id="criadoPor" readonly type="text" value="" placeholder="Nome da Pessoa">
+                </label>
+                <label class="label" for="criadoEm" id="criadoEmLabel" title="Data em que esse prêmio foi criado."> Criado em
+                    <input class="i" id="criadoEm" readonly type="datetime" value="">
+                </label>
+
+                <button id="enviar" class="md b" type="submit">Editar prêmio/Salvar alterações</button>
             </fieldset>
         </form>
         <a href="./premios-da-semana.html">
-            <button>Cancelar</button>
+            <button class="md b button_white cancelar">Cancelar</button>
         </a>
     </main>
 
+
     <footer>
-        <div class="rodape">
-            <div class="logo-link-rodape">
-                <img src="./img-rodape.webp" alt="">
-                <a href="./inicio.html">Inicio</a>
-                <a href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
-                <a href="">Parceiros</a>
-            </div>
-            <div class="rodape-endereco">
+        <div class="footer">
+            <nav class="footer__nav">
+                <img class="footer__nav-img" src="../../assets/images/logo/LOGO-TESTE-branco.png" alt="">
+                <a class="footer__nav-link" href="./inicio.html">Inicio</a>
+                <a class="footer__nav-link" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
+                    sorteios</a>
+                <a class="footer__nav-link" href="">Parceiros</a>
+            </nav>
+            <div class="footer__address">
                 <div class="endereco">
                     <p class="paragrado-endereco">Endereço</p>
                     <p>Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros, São Paulo - SP, 05461-010</p>
                 </div>
-                <div class="contato">
-                    <a href="">info@mysite.com</a>
+                <div class="footer__contact">
+                    <a class="footer_contact-link" href="">info@mysite.com</a>
                     <p>Tel. 123-456-7890</p>
                 </div>
             </div>

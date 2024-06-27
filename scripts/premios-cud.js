@@ -69,6 +69,11 @@ const definirCampos = function (premio) {
   buttonSalvarEditar.textContent = "Salvar alterações";
 
   const buttonDeletar = document.createElement("button");
+  buttonDeletar.classList.add('md')
+  buttonDeletar.classList.add('b')
+  buttonDeletar.classList.add('button_wrong')
+  buttonDeletar.style.margin = '0 auto'
+
   buttonDeletar.textContent = "Deletar prêmio";
   buttonDeletar.addEventListener("click", (event) => {
     event.preventDefault();
