@@ -6,12 +6,12 @@ const sectionHistoricoSorteios = document.querySelector("#historico-sorteios");
 const containerTurmas = document.querySelector("#container-turmas");
 
 
+
 const obterHistorico = async function () {
   const request = await get("sorteios/historico-sorteio", true);
   const response = await request.json();
 
   response.forEach((sorteio) => {
-    console.log(sorteio);
     criarCardHistorico(sorteio);
   });
 };
@@ -70,10 +70,11 @@ const obterFiltroTurmas = async function () {
   const response = await request.json();
 
   response.forEach((turma) => {
-    console.log(turma);
     criarFiltroDeTurmas(turma);
   });
 };
+
+let turmasSelecionadas = new Array();
 
 const criarFiltroDeTurmas = function (turma) {
   const sectionTurmas = document.createElement("div");
@@ -83,39 +84,73 @@ const criarFiltroDeTurmas = function (turma) {
 
   const inputTurma = document.createElement("input");
   inputTurma.type = "checkbox";
-  inputTurma.id = "check-turma"
-  inputTurma.classList.add("checkbox-turma")
-  sectionTurmas.appendChild(inputTurma)
+  inputTurma.id = "checkbox-turma";
+  inputTurma.name = "turmas";
+  inputTurma.value = turma.nome;
+  inputTurma.classList.add("checkbox-turma");
+  inputTurma.addEventListener("click", () => {
+      buscarTurma();
+  })
+  sectionTurmas.appendChild(inputTurma);
   
   const h4Text = document.createElement("label");
-  h4Text.htmlFor = "checkbox-turma"
+  h4Text.htmlFor = "checkbox-turma";
   h4Text.textContent = turma.nome;
   sectionTurmas.appendChild(h4Text);
 };
 
+
 const buscarTurma = async function () {
  
-  if (request.status == 200) {
-    const response = await request.json();
+  await testando();
+  
+  const request = await post(
+    "/sorteios/historico-sorteio/obter/lista-de-turmas",
+    {turmas: turmasSelecionadas},
+    "json"
+  );
+
+  const response = await request.json();
+
+  if(request.json == null){
     sectionHistoricoSorteios.innerHTML = "";
+    sectionHistoricoSorteios.innerHTML = "<h2>Parece que essa turma não existe :(</h2>";
+  }
+
+  if (request.status == 200) {
+    sectionHistoricoSorteios.innerHTML = "";
+
     response.forEach((sorteio) => {
       criarCardHistorico(sorteio);
     });
   } else {
     sectionHistoricoSorteios.innerHTML = "";
     sectionHistoricoSorteios.innerHTML = "<h2>Parece que essa turma não existe :(</h2>";
-
   }
 };
 
+
+
+const testando = async function (){
+  let turmas = document.getElementsByName("turmas");
+
+  const checkedValues = Array.from(turmas).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+
+  if (checkedValues.length === 0) {
+    obterHistorico();
+    return;
+  }
+
+  if(checkedValues.length > 0){
+    turmasSelecionadas = checkedValues
+  }
+  
+}
 
 window.addEventListener("load", () => {
   obterHistorico();
   obterFiltroTurmas();
 });
 
-checkbox.addEventListener("click", (event) => {
-  event.preventDefault();
-  buscarTurma();
-});
+
 
