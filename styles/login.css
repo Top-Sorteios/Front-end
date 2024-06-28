@@ -51,7 +51,7 @@ input:-webkit-autofill {
   gap: 0.2rem 0;
   width: 50%;
   font-size: 1.0rem;
-  color: #9e9e9e;
+  color: var(--black);
 }
 
 .form__link {
