@@ -10,25 +10,29 @@
 .section__instruction h2 {
     text-align: center;
     padding: 4rem;
+    width: fit-content;
 }
 
 .section__instruction-svg {
     width: 2rem;
-    height: auto;
+    height: 2rem;
 }
 
 
 .section__instruction-instructions {
     display: flex;
+    width: fit-content;
 }
 
 .section__instruction-instructions div{
     display: flex;
     align-items: flex-start;
     gap: 1rem;
+    width: fit-content;
 }
 
 .section__instruction p {
     line-height: 1.5;
-    width: 50%;
+    text-justify: justify;
+    width: 21rem;
 }
