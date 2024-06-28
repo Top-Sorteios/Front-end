@@ -1,0 +1,34 @@
+.section__instruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    color: #f2eae7;
+    background-color: var(--bg-blue);
+}
+
+.section__instruction h2 {
+    text-align: center;
+    padding: 4rem;
+}
+
+.section__instruction-svg {
+    width: 2rem;
+    height: auto;
+}
+
+
+.section__instruction-instructions {
+    display: flex;
+}
+
+.section__instruction-instructions div{
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.section__instruction p {
+    line-height: 1.5;
+    width: 50%;
+}
