@@ -2,9 +2,12 @@ import {SERVER_NAME} from "../CONSTANTES.js";
 //TODO Fix redirect
 const checarAutentificacaoUser = async function (email, token) {
   if (!email || !token) {
-    alert("Você não pode acessar essa página sem fazer a autentificação");
+    // alert("Você não pode acessar essa página sem fazer a autentificação");
     window.location.replace(
       "https://green-dune-0cd28a70f.5.azurestaticapps.net/"
+    );
+    window.location.replace(
+      "../login/index.html"
     );
   } else {
     try {
