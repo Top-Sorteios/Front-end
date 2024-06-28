@@ -12,58 +12,50 @@
 </head>
 
 <body>
-
-    <header>
-        <figure>
-            <img class="logo" src="./LOGO-TESTE.webp" alt="">
-        </figure>
-        <nav class="nav-bar">
-            <a href="./inicio.html">Inicio</a>
-            <a href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
-            <a href="">Parceiros</a>
-            <button>Participar dos sorteios</button>
-        </nav>
+    <header class="header">
+        <a href="../home/inicio.html"><img src="../../assets/images/logo/LOGO-TESTE.png" alt=""></a>
     </header>
-
     <main>
         <form class="form" id="primeiro-acesso-form" action="" method="post">
             <fieldset class="form__fieldset">
+                <h1>Primeiro acesso</h1>
                 <legend class="form__legend">Primeiro acesso</legend>
+                <span>Preencha os campos abaixo para obter o seu primeiro acesso</span>
                 <label class="form__label" for="email"> Email
-                    <input class="form__input" type="email" name="email" id="email" required>
+                    <input class="i" type="email" name="email" id="email" required>
                 </label>
                 <label class="form__label" for="cpf"> CPF
-                    <input class="form__input" type="number" name="cpf" id="cpf" required>
+                    <input class="i" type="text" name="cpf" id="cpf" maxlength="14" required>
                 </label>
                 <label class="form__label" for="data-nascimento"> Data de nascimento
-                    <input class="form__input" type="date" name="data-nascimento" id="data-nascimento" required>
+                    <input class="i" type="date" name="data-nascimento" id="data-nascimento" required>
                 </label>
                 <label class="form__label" for="senha"> Senha
-                    <input class="form__input" type="password" name="senha" id="senha" required>
+                    <input class="i" type="password" name="senha" id="senha" required>
                 </label>
                 <label class="form__label" for="confirmar-senha"> Confirmar senha
-                    <input class="form__input" type="password" name="" id="confirmar-senha" required>
+                    <input class="i" type="password" name="" id="confirmar-senha" required>
                 </label>
-                <button class="form__submit-button" type="submit">Cadastrar</button>
+                <button class="b md hov__blue" type="submit">Cadastrar</button>
             </fieldset>
         </form>
     </main>
-
     <footer>
-        <div class="rodape">
-            <div class="logo-link-rodape">
-                <img src="./img-rodape.webp" alt="">
-                <a href="./inicio.html">Inicio</a>
-                <a href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
-                <a href="">Parceiros</a>
-            </div>
-            <div class="rodape-endereco">
+        <div class="footer">
+            <nav class="footer__nav">
+                <img class="footer__nav-img" src="../../assets/images/logo/LOGO-TESTE-branco.png" alt="">
+                <a class="footer__nav-link" href="./inicio.html">Inicio</a>
+                <a class="footer__nav-link" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
+                    sorteios</a>
+                <a class="footer__nav-link" href="">Parceiros</a>
+            </nav>
+            <div class="footer__address">
                 <div class="endereco">
                     <p class="paragrado-endereco">Endereço</p>
                     <p>Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros, São Paulo - SP, 05461-010</p>
                 </div>
-                <div class="contato">
-                    <a href="">info@mysite.com</a>
+                <div class="footer__contact">
+                    <a class="footer_contact-link" href="">info@mysite.com</a>
                     <p>Tel. 123-456-7890</p>
                 </div>
             </div>
@@ -86,6 +78,7 @@
             </div>
         </div>
     </footer>
+    
 </body>
 
 </html>

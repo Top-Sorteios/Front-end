@@ -378,6 +378,7 @@ body {
 
 
 @media (max-width: 720px) {
+  
   .footer {
     display: flex;
     flex-direction: column;
@@ -395,6 +396,14 @@ body {
     flex-direction: column;
     gap: 5px;
     width: 90%;
+  }
+
+  .redes-sociais {
+    width: 50%;
+  }
+
+  .paragrafo-live {
+    width: 100%;
   }
 
   .rodape-sorteios {

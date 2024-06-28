@@ -12,49 +12,57 @@
 
 <body>
 
-        <header class="header">
-            <h1 class="header__title">Logo Topbet's</h1>
-        <main>
+    <header class="header">
+        <a href="../home/inicio.html"><img src="../../assets/images/logo/LOGO-TESTE.png" alt=""></a>
+    </header>
 
-            <form id="form-login" class="form" method="post">
-                <fieldset class="form__fieldset">
-                    <legend class="form__legend">Login</legend>
-                    <label for="email" class="form__label"> Email
-                        <input type="email" id="email" name="email" required>
-                    </label>
+    <main>
+        <form id="form-login" class="form" method="post">
+            <fieldset class="form__fieldset">
+                <h1>Login</h1>
+                <legend class="form__legend">Login</legend>
+                <label for="email" class="form__label" title="Insira o email."> Email
+                    <input class="i" type="email" id="email" name="email" required>
+                </label>
 
+                <label for="senha" class="form__label" title="Insira a senha."> Senha
+                    <input class="i" type="password" id="senha" name="senha" required>
+                    <a class="form__link" href="./esqueci-minha-senha.html">Esqueceu sua senha?</a>
+                </label>
 
-                    <label for="senha" class="form__label"> Senha
-                        <input type="password" id="senha" name="senha" required>
-                        <a class="form__link" href="./esqueci-minha-senha.html">Esqueceu sua senha?</a>
-                    </label>
-
-                    <button id="submit" class="b md hov__blue">Entrar</button>
-                    <a class="form__link first-access" href="./primeiro-acesso.html ">Primeiro acesso</a>
-                    <!-- <label for="concordo-termos">
+                <button id="submit" class="b md hov__blue">Entrar</button>
+                <a class="form__link first-access" href="./primeiro-acesso.html ">Primeiro acesso</a>
+                <!-- <label for="concordo-termos">
                         <input type="checkbox" name="concordo-termos" id="concordo-termos"> Eu concordo com os termos de
                         uso para o fornecimento de dados do usuário
                     </label> -->
-                </fieldset>
-            </form>
-        </main>
-    
+            </fieldset>
+        </form>
+    </main>
 
     <footer>
-        <div class="rodape">
-            <div class="logo-link-rodape">
-                <img src="./img-rodape.webp" alt="">
-                <a href="./inicio.html">Inicio</a>
-                <a href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
-                <a href="">Parceiros</a>
-            </div>
-            <div class="rodape-endereco">
-                <div class="endereco">
+        <div class="footer">
+            <nav class="footer__nav">
+                <img class="footer__nav-img" src="../../assets/images/logo/LOGO-TESTE-branco.png" alt="">
+                <a class="footer__nav-link" href="./inicio.html">Inicio</a>
+                <a class="footer__nav-link" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
+                    sorteios</a>
+                <a class="footer__nav-link" href="">Parceiros</a>
+            </nav>
+            <div class="footer__address">
+                <div class="footer-endereco">
                     <p class="paragrado-endereco">Endereço</p>
                     <p>Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros, São Paulo - SP, 05461-010</p>
+                    <div class="instrucoes">
+                        <p>Instruções para Participar
+                            Cadastre-se para participar do sorteio, é necessário realizar o cadastro completo no site, fornecendo informações válidas como nome, e-mail e telefone de contato.
+                            </p>
+                            <p>Escolha o Sorteio que deseja participar, cada participante poderá se inscrever no sorteio apenas uma vez. Inscrições múltiplas com o mesmo e-mail ou telefone serão desclassificadas.
+                            </p>
+                    </div>
                 </div>
-                <div class="contato">
-                    <a href="">info@mysite.com</a>
+                <div class="footer__contact">
+                    <a class="footer_contact-link" href="">info@mysite.com</a>
                     <p>Tel. 123-456-7890</p>
                 </div>
             </div>
@@ -63,6 +71,10 @@
                 <a href="">TitkTok</a>
                 <a href="">Instagram</a>
                 <a href="">Youtube</a>
+                <p class="paragrafo-live">Agora Assista à Live 
+                    e veja se você tem uma
+                    Sorte TOP
+                    </p>
             </div>
             <div class="rodape-sorteios">
                 <div class="rodape-buttom">
@@ -71,12 +83,16 @@
                     <button>Participe dos Sorteios</button>
                 </div>
                 <div class="rodape-inf-empresa">
+                    <p>Se inscreva e participe das lives</p>
                     <p>© 2024 by GrupoTop.</p>
                     <p>Criado pelo Grupo Top.</p>
+                    <p>Contato:
+                        Contato: 11 3662-3285 | contato@grupo.top </p>
                 </div>
             </div>
         </div>
     </footer>
+    
 </body>
 
 </html>
