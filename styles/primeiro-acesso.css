@@ -55,17 +55,3 @@ input:-webkit-autofill {
 span{
   padding-bottom: 16px;
 }
-
-@media (max-width: 720px) {
-  main {
-    margin-bottom: 150px;
-  }
-
-  .form__fieldset {
-    width: 90%;
-  }
-
-  .form__label {
-    width: 70%;
-  }
-}
