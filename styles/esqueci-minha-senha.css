@@ -1,0 +1,32 @@
+@import url(./default.css);
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    width: 100%;
+}
+
+.header img {
+    width: 400px;
+    height: 60px;
+}
+
+main {
+    width: 100%;
+}
+
+fieldset {
+    border: 2px solid lightgray;
+    width: 45%;
+    margin: 20px auto 100px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    gap: 25px;
+    border-radius: 50px;
+    height: 400px;
+}
