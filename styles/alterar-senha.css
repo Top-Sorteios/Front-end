@@ -1,14 +1,49 @@
+@import url(./default.css);
+
 .container {
-    background-color: blueviolet;
     display: flex;
+    border: 2px solid lightgray;
+    margin: 20px auto 100px auto;
+    border-radius: 50px;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    margin: 0 auto;
-    width: 25%;
+    text-align:;
+    width: 30%;
     padding: 30px;
 }
 .form{
     margin: 0 auto;
     line-height: 1.9rem;
+    width: 90%;
+}
+
+fieldset{
+    border: 0;
+    font-size: 1.0rem;
+    color: var(--black);
+}
+
+.button{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.txt-size-normal-medium{
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.spanlabel{
+    margin-left: 0.3rem;
+    padding: 0;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.3rem;
 }
