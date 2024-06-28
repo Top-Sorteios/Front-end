@@ -313,6 +313,19 @@ footer {
   justify-content: space-between;
 }
 
+.instrucoes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px 0 20px 0;
+}
+
+.footer-endereco {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
 .paragrado-endereco {
   margin-bottom: 20px;
 }
@@ -343,6 +356,11 @@ footer {
 
 .paragrafo-redes-sociais {
   margin-bottom: 20px;
+}
+
+.paragrafo-live {
+  margin-top: 50px;
+  letter-spacing: 1px;
 }
 
 .rodape-sorteios {
@@ -378,6 +396,7 @@ footer a:hover {
 }
 
 @media (max-width: 720px) {
+  
   .footer {
     display: flex;
     flex-direction: column;
@@ -395,6 +414,14 @@ footer a:hover {
     flex-direction: column;
     gap: 5px;
     width: 90%;
+  }
+
+  .redes-sociais {
+    width: 50%;
+  }
+
+  .paragrafo-live {
+    width: 100%;
   }
 
   .rodape-sorteios {
