@@ -34,19 +34,19 @@
 
 html {
   height: 100vh;
-  /* width: 100w; */
+  /* width: 100vw; */
   font-size: 16px;
   font-family: sans-serif;
   /* overflow-x: hidden; */
 }
 
 body {
-  width: 100%;
-  height: 100%;
   display: grid;
+  width: 100vw;
+  height: 100%;
   grid-template-rows: fit-content auto fit-content;
-}
-
+  }
+  
 .txt-size-small {
   font-size: 0.9rem;
 }
@@ -152,7 +152,7 @@ body {
   grid-column: 1/-1;
 
   height: fit-content;
-  width: 100%;
+  width: 100vw;
   display: grid;
 
   grid-template-columns: 1fr 1fr 1fr;
@@ -268,7 +268,7 @@ body {
 .main {
   grid-column: 1/-1;
   grid-row: 2/3;
-  width: 100%;
+  width: 1366px;
 }
 
 /* Cabeçalho */
@@ -298,7 +298,7 @@ body {
 
   margin-top: auto;
   padding: 4rem 0;
-  width: 100%;
+   width: 100vw; 
   /* height: 470px; */
   background-color: var(--bg-blue);
 
@@ -309,10 +309,10 @@ body {
 
 .footer__container {
   display: grid;
+  width: 92%;
   grid-template-columns: repeat(4, 25%);
   background-color: var(--blue);
   height: 390px;
-  width: 92%;
   color: var(--text-color-alt);
   border-radius: 2rem;
   padding: 0.5rem 0.25rem;
@@ -398,7 +398,7 @@ body {
   color: var(--text-color);
 }
 
-@media (max-width: 720px) {
+/* @media (max-width: 720px) {
   .footer {
     display: flex;
     flex-direction: column;
@@ -420,7 +420,7 @@ body {
 
   .redes-sociais {
     width: 50%;
-  }
+  } */
 
   .paragrafo-live {
     width: 100%;
@@ -432,4 +432,3 @@ body {
     gap: 8px;
     width: 90%;
   }
-}
