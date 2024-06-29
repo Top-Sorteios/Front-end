@@ -4,12 +4,22 @@ const formImportarUsuarios = document.querySelector("#form-importar-usuarios");
 const resultadosSection = document.querySelector("#resultados");
 const resultadosTexto = document.querySelector("#resultados-texto");
 
+const formFieldset = document.querySelector('.form__fieldset')
+
+const textoError = document.querySelector('.wrong-text')
+
 const importarUsuarios = async function () {
+  limarError()
   let url = `${SERVER_NAME}usuarios/importar-usuario`;
   const arquivo = document.querySelector("#importar-csv").files[0];
   const formData = new FormData();
   formData.append("file", arquivo);
   formData.append("email_autenticado", EMAIL);
+
+  if (arquivo == null) {
+    formFieldset.classList.add('wrong')
+    textoError.innerText = 'Insira um arquivo CSV'
+  } else {
 
   const request = await fetch(url, {
     method: "POST",
@@ -31,12 +41,16 @@ const importarUsuarios = async function () {
     } else {
     resultadosSection.classList.add("wrong");
     resultadosTexto.textContent = "Erro desconhecido. Entre em contato com o suporte."
-
+    }
   }
 
   // const response = await request.json();
-  
 };
+
+const limarError = function () {
+  textoError.innerText = ''
+  formFieldset.classList.remove('wrong')
+}
 
 formImportarUsuarios.addEventListener("submit", (event) => {
   event.preventDefault();
