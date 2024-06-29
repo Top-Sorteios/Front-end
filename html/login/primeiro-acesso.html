@@ -22,19 +22,23 @@
                 <legend class="form__legend">Primeiro acesso</legend>
                 <span>Preencha os campos abaixo para obter o seu primeiro acesso</span>
                 <label class="form__label" for="email"> Email
-                    <input class="i" type="email" name="email" id="email" required>
+                    <input class="i" type="email" name="email" id="email">
+                    <span class="wrong-text"></span>
                 </label>
                 <label class="form__label" for="cpf"> CPF
-                    <input class="i" type="text" name="cpf" id="cpf" maxlength="14" required>
+                    <input class="i" type="text" name="cpf" id="cpf" maxlength="14">
+                    <span class="wrong-text"></span>
                 </label>
                 <label class="form__label" for="data-nascimento"> Data de nascimento
                     <input class="i" type="date" name="data-nascimento" id="data-nascimento" required>
                 </label>
                 <label class="form__label" for="senha"> Senha
                     <input class="i" type="password" name="senha" id="senha" required>
+                    <span class="wrong-text"></span>
                 </label>
                 <label class="form__label" for="confirmar-senha"> Confirmar senha
                     <input class="i" type="password" name="" id="confirmar-senha" required>
+                    <span class="wrong-text"></span>
                 </label>
                 <button class="b md hov__blue" type="submit">Cadastrar</button>
             </fieldset>
