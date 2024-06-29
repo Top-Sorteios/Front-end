@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "Bariol";
+  src: url("../assets/fonts/bariol_regular-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bariol Bold";
+  src: url("../assets/fonts/bariol_bold-webfont.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde Gothic";
+  src: url("../assets/fonts/itc-avant-garde-gothic-bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: "Bariol Regular", sans-serif;
+}
+
+p {
+  font-family: "Bariol Light", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bariol Bold", sans-serif;
+}
+
+h1 {
+  font-family: "ITC Avant Garde Std Bold", sans-serif;
+}
+
+h2 {
+  font-family: "ITC Avant Garde Std Demi", sans-serif;
+}
