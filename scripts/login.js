@@ -3,6 +3,7 @@ import { SERVER_NAME, SET_EMAIL, SET_TOKEN, get } from "./CONSTANTES.js";
 const formLogin = document.querySelector("#form-login");
 const inputEmail = document.querySelector("#email");
 const inputSenha = document.querySelector("#senha");
+const textoError = document.querySelector('.wrong-text')
 
 
 const entrar = async function () {
@@ -46,6 +47,7 @@ const entrar = async function () {
     } else if (request.status === 404) {
       inputEmail.classList.add("wrong");
       inputSenha.classList.add("wrong");
+      textoError.innerText = 'Email ou senha invalido'
     }
   } catch (error) {
     console.log("O erro foi:" + error.status);
