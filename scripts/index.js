@@ -1,4 +1,4 @@
-import { EMAIL, SERVER_NAME, TOKEN, get } from "./CONSTANTES.js";
+import { EMAIL, TOKEN, get } from "./CONSTANTES.js";
 
 const marcasParceirasContainer = document.querySelector(
   "#logo-marcas-parceiras"
@@ -11,7 +11,7 @@ botaoEntrar.addEventListener("click", (event) => {
 });
 
 const getMarcasParceiras = async function () {
-  const request = await get("marcas/obter", true);
+  const request = await get("marcas/obter", false);
   if (request.status === 200) {
     const response = await request.json();
 
@@ -48,5 +48,5 @@ const redirecionar = async function (email, token) {
 
 window.addEventListener("load", () => {
   redirecionar(EMAIL, TOKEN);
-  //   getMarcasParceiras();
+  getMarcasParceiras();
 });

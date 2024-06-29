@@ -1,3 +1,4 @@
+@import url("./fonts.css");
 @import url("./header.css");
 @import url("./instructions.css");
 @import url("./footer.css");
@@ -38,7 +39,6 @@ html {
   height: 100vh;
   /* width: 100vw; */
   font-size: 16px;
-  font-family: sans-serif;
   overflow-x: hidden;
 }
 
@@ -47,6 +47,11 @@ body {
   width: 100vw;
   height: 100%;
   grid-template-rows: fit-content auto fit-content;
+}
+
+.bold {
+  font-family: "Bariol Bold" !important ;
+  font-weight: bold !important;
 }
 
 .txt-size-small {
@@ -93,6 +98,7 @@ body {
 .b {
   /*botão comum*/
   border: none;
+
   border-radius: 1.5rem;
   background-color: var(--green);
   font-size: 1rem;
