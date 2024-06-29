@@ -105,7 +105,11 @@ const obterMarcasSelect = async function () {
 
 const cadastrarPremio = async function () {
   removerError()
-  if (nome.value == '') {
+  let options = document.querySelectorAll('option')
+  if (options[0].selected) {
+    textoError[0].innerText = 'Selecione a marca'
+    marcaId.focus()
+  } else if (nome.value == '') {
     nome.classList.add('wrong')
     textoError[1].innerText = 'Insira o nome do prêmio'
     nome.focus()
@@ -200,6 +204,7 @@ const removerError = function () {
   codigoSku.classList.remove('wrong')
   descricao.classList.remove('wrong')
   quantidade.classList.remove('wrong')
+  textoError[0].innerText = ''
   textoError[1].innerText = ''
   textoError[2].innerText = ''
   textoError[3].innerText = ''
