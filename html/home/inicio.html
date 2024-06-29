@@ -5,10 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/carrossel.css">
     <link rel="stylesheet" href="../../styles/default.css">
     <link rel="stylesheet" href="../../styles/inicio-admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
+        defer></script>
     <script src="../../scripts/user/checar-autentificacao-user.js" type="module" defer></script>
     <script src="../../scripts/inicio.js" defer type="module"></script>
+    <script src="../../scripts/setCarrossel.js" type="module" defer></script>
+
 </head>
 
 <body>
@@ -20,8 +28,7 @@
         </figure>
         <nav class="header__nav">
             <a class="header__nav-a hov__underline" href="/">Inicio</a>
-            <a class="header__nav-a hov__underline"
-                href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
+            <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
                 sorteios</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
             <a class="header__nav-a hov__underline" href="">
@@ -34,7 +41,35 @@
             <h2 class="section__title"><a href="../gestao-de-usuarios/alterar-senha.html">Gestão de conta</a></h2>
         </nav>
 
-
+        <!-- IMAGEM EM DESTAQUE -->
+        <section>
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner" id="carousel-inner">
+                    <!-- <div class="carousel-item  active">
+                <img class="carousel__item-img "
+                    src="./assets/images/placeholder-files/placeholder_1920x773.png">
+            </div>
+            <div class="carousel-item ">
+                <img class="carousel__item-img" src="./assets/images/placeholder-files/placeholder_1920x773.png"
+                    class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item ">
+                <img class="carousel__item-img"
+                    src="./assets/images/placeholder-files/placeholder_1920x773.png">
+            </div> -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
         <section class="section__instruction">
             <h2 class="txt-size-large">Instruções para Participar</h2>
             <div class="section__instruction-instructions">
