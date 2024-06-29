@@ -8,9 +8,9 @@ const inputDataNascimento = document.querySelector("#data-nascimento");
 const inputSenha = document.querySelector("#senha");
 const inputConfirmarSenha = document.querySelector("#confirmar-senha");
 const textoError = document.querySelectorAll('.wrong-text')
-console.log(inputSenha)
+
 const cadastrar = async function () {
-  limparFormulario()
+  limparError()
   if (inputEmail.value == '') {
     inputEmail.classList.add('wrong')
     textoError[0].innerText = 'Digite o email'
@@ -19,11 +19,24 @@ const cadastrar = async function () {
     inputCPF.classList.add('wrong')
     textoError[1].innerText = 'Digite o CPF'
     inputCPF.focus()
+  } else if (inputDataNascimento.value == '') {
+    textoError[2].innerText = 'Insida a data de nascimento'
+    inputDataNascimento.focus()
+  } else if (inputSenha.value === '') {
+    inputSenha.classList.add('wrong')
+    textoError[3].innerText = 'Digite a senha'
+    inputSenha.focus()
+  } else if (inputConfirmarSenha.value == '') {
+    inputConfirmarSenha.classList.add('wrong')
+    textoError[4].innerText = 'Digite a senha'
+    inputConfirmarSenha.focus()
+  } else if (inputSenha.value != inputConfirmarSenha.value) {
+    inputConfirmarSenha.classList.add('wrong')
+    textoError[4].innerText = 'Senha incompatível'
+    inputConfirmarSenha.focus()
   } else {
 
     let url = SERVER_NAME + "usuarios/primeiro-acesso";
-
-
 
     const request = await fetch(url, {
       method: "PUT",
@@ -37,11 +50,12 @@ const cadastrar = async function () {
       }),
     });
     const response = await request.json();
-    console.log(response);
+
+    limparFormulario()
   }
 };
 
-const limparFormulario = function() {
+const limparError = function () {
   inputEmail.classList.remove('wrong')
   inputCPF.classList.remove('wrong')
   inputSenha.classList.remove('wrong')
@@ -50,22 +64,18 @@ const limparFormulario = function() {
   textoError[1].innerText = ''
   textoError[2].innerText = ''
   textoError[3].innerText = ''
+  textoError[4].innerText = ''
 }
-// const limparFormulario = function () {
-//   const listaInputs = document.querySelectorAll("input");
-//   listaInputs.forEach(input => {
-//     input.value = "";
-//   })
-// }
+const limparFormulario = function () {
+  const listaInputs = document.querySelectorAll("input");
+  listaInputs.forEach(input => {
+    input.value = "";
+  })
+}
 
 formPrimeiroAcesso.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (inputSenha.value == inputConfirmarSenha.value) {
-    cadastrar().then(() => {
-    });
-
-  }
-
+  cadastrar()
 });
 
 document.getElementById('cpf').addEventListener('input', function (e) {
