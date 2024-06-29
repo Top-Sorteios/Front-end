@@ -14,15 +14,15 @@
 
 <body>
 
-    <header>
-        <figure>
-            <img class="logo" src="./LOGO-TESTE.webp" alt="">
+    <header class="header-admin">
+        <figure class="header__figure">
+            <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png" alt="logo do sorteio top">
         </figure>
         <nav class="header__nav-admin">
-            <a class="header__nav-a hov__underline" href="../home/inicio-admin.html">Inicio</a>
-            <a class="header__nav-a-ativo hov__underline" href="../gestao-de-usuarios/importar-usuarios.html">Carga de
-                usuarios</a>
-            <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
+            <a class="header__nav-a-ativo hov__underline" href="../home/inicio-admin.html">Início</a>
+            <a class="header__nav-a hov__underline" href="../gestao-de-usuarios/importar-usuarios.html">Carga de
+                usuários</a>
+            <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Histórico de
                 sorteios</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-usuarios/alterar-senha.html">Gestão de conta</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-premios/premios-da-semana.html">Prêmios da
@@ -31,35 +31,34 @@
                 semanais</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-marcas/marcas-cadastradas.html">Gerenciamento de
                 marcas parceiras</a>
-            <a class="header__nav-a hov__underline" href="./html/login/index.html"></a>
-            <button class="button-sair">Sair</button>
+            <a class="header__nav-a hov__underline" href="./html/login/index.html">Sair</a>
         </nav>
     </header>
-
-    <header>
-        <h1>Importar usuários</h1>
-    </header>
-
-    <form id="form-importar-usuarios" method="post">
-        <fieldset>
-            <legend>Importar usuários</legend>
-            <label for="importar csv"> Selecionar arquivo
-                <input id="importar-csv" type="file"
-                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
-            </label>
-            <!-- <label for="criado-por"> Criado por:
-                <input id="criado-por" type="text" placeholder="Nome" readonly required>
-            </label>
-            <label for=""> Criado em:
-                <input id="criado-em" type="datetime-local" readonly required>
-            </label> -->
-            <button type="submit">Enviar</button>
-        </fieldset>
-    </form>
-    <section id="resultados" class="resultados">
-        <h2>Resultado</h2>
-        <p id="resultados-texto">Após o envio do arquivo, o resultado aparecerá aqui</p>
-    </section>
+    <main>
+        <div id="container">
+            <h1>Importação de usuários</h1>
+            <form id="form-importar-usuarios" method="post">
+                <fieldset class="form__fieldset">
+                    <legend class="form__legend">Importar usuários</legend>
+                    <label class="form__label" for="importar csv"> Importar arquivo CSV
+                        <input id="importar-csv" type="file"
+                            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+                    </label>
+                    <!-- <label for="criado-por"> Criado por:
+                        <input id="criado-por" type="text" placeholder="Nome" readonly required>
+                    </label>
+                    <label for=""> Criado em:
+                        <input id="criado-em" type="datetime-local" readonly required>
+                    </label> -->
+                    <button class="b md hov__blue" type="submit">Enviar</button>
+                </fieldset>
+            </form>
+            <section id="resultados" class="resultados">
+                <h2>Resultado</h2>
+                <p id="resultados-texto">Após o envio do arquivo, o resultado aparecerá aqui</p>
+            </section>
+        </div>
+    </main>
 
     <footer class="footer txt-size-small">
         <div class="footer__container">
