@@ -34,20 +34,25 @@
                     <select class="i" placeholder="teste" name="" id="marcaId" required>
                         <option selected disabled>Escolha uma marca</option>
                     </select>
+                    <span class="wrong-text"></span>
                 </label>
 
                 <label class="label" for="nome" title="Insira o nome do prêmio"> Nome do prêmio
-                    <input class="i" id="nome" type="text" placeholder="Insira o nome do prêmio." required>
+                    <input class="i" id="nome" type="text" placeholder="Insira o nome do prêmio.">
+                    <span class="wrong-text"></span>
                 </label>
                 <label class="label" for="codigoSku" title="Insira o código SKU do produto"> Código SKU
-                    <input class="i" id="codigoSku" type="text" placeholder="Insira o código SKU." required>
+                    <input class="i" id="codigoSku" type="text" placeholder="Insira o código SKU.">
+                    <span class="wrong-text"></span>
                 </label>
                 <label class="label" for="descricao" title="Insira uma descrição do sorteio"> Descrição
-                    <textarea class="i txtarea" id="descricao" type="text" placeholder="Insira a descrição do prêmio." required></textarea>
+                    <textarea class="i txtarea" id="descricao" type="text" placeholder="Insira a descrição do prêmio."></textarea>
+                    <span class="wrong-text"></span>
                 </label>
 
                 <label class="label" for="quantidade" title="Insira a quantidade."> Quantidade
-                    <input class="i" id="quantidade" type="number" min="1" value="0" parequired>
+                    <input class="i" id="quantidade" type="number" value="0">
+                    <span class="wrong-text"></span>
                 </label>
                 <label class="label" for="criadoPor" id="criadoPorLabel" title="Pessoa que criou este prêmio."> Criado por
                     <input class="i" id="criadoPor" readonly type="text" value="" placeholder="Nome da Pessoa">
