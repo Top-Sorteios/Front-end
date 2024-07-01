@@ -6,6 +6,7 @@ const inputTitulo = document.getElementById('titulo-destaque')
 const inputDestaque = document.getElementById('upload-destaque')
 const idDestaque = sessionStorage.getItem('idDestaques')
 const previewDestaque = document.getElementById('preview-destaque')
+const divImgs = document.querySelector('.div-imgs')
 
 // Recebe os dados da marca
 const getDados = async () => {
@@ -40,6 +41,7 @@ const cadastrarDestaque = async () => {
         inputTitulo.classList.add('wrong')
         inputTitulo.focus()
     } else if (inputDestaque.files[0] == null) {
+        divImgs.classList.add('wrong')
         error[2].innerText = 'Adicione uma imagem'
     } else {
 
@@ -76,6 +78,7 @@ const editarDestaque = async () => {
         inputTitulo.classList.add('wrong')
         inputTitulo.focus()
     } else if (inputDestaque.files[0] == null) {
+        divImgs.classList.add('wrong')
         error[2].innerText = 'Adicione uma imagem'
     } else {
 
@@ -133,6 +136,7 @@ const clearError = () => {
     error[2].innerText = ''
     inputNome.classList.remove('wrong')
     inputTitulo.classList.remove('wrong')
+    divImgs.classList.remove('wrong')
 }
 
 const buttonDelete = document.getElementById('button-excluir')

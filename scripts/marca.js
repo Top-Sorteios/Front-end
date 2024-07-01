@@ -9,6 +9,7 @@ const inputBanner = document.getElementById('upload-banner')
 const idMarca = sessionStorage.getItem('idMarca')
 const previewBanner = document.getElementById('preview-banner')
 const previewLogo = document.getElementById('preview-logo')
+const divImgs = document.querySelectorAll('.div-imgs')
 
 // Recebe os dados da marca
 const getDados = async () => {
@@ -53,8 +54,10 @@ const cadastrarMarca = async () => {
         inputOrdemExibicao.classList.add('wrong')
         inputOrdemExibicao.focus()
     } else if (inputBanner.files[0] == null) {
+        divImgs[0].classList.add('wrong')
         error[3].innerText = 'Adicione uma imagem'
     } else if (inputLogo.files[0] == null) {
+        divImgs[1].classList.add('wrong')
         error[4].innerText = 'Adicione uma imagem'
     } else {
         const formData = new FormData();
@@ -163,6 +166,8 @@ const clearError = () => {
     inputNome.classList.remove('wrong')
     inputTitulo.classList.remove('wrong')
     inputOrdemExibicao.classList.remove('wrong')
+    divImgs[0].classList.remove('wrong')
+    divImgs[1].classList.remove('wrong')
 }
 
 
