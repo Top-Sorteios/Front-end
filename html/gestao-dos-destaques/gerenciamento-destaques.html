@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento destaques</title>
+    <link rel="stylesheet" href="../../styles/gerenciamento-destaques.css">
+    <link rel="stylesheet" href="../../styles/default.css">
+    <script src="../../scripts/admin/checar-autentificacao.js" defer></script>
+    <script src="../../scripts/gerenciamento-destaques.js" defer type="module"></script>
+</head>
+<body>
+    
+    <!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Marcas Parceiras</title>
+    <link rel="stylesheet" href="../../styles/default.css">
+    <link rel="stylesheet" href="../../styles/marca.css">
+    <script src="../../scripts/admin/checar-autentificacao.js" defer type="module"></script>
+    <script src="../../scripts/marca.js" defer type="module"></script>
+</head>
+
+<body>
+
+    <header class="header-marca">
+        <img src="../../assets/images/logo/LOGO-TESTE.png" class="header__figure-img" alt="">
+    </header>
+
+    <div class="container">
+        <h2 class="txt-cadastrar">CADASTRAR DESTAQUE</h2>
+        <h2 class="txt-editar">EDITAR DESTAQUE</h2>
+        <div class="cadastros">
+            <label for="nome-destaque" title="Insira o nome do destaque.">Nome
+                <input class="i" id="nome-destaque" type="text">
+            </label>
+            <span class="wrong-text"></span>
+        </div>
+        <div class="cadastros">
+            <label for="titulo-destaque" title="Insira o titulo do destaque.">Titulo
+                <input class="i" id="titulo-destaque" type="text">
+            </label>
+            <span class="wrong-text"></span>
+        </div>
+        <label for="upload-logo">Imagem Destaque</label>
+        <div class="div-imgs">
+            <input id="upload-destaque" type="file" max="1" accept="image/*" base64img="">
+            <span class="wrong-text"></span>
+            <img id="preview-destaque" src="" alt="imagem destaque">
+        </div>
+        <div class="botao">
+            <button class="sm b" id="button-salvar">SALVAR</button>
+            <button class="sm b button_wrong" id="button-remover">EXCLUIR</button>
+            <a href="./destaques-cadastradas.html"><button class="sm b button_white">CANCELAR</button></a>
+        </div>
+    </div>
+    <div class="container-excluir none">
+        <div class="confirm">
+            <div>
+                <p>Tem certeza que deseja excluir o destaque?</p>
+            </div>
+            <div class="confirm-button">
+                <button class="sm b" id="button-sim">SIM</button>
+                <button class="sm b button_wrong" id="button-nao">NÃO</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer txt-size-small">
+        <div class="footer__container">
+            <nav class="footer__nav">
+                <img class="footer__nav-img" src="./assets/images/logo/LOGO-TESTE-branco.png" alt="">
+                <div class="nav__container">
+                    <a class="footer__link hov__underline" href="#">Inicio</a>
+                    <a class="footer__link hov__underline"
+                        href="./html/gestao-de-sorteios/historico-de-sorteios.html">Historico de
+                        sorteios</a>
+                    <a class="footer__link hov__underline"
+                        href="./html/gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
+                </div>
+
+            </nav>
+            <div class="footer__address-contact">
+                <div class="footer__address">
+                    <p>Endereço</p>
+                    <a href="https://maps.app.goo.gl/pH4QidJGmgPX5S2fA" target="_blank"
+                        class="footer__link hov__underline">Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros, São
+                        Paulo - SP, 05461-010</a>
+                </div>
+                <div class="footer__contact">
+                    <a href="mailto:contato@grupo.top" class="footer__link hov__underline">contato@grupo.top</a>
+                    <p>Tel.<a href="tel:11 3662-3285" class="footer__link hov__underline">11 3662-3285</a></p>
+                </div>
+            </div>
+            <div class="footer__social-media">
+                <p class="footer__social-media-p">Redes Sociais</p>
+                <div class="footer-social-media-container">
+                    <a class="footer__link hov__underline" href="">TikTok</a>
+                    <a class="footer__link hov__underline" href="">Instagram</a>
+                    <a class="footer__link hov__underline" href="">Youtube</a>
+                </div>
+
+            </div>
+            <div class="footer__copyright">
+                <div class="rodape-buttom">
+                    <button class="b md hov__white footer__button">Participe dos Sorteios</button>
+                </div>
+                <div class="rodape-inf-empresa">
+                    <p>© 2024 by GrupoTop.</p>
+                    <p>Criado pelo Grupo Top.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
+</body>
+</html>

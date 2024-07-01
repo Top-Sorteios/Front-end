@@ -1,0 +1,91 @@
+@import url(./default.css);
+
+.pesquisa input {
+    width: 250px;
+    height: 32px;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-background-color);
+    outline: none;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 50px 30px;
+    width: 100%;
+}
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+table td img {
+    width: 150px;
+    height: 80px;
+}
+
+thead {
+    background-color: lightgray;
+}
+
+th,
+td {
+    padding: 1rem;
+    border: 1px solid black;
+    text-align: left;
+}
+
+tr:hover {
+    background-color: var(--green);
+}
+
+table a {
+    text-decoration: none;
+    color: #094bcc;
+    ;
+}
+
+table a:hover {
+    text-decoration: underline;
+    color: var(--link-selected);
+}
+
+.none {
+    display: none;
+}
+
+@media (max-width: 720px) {
+    #table-destaques {
+        overflow-x: auto;
+    }
+
+    #container {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    th,
+    td {
+        display: block;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    tr {
+        border: 3px solid var(--border-color);
+    }
+
+    #button-novo-destaque{
+        margin-bottom: 100px;
+    }
+}

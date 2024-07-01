@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Área administrativa</title>
+    <title>Lista de destaques</title>
     <link rel="stylesheet" href="../../styles/default.css">
-    <link rel="stylesheet" href="../../styles/inicio-admin.css">
-    <script type="module" src="../../scripts/admin/checar-autentificacao.js" defer></script>
-    <script type="module" src="../../../scripts/inicio-admin.js" defer></script>
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="../../styles/destaques-cadastradas.css">
+    <script src="../../scripts/destaques-cadastradas.js" defer type="module"></script>
+    <!-- <script src="../../scripts/admin/checar-autentificacao.js" defer></script> -->
 </head>
-
 <body>
-
+    
     <header class="header-admin">
         <figure class="header__figure">
             <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png" alt="logo do sorteio top">
@@ -30,37 +30,29 @@
                 semanais</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-marcas/marcas-cadastradas.html">Gerenciamento de
                 marcas parceiras</a>
-                <a class="header__nav-a hov__underline" href="../gestao-dos-destaques/destaques-cadastradas.html">Gerenciamento dos
-                    destaques</a>
-            <a class="header__nav-a hov__underline" href="./html/login/index.html">Sair</a>
+            <a class="header__nav-a hov__underline" id="sair-pagina" href="#">Sair</a>
         </nav>
     </header>
 
-    <main>
-        <h1>Área administrativa</h1>
-        <nav>
-            <h2 class="section__title"><a href="../gestao-de-usuarios/importar-usuarios.html">Carga de usuários</a></h2>
-            <h2 class="section__title"><a href="../gestao-de-sorteios/historico-de-sorteios.html">Histórico de
-                    Sorteios</a>
-            </h2>
-            <h2 class="section__title"><a href="../gestao-de-usuarios/alterar-senha.html">Gestão de conta</a></h2>
-            <h2 class="section__title"><a href="../gestao-de-premios/premios-da-semana.html">Prêmios da Semana</a></h2>
-            <h2 class="section__title"><a href="../gestao-de-sorteios/gestao-de-sorteios.html">Sorteios semanais</a>
-            </h2>
-            <h2 class="section__title"><a href="../gestao-de-usuarios/gestao-de-contas-admin.html">Gestão de contas</a>
-            </h2>
-        </nav>
+    <div id="container">
+        <h1>Gerenciamento dos destaques</h1>
 
-
-
-        <section id="marcas-parceiras">
-            <h2 class="section__title"><a href="../gestao-de-marcas/marcas-cadastradas.html">Gerenciamento de marcas
-                    parceiras</a></h2>
-            <div id="logo-marcas-parceiras">
-
-            </div>
-        </section>
-    </main>
+        <table id="table-destaques">
+            <thead>
+                <th>EDITAR</th>
+                <th>NOME</th>
+                <th>TITULO</th>
+                <th>IMAGEM</th>
+            </thead>
+            <!-- <tr>
+                    <td><a href="" id="idDestaque">Editar</a></td>
+                    <td></td>
+                    <td></td>
+                    <td><img></td>
+                </tr> -->
+        </table>
+        <a href="./gerenciamento-destaques.html"><button class="md b hov__blue" id="button-novo-destaque">CADASTRAR DESTAQUE</button></a>
+    </div>
 
     <footer class="footer txt-size-small">
         <div class="footer__container">
@@ -109,6 +101,6 @@
         </div>
     </footer>
 
-</body>
 
+</body>
 </html>

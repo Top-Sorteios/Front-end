@@ -1,0 +1,106 @@
+@import url(./default.css);
+
+h2 {
+    text-align: center;
+}
+
+.header-marca {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    gap: 20px;
+    border-radius: 80px;
+    border: 2px solid lightgray;
+    margin: 20px auto 40px auto;
+    padding: 40px 20px;
+}
+
+.container-excluir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    gap: 20px;
+    border-radius: 40px;
+    border: 2px solid var(--border-color);
+    margin: 20px auto 40px auto;
+    padding: 40px 20px;  
+    height: 400px;
+}
+
+.cadastros {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 55%;
+}
+
+.div-imgs {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.div-imgs img {
+    width: 100px;
+    height: 60px;
+}
+
+.botao {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
+    height: 250px;
+}
+
+.confirm button {
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.confirm-button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+}
+
+.none {
+    display: none;
+}
+
+
+@media (max-width: 720px) {
+    .container {
+        width: 100%;
+        border: none;
+        margin-bottom: 100px;
+    }
+    .cadastros {
+        width: 75%;
+    }
+}
