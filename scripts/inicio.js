@@ -27,6 +27,6 @@ const obterMarcasParceiras = async function () {
   }
 };
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   obterMarcasParceiras();
 });

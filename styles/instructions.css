@@ -1,38 +1,58 @@
 .section__instruction {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    color: #f2eae7;
-    background-color: var(--bg-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  color: #f2eae7;
+  background-color: var(--bg-blue);
 }
 
 .section__instruction h2 {
-    text-align: center;
-    padding: 4rem;
-    width: fit-content;
+  text-align: center;
+  padding: 4rem;
+  width: fit-content;
 }
 
 .section__instruction-svg {
-    width: 2rem;
-    height: 2rem;
+  margin: 1rem 0 0 0;
+  width: 3rem;
+  height: 3rem;
 }
-
 
 .section__instruction-instructions {
-    display: flex;
-    width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: fit-content;
 }
 
-.section__instruction-instructions div{
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    width: fit-content;
+.section__instruction-instructions div {
+  grid-column: span 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: fit-content;
 }
 
 .section__instruction p {
-    line-height: 1.5;
-    text-justify: justify;
-    width: 21rem;
+  line-height: 1.5;
+  text-justify: justify;
+  width: 21rem;
+}
+
+@media (max-width: 1280px) {
+  .section__instruction-instructions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media (max-width: 1024px) {
+
+  .section__instruction-instructions {
+    align-items: center;
+    grid-template-columns: 1fr;
+    width: fit-content;
+  }
+
+
 }

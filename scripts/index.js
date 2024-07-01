@@ -46,7 +46,7 @@ const redirecionar = async function (email, token) {
   }
 };
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   redirecionar(EMAIL, TOKEN);
   getMarcasParceiras();
 });

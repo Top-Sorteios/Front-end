@@ -2,6 +2,7 @@ export const SERVER_NAME = "https://modulo-sorteios.azurewebsites.net/";
 export const EMAIL = sessionStorage.getItem("email");
 export const ACAO = sessionStorage.getItem("acao");
 export const PREMIO_ID = sessionStorage.getItem("marca-id");
+export const NOME = sessionStorage.getItem("nome");
 export const MARCA_NOME = sessionStorage.getItem("marca-nome");
 
 export const SET_ACAO = (acao) => {
@@ -20,7 +21,21 @@ export const SET_EMAIL = (email) => {
 export const SET_TOKEN = (token) => {
   sessionStorage.setItem("token", token);
 };
+
+export const SET_NOME = (nome) => {
+  sessionStorage.setItem("nome", nome);
+};
 export const TOKEN = sessionStorage.getItem("token");
+
+export const REMOVE_NOME = () => {
+  sessionStorage.removeItem("nome");
+};
+export const REMOVE_EMAIL = () => {
+  sessionStorage.removeItem("email");
+};
+export const REMOVE_TOKEN = () => {
+  sessionStorage.removeItem("token");
+};
 
 /*
 Esse método precisa estar dentro de uma função assincrona. Exemplo:
@@ -70,7 +85,7 @@ export const post = async function (endpoint, body, contentType) {
   const settings = {
     method: "POST",
     mode: "cors",
-    headers: {}
+    headers: {},
   };
 
   if (contentType == "json") {
@@ -82,9 +97,9 @@ export const post = async function (endpoint, body, contentType) {
   } else {
     settings.body = body;
   }
-  settings.headers.Authorization = `Bearer ${TOKEN}`
+  settings.headers.Authorization = `Bearer ${TOKEN}`;
 
-  console.log(settings)
+  console.log(settings);
 
   const request = await fetch(SERVER_NAME + endpoint, settings);
   return request;

@@ -1,7 +1,22 @@
+/* Importando as fontes Bariol */
 @font-face {
-  font-family: "Bariol";
+  font-family: "Bariol Regular";
   src: url("../assets/fonts/bariol_regular-webfont.ttf") format("truetype");
   font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bariol Light";
+  src: url("../assets/fonts/bariol_light-webfont.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bariol Thin";
+  src: url("../assets/fonts/bariol_thin-webfont.ttf") format("truetype");
+  font-weight: 100;
   font-style: normal;
 }
 
@@ -13,19 +28,107 @@
 }
 
 @font-face {
-  font-family: "ITC Avant Garde Gothic";
+  font-family: "Bariol Bold Italic";
+  src: url("../assets/fonts/bariol_bold_italic-webfont.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Bariol Regular Italic";
+  src: url("../assets/fonts/bariol_regular_italic-webfont.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Bariol Light Italic";
+  src: url("../assets/fonts/bariol_light_italic-webfont.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Bariol Thin Italic";
+  src: url("../assets/fonts/bariol_thin_italic-webfont.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* Importando as fontes ITC Avant Garde Std */
+
+@font-face {
+  font-family: "ITC Avant Garde Std Book";
+  src: url("../assets/fonts/ITCAvantGardeStdBk.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde Std Book Condensed";
+  src: url("../assets/fonts/ITCAvantGardeStdBkCn.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde Std Bold";
+  src: url("../assets/fonts/ITCAvantGardeStdBold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde Std Bold Condensed";
+  src: url("../assets/fonts/ITCAvantGardeStdBoldCn.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde Std Demi";
+  src: url("../assets/fonts/ITCAvantGardeStdDemi.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde Std Demi Condensed";
+  src: url("../assets/fonts/ITCAvantGardeStdDemiCn.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde Std Medium";
+  src: url("../assets/fonts/ITCAvantGardeStdMd.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde Std Medium Condensed";
+  src: url("../assets/fonts/ITCAvantGardeStdMdCn.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde Gothic Bold";
   src: url("../assets/fonts/itc-avant-garde-gothic-bold.otf") format("opentype");
   font-weight: bold;
   font-style: normal;
 }
 
+/* Estilizando elementos com as fontes importadas */
 body {
   font-family: "Bariol Regular", sans-serif;
 }
-
-p {
+/* 
+html  {
   font-family: "Bariol Light", sans-serif;
-}
+} */
 
 h1,
 h2,
@@ -33,7 +136,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Bariol Bold", sans-serif;
+  font-family: "ITC Avant Garde Std Bold", sans-serif;
 }
 
 h1 {
@@ -42,4 +145,8 @@ h1 {
 
 h2 {
   font-family: "ITC Avant Garde Std Demi", sans-serif;
+}
+
+h3 {
+  font-family: "ITC Avant Garde Gothic Bold", sans-serif;
 }

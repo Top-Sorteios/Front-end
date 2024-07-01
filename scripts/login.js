@@ -1,4 +1,4 @@
-import { SERVER_NAME, SET_EMAIL, SET_TOKEN, get } from "./CONSTANTES.js"; 
+import { SERVER_NAME, SET_EMAIL, SET_NOME, SET_TOKEN, get } from "./CONSTANTES.js"; 
 
 const formLogin = document.querySelector("#form-login");
 const inputEmail = document.querySelector("#email");
@@ -30,10 +30,11 @@ const entrar = async function () {
 
       if (response.status) {
         const permissao = await obterPermissao(response.email, response.token);
-
+        SET_NOME(permissao.nome)
         switch (permissao.administrador) {
           case false:
             window.location.assign("../home/inicio.html");
+            
             break;
           case true:
             window.location.assign("../home/inicio-admin.html");

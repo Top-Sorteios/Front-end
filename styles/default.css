@@ -49,6 +49,10 @@ body {
   grid-template-rows: fit-content auto fit-content;
 }
 
+.hidden {
+  display: none;
+}
+
 .bold {
   font-family: "Bariol Bold" !important ;
   font-weight: bold !important;
@@ -149,9 +153,9 @@ body {
   text-decoration: underline;
 }
 
-.header__nav-a-ativo {
+.header__nav-a-active {
   color: var(--link-selected);
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
   text-decoration: underline;
 }
 

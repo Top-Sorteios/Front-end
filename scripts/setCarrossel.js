@@ -31,7 +31,7 @@ const criarItemCarrossel = function(imagensEmDestaque, i){
     document.getElementById('carousel-inner').appendChild(divCarouselItem);
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   getImagensCarrossel();
 });
 
