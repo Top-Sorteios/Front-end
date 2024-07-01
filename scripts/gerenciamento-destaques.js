@@ -57,7 +57,7 @@ const cadastrarDestaque = async () => {
         });
         if (response.status == 201) {
             alert('Destaque cadastrada com sucesso')
-            window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+            window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
         } else {
             alert('Não foi possível cadastrar o destaque')
         }
@@ -135,7 +135,7 @@ const clearError = () => {
     inputTitulo.classList.remove('wrong')
 }
 
-const buttonDelete = document.getElementById('button-remover')
+const buttonDelete = document.getElementById('button-excluir')
 buttonDelete.addEventListener('click', () => {
     let container = document.querySelector('.container')
     let containerExcluir = document.querySelector('.container-excluir')
@@ -175,7 +175,7 @@ window.addEventListener('load', () => {
 
 const newDestaque = () => {
     let txtEditar = document.querySelector('.txt-editar')
-    // buttonDelete.style.display = 'none'
+    buttonDelete.style.display = 'none'
     txtEditar.classList.add('none')
 }
 
@@ -201,5 +201,5 @@ function previewImage(input, previewId) {
 }
 
 inputDestaque.addEventListener('change', function () {
-    previewImage(this, previewDestaque);
+    previewImage(this, 'preview-destaque');
 });

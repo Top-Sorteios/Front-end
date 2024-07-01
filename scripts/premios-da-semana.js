@@ -55,3 +55,9 @@ buttonNovoPremio.addEventListener("click", () => {
   SET_ACAO("criar");
   window.location.assign("./premios-cud.html");
 });
+
+const buttonSair = document.getElementById('sair-pagina')
+buttonSair.addEventListener('click', () => {
+    sessionStorage.clear()
+    window.location.replace("https://green-dune-0cd28a70f.5.azurestaticapps.net/")
+})

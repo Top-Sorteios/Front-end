@@ -52,3 +52,9 @@ const createTableDestaque = async (destaque) => {
         })
     });
 }
+
+const buttonSair = document.getElementById('sair-pagina')
+buttonSair.addEventListener('click', () => {
+    sessionStorage.clear()
+    window.location.replace("https://green-dune-0cd28a70f.5.azurestaticapps.net/")
+})
