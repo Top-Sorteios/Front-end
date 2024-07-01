@@ -15,7 +15,7 @@ window.addEventListener('load', async () => {
 })
 
 const createTableDestaque = async (destaque) => {
-    let table = document.getElementById('table-marcas')
+    let table = document.getElementById('table-destaques')
 
     destaque.forEach(itensDestaque => {
         let tr = document.createElement('tr')
