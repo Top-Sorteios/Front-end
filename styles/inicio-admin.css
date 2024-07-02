@@ -20,36 +20,23 @@ h1 {
 .section__title a:hover {
   text-decoration: underline;
 }
-#logo-marcas-parceiras {
-  border: 2px solid lightgray;
-  width: 85%;
+
+.first_row_image{
   display: flex;
-  justify-content: center;
-  margin: 20px auto 40px auto;
-  gap: 4rem;
-  flex-wrap: wrap;
-  border-radius: 30px;
-  padding: 30px;
+  flex-direction: row;
 }
 
-#logo-marcas-parceiras img {
-  width: 10%;
-  height: 100px;
+.second_row_image{
+  display: flex;
+  flex-direction: row;
 }
 
+.first_row_words{
+  display: flex;
+  flex-direction: row;
+}
 
-@media (max-width: 1024px) {
-  #logo-marcas-parceiras {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    border: none;
-    margin: 20px 0 40px 0;
-    }
-
-  #logo-marcas-parceiras img {
-    width: 70%;
-    height: 175px;
-  }
+.second_row_words{
+  display: flex;
+  flex-direction: row;
 }
