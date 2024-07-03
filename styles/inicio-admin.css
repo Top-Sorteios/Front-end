@@ -1,10 +1,19 @@
 @import url(./default.css);
 
+:root {
+  --icon-size: 9rem;
+}
+
 h1 {
   font-size: 3rem;
   text-align: center;
   text-transform: uppercase;
   padding: 1rem;
+}
+
+.area_admin{
+  display: grid;
+  grid-template-rows: 30%;
 }
 
 .section__title {
@@ -21,22 +30,34 @@ h1 {
   text-decoration: underline;
 }
 
-.first_row_image{
+.area_admin {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
 }
 
-.second_row_image{
+.row {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 75rem; /* Aproximadamente 1200px */
 }
 
-.first_row_words{
-  display: flex;
-  flex-direction: row;
+.section_image,
+.section__title {
+  flex: 1;
+  text-align: center;
 }
 
-.second_row_words{
-  display: flex;
-  flex-direction: row;
+.section_image img {
+  max-width: var(--icon-size);
+  height: auto;
+}
+
+.section__title{
+  margin-bottom: 4rem;
+}
+
+.title_area_adm{
+  margin-bottom: 1rem;
 }
