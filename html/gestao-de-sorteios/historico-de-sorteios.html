@@ -7,69 +7,89 @@
     <title>Histórico de Sorteios</title>
     <link rel="stylesheet" href="../../styles/default.css">
     <link rel="stylesheet" href="../../styles/historico-de-sorteios.css">
-    <!-- <script src="../../scripts/user/checar-autentificacao-user.js" type="module" defer></script> -->
+    <script src="../../scripts/user/checar-autentificacao-user.js" type="module" defer></script>
     <script src="../../scripts/historico-de-sorteios.js" type="module" defer></script>
+    <script src="../../scripts/header.js" type="module" defer></script>
+
 </head>
 
 <body>
 
-    <header>
-        <figure>
-            <img class="logo" src="./LOGO-TESTE.webp" alt="">
+    <header class="header">
+        <figure class="header__figure">
+            <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png" alt="logo do sorteio top">
         </figure>
-        <nav class="nav-bar">
-            <a href="./inicio.html">Inicio</a>
-            <a href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
-            <a href="">Parceiros</a>
-            <button>Participar dos sorteios</button>
+        <nav class="header__nav">
+            <a class="header__nav-a hov__underline" href="/index.html">Inicio</a>
+            <a class="header__nav-a hov__underline header__nav-a-active" href="#">Historico de
+                sorteios</a>
+            <a class="header__nav-a hov__underline " href="../gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
+            <a class="header__nav-a hov__underline" href="">
+                <button id="login" class="b md hov__blue bold"> Participar dos sorteios</button></a>
+            <div class="header__nav-dropdown" id="nav-dropdown">
+                <button class="header__nav-dropbtn" id="username">User</button>
+                <div class="header__nav-dropdown-content">
+                    <a id="admin-area" class="hidden" href="../home/inicio-admin.html">Administrador</a>
+                    <a href="../gestao-de-usuarios/alterar-senha.html">Alterar Senha</a>
+                    <a href="" id="sair">Sair</a>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <header>
+    <main class="main">
         <h1 class="header__title">Histórico de Sorteios</h1>
 
-    </header>
-    <main>
         <section id="historico-sorteios">
 
         </section>
         <aside id="filtrar" class="sidebar">
             <h2>Filtrar por Turmas</h2>
             <div id="container-turmas" class="container-turmas">
-                
+
             </div>
         </aside>
     </main>
 
-    <footer>
-        <div class="rodape">
-            <div class="logo-link-rodape">
-                <img src="./img-rodape.webp" alt="">
-                <a href="./inicio.html">Inicio</a>
-                <a href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
-                <a href="">Parceiros</a>
-            </div>
-            <div class="rodape-endereco">
-                <div class="endereco">
-                    <p class="paragrado-endereco">Endereço</p>
-                    <p>Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros, São Paulo - SP, 05461-010</p>
+    <footer class="footer txt-size-small">
+        <div class="footer__container">
+            <nav class="footer__nav">
+                <img class="footer__nav-img" src="./assets/images/logo/LOGO-TESTE-branco.png" alt="">
+                <div class="nav__container">
+                    <a class="footer__link hov__underline" href="#">Inicio</a>
+                    <a class="footer__link hov__underline"
+                        href="./html/gestao-de-sorteios/historico-de-sorteios.html">Historico de
+                        sorteios</a>
+                    <a class="footer__link hov__underline"
+                        href="./html/gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
                 </div>
-                <div class="contato">
-                    <a href="">info@mysite.com</a>
-                    <p>Tel. 123-456-7890</p>
+
+            </nav>
+            <div class="footer__address-contact">
+                <div class="footer__address">
+                    <p>Endereço</p>
+                    <a href="https://maps.app.goo.gl/pH4QidJGmgPX5S2fA" target="_blank"
+                        class="footer__link hov__underline">Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros,
+                        São
+                        Paulo - SP, 05461-010</a>
+                </div>
+                <div class="footer__contact">
+                    <a href="mailto:contato@grupo.top" class="footer__link hov__underline">contato@grupo.top</a>
+                    <p>Tel.<a href="tel:11 3662-3285" class="footer__link hov__underline">11 3662-3285</a></p>
                 </div>
             </div>
-            <div class="redes-sociais">
-                <p class="paragrafo-redes-sociais">Redes Sociais</p>
-                <a href="">TitkTok</a>
-                <a href="">Instagram</a>
-                <a href="">Youtube</a>
+            <div class="footer__social-media">
+                <p class="footer__social-media-p">Redes Sociais</p>
+                <div class="footer-social-media-container">
+                    <a class="footer__link hov__underline" href="">TikTok</a>
+                    <a class="footer__link hov__underline" href="">Instagram</a>
+                    <a class="footer__link hov__underline" href="">Youtube</a>
+                </div>
+
             </div>
-            <div class="rodape-sorteios">
+            <div class="footer__copyright">
                 <div class="rodape-buttom">
-                    <h4>Participe dos Sorteios</h4>
-                    <p>Se inscreva e participe das lives</p>
-                    <button>Participe dos Sorteios</button>
+                    <button class="b md hov__white footer__button">Participe dos Sorteios</button>
                 </div>
                 <div class="rodape-inf-empresa">
                     <p>© 2024 by GrupoTop.</p>
@@ -79,4 +99,5 @@
         </div>
     </footer>
 </body>
+
 </html>

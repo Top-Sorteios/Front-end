@@ -37,7 +37,8 @@ const entrar = async function () {
             
             break;
           case true:
-            window.location.assign("../home/inicio-admin.html");
+            // window.location.assign("../home/inicio-admin.html");
+            window.location.assign("../home/inicio.html");
             break;
           default:
             break;

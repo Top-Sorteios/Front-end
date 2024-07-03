@@ -17,14 +17,6 @@ input:-webkit-autofill {
   height: 60px;
 }
 
-.main {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  width: max-content;
-  flex-direction: column;
-}
-
 
 
 .form__fieldset {
