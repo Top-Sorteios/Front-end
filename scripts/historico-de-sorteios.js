@@ -37,30 +37,37 @@ const criarCardHistorico = function (historico) {
 
   const premioNome = document.createElement("h2");
   premioNome.textContent = historico.premioNome;
+  premioNome.classList.add("txt-size-medium-small");
   historicoTexto.appendChild(premioNome);
 
   const sorteadoEm = document.createElement("p");
   sorteadoEm.textContent = historico.sorteadoEm;
+  sorteadoEm.classList.add("txt-size-small");
   historicoTexto.appendChild(sorteadoEm);
 
   const ganhadorNome = document.createElement("p");
   ganhadorNome.textContent = historico.ganhadorNome;
+  ganhadorNome.classList.add("txt-size-small");
   historicoTexto.appendChild(ganhadorNome);
 
   const turmaNome = document.createElement("p");
   turmaNome.textContent = historico.turmaNome;
+  turmaNome.classList.add("txt-size-small");
   historicoTexto.appendChild(turmaNome);
 
   const marcaNome = document.createElement("p");
   marcaNome.textContent = historico.marcaNome;
+  marcaNome.classList.add("txt-size-small");
   historicoTexto.appendChild(marcaNome);
 
   const premioSku = document.createElement("p");
   premioSku.textContent = historico.premioSku;
+  premioSku.classList.add("txt-size-small");
   historicoTexto.appendChild(premioSku);
 
   const premioDescricao = document.createElement("p");
   premioDescricao.textContent = historico.premioDescricao;
+  premioDescricao.classList.add("txt-size-small");
   historicoTexto.appendChild(premioDescricao);
 };
 
@@ -151,6 +158,3 @@ window.addEventListener("load", () => {
   obterHistorico();
   obterFiltroTurmas();
 });
-
-
-

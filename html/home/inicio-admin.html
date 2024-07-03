@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área administrativa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../styles/default.css">
     <link rel="stylesheet" href="../../styles/inicio-admin.css">
     <script type="module" src="../../scripts/admin/checar-autentificacao.js" defer></script>
     <script type="module" src="../../../scripts/inicio-admin.js" defer></script>
+    <script src="../../scripts/header-mobile.js" defer></script>
 </head>
 
 <body>
@@ -17,6 +19,33 @@
         <figure class="header__figure">
             <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png" alt="logo do sorteio top">
         </figure>
+        <div id="header-mobile">
+            <div class="icon-mobile">
+                <i class="bi bi-list"></i>
+                <i class="bi bi-x none"></i>
+            </div>
+            <nav class="nav-mobile">
+                <a class="header__nav-a-ativo hov__underline" href="../home/inicio-admin.html">Início</a>
+                <a class="header__nav-a hov__underline" href="../gestao-de-usuarios/importar-usuarios.html">Carga de
+                    usuários</a>
+                <a class="header__nav-a hov__underline"
+                    href="../gestao-de-sorteios/historico-de-sorteios.html">Histórico de
+                    sorteios</a>
+                <a class="header__nav-a hov__underline" href="../gestao-de-usuarios/alterar-senha.html">Gestão de
+                    conta</a>
+                <a class="header__nav-a hov__underline" href="../gestao-de-premios/premios-da-semana.html">Prêmios da
+                    semana</a>
+                <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/gestao-de-sorteios.html">Sorteios
+                    semanais</a>
+                <a class="header__nav-a hov__underline"
+                    href="../gestao-de-marcas/marcas-cadastradas.html">Gerenciamento de
+                    marcas parceiras</a>
+                <a class="header__nav-a hov__underline"
+                    href="../gestao-dos-destaques/destaques-cadastradas.html">Gerenciamento dos
+                    destaques</a>
+                <a class="header__nav-a hov__underline" id="sair" href="#">Sair</a>
+            </nav>
+        </div>
         <nav class="header__nav-admin">
             <a class="header__nav-a-ativo hov__underline" href="../home/inicio-admin.html">Início</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-usuarios/importar-usuarios.html">Carga de
@@ -28,36 +57,40 @@
                 semana</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/gestao-de-sorteios.html">Sorteios
                 semanais</a>
-            <a class="header__nav-a hov__underline" href="../gestao-de-marcas/marcas-cadastradas.html">Gerenciamento de
+            <a class="header__nav-a hov__underline"
+                href="../gestao-de-marcas/marcas-cadastradas.html">Gerenciamento de
                 marcas parceiras</a>
-            <a class="header__nav-a hov__underline" href="./html/login/index.html">Sair</a>
+            <a class="header__nav-a hov__underline"
+                href="../gestao-dos-destaques/destaques-cadastradas.html">Gerenciamento dos
+                destaques</a>
+            <a class="header__nav-a hov__underline" id="sair" href="#">Sair</a>
         </nav>
     </header>
 
     <main>
         <h1>Área administrativa</h1>
-        <nav>
-            <h2 class="section__title"><a href="../gestao-de-usuarios/importar-usuarios.html">Carga de usuários</a></h2>
-            <h2 class="section__title"><a href="../gestao-de-sorteios/historico-de-sorteios.html">Histórico de
-                    Sorteios</a>
-            </h2>
-            <h2 class="section__title"><a href="../gestao-de-usuarios/alterar-senha.html">Gestão de conta</a></h2>
-            <h2 class="section__title"><a href="../gestao-de-premios/premios-da-semana.html">Prêmios da Semana</a></h2>
-            <h2 class="section__title"><a href="../gestao-de-sorteios/gestao-de-sorteios.html">Sorteios semanais</a>
-            </h2>
-            <h2 class="section__title"><a href="../gestao-de-usuarios/gestao-de-contas-admin.html">Gestão de contas</a>
-            </h2>
-        </nav>
-
-
-
-        <section id="marcas-parceiras">
-            <h2 class="section__title"><a href="../gestao-de-marcas/marcas-cadastradas.html">Gerenciamento de marcas
-                    parceiras</a></h2>
-            <div id="logo-marcas-parceiras">
-
+        <nav class="area_admin none">
+            <div class="first_row_image">
+                <h2 class="section_image"><a href="../gestao-de-usuarios/importar-usuarios.html"><img src="/img/envio.png" alt="Carga de usuários"></a></h2>
+                <h2 class="section_image"><a href="../gestao-de-sorteios/historico-de-sorteios.html"><img src="/img/Histórico de sorteios.png" alt="Histórico de sorteios"></a></h2>
+                <h2 class="section__image"><a href="../gestao-de-usuarios/alterar-senha.html"><img src="/img/senha (1).png" alt="Alterar senha"></a></h2>
             </div>
-        </section>
+            <div class="first_row_words">
+                <h2 class="section__title"><a href="../gestao-de-usuarios/importar-usuarios.html">Carga de usuários</a></h2>
+                <h2 class="section__title"><a href="../gestao-de-sorteios/historico-de-sorteios.html">Histórico de Sorteios</a></h2>
+                <h2 class="section__title"><a href="../gestao-de-usuarios/alterar-senha.html">Alterar senha</a></h2>
+            </div>
+            <div class="second_row_image">
+                <h2 class="section__image"><a href="../gestao-de-premios/premios-da-semana.html"><img src="/img/presente.png" alt="Cadastrar prêmios"></a></h2>
+                <h2 class="section__image"><a href="../gestao-de-sorteios/gestao-de-sorteios.html"><img src="/img/podio.png" alt="Sorteios semanais"></a></h2>
+                <h2 class="section__image"><a href="../gestao-de-usuarios/gestao-de-contas-admin.html"><img src="/img/Gestão de contas.png" alt="Gestão de contas"></a></h2>
+            </div>
+            <div class="second_row_words">
+                <h2 class="section__title"><a href="../gestao-de-premios/premios-da-semana.html">Cadastrar prêmios</a></h2>
+                <h2 class="section__title"><a href="../gestao-de-sorteios/gestao-de-sorteios.html">Sorteios semanais</a></h2>
+                <h2 class="section__title"><a href="../gestao-de-usuarios/gestao-de-contas-admin.html">Gestão de contas</a></h2>
+            </div>
+        </nav>
     </main>
 
     <footer class="footer txt-size-small">
@@ -71,6 +104,8 @@
                         sorteios</a>
                     <a class="footer__link hov__underline"
                         href="./html/gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
+                        <a class="footer__link hov__underline"
+                        href="https://www.flaticon.com/br/icones-animados-gratis">Ícones Freepik</a>
                 </div>
 
             </nav>
@@ -108,5 +143,4 @@
     </footer>
 
 </body>
-
 </html>

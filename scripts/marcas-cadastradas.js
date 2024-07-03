@@ -11,7 +11,6 @@ window.addEventListener('load', async () => {
     })
     const dado = await response.json()
     createTable(dado)
-    alterarCorTr()
 })
 
 const createTable = async (item) => {
@@ -70,4 +69,3 @@ const inputPesquisa = document.getElementById('input-pesquisa')
 inputPesquisa.addEventListener('keyup', () => {
     pesquisar()
 })
-

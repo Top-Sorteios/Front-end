@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Importar Usuários</title>
+    <title>Lista de destaques</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../styles/default.css">
-    <link rel="stylesheet" href="../../styles/importar-usuarios.css">
-    <script type="module" src="../../scripts/admin/checar-autentificacao.js" defer></script>
-    <script type="module" src="../../scripts/importar-usuarios.js" defer></script>
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="../../styles/destaques-cadastradas.css">
+    <script src="../../scripts/destaques-cadastradas.js" defer type="module"></script>
+    <script src="../../scripts/admin/checar-autentificacao.js" type="module" defer></script>
     <script src="../../scripts/header-mobile.js" defer></script>
 </head>
 
 <body>
+
     <header class="header-admin">
         <figure class="header__figure">
             <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png" alt="logo do sorteio top">
@@ -25,7 +28,7 @@
             </div>
             <nav class="nav-mobile">
                 <a class="header__nav-a hov__underline" href="../home/inicio-admin.html">Início</a>
-                <a class="header__nav-a-ativo hov__underline" href="../gestao-de-usuarios/importar-usuarios.html">Carga de
+                <a class="header__nav-a hov__underline" href="../gestao-de-usuarios/importar-usuarios.html">Carga de
                     usuários</a>
                 <a class="header__nav-a hov__underline"
                     href="../gestao-de-sorteios/historico-de-sorteios.html">Histórico de
@@ -39,7 +42,7 @@
                 <a class="header__nav-a hov__underline"
                     href="../gestao-de-marcas/marcas-cadastradas.html">Gerenciamento de
                     marcas parceiras</a>
-                <a class="header__nav-a hov__underline"
+                <a class="header__nav-a-ativo hov__underline"
                     href="../gestao-dos-destaques/destaques-cadastradas.html">Gerenciamento dos
                     destaques</a>
                 <a class="header__nav-a hov__underline" id="sair" href="#">Sair</a>
@@ -47,7 +50,7 @@
         </div>
         <nav class="header__nav-admin">
             <a class="header__nav-a hov__underline" href="../home/inicio-admin.html">Início</a>
-            <a class="header__nav-a-ativo hov__underline" href="../gestao-de-usuarios/importar-usuarios.html">Carga de
+            <a class="header__nav-a hov__underline" href="../gestao-de-usuarios/importar-usuarios.html">Carga de
                 usuários</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Histórico de
                 sorteios</a>
@@ -59,39 +62,33 @@
             <a class="header__nav-a hov__underline"
                 href="../gestao-de-marcas/marcas-cadastradas.html">Gerenciamento de
                 marcas parceiras</a>
-            <a class="header__nav-a hov__underline"
+            <a class="header__nav-a-ativo hov__underline"
                 href="../gestao-dos-destaques/destaques-cadastradas.html">Gerenciamento dos
                 destaques</a>
             <a class="header__nav-a hov__underline" id="sair" href="#">Sair</a>
         </nav>
     </header>
-    
-    <main>
-        <div id="container">
-            <h1>Importação de usuários</h1>
-            <form id="form-importar-usuarios" method="post">
-                <fieldset class="form__fieldset">
-                    <legend class="form__legend">Importar usuários</legend>
-                    <label class="form__label" for="importar csv"> Importar arquivo CSV
-                        <input id="importar-csv" type="file"
-                            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
-                    </label>
-                    <span class="wrong-text"></span>
-                    <!-- <label for="criado-por"> Criado por:
-                        <input id="criado-por" type="text" placeholder="Nome" readonly required>
-                    </label>
-                    <label for=""> Criado em:
-                        <input id="criado-em" type="datetime-local" readonly required>
-                    </label> -->
-                    <button class="b md hov__blue" type="submit">Enviar</button>
-                </fieldset>
-            </form>
-            <section id="resultados" class="resultados">
-                <h2>Resultado</h2>
-                <p id="resultados-texto">Após o envio do arquivo, o resultado aparecerá aqui</p>
-            </section>
-        </div>
-    </main>
+
+    <div id="container">
+        <h1>Gerenciamento dos destaques</h1>
+
+        <table id="table-destaques">
+            <thead>
+                <th>EDITAR</th>
+                <th>NOME</th>
+                <th>TITULO</th>
+                <th>IMAGEM</th>
+            </thead>
+            <!-- <tr>
+                    <td><a href="" id="idDestaque">Editar</a></td>
+                    <td></td>
+                    <td></td>
+                    <td><img></td>
+                </tr> -->
+        </table>
+        <a href="./gerenciamento-destaques.html"><button class="md b hov__blue" id="button-novo-destaque">CADASTRAR
+                DESTAQUE</button></a>
+    </div>
 
     <footer class="footer txt-size-small">
         <div class="footer__container">
@@ -139,7 +136,8 @@
             </div>
         </div>
     </footer>
-    
+
+
 </body>
 
 </html>

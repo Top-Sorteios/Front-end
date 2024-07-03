@@ -20,17 +20,23 @@ h1 {
 .section__title a:hover {
   text-decoration: underline;
 }
-#logo-marcas-parceiras {
+
+.first_row_image{
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: row;
 }
 
-#logo-marcas-parceiras img {
-  width: 10rem;
-  max-height: 10rem;
+.second_row_image{
+  display: flex;
+  flex-direction: row;
 }
 
-.marcas__logo {
+.first_row_words{
+  display: flex;
+  flex-direction: row;
+}
+
+.second_row_words{
+  display: flex;
+  flex-direction: row;
 }

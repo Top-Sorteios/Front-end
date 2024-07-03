@@ -38,7 +38,6 @@
 }
 
 .sorteado-titulo{
-    width: 100%;
     text-align: center;
 }
 
@@ -48,4 +47,19 @@
     align-items: flex-start;
     width: 100%;
     gap: 0.5rem;
+}
+
+@media(max-width: 720px){
+    #container{
+        width: 100vw;
+    }
+
+    .container-premios{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .container-sorteado{
+        width: 20rem;
+    }
 }

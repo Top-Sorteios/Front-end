@@ -4,7 +4,7 @@ h2 {
     text-align: center;
 }
 
-.header-marca {
+.header-destaque {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -19,7 +19,7 @@ h2 {
     gap: 20px;
     border-radius: 80px;
     border: 2px solid lightgray;
-    margin: 20px auto 40px auto;
+    margin: 20px auto 50px auto;
     padding: 40px 20px;
 }
 
@@ -50,12 +50,12 @@ h2 {
     flex-direction: column;
     gap: 5px;
     justify-content: center;
-    padding: 12px;
+    padding: 10px;
 }
 
 .div-imgs img {
     width: 100px;
-    height: 60px;
+    height: 70px;
 }
 
 .botao {
@@ -100,7 +100,6 @@ h2 {
     .container {
         width: 100%;
         border: none;
-        margin-bottom: 100px;
     }
     .cadastros {
         width: 75%;
