@@ -1,6 +1,6 @@
 import { get } from "./CONSTANTES.js";
 
-const marcasParceirasDiv = document.querySelector("#marcas-parceiras");
+const marcasParceirasDiv = document.querySelector("#logo-marcas-parceiras");
 
 const getMarcasParceiras = async function () {
   const request = await get("marcas/obter", true);

@@ -53,6 +53,10 @@ body {
   display: none !important;
 }
 
+.not-hidden {
+  display: block;
+}
+
 .bold {
   font-family: "Bariol Bold" !important ;
   font-weight: bold !important;
@@ -181,11 +185,26 @@ body {
   flex-direction: column;
   gap: 0.3rem;
 }
-
+/* 
 .div__marcas-parceiras {
   display: flex;
   justify-content: center;
+} */
+
+#logo-marcas-parceiras {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
+#logo-marcas-parceiras img {
+  width: 248px;
+  height:200px;
+  padding: 3.25rem;
+}
+
 
 .wrong {
   border: 3px solid var(--wrong) !important;
