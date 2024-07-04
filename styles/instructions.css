@@ -22,7 +22,9 @@
 .section__instruction-instructions {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
   width: fit-content;
+  height: max-content;
 }
 
 .section__instruction-instructions div {
@@ -43,16 +45,41 @@
   .section__instruction-instructions {
     grid-template-columns: 1fr 1fr;
   }
-
 }
 
 @media (max-width: 1024px) {
-
-  .section__instruction-instructions {
-    align-items: center;
-    grid-template-columns: 1fr;
-    width: fit-content;
+  .section__instruction {
+    padding: 2rem;
+    height: max-content;
   }
 
+  .section__instruction-instructions div {
+    max-width: 15rem;
+    max-height: 17rem;
+  }
+
+  .section__instruction-h2 {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+
+
+  .section__instruction-p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .section__instruction-instructions {
+    grid-template-columns: 1fr;
+  }
+
+  .section__instruction {
+    padding: 0;
+  }
+  .section__instruction-instructions div {
+    max-width: 15rem;
+    min-height: 12rem;
+  }
 
 }

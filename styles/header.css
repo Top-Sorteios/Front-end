@@ -123,7 +123,17 @@
   display: none;
 }
 
+#exit-icon {
+  margin: 0 2rem 0 auto;
+}
+
+#exit-icon svg {
+  height: 2rem;
+  width: 2rem;
+}
+
 #nav-mobile-menu {
+  grid-area: 1 / 1 / -1 / -1;
   display: none;
   position: fixed;
   left: 0;
@@ -239,5 +249,12 @@
 
   .none {
     display: none;
+  }
+}
+
+@media (max-width:375px) {
+  #modal-nav-icon svg{
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }

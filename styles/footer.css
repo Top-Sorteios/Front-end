@@ -133,3 +133,17 @@
     max-width: 36rem;
   }
 }
+
+@media (max-width: 375px) {
+
+  .footer {
+    padding: 1.8rem;
+  }
+
+  .footer__container {
+    width: 20rem;
+    border-radius: 2rem;
+  }
+  
+
+}
