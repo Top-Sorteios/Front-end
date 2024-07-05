@@ -1,5 +1,6 @@
 @import url("./fonts.css");
 @import url("./header.css");
+@import url("./nossos-parceiros.css");
 @import url("./instructions.css");
 @import url("./footer.css");
 
@@ -185,34 +186,6 @@ body {
   flex-direction: column;
   gap: 0.3rem;
 }
-
-
-#logo-marcas-parceiras {
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-#logo-marcas-parceiras img {
-  width: 248px;
-  height:200px;
-  padding: 3.25rem;
-}
-
-@media (max-width:375px) {
-
-
-  #logo-marcas-parceiras img {
-    width: 14rem;
-    height: 8rem;
-    padding: 0.8rem;
-    ;
-  }
-
-}
-
 
 .wrong {
   border: 3px solid var(--wrong) !important;

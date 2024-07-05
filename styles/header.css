@@ -10,10 +10,6 @@
   padding: 0.5rem 3rem;
 }
 
-#header-mobile {
-  display: none;
-}
-
 .header-admin {
   display: flex;
   flex-direction: column;
@@ -119,10 +115,6 @@
   text-decoration: none;
 }
 
-#modal-nav-icon {
-  display: none;
-}
-
 #exit-icon {
   margin: 0 2rem 0 auto;
 }
@@ -130,6 +122,7 @@
 #exit-icon svg {
   height: 2rem;
   width: 2rem;
+  fill: var(--text-color-alt);
 }
 
 #nav-mobile-menu {
@@ -147,9 +140,26 @@
   z-index: 3;
 }
 
+#modal-nav-icon {
+  display: none;
+}
 
+.nav__mobile-container {
+  display: none;
+}
+
+#mobile-participar-button {
+  display: none;
+}
 
 @media (max-width: 768px) {
+  #mobile-participar-button {
+    display: block;
+  }
+
+  #modal-nav-icon {
+    display: block;
+  }
   #header-nav {
     display: none;
   }
@@ -158,37 +168,20 @@
     display: block;
   }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-}
-
-  #modal-nav-icon {
-    display: block;
-  }
-
-  .header__nav-dropdown-content {
-    display: block;
-    position: relative;
-    width: 100%;
-    background-color: transparent;
-    box-shadow: none;
-  }
-  .header__nav-dropdown-content a:hover,
-  .header__nav-dropbtn {
-    background-color: transparent;
-    color: var(--green);
-    text-decoration: underline;
-  }
-}
-
-@media (max-width: 1024px) {
-  .header-admin {
+  .header {
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    align-items: end;
+    align-content: space-around;
   }
+
+  .nav__mobile-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+/* 
+@media (max-width: 1024px) {
+
 
   header figure {
     margin: 0 auto;
@@ -252,9 +245,36 @@
   }
 }
 
-@media (max-width:375px) {
-  #modal-nav-icon svg{
+ */
+
+@media (max-width: 425px) {
+  .header {
+    padding: 1rem;
+  }
+
+  #modal-nav-icon svg {
     width: 2.25rem;
     height: 2.25rem;
+  }
+
+  .header__figure-img {
+    width: 17.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .header {
+    padding: 0;
+  }
+
+  #modal-nav-icon svg {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .header__figure-img {
+    width: 15rem;
+    height: 2rem;
   }
 }

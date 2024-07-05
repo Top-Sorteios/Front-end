@@ -69,6 +69,14 @@
   }
 }
 
+@media (max-width: 425px) {
+  .section__instruction-instructions {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
 @media (max-width: 375px) {
   .section__instruction-instructions {
     grid-template-columns: 1fr;
