@@ -32,7 +32,7 @@ const redirecionar = async function (email, token) {
       const response = await request.json();
       switch (response.administrador) {
         case true:
-          window.location.replace("./html/home/inicio-admin.html");
+          window.location.replace("./html/home/inicio.html");
           break;
         case false:
           window.location.replace("./html/home/inicio.html");
