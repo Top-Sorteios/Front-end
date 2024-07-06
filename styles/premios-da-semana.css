@@ -24,7 +24,7 @@ body {
   background-color: lightgray;
 }
 
-tr:hover {
+.hover-cor:hover {
   background-color: var(--green);
 }
 
