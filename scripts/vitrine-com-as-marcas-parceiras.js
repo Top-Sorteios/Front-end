@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 sorteioElement.innerHTML = `
                     <div class="fotos">
-                        <img src="${marca.logo || 'default-image-url.jpg'}" alt="Logo da marca">
+                        <img src="${('data:image/png;base64,' + marca.logo) || '../../assets/images/logo/LOGO-TESTE.png'}" alt="Logo da marca">
                     </div>
                     <div class="escrita">
                         <p>${marca.nome}</p>

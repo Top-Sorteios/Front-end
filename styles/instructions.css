@@ -35,14 +35,13 @@
   width: fit-content;
 }
 
-.section__instruction p {
+.section__instruction-p {
   line-height: 1.5;
   text-justify: justify;
   width: 21rem;
 }
 
-
-@media (min-width:1600px){
+@media (min-width: 1600px) {
   .section__instruction {
     padding: 3.5rem !important;
   }
@@ -66,9 +65,9 @@
     font-size: 1.5rem;
     min-height: 17rem;
   }
-} 
+}
 
-@media (max-width: 1440px ){
+@media (max-width: 1440px) {
   .section__instruction {
     padding: 2.5rem;
   }
@@ -88,7 +87,7 @@
     height: 3rem;
   }
 
-  .section__instruction p.section__instruction-p {
+  .section__instruction-p {
     font-size: 1.15rem;
     width: 15rem;
     max-height: 12.5rem;
@@ -108,8 +107,10 @@
   }
 
   .section__instruction-instructions div {
+    min-width: min-content;
     max-width: 15rem;
     max-height: 17rem;
+    gap: 0;
   }
 
   .section__instruction-h2 {
@@ -118,11 +119,15 @@
   }
 
   .section__instruction-p {
-    font-size: 1rem;
+    font-size: 0.9375rem;
+    width: 11rem;
   }
 }
 
 @media (max-width: 768px) {
+  .section__instruction-instructions {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .section__instruction {
     padding: 2.5rem;
   }
@@ -131,10 +136,29 @@
 @media (max-width: 425px) {
   .section__instruction-instructions {
     grid-template-columns: 1fr;
+    justify-items: center;
   }
 }
 
 @media (max-width: 375px) {
+  .section__instruction-instructions {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .section__instruction {
+    padding: 0;
+    justify-content: center;
+  }
+  .section__instruction-instructions div {
+    gap: 0;
+    min-width: fit-content;
+    max-width: 15rem;
+    min-height: 12rem;
+  }
+}
+
+@media (max-width: 320px) {
   .section__instruction-instructions {
     grid-template-columns: 1fr;
   }
@@ -143,7 +167,7 @@
     padding: 0;
   }
   .section__instruction-instructions div {
-    max-width: 15rem;
+    /* width: 13.25rem; */
     min-height: 12rem;
   }
 }

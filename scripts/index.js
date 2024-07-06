@@ -14,8 +14,23 @@ const getMarcasParceiras = async function () {
   const request = await get("marcas/obter", false);
   if (request.status === 200) {
     const response = await request.json();
+    response.forEach((marca) => {
+      const marcaLogo = document.createElement("img");
+      marcaLogo.setAttribute(
+        "src",
+        marca.logo != null
+          ? `data:image/png;base64,${marca.logo}`
+          : "https://placehold.co/320x240"
+      );
+      marcaLogo.setAttribute("alt", marca.nome);
+      marcaLogo.setAttribute("title", `Logo da ${marca.nome}`);
+      marcasParceirasContainer.appendChild(marcaLogo);
+      console.log(marca.logo);
 
-    console.log(response);
+      marcaLogo.addEventListener("error", () => {
+        marcaLogo.setAttribute("src", "https://placehold.co/320x240");
+      });
+    });
   }
 };
 
