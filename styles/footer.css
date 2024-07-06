@@ -145,22 +145,29 @@
     grid-column: 1/ -1;
   }
 
-
   .footer__nav-img {
     width: 100%;
     max-width: 36rem;
   }
 }
 
+@media (max-width: 640px) {
+
+  .footer__container {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+
+  }
+}
 @media (max-width: 425px) {
   .footer {
     padding: 2rem;
   }
 
   .footer__container {
+    grid-template-columns: 1fr;
     width: 22.5rem;
     border-radius: 2rem;
-    grid-template-columns: 1fr;
   }
 }
 

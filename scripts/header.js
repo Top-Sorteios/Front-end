@@ -54,15 +54,15 @@ const navBar = `<nav class="modal__nav">
                       <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
                     </svg>
                   </span>
-                  <a class="modal__nav-a" href="#">Inicio</a>
-                  <a class="modal__nav-a" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
+                  <a class="modal__nav-a" href="/">Inicio</a>
+                  <a class="modal__nav-a" href="/html/gestao-de-sorteios/historico-de-sorteios.html">Historico de
                   sorteios</a>
-                  <a class="modal__nav-a " href="../gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
-                  <a class="modal__nav-a " href="">
+                  <a class="modal__nav-a " href="/html/gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
+                  <a class="modal__nav-a " href="/html/gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
                   <button id="login" class="b md  bold"> Participar dos sorteios</button></a>
                   <span class="modal__nav-a" id="modal-username">Fazer login</span>
-                  <a id="modal-admin-area" class="modal__nav-a hidden" href="../home/inicio-admin.html">Administrador</a>
-                  <a class="modal__nav-a" href="../gestao-de-usuarios/alterar-senha.html" id="modal-alterar-senha">Alterar Senha</a>
+                  <a id="modal-admin-area" class="modal__nav-a hidden" href="/html/home/inicio-admin.html">Administrador</a>
+                  <a class="modal__nav-a" href="/html/gestao-de-usuarios/alterar-senha.html" id="modal-alterar-senha">Alterar Senha</a>
                   <a class="modal__nav-a" href="" id="modal-sair">Sair</a>
                 </nav>`;
 
