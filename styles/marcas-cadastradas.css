@@ -24,6 +24,7 @@ table {
     width: 70%;
     border-collapse: collapse;
     overflow-x: auto;
+    margin-top: 20px;
 }
 
 thead {
@@ -57,6 +58,15 @@ table a:hover {
 }
 
 @media (max-width: 720px) {
+    h1 {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    table {
+        margin-top: -60px;
+    }
+
     #table-marcas {
         overflow-x: auto;
     }
