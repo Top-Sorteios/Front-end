@@ -29,7 +29,7 @@ const createTableDestaque = async (destaque) => {
         let txtCriadoPor = document.createTextNode(itensDestaque.titulo)
         let txtEditar = document.createTextNode('Editar')
 
-        tr.setAttribute('class', 'filtrarTr')
+        tr.setAttribute('class', 'hover-cor')
         img.setAttribute('src', `data:image/webp;base64,${itensDestaque.imagem}`)
         tdNome.setAttribute('class', 'filtrarNome')
         linkEditar.setAttribute('href', '#')

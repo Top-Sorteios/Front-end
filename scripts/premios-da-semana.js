@@ -13,6 +13,7 @@ const obterPremios = async function () {
 
 const criarLinha = function (premio) {
   const tableRow = document.createElement("tr");
+  tableRow.setAttribute('class', 'hover-cor')
   tableBody.appendChild(tableRow);
 
   const tableCellEditar = document.createElement("td");

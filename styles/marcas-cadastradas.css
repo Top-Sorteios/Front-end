@@ -37,7 +37,7 @@ td {
     text-align: left;
 }
 
-tr:hover {
+.filtrarTr:hover {
     background-color: var(--green);
 }
 
