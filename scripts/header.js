@@ -13,7 +13,7 @@ if (EMAIL != null && TOKEN != null) {
   if (NOME) {
     document.querySelector("#username").textContent = NOME;
   } else {
-    window.location.reload();
+    // window.location.reload();
   }
   document.querySelector("#nav-dropdown").classList.add("visible");
   document.querySelector("#nav-dropdown").classList.remove("hidden");
@@ -23,25 +23,28 @@ if (EMAIL != null && TOKEN != null) {
 
 const checarAdministrador = async function () {
   const request = await get(`usuarios/obter/${EMAIL}`, true);
-  const response = await request.json();
-  console.log(response);
-
-  if (response.administrador === true) {
-    document.querySelector("#admin-area").classList.remove("hidden");
-  } else {
-    document.querySelector("#admin-area").classList.add("hidden");
+  if (request.ok) {
+    const response = await request.json();
+    console.log(response);
+    if (response.administrador === true) {
+      document.querySelector("#admin-area").classList.remove("hidden");
+    } else {
+      document.querySelector("#admin-area").classList.add("hidden");
+    }
   }
 };
 
 const checarAdministradorModal = async function () {
   const request = await get(`usuarios/obter/${EMAIL}`, true);
-  const response = await request.json();
-  console.log(response);
+  if (request.ok) {
+    const response = await request.json();
+    console.log(response);
 
-  if (response.administrador === true) {
-    document.querySelector("#modal-admin-area").classList.remove("hidden");
-  } else {
-    document.querySelector("#modal-admin-area").classList.add("hidden");
+    if (response.administrador === true) {
+      document.querySelector("#modal-admin-area").classList.remove("hidden");
+    } else {
+      document.querySelector("#modal-admin-area").classList.add("hidden");
+    }
   }
 };
 
@@ -57,9 +60,9 @@ const navBar = `<nav class="modal__nav">
                   <a class="modal__nav-a " href="../gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
                   <a class="modal__nav-a " href="">
                   <button id="login" class="b md  bold"> Participar dos sorteios</button></a>
-                  <span class="modal__nav-a" id="modal-username">User</span>
+                  <span class="modal__nav-a" id="modal-username">Fazer login</span>
                   <a id="modal-admin-area" class="modal__nav-a hidden" href="../home/inicio-admin.html">Administrador</a>
-                  <a class="modal__nav-a" href="../gestao-de-usuarios/alterar-senha.html">Alterar Senha</a>
+                  <a class="modal__nav-a" href="../gestao-de-usuarios/alterar-senha.html" id="modal-alterar-senha">Alterar Senha</a>
                   <a class="modal__nav-a" href="" id="modal-sair">Sair</a>
                 </nav>`;
 
@@ -72,11 +75,17 @@ document.querySelector("#modal-nav-icon").addEventListener("click", () => {
   if (NOME) {
     document.querySelector("#modal-username").textContent = NOME;
   } else {
-    window.location.reload();
+    // window.location.reload();
+    document.querySelector("#modal-alterar-senha").classList.add("hidden");
+    document.querySelector("#modal-sair").classList.add("hidden");
+    document.querySelector("#modal-username").addEventListener("click", () => {
+      window.location.assign("/html/login/index.html");
+    });
   }
 
-  checarAdministradorModal();
-
+  if (EMAIL != null && TOKEN != null) {
+    checarAdministradorModal();
+  }
   document.querySelector("#modal-sair").addEventListener("click", () => {
     sair();
   });
@@ -100,5 +109,7 @@ const sair = function () {
 };
 
 window.addEventListener("load", () => {
-  checarAdministrador();
+  if (EMAIL != null && TOKEN != null) {
+    checarAdministrador();
+  }
 });
