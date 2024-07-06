@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área administrativa</title>
     <link rel="stylesheet" href="../../styles/default.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+
     <link rel="stylesheet" href="../../styles/inicio-admin.css">
     <script type="module" src="../../scripts/admin/checar-autentificacao.js" defer></script>
     <script type="module" src="../../../scripts/inicio-admin.js" defer></script>
@@ -16,16 +18,19 @@
 <body>
 
     <header class="header" id="header">
-        <figure class="header__figure">
-            <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png" alt="logo do sorteio top">
-        </figure>
+        <div class="header-button-container">
+            <figure class="header__figure">
+                <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png" alt="logo do sorteio top">
+            </figure>
+            <button id="mobile-participar-button" class="b md  bold"> Participar dos sorteios</button></a>
+        </div>
 
         <nav class="header__nav" id="header-nav">
-            <a class="header__nav-a hov__underline" href="/">Inicio</a>
+            <a class="header__nav-a hov__underline header__nav-a-active" href="/">Inicio</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
                 sorteios</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
-            <a class="header__nav-a hov__underline" href="">
+            <a class="header__nav-a hov__underline" href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
                 <button id="login" class="b md hov__blue bold"> Participar dos sorteios</button></a>
             <div class="header__nav-dropdown" id="nav-dropdown">
                 <button class="header__nav-dropbtn" id="username">User</button>
@@ -36,21 +41,19 @@
                 </div>
             </div>
         </nav>
-        <div class="nav__mobile-container">
-            <button id="mobile-participar-button" class="b md  bold"> Participar dos sorteios</button></a>
 
-            <div id="modal-nav-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-                </svg>
-            </div>
+        <div id="modal-nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+            </svg>
         </div>
 
     </header>
 
-    <main>
+
+    <main class="main">
         <h1 class="title_area_adm">Área administrativa</h1>
         <div class="area_admin">
             <div class="row">
@@ -83,16 +86,14 @@
     <footer class="footer txt-size-small">
         <div class="footer__container">
             <nav class="footer__nav">
-                <img class="footer__nav-img" src="./assets/images/logo/LOGO-TESTE-branco.png" alt="">
+                <img class="footer__nav-img" src="../../assets/images/logo/LOGO-TESTE-branco.png" alt="">
                 <div class="nav__container">
-                    <a class="footer__link hov__underline" href="#">Inicio</a>
+                    <a class="footer__link hov__underline" href="/">Inicio</a>
                     <a class="footer__link hov__underline"
                         href="./html/gestao-de-sorteios/historico-de-sorteios.html">Historico de
                         sorteios</a>
                     <a class="footer__link hov__underline"
                         href="./html/gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
-                    <a class="footer__link hov__underline"
-                        href="https://www.flaticon.com/br/icones-animados-gratis">Ícones Freepik</a>
                 </div>
 
             </nav>
@@ -100,7 +101,8 @@
                 <div class="footer__address">
                     <p>Endereço</p>
                     <a href="https://maps.app.goo.gl/pH4QidJGmgPX5S2fA" target="_blank"
-                        class="footer__link hov__underline">Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros, São
+                        class="footer__link hov__underline">Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros,
+                        São
                         Paulo - SP, 05461-010</a>
                 </div>
                 <div class="footer__contact">
@@ -119,7 +121,10 @@
             </div>
             <div class="footer__copyright">
                 <div class="rodape-buttom">
-                    <button class="b md hov__white footer__button">Participe dos Sorteios</button>
+                    <a href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
+
+                        <button class="b md hov__white footer__button">Participe dos Sorteios</button>
+                    </a>
                 </div>
                 <div class="rodape-inf-empresa">
                     <p>© 2024 by GrupoTop.</p>
@@ -128,7 +133,6 @@
             </div>
         </div>
     </footer>
-
 </body>
 
 </html>

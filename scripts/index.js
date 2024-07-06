@@ -3,12 +3,6 @@ import { EMAIL, TOKEN, get } from "./CONSTANTES.js";
 const marcasParceirasContainer = document.querySelector(
   "#logo-marcas-parceiras"
 );
-const botaoEntrar = document.querySelector("#login");
-
-botaoEntrar.addEventListener("click", (event) => {
-  event.preventDefault();
-  window.location.assign("./html/login/index.html");
-});
 
 const getMarcasParceiras = async function () {
   const request = await get("marcas/obter", false);

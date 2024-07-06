@@ -137,6 +137,10 @@ const buscarTurma = async function () {
 };
 
 
+document.querySelector("#filtrar-icon").addEventListener("click", ()=>{
+
+
+})
 
 const testando = async function (){
   let turmas = document.getElementsByName("turmas");
