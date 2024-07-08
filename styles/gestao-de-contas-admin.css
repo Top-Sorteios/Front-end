@@ -1,0 +1,154 @@
+@import url(./default.css);
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--white);
+  border-radius: 50px;
+  padding: 30px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: var(--shadow);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Restante do CSS específico para a página */
+.container {
+  display: flex;
+  margin: 20px auto 500px auto; /* Ajuste conforme necessário */
+  border-radius: 50px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.table {
+  margin-top: 1rem;
+  border: 1px solid var(--border-color);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table__head {
+  background-color: lightgray;
+  color: var(--black);
+}
+
+.table__head-th,
+.table__body-td {
+  padding: 2rem;
+  text-align: left;
+  border: 1px solid black;
+}
+
+.table__body-tr:hover {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.table__body{
+  padding: 1rem;
+}
+
+.table__body-td button {
+  background-color: var(--green);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.table__body-td button:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.form {
+  margin: 0 auto;
+  line-height: 1.9rem;
+  width: 90%;
+}
+
+fieldset {
+  border: 0;
+  font-size: 1.0rem;
+  color: var(--black);
+}
+
+.button {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.txt-size-normal-medium {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.spanlabel {
+  margin-left: 0.3rem;
+  padding: 0;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 720px) {
+  .table {
+    overflow-x: auto;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .table__head-th,
+  .table__body-td {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  .table__body-tr {
+    border: 3px solid var(--border-color);
+  }
+
+  .button-novo-premio {
+    margin-bottom: 100px;
+  }
+}
+
+.tdcriado{
+  text-align: center;
+}
+
+td{
+  height: 2rem;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #8a909c;
+    color: #fff;
+  }
