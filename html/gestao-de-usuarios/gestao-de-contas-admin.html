@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Usuários</title>
     <link rel="stylesheet" href="../../styles/default.css">
+    <link rel="stylesheet" href="../../styles/gestao-de-contas-admin.css">
     <script src="../../scripts/CONSTANTES.js" type="module" defer></script>
+    <script type="module" src="../../scripts/admin/checar-autentificacao.js" defer></script>
     <script src="../../scripts/admin/gestao-de-contas-admin.js" type="module" defer></script>
     <script type="module" src="../../scripts/header.js" defer> </script>
 </head>
-
 <body>
     <header class="header" id="header">
         <div class="header-button-container">
@@ -19,11 +19,9 @@
             </figure>
             <button id="mobile-participar-button" class="b md  bold"> Participar dos sorteios</button></a>
         </div>
-
         <nav class="header__nav" id="header-nav">
-            <a class="header__nav-a hov__underline header__nav-a-active" href="/">Inicio</a>
-            <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
-                sorteios</a>
+            <a class="header__nav-a hov__underline" href="/">Inicio</a>
+            <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
                 <button id="login" class="b md hov__blue bold"> Participar dos sorteios</button></a>
@@ -36,90 +34,78 @@
                 </div>
             </div>
         </nav>
-
         <div id="modal-nav-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
-                viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
             </svg>
         </div>
-
     </header>
     <main class="main">
         <div class="container">
+
             <h1>Pesquisa de Usuários</h1>
+            <input id="input-pesquisa" type="text" placeholder="Pesquisar usuario">
             <div id="usuarios-container">
-                <table>
-                    <thead>
+                <table class="table">
+                    <thead class="table__head">
                         <tr>
-                            <th>Editar</th>
-                            <th>Nome do Usuário</th>
-                            <th>Criado Por</th>
-                            <th>Criado Em</th>
+                            <th class="table__head-th">Editar</th>
+                            <th class="table__head-th">Nome do Usuário</th>
+                            <th class="table__head-th">Turma</th>
+                            <th class="table__head-th">Criado Em</th>
                         </tr>
                     </thead>
-                    <tbody id="usuarios-tbody">
+                    <tbody id="usuarios-tbody" class="table__body">
                         <!-- Usuários serão carregados aqui -->
                     </tbody>
                 </table>
             </div>
+        </div>
 
-            <div id="editar-usuario-container" style="display:none;">
-                <h2>Dados do Usuário</h2>
-                <form id="editar-usuario-form">
-                    <div>
-                        <label for="nome">Nome</label>
-                        <input type="text" id="nome" disabled>
+        <div id="user-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2 class="txt-size-normal-medium">Dados do Usuário</h2>
+                <form id="editar-usuario-form" class="form">
+                    <fieldset>
+                        <label for="nome">Nome
+                            <input class="i" type="text" id="nome" disabled>
+                        </label>
+                        <label for="data-nascimento">Data de Nascimento
+                            <input class="i" type="date" id="data-nascimento" disabled>
+                        </label>
+                        <label for="cpf">CPF
+                            <input class="i" type="text" id="cpf" disabled>
+                        </label>
+                        <label for="email">Email
+                            <input class="i" type="email" id="email" disabled>
+                        </label>
+                        <label for="tipo-usuario">Tipo de Usuário
+                            <select class="i" id="tipo-usuario">
+                                <option value="USER">Usuário Comum</option>
+                                <option value="ADMIN">Administrador</option>
+                            </select>
+                        </label>
+                    </fieldset>
+                    <div class="button">
+                        <button class="b md hov__blue" type="submit">Salvar</button>
                     </div>
-                    <div>
-                        <label for="data-nascimento">Data de Nascimento</label>
-                        <input type="date" id="data-nascimento" disabled>
-                    </div>
-                    <div>
-                        <label for="cpf">CPF</label>
-                        <input type="text" id="cpf" disabled>
-                    </div>
-                    <div>
-                        <label for="email">Email</label>
-                        <input type="email" id="email" disabled>
-                    </div>
-                    <div>
-                        <label for="tipo-usuario">Tipo de Usuário</label>
-                        <select id="tipo-usuario">
-                            <option value="USER">Usuário Comum</option>
-                            <option value="ADMIN">Administrador</option>
-                        </select>
-                    </div>
-                    <button type="submit">Salvar</button>
                 </form>
             </div>
         </div>
-    </main>
-
-
-
     <footer class="footer txt-size-small">
         <div class="footer__container">
             <nav class="footer__nav">
                 <img class="footer__nav-img" src="../../assets/images/logo/LOGO-TESTE-branco.png" alt="">
                 <div class="nav__container">
                     <a class="footer__link hov__underline" href="#">Inicio</a>
-                    <a class="footer__link hov__underline"
-                        href="./html/gestao-de-sorteios/historico-de-sorteios.html">Historico de
-                        sorteios</a>
-                    <a class="footer__link hov__underline"
-                        href="./html/gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
+                    <a class="footer__link hov__underline" href="./html/gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
+                    <a class="footer__link hov__underline" href="./html/gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
                 </div>
-
             </nav>
             <div class="footer__address-contact">
                 <div class="footer__address">
                     <p>Endereço</p>
-                    <a href="https://maps.app.goo.gl/pH4QidJGmgPX5S2fA" target="_blank"
-                        class="footer__link hov__underline">Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros,
-                        São
-                        Paulo - SP, 05461-010</a>
+                    <a href="https://maps.app.goo.gl/pH4QidJGmgPX5S2fA" target="_blank" class="footer__link hov__underline">Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros, São Paulo - SP, 05461-010</a>
                 </div>
                 <div class="footer__contact">
                     <a href="mailto:contato@grupo.top" class="footer__link hov__underline">contato@grupo.top</a>
@@ -133,7 +119,6 @@
                     <a class="footer__link hov__underline" href="">Instagram</a>
                     <a class="footer__link hov__underline" href="">Youtube</a>
                 </div>
-
             </div>
             <div class="footer__copyright">
                 <div class="rodape-buttom">
@@ -146,7 +131,5 @@
             </div>
         </div>
     </footer>
-
 </body>
-
 </html>

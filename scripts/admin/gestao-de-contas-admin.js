@@ -30,12 +30,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             usuariosTbody.innerHTML = ''; // Limpa o container antes de adicionar novo conteúdo
 
             usuarios.forEach(usuario => {
+                console.log('Usuário:', usuario); // Adicione este log
                 const usuarioRow = document.createElement('tr');
+                usuarioRow.classList.add('rowPesquisa')
 
                 usuarioRow.innerHTML = `
-                    <td><button class="editar-btn" data-id="${usuario.id}">✏️</button></td>
-                    <td>${usuario.nome}</td>
-                    <td>${new Date(usuario.turma.criadoem).toLocaleDateString()}</td>
+                    <td class="tdcriado"><button class="editar-btn" data-email="${usuario.email}">✏️</button></td>
+                    <td class="userName">${usuario.nome}</td>
+                    <td>${usuario.turma ? usuario.turma.nome : 'Nome do criador não especificado'}</td>
+                    <td class="tdcriado">${usuario.turma ? new Date(usuario.turma.criadoem).toLocaleDateString() : 'Data de criação não especificada'}</td>
                 `;
 
                 usuariosTbody.appendChild(usuarioRow);
@@ -48,11 +51,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById('usuarios-tbody').addEventListener('click', async (event) => {
         if (event.target.classList.contains('editar-btn')) {
-            const id = event.target.getAttribute('data-id');
-            console.log('ID do usuário selecionado:', id);
+            const email = event.target.getAttribute('data-email');
+            console.log('Email do usuário selecionado:', email);
+
+            if (!email) {
+                console.error('Email do usuário não encontrado');
+                return;
+            }
 
             try {
-                const url = `${SERVER_NAME}usuarios/obter/${id}`;
+                const url = `${SERVER_NAME}usuarios/obter/${email}`;
                 console.log('URL para obter dados do usuário:', url);
                 const response = await fetch(url, {
                     method: "GET",
@@ -67,14 +75,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
 
                 const usuario = await response.json();
+                console.log('Dados do usuário:', usuario); // Adicione este log
                 document.getElementById('nome').value = usuario.nome;
                 document.getElementById('data-nascimento').value = usuario.datanascimento;
                 document.getElementById('cpf').value = usuario.cpf;
                 document.getElementById('email').value = usuario.email;
                 document.getElementById('tipo-usuario').value = usuario.administrador ? 'ADMIN' : 'USER';
 
-                document.getElementById('editar-usuario-container').style.display = 'block';
-                document.getElementById('editar-usuario-container').setAttribute('data-id', id);
+                // Mostrar modal
+                document.getElementById('user-modal').classList.remove('hidden');
 
             } catch (error) {
                 console.error('Erro ao obter dados do usuário:', error);
@@ -85,13 +94,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('editar-usuario-form').addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        const id = document.getElementById('editar-usuario-container').getAttribute('data-id');
-        console.log('ID do usuário para edição:', id);
+        const email = document.getElementById('email').value;
+        console.log('Email do usuário para edição:', email);
         const tipoUsuario = document.getElementById('tipo-usuario').value;
         const administrador = tipoUsuario === 'ADMIN';
 
         try {
-            const url = `${SERVER_NAME}usuarios/editar/tipo/${id}`;
+            const url = `${SERVER_NAME}usuarios/editar/tipo/${email}`;
             console.log('URL para editar tipo de usuário:', url);
             const response = await fetch(url, {
                 method: "PUT",
@@ -110,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             alert('Usuário atualizado com sucesso!');
-            document.getElementById('editar-usuario-container').style.display = 'none';
+            document.getElementById('user-modal').classList.add('hidden');
             await obterUsuarios();
 
         } catch (error) {
@@ -120,4 +129,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     await obterUsuarios();
+
+    // Fechar modal ao clicar fora dele
+    window.addEventListener('click', (event) => {
+        const modal = document.getElementById('user-modal');
+        if (event.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
 });
+
+const pesquisarUser = () => {
+    const rowPesquisa = document.querySelectorAll('.rowPesquisa')
+    const userName = document.querySelectorAll('.userName')
+    let inputPesquisa = document.getElementById('input-pesquisa').value.toUpperCase()
+
+    for (let i = 0; i < rowPesquisa.length; i++) {
+        if (!userName[i].innerHTML.toUpperCase().includes(inputPesquisa)) {
+            rowPesquisa[i].classList.add('hidden')
+        } else {
+            rowPesquisa[i].classList.remove('hidden')
+        }
+    }
+}
+
+let inputPesquisa = document.getElementById('input-pesquisa')
+inputPesquisa.addEventListener('keyup', () => {
+    pesquisarUser()
+})
