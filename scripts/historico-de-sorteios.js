@@ -1,11 +1,8 @@
 import { get, post } from "./CONSTANTES.js";
 
-
 const sectionHistoricoSorteios = document.querySelector("#historico-sorteios");
-
 const containerTurmas = document.querySelector("#container-turmas");
-
-
+let turmasSelecionadas = new Array();
 
 const obterHistorico = async function () {
   const request = await get("sorteios/historico-sorteio", true);
@@ -41,36 +38,35 @@ const criarCardHistorico = function (historico) {
   historicoTexto.appendChild(premioNome);
 
   const sorteadoEm = document.createElement("p");
-  sorteadoEm.textContent = historico.sorteadoEm;
+  sorteadoEm.innerHTML = `<span class="bold txt-size-normal">Data: </span>${historico.sorteadoEm.split("T")[0]}`;
   sorteadoEm.classList.add("txt-size-small");
   historicoTexto.appendChild(sorteadoEm);
 
   const ganhadorNome = document.createElement("p");
-  ganhadorNome.textContent = historico.ganhadorNome;
+  ganhadorNome.innerHTML = `<span class="bold txt-size-normal">Nome: </span>${historico.ganhadorNome}`;
   ganhadorNome.classList.add("txt-size-small");
   historicoTexto.appendChild(ganhadorNome);
 
   const turmaNome = document.createElement("p");
-  turmaNome.textContent = historico.turmaNome;
+  turmaNome.innerHTML = `<span class="bold txt-size-normal">Turma: </span>${historico.turmaNome}`;
   turmaNome.classList.add("txt-size-small");
   historicoTexto.appendChild(turmaNome);
 
   const marcaNome = document.createElement("p");
-  marcaNome.textContent = historico.marcaNome;
+  marcaNome.innerHTML = `<span class="bold txt-size-normal">Marca: </span>${historico.marcaNome}`;
   marcaNome.classList.add("txt-size-small");
   historicoTexto.appendChild(marcaNome);
 
   const premioSku = document.createElement("p");
-  premioSku.textContent = historico.premioSku;
+  premioSku.innerHTML = `<span class="bold txt-size-normal">SKU: </span>${historico.premioSku}`;
   premioSku.classList.add("txt-size-small");
   historicoTexto.appendChild(premioSku);
 
   const premioDescricao = document.createElement("p");
-  premioDescricao.textContent = historico.premioDescricao;
+  premioDescricao.innerHTML = `<span class="bold txt-size-normal">Descrição: </span>${historico.premioDescricao}`;
   premioDescricao.classList.add("txt-size-small");
   historicoTexto.appendChild(premioDescricao);
 };
-
 
 const obterFiltroTurmas = async function () {
   const request = await get("turmas/obter", true);
@@ -81,8 +77,6 @@ const obterFiltroTurmas = async function () {
   });
 };
 
-let turmasSelecionadas = new Array();
-
 const criarFiltroDeTurmas = function (turma) {
   const sectionTurmas = document.createElement("div");
   sectionTurmas.classList.add("lines-turmas");
@@ -91,37 +85,36 @@ const criarFiltroDeTurmas = function (turma) {
 
   const inputTurma = document.createElement("input");
   inputTurma.type = "checkbox";
-  inputTurma.id = "checkbox-turma";
+  inputTurma.id = turma.nome;
   inputTurma.name = "turmas";
   inputTurma.value = turma.nome;
   inputTurma.classList.add("checkbox-turma");
   inputTurma.addEventListener("click", () => {
-      buscarTurma();
-  })
+    buscarTurma();
+  });
   sectionTurmas.appendChild(inputTurma);
-  
+
   const h4Text = document.createElement("label");
-  h4Text.htmlFor = "checkbox-turma";
+  h4Text.htmlFor = turma.nome;
   h4Text.textContent = turma.nome;
   sectionTurmas.appendChild(h4Text);
 };
 
-
 const buscarTurma = async function () {
- 
   await testando();
-  
+
   const request = await post(
     "/sorteios/historico-sorteio/obter/lista-de-turmas",
-    {turmas: turmasSelecionadas},
+    { turmas: turmasSelecionadas },
     "json"
   );
 
   const response = await request.json();
 
-  if(request.json == null){
+  if (request.json == null) {
     sectionHistoricoSorteios.innerHTML = "";
-    sectionHistoricoSorteios.innerHTML = "<h2>Parece que essa turma não existe :(</h2>";
+    sectionHistoricoSorteios.innerHTML =
+      "<h2>Parece que essa turma não existe :(</h2>";
   }
 
   if (request.status == 200) {
@@ -132,31 +125,36 @@ const buscarTurma = async function () {
     });
   } else {
     sectionHistoricoSorteios.innerHTML = "";
-    sectionHistoricoSorteios.innerHTML = "<h2>Parece que essa turma não existe :(</h2>";
+    sectionHistoricoSorteios.innerHTML =
+      "<h2>Parece que essa turma não existe :(</h2>";
   }
 };
 
+document.querySelector("#filtrar-icon").addEventListener("click", () => {
+  document.querySelector("#filtrar").style.display = "block";
+  document.querySelector("#fechar-filtrar-icon svg").style.display = "block";
+});
 
-document.querySelector("#filtrar-icon").addEventListener("click", ()=>{
+document.querySelector("#fechar-filtrar-icon").addEventListener("click", () => {
+  document.querySelector("#filtrar").style.display = "none";
+});
 
-
-})
-
-const testando = async function (){
+const testando = async function () {
   let turmas = document.getElementsByName("turmas");
 
-  const checkedValues = Array.from(turmas).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+  const checkedValues = Array.from(turmas)
+    .filter((checkbox) => checkbox.checked)
+    .map((checkbox) => checkbox.value);
 
   if (checkedValues.length === 0) {
     obterHistorico();
     return;
   }
 
-  if(checkedValues.length > 0){
-    turmasSelecionadas = checkedValues
+  if (checkedValues.length > 0) {
+    turmasSelecionadas = checkedValues;
   }
-  
-}
+};
 
 window.addEventListener("load", () => {
   obterHistorico();

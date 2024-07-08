@@ -11,6 +11,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
+  margin: 0 0 4rem 0;
 }
 
 .section-historico {
@@ -41,6 +42,9 @@
 }
 
 .historico__title {
+  color: var(--blue);
+  font-size: 2rem;
+  margin: 1rem 0;
 }
 
 #historico-sorteios {
@@ -94,6 +98,13 @@
   align-items: center;
 }
 
+#fechar-filtrar-icon svg {
+  display: none;
+  height: 2rem;
+  width: 2rem;
+  margin-left: auto;
+}
+
 @media (max-width: 768px) {
   .historico-titulo-filtro {
     grid-column: 1/-1;
@@ -101,6 +112,20 @@
 
   #filtrar {
     display: none;
+    border: none;
+    border-radius: 0;
+    position: fixed;
+    z-index: 2;
+    overflow-y: scroll;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: var(--bg-blue, darkblue);
+    color: var(--text-color-alt, white);
   }
 
   #filtrar-icon {
