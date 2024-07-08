@@ -32,10 +32,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             usuarios.forEach(usuario => {
                 console.log('Usuário:', usuario); // Adicione este log
                 const usuarioRow = document.createElement('tr');
+                usuarioRow.classList.add('rowPesquisa')
 
                 usuarioRow.innerHTML = `
                     <td class="tdcriado"><button class="editar-btn" data-email="${usuario.email}">✏️</button></td>
-                    <td>${usuario.nome}</td>
+                    <td class="userName">${usuario.nome}</td>
                     <td>${usuario.turma ? usuario.turma.nome : 'Nome do criador não especificado'}</td>
                     <td class="tdcriado">${usuario.turma ? new Date(usuario.turma.criadoem).toLocaleDateString() : 'Data de criação não especificada'}</td>
                 `;
@@ -137,3 +138,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 });
+
+const pesquisarUser = () => {
+    const rowPesquisa = document.querySelectorAll('.rowPesquisa')
+    const userName = document.querySelectorAll('.userName')
+    let inputPesquisa = document.getElementById('input-pesquisa').value.toUpperCase()
+
+    for (let i = 0; i < rowPesquisa.length; i++) {
+        if (!userName[i].innerHTML.toUpperCase().includes(inputPesquisa)) {
+            rowPesquisa[i].classList.add('hidden')
+        } else {
+            rowPesquisa[i].classList.remove('hidden')
+        }
+    }
+}
+
+let inputPesquisa = document.getElementById('input-pesquisa')
+inputPesquisa.addEventListener('keyup', () => {
+    pesquisarUser()
+})

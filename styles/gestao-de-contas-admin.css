@@ -13,6 +13,18 @@
   align-items: center;
 }
 
+#input-pesquisa {
+  width: 280px;
+  height: 32px;
+  border-radius: 10px;
+  padding-left: 10px;
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-background-color);
+  outline: none;
+  margin: 10px 0 5px 0;
+}
+
 .modal-content {
   background-color: var(--white);
   border-radius: 50px;
@@ -29,7 +41,8 @@
 /* Restante do CSS específico para a página */
 .container {
   display: flex;
-  margin: 20px auto 500px auto; /* Ajuste conforme necessário */
+  margin: 20px auto 500px auto;
+  /* Ajuste conforme necessário */
   border-radius: 50px;
   flex-direction: column;
   justify-content: center;
@@ -61,7 +74,7 @@
   color: var(--white);
 }
 
-.table__body{
+.table__body {
   padding: 1rem;
 }
 
@@ -140,15 +153,15 @@ label {
   }
 }
 
-.tdcriado{
+.tdcriado {
   text-align: center;
 }
 
-td{
+td {
   height: 2rem;
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #8a909c;
-    color: #fff;
-  }
+  background-color: #8a909c;
+  color: #fff;
+}
