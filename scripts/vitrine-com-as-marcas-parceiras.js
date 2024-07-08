@@ -48,23 +48,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById('participar-btn').addEventListener('click', async () => {
         try {
-            const url = "https://modulo-sorteios.azurewebsites.net/usuarios/sorteio/participar";
+            const url = `${SERVER_NAME}usuarios/sorteio/participar`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    email: email // Enviando o e-mail do usuário como parâmetro
-                })
+                body: JSON.stringify({ email })
             });
 
             if (!response.ok) {
+                const errorResponse = await response.json();
+                console.error('Erro do servidor:', errorResponse);
                 throw new Error('Falha ao participar do sorteio');
             }
 
             const data = await response.json();
+            console.log('Resposta do servidor:', data);
             alert('Participação no sorteio realizada com sucesso!');
 
         } catch (error) {
