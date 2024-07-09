@@ -3,12 +3,6 @@ import { SERVER_NAME } from '../CONSTANTES.js';
 document.addEventListener('DOMContentLoaded', async () => {
     const token = sessionStorage.getItem("token");
 
-    if (!token) {
-        alert('Usuário não autenticado');
-        window.location.assign('../login.html');
-        return;
-    }
-
     async function obterUsuarios() {
         try {
             const url = `${SERVER_NAME}usuarios/obter`;

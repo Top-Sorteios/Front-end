@@ -17,8 +17,6 @@ input:-webkit-autofill {
   height: 60px;
 }
 
-
-
 .form__fieldset {
   display: flex;
   border: 2px solid lightgray;
@@ -42,7 +40,7 @@ input:-webkit-autofill {
   flex-direction: column;
   gap: 0.2rem 0;
   width: 50%;
-  font-size: 1.0rem;
+  font-size: 1rem;
   color: var(--black);
 }
 
@@ -59,7 +57,13 @@ input:-webkit-autofill {
 
 .first-access {
   font-size: 1.2rem;
-  text-align: center;
+  border: 1px solid lightgray;
+  width: 217px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.5rem;
 }
 
 @media (max-width: 720px) {

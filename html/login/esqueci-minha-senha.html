@@ -8,22 +8,56 @@
     <link rel="stylesheet" href="../../styles/default.css">
     <link rel="stylesheet" href="../../styles/esqueci-minha-senha.css">
     <script src="../../scripts/esqueci-minha-senha.js" type="module" defer></script>
+    <script src="../../scripts/header.js" type="module" defer></script>
 
 </head>
 
 <body>
+    <header class="header" id="header">
+        <div class="header-button-container">
+            <figure class="header__figure">
+                <a href="/">
+                    <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png"
+                        alt="logo do sorteio top">
+                </a>
+            </figure>
+            <button id="mobile-participar-button" class="b md  bold"> Participar dos sorteios</button></a>
+        </div>
 
-    <header class="header">
-        <a href="../home/inicio.html"><img src="../../assets/images/logo/LOGO-TESTE.png" alt=""></a>
+        <nav class="header__nav" id="header-nav">
+            <a class="header__nav-a hov__underline header__nav-a-active" href="/">Inicio</a>
+            <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de
+                sorteios</a>
+            <a class="header__nav-a hov__underline" href="../gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
+            <a class="header__nav-a hov__underline" href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
+                <button id="login" class="b md hov__blue bold"> Participar dos sorteios</button></a>
+            <div class="header__nav-dropdown" id="nav-dropdown">
+                <button class="header__nav-dropbtn" id="username">User</button>
+                <div class="header__nav-dropdown-content">
+                    <a id="admin-area" class="hidden" href="../home/inicio-admin.html">Administrador</a>
+                    <a href="../gestao-de-usuarios/alterar-senha.html">Alterar Senha</a>
+                    <a href="" id="sair">Sair</a>
+                </div>
+            </div>
+        </nav>
+
+        <div id="modal-nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+            </svg>
+        </div>
+
     </header>
 
-    <main>
+    <main class="main">
         <form id="form-esqueci-senha" action="">
             <fieldset>
                 <h2>Esqueci minha senha</h2>
                 <label for="email" title="Digite o seu email">E-mail
-                <input class="i" type="email" name="email" id="email">
-            </label>
+                    <input class="i" type="email" name="email" id="email">
+                </label>
                 <button class="sm b hov__blue" type="submit">Enviar</button>
             </fieldset>
         </form>

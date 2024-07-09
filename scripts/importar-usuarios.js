@@ -33,13 +33,16 @@ const importarUsuarios = async function () {
     resultadosSection.classList.add("right");
     resultadosTexto.textContent = "Usuários importados com sucesso.";
   } else if (request.status === 400){
+    resultadosSection.classList.remove("right");
     resultadosSection.classList.add("wrong");
     resultadosTexto.textContent = "Seu arquivo não segue o padrão necessário para importação."
-    } else if (request.status === 500){
-    resultadosSection.classList.add("wrong");
-    resultadosTexto.textContent = "O servidor pode estar indisponível. Entre em contato com o suporte ou tente novamente mais tarde."
+  } else if (request.status === 500){
+      resultadosSection.classList.remove("right");
+      resultadosSection.classList.add("wrong");
+      resultadosTexto.textContent = "O servidor pode estar indisponível. Entre em contato com o suporte ou tente novamente mais tarde."
     } else {
-    resultadosSection.classList.add("wrong");
+      resultadosSection.classList.remove("right");
+      resultadosSection.classList.add("wrong");
     resultadosTexto.textContent = "Erro desconhecido. Entre em contato com o suporte."
     }
   }

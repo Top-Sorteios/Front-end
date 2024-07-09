@@ -4,33 +4,11 @@ input:-webkit-autofill {
   background-color: inherit;
 }
 
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  width: 100%;
-}
-
-.header img {
-  width: 400px;
-  height: 60px;
-}
-
-.main {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  width: max-content;
-  flex-direction: column;
-}
-
 .form__fieldset {
   display: flex;
-  border: 2px solid lightgray;
+  border: none;
   margin: 20px auto 100px auto;
   padding: 30px;
-  width: 50%;
   height: 710px;
   border-radius: 50px;
   flex-direction: column;
@@ -48,10 +26,14 @@ input:-webkit-autofill {
   flex-direction: column;
   gap: 0.2rem 0;
   width: 50%;
-  font-size: 1.0rem;
+  font-size: 1rem;
   color: var(--black);
 }
 
-span{
-  padding-bottom: 16px;
+.form__label input {
+  width: 100%;
+}
+
+span {
+  padding-bottom: 1rem;
 }
