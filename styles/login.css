@@ -4,19 +4,6 @@ input:-webkit-autofill {
   background-color: inherit;
 }
 
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  width: 100%;
-}
-
-.header img {
-  width: 400px;
-  height: 60px;
-}
-
 .form__fieldset {
   display: flex;
   border: 2px solid lightgray;
@@ -66,13 +53,14 @@ input:-webkit-autofill {
   border-radius: 1.5rem;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 760px) {
   main {
     margin-bottom: 150px;
   }
 
   .form__fieldset {
     width: 90%;
+    border: none;
   }
 
   .form__label {
