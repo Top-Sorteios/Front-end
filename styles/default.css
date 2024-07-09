@@ -118,7 +118,7 @@ body {
 
 .section__h2 {
   color: var(--link-selected);
-  padding: 4rem;
+  padding: 2.50rem 0 ;
   text-align: center;
 }
 

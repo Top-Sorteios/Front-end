@@ -8,7 +8,9 @@ const obterMarcasParceiras = async function () {
     const response = await request.json();
 
     response.forEach((marca) => {
+      const figureLogo = document.createElement("figure");
       const marcaLogo = document.createElement("img");
+      figureLogo.appendChild(marcaLogo);
       marcaLogo.setAttribute(
         "src",
         marca.logo != null
@@ -17,7 +19,7 @@ const obterMarcasParceiras = async function () {
       );
       marcaLogo.setAttribute("alt", marca.nome);
       marcaLogo.setAttribute("title",`Logo da ${marca.nome}`);
-      marcasParceirasDiv.appendChild(marcaLogo);
+      marcasParceirasDiv.appendChild(figureLogo);
       console.log(marca.logo);
 
       marcaLogo.addEventListener("error", ()=>{
