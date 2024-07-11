@@ -4,11 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const token = sessionStorage.getItem("token");
   const email = sessionStorage.getItem("email");
 
-  if (!token || !email) {
-    alert("Usuário não autenticado");
-    window.location.assign("../login/index.html");
-    return;
-  }
+
 
   try {
     const url = `${SERVER_NAME}usuarios/obter/${email}`;

@@ -7,8 +7,8 @@
     <title>Área administrativa</title>
     <link rel="stylesheet" href="../../styles/default.css">
     <link rel="stylesheet" href="../../styles/header.css">
-
     <link rel="stylesheet" href="../../styles/inicio-admin.css">
+
     <script type="module" src="../../scripts/admin/checar-autentificacao.js" defer></script>
     <script type="module" src="../../../scripts/inicio-admin.js" defer></script>
     <script type="module" src="../../scripts/header.js" defer></script>
@@ -19,9 +19,10 @@
 
     <header class="header" id="header">
         <div class="header-button-container">
- <figure class="header__figure">
+            <figure class="header__figure">
                 <a href="/">
-                    <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png" alt="logo do sorteio top">
+                    <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png"
+                        alt="logo do sorteio top">
                 </a>
             </figure>
             <button id="mobile-participar-button" class="b md  bold"> Participar dos sorteios</button></a>
@@ -29,7 +30,8 @@
 
         <nav class="header__nav" id="header-nav">
             <a class="header__nav-a hov__underline header__nav-a-active" href="/">Inicio</a>
-            <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Histórico</a>
+            <a class="header__nav-a hov__underline"
+                href="../gestao-de-sorteios/historico-de-sorteios.html">Histórico</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
                 <button id="login" class="b md hov__blue bold"> Participar dos sorteios</button></a>
@@ -55,48 +57,87 @@
 
 
     <main class="main">
-        <h1 class="title_area_adm">Área administrativa</h1>
-        <div class="area_admin">
-            <div class="row">
-                <h2 class="section_image"><a href="../gestao-de-usuarios/importar-usuarios.html"><img
-                            src="/assets/images/icons/carga-de-usuarios.svg" alt="Carga de usuários"></a></h2>
-                <h2 class="section_image"><a href="../gestao-de-usuarios/gestao-de-contas-admin.html"><img
-                            src="/assets/images/icons/gestao-de-contas.svg" alt="Gestão de contas"></a></h2>
-            </div>
-            <div class="row">
-                <h2 class="section__title"><a href="../gestao-de-usuarios/importar-usuarios.html">Carga de usuários</a>
-                </h2>
-                <h2 class="section__title"><a href="../gestao-de-usuarios/gestao-de-contas-admin.html">Gestão de
-                        contas</a></h2>
-            </div>
-            <div class="row">
-                <h2 class="section_image"><a href="../gestao-de-premios/premios-da-semana.html"><img
-                            src="/assets/images/icons/cadastrar premios.svg" alt="Cadastrar prêmios"></a></h2>
-                <h2 class="section_image"><a href="../gestao-de-sorteios/gestao-de-sorteios.html"><img
-                            src="/assets/images/icons/sorteios-semanais.svg" alt="Sorteios semanais"></a></h2>
-            </div>
-            <div class="row">
-                <h2 class="section__title"><a href="../gestao-de-premios/premios-da-semana.html">Cadastrar prêmios</a>
-                </h2>
-                <h2 class="section__title"><a href="../gestao-de-sorteios/gestao-de-sorteios.html">Sorteios semanais</a>
-                </h2>
-            </div>
+        <section class="section__admin">
+            <h1 class="title_area_adm">Área administrativa</h1>
+            <ul>
+                <span>
+                    <a href="../gestao-de-sorteios/gestao-de-sorteios.html">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-trophy" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935M3.504 1q.01.775.056 1.469c.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.5.5 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667q.045-.694.056-1.469z" />
+                            </svg>
+                            Sorteios
+                        </li>
+                    </a>
+                </span>
 
-            <div class="row">
-                <h2 class="section_image"><a href="../gestao-de-marcas/marcas-cadastradas.html"><img
-                            src="/assets/images/icons/gerenciamento-de-marcas.svg" alt="Cadastrar prêmios"></a></h2>
-                <h2 class="section_image"><a href="../gestao-dos-destaques/destaques-cadastradas.html"><img
-                            src="/assets/images/icons/gerenciamento-de-destaques.svg" alt="Sorteios semanais"></a></h2>
-            </div>
-            <div class="row">
-                <h2 class="section__title"><a href="../gestao-de-marcas/marcas-cadastradas.html">Gerenciamento de
-                        marcas</a>
-                </h2>
-                <h2 class="section__title"><a href="../gestao-dos-destaques/destaques-cadastradas.html">Gerenciamento
-                        destaques</a>
-                </h2>
-            </div>
-        </div>
+                <span>
+                    <a href="../gestao-de-premios/premios-da-semana.html">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-gift" viewBox="0 0 16 16">
+                                <path
+                                    d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A3 3 0 0 1 3 2.506zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43zM9 3h2.932l.023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0zM1 4v2h6V4zm8 0v2h6V4zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5z" />
+                            </svg>
+                            Prêmios
+                        </li>
+                    </a>
+                </span>
+                <span>
+                    <a href="../gestao-de-marcas/marcas-cadastradas.html">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-bag" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                            </svg>
+                            Marcas parceiras
+                        </li>
+                    </a>
+                </span>
+                <span>
+                    <a href="../gestao-dos-destaques/destaques-cadastradas.html">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-image" viewBox="0 0 16 16">
+                                <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                                <path
+                                    d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1z" />
+                            </svg>
+                            Imagens em destaque
+                        </li>
+                    </a>
+                </span>
+                <span>
+                    <a href="../gestao-de-usuarios/importar-usuarios.html">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-upload" viewBox="0 0 16 16">
+                                <path
+                                    d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                                <path
+                                    d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z" />
+                            </svg>
+                            Carga de usuários
+                        </li>
+                    </a>
+                </span>
+                <span>
+                    <a href="../gestao-de-usuarios/gestao-de-contas-admin.html">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-people" viewBox="0 0 16 16">
+                                <path
+                                    d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4" />
+                            </svg>
+                            Gestão de contas
+                        </li>
+                    </a>
+                </span>
+            </ul>
+        </section>
     </main>
 
     <footer class="footer txt-size-small">
@@ -131,9 +172,10 @@
             <div class="footer__social-media">
                 <p class="footer__social-media-p">Redes Sociais</p>
                 <div class="footer-social-media-container">
-                    <a class="footer__link hov__underline" href="">TikTok</a>
-                    <a class="footer__link hov__underline" href="">Instagram</a>
-                    <a class="footer__link hov__underline" href="">Youtube</a>
+                    <a class="footer__link hov__underline" href="https://www.instagram.com/grupotopoficial/"
+                        target="_blank">Instagram</a>
+                    <a class="footer__link hov__underline" href="https://www.youtube.com/@GrupoTOPOficial"
+                        target="_blank">Youtube</a>
                 </div>
 
             </div>
@@ -141,10 +183,10 @@
                 <div class="rodape-buttom">
                     <a href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
 
-                                            <a href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
+                        <a href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
 
-                        <button class="b md hov__white footer__button">Participe dos Sorteios</button>
-                    </a>
+                            <button class="b md hov__white footer__button">Participe dos Sorteios</button>
+                        </a>
                     </a>
                 </div>
                 <div class="rodape-inf-empresa">

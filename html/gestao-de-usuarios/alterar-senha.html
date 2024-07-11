@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,17 +12,26 @@
     <script src="../../scripts/header.js" type="module" defer></script>
 
 </head>
+
 <body>
 
-    <header class="header">
-        <figure class="header__figure">
-            <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png" alt="logo do sorteio top">
-        </figure>
-        <nav class="header__nav">
-            <a class="header__nav-a hov__underline" href="/index.html">Inicio</a>
-            <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Histórico</a>
+    <header class="header" id="header">
+        <div class="header-button-container">
+            <figure class="header__figure">
+                <a href="/">
+                    <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png"
+                        alt="logo do sorteio top">
+                </a>
+            </figure>
+            <button id="mobile-participar-button" class="b md  bold"> Participar dos sorteios</button></a>
+        </div>
+
+        <nav class="header__nav" id="header-nav">
+            <a class="header__nav-a hov__underline header__nav-a-active" href="/">Inicio</a>
+            <a class="header__nav-a hov__underline"
+                href="../gestao-de-sorteios/historico-de-sorteios.html">Histórico</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
-            <a class="header__nav-a hov__underline" href="">
+            <a class="header__nav-a hov__underline" href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
                 <button id="login" class="b md hov__blue bold"> Participar dos sorteios</button></a>
             <div class="header__nav-dropdown" id="nav-dropdown">
                 <button class="header__nav-dropbtn" id="username">User</button>
@@ -32,58 +42,66 @@
                 </div>
             </div>
         </nav>
-    </header>
 
+        <div id="modal-nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+            </svg>
+        </div>
+
+    </header>
     <main class="main">
-        
-    <div class="container">
-        <form class="form" id="form-troca-senha">
-            <fieldset class="fieldset_form">
-                <h2 class="txt-size-normal-medium">Meus dados</h2>
-                <div class="dl">
-                    <label class="txt-size-normal"><span class="spanlabel">Turma</span>
-                    <input class="i" type="text" id="nome" placeholder="nome" disabled>
-                    </label>
-                </div>
-                <div class="dl">
-                    <label class="txt-size-normal"><span class="spanlabel">Data de nascimento</span>
-                    <input class="i" type="date" id="data-nascimento" placeholder="data" disabled>
-                    </label>
-                </div>
-                <div class="dl">
-                    <label class="txt-size-normal"><span class="spanlabel">CPF</span>
-                        <input class="i" type="number" id="cpf" placeholder="000.000.000-00" disabled>
-                    </label>
-                </div>
-                <div class="dl">
-                    <label class="txt-size-normal"><span class="spanlabel">Email</span>
-                        <input class="i" type="email" id="email" placeholder="exemplo@gmail.com" disabled>
-                    </label>
-                </div>
-                <div class="dl">
-                    <label class="txt-size-normal"><span class="spanlabel">Turma</span>
-                        <input class="i" type="text" id="turma" placeholder="ads3nc" disabled>
-                    </label>
-                </div>
-                <div class="dl">
-                    <label class="txt-size-normal"><span class="spanlabel">Senha atual</span>
-                        <input class="i" type="password" id="senha-atual" required>
-                    </label>
-                </div>
-                <div class="dl">
-                    <label class="txt-size-normal"><span class="spanlabel">Nova senha</span>
-                        <input class="i" type="password" id="nova-senha" required>
-                    </label>
-                </div>
-                <div class="button">
-                    <button id="submit" class="b md hov__blue">Salvar</button>
-                </div>
-                <div class="button">
-                    <button id="cancel" class="b md hov__black button_wrong">Cancelar</button>
-                </div>
-            </fieldset>
-        </form> 
-    </div>
+
+        <div class="container">
+            <form class="form" id="form-troca-senha">
+                <fieldset class="fieldset_form">
+                    <h2 class="txt-size-normal-medium">Meus dados</h2>
+                    <div class="dl">
+                        <label class="txt-size-normal"><span class="spanlabel">Turma</span>
+                            <input class="i" type="text" id="nome" placeholder="nome" disabled>
+                        </label>
+                    </div>
+                    <div class="dl">
+                        <label class="txt-size-normal"><span class="spanlabel">Data de nascimento</span>
+                            <input class="i" type="date" id="data-nascimento" placeholder="data" disabled>
+                        </label>
+                    </div>
+                    <div class="dl">
+                        <label class="txt-size-normal"><span class="spanlabel">CPF</span>
+                            <input class="i" type="number" id="cpf" placeholder="000.000.000-00" disabled>
+                        </label>
+                    </div>
+                    <div class="dl">
+                        <label class="txt-size-normal"><span class="spanlabel">Email</span>
+                            <input class="i" type="email" id="email" placeholder="exemplo@gmail.com" disabled>
+                        </label>
+                    </div>
+                    <div class="dl">
+                        <label class="txt-size-normal"><span class="spanlabel">Turma</span>
+                            <input class="i" type="text" id="turma" placeholder="ads3nc" disabled>
+                        </label>
+                    </div>
+                    <div class="dl">
+                        <label class="txt-size-normal"><span class="spanlabel">Senha atual</span>
+                            <input class="i" type="password" id="senha-atual" required>
+                        </label>
+                    </div>
+                    <div class="dl">
+                        <label class="txt-size-normal"><span class="spanlabel">Nova senha</span>
+                            <input class="i" type="password" id="nova-senha" required>
+                        </label>
+                    </div>
+                    <div class="button">
+                        <button id="submit" class="b md hov__blue">Salvar</button>
+                    </div>
+                    <div class="button">
+                        <button id="cancel" class="b md hov__black button_wrong">Cancelar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </main>
 
     <footer class="footer txt-size-small">
@@ -113,14 +131,15 @@
             <div class="footer__social-media">
                 <p class="footer__social-media-p">Redes Sociais</p>
                 <div class="footer-social-media-container">
-                    <a class="footer__link hov__underline" href="">TikTok</a>
-                    <a class="footer__link hov__underline" href="">Instagram</a>
-                    <a class="footer__link hov__underline" href="">Youtube</a>
+                    <a class="footer__link hov__underline" href="https://www.instagram.com/grupotopoficial/"
+                        target="_blank">Instagram</a>
+                    <a class="footer__link hov__underline" href="https://www.youtube.com/@GrupoTOPOficial"
+                        target="_blank">Youtube</a>
                 </div>
             </div>
             <div class="footer__copyright">
                 <div class="rodape-buttom">
-                                        <a href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
+                    <a href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
 
                         <button class="b md hov__white footer__button">Participe dos Sorteios</button>
                     </a>
@@ -132,6 +151,7 @@
             </div>
         </div>
     </footer>
-    
+
 </body>
+
 </html>
