@@ -20,6 +20,7 @@ const importarUsuarios = async function () {
     formFieldset.classList.add('wrong')
     textoError.innerText = 'Insira um arquivo CSV'
   } else {
+    document.body.style.cursor = "wait";
 
   const request = await fetch(url, {
     method: "POST",
@@ -28,6 +29,8 @@ const importarUsuarios = async function () {
       Authorization: `Bearer ${sessionStorage.getItem("token")}`,
     },
   });
+
+
   
   if (request.status == 201) {
     resultadosSection.classList.add("right");
@@ -45,6 +48,8 @@ const importarUsuarios = async function () {
       resultadosSection.classList.add("wrong");
     resultadosTexto.textContent = "Erro desconhecido. Entre em contato com o suporte."
     }
+    document.body.style.cursor = "auto";
+
   }
 
   // const response = await request.json();
