@@ -11,14 +11,14 @@ const textoError = document.querySelector('.wrong-text')
 const importarUsuarios = async function () {
   limarError()
   let url = `${SERVER_NAME}usuarios/importar-usuario`;
-  const arquivo = document.querySelector("#importar-csv").files[0];
+  const arquivo = document.querySelector("#importar-xlsx").files[0];
   const formData = new FormData();
   formData.append("file", arquivo);
   formData.append("email_autenticado", EMAIL);
 
   if (arquivo == null) {
     formFieldset.classList.add('wrong')
-    textoError.innerText = 'Insira um arquivo CSV'
+    textoError.innerText = 'Insira um arquivo XLSX'
   } else {
     document.body.style.cursor = "wait";
 
