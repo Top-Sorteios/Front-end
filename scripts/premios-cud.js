@@ -13,7 +13,7 @@ import {
 const titulo = document.querySelector("#titulo");
 const legend = document.querySelector("#form-legend");
 const buttonSalvarEditar = document.querySelector("#enviar");
-const textoError = document.querySelectorAll('.wrong-text')
+const textoError = document.querySelectorAll(".wrong-text");
 
 const form = document.querySelector("#form");
 const formFieldset = document.querySelector("#form-fieldset");
@@ -70,16 +70,15 @@ const definirCampos = function (premio) {
   buttonSalvarEditar.textContent = "Salvar alterações";
 
   const buttonDeletar = document.createElement("button");
-  buttonDeletar.classList.add('md')
-  buttonDeletar.classList.add('b')
-  buttonDeletar.classList.add('button_wrong')
-  buttonDeletar.style.margin = '0 auto'
+  buttonDeletar.classList.add("md");
+  buttonDeletar.classList.add("b");
+  buttonDeletar.classList.add("button_wrong");
+  buttonDeletar.style.margin = "0 auto";
 
   buttonDeletar.textContent = "Deletar prêmio";
   buttonDeletar.addEventListener("click", (event) => {
     event.preventDefault();
     removerPremio();
-    window.location.replace("./premios-da-semana.html");
   });
   formFieldset.appendChild(buttonDeletar);
 };
@@ -104,29 +103,28 @@ const obterMarcasSelect = async function () {
 };
 
 const cadastrarPremio = async function () {
-  removerError()
-  let options = document.querySelectorAll('option')
+  removerError();
+  let options = document.querySelectorAll("option");
   if (options[0].selected) {
-    textoError[0].innerText = 'Selecione a marca'
-    marcaId.focus()
-  } else if (nome.value == '') {
-    nome.classList.add('wrong')
-    textoError[1].innerText = 'Insira o nome do prêmio'
-    nome.focus()
-  } else if (codigoSku.value == '') {
-    codigoSku.classList.add('wrong')
-    textoError[2].innerText = 'Insira o código sku'
-    codigoSku.focus()
-  } else if (descricao.value == '') {
-    descricao.classList.add('wrong')
-    textoError[3].innerText = 'Digite a descrição'
-    descricao.focus()
-  } else if (quantidade.value == '') {
-    quantidade.classList.add('wrong')
-    textoError[4].innerText = 'Digite a quantidade'
-    quantidade.focus()
+    textoError[0].innerText = "Selecione a marca";
+    marcaId.focus();
+  } else if (nome.value == "") {
+    nome.classList.add("wrong");
+    textoError[1].innerText = "Insira o nome do prêmio";
+    nome.focus();
+  } else if (codigoSku.value == "") {
+    codigoSku.classList.add("wrong");
+    textoError[2].innerText = "Insira o código sku";
+    codigoSku.focus();
+  } else if (descricao.value == "") {
+    descricao.classList.add("wrong");
+    textoError[3].innerText = "Digite a descrição";
+    descricao.focus();
+  } else if (quantidade.value == "") {
+    quantidade.classList.add("wrong");
+    textoError[4].innerText = "Digite a quantidade";
+    quantidade.focus();
   } else {
-
     let url = `${SERVER_NAME}premios/registrar`;
     const formData = new FormData();
     formData.append("nome", nome.value);
@@ -154,25 +152,24 @@ const cadastrarPremio = async function () {
 };
 
 const editarPremio = async function () {
-  removerError()
-  if (nome.value == '') {
-    nome.classList.add('wrong')
-    textoError[1].innerText = 'Insira o nome do prêmio'
-    nome.focus()
-  } else if (codigoSku.value == '') {
-    codigoSku.classList.add('wrong')
-    textoError[2].innerText = 'Insira o código sku'
-    codigoSku.focus()
-  } else if (descricao.value == '') {
-    descricao.classList.add('wrong')
-    textoError[3].innerText = 'Digite a descrição'
-    descricao.focus()
-  } else if (quantidade.value == '') {
-    quantidade.classList.add('wrong')
-    textoError[4].innerText = 'Digite a quantidade'
-    quantidade.focus()
+  removerError();
+  if (nome.value == "") {
+    nome.classList.add("wrong");
+    textoError[1].innerText = "Insira o nome do prêmio";
+    nome.focus();
+  } else if (codigoSku.value == "") {
+    codigoSku.classList.add("wrong");
+    textoError[2].innerText = "Insira o código sku";
+    codigoSku.focus();
+  } else if (descricao.value == "") {
+    descricao.classList.add("wrong");
+    textoError[3].innerText = "Digite a descrição";
+    descricao.focus();
+  } else if (quantidade.value == "") {
+    quantidade.classList.add("wrong");
+    textoError[4].innerText = "Digite a quantidade";
+    quantidade.focus();
   } else {
-
     const formData = new FormData();
     formData.append("nome", nome.value);
     formData.append("codigoSku", codigoSku.value);
@@ -200,16 +197,16 @@ const editarPremio = async function () {
 };
 
 const removerError = function () {
-  nome.classList.remove('wrong')
-  codigoSku.classList.remove('wrong')
-  descricao.classList.remove('wrong')
-  quantidade.classList.remove('wrong')
-  textoError[0].innerText = ''
-  textoError[1].innerText = ''
-  textoError[2].innerText = ''
-  textoError[3].innerText = ''
-  textoError[4].innerText = ''
-}
+  nome.classList.remove("wrong");
+  codigoSku.classList.remove("wrong");
+  descricao.classList.remove("wrong");
+  quantidade.classList.remove("wrong");
+  textoError[0].innerText = "";
+  textoError[1].innerText = "";
+  textoError[2].innerText = "";
+  textoError[3].innerText = "";
+  textoError[4].innerText = "";
+};
 
 const removerPremio = async function () {
   const request = await remove(`premios/${PREMIO_ID}`);
