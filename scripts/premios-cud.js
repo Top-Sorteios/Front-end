@@ -11,8 +11,10 @@ import {
 } from "./CONSTANTES.js";
 
 const titulo = document.querySelector("#titulo");
+const divButton = document.getElementById('div-button')
 const legend = document.querySelector("#form-legend");
 const buttonSalvarEditar = document.querySelector("#enviar");
+const buttonDeletar = document.getElementById('buttonDeletar')
 const textoError = document.querySelectorAll(".wrong-text");
 
 const form = document.querySelector("#form");
@@ -66,20 +68,18 @@ const definirCampos = function (premio) {
   quantidade.value = premio.quantidade;
   criadoPor.value = premio.criadoPor;
   criadoEm.value = `${premio.criadoEm.split("T")[0].split("-").reverse().join("/")} ${premio.criadoEm.split("T")[1].split(".")[0]}`;
-  buttonSalvarEditar.textContent = "Salvar alterações";
 
-  const buttonDeletar = document.createElement("button");
-  buttonDeletar.classList.add("md");
-  buttonDeletar.classList.add("b");
-  buttonDeletar.classList.add("button_wrong");
-  buttonDeletar.style.margin = "0 auto";
+  // buttonDeletar.classList.add("sm");
+  // buttonDeletar.classList.add("b");
+  // buttonDeletar.classList.add("button_wrong");
+  // buttonDeletar.setAttribute('type', 'button')
 
-  buttonDeletar.textContent = "Deletar prêmio";
+  // buttonDeletar.textContent = "EXCLUIR";
   buttonDeletar.addEventListener("click", (event) => {
     event.preventDefault();
     removerPremio();
   });
-  formFieldset.appendChild(buttonDeletar);
+  // divButton.appendChild(buttonDeletar);
 };
 
 //FAZ O GET DAS MARCAS CADASTRADAS E EXIBE COMO OPÇÃO NO MENU DROPDOWN
@@ -222,9 +222,9 @@ window.addEventListener("load", () => {
 //VERIFICA A AÇÃO A SER FEITA E MOLDA A PÁGINA A PARTIR DELA
 switch (ACAO) {
   case "criar":
+    buttonDeletar.classList.add('hidden')
     titulo.textContent = "Adicionar novo prêmio da semana";
     legend.textContent = "Adicionar novo prêmio da semana";
-    buttonSalvarEditar.textContent = "Adicionar novo prêmio";
 
     criadoEmLabel.remove();
     criadoPorLabel.remove();
