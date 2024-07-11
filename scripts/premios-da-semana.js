@@ -40,7 +40,7 @@ const criarLinha = function (premio) {
   tableRow.appendChild(tableCellCriadoPor);
 
   const tableCellCriadoEm = document.createElement("td");
-  tableCellCriadoEm.textContent = premio.criadoEm;
+  tableCellCriadoEm.textContent = `${premio.criadoEm.split("T")[0].split("-").reverse().join("/")} ${premio.criadoEm.split("T")[1].split(".")[0]}`;
   tableRow.appendChild(tableCellCriadoEm);
 };
 

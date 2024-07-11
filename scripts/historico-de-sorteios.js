@@ -21,10 +21,13 @@ const criarCardHistorico = function (historico) {
   const premioImagem = document.createElement("img");
   premioImagem.setAttribute(
     "src",
-    historico.premioImagem != null
+    historico.premioImagem
       ? `data:image/png;base64,${historico.premioImagem}`
       : "https://placehold.co/320x240"
   );
+  premioImagem.addEventListener("error", ()=>{
+    premioImagem.setAttribute("src", "https://placehold.co/320x240")
+  })
   premioImagem.classList.add("historico__image");
   sectionHistorico.appendChild(premioImagem);
 
@@ -38,7 +41,7 @@ const criarCardHistorico = function (historico) {
   historicoTexto.appendChild(premioNome);
 
   const sorteadoEm = document.createElement("p");
-  sorteadoEm.innerHTML = `<span class="bold txt-size-normal">Data: </span>${historico.sorteadoEm.split("T")[0]}`;
+  sorteadoEm.innerHTML = `<span class="bold txt-size-normal">Data: </span>${historico.sorteadoEm.split("T")[0].split("-").reverse().join("/")}`;
   sorteadoEm.classList.add("txt-size-small");
   historicoTexto.appendChild(sorteadoEm);
 

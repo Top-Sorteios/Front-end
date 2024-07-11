@@ -31,7 +31,7 @@ const createTableDestaque = async (destaque) => {
         let txtTitulo = document.createTextNode(itensDestaque.titulo)
         let txtEditar = document.createTextNode('Editar')
         let txtCriadoPor = document.createTextNode(itensDestaque.criadoPor)
-        let txtCriadoEm = document.createTextNode(itensDestaque.criadoEm)
+        let txtCriadoEm = document.createTextNode(`${itensDestaque.criadoEm.split("T")[0].split("-").reverse().join("/")} ${itensDestaque.criadoEm.split("T")[1].split(".")[0]}`)
 
         tr.setAttribute('class', 'hover-cor')
         img.setAttribute('src', `data:image/webp;base64,${itensDestaque.imagem}`)

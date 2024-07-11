@@ -65,8 +65,7 @@ const definirCampos = function (premio) {
   descricao.value = premio.descricao;
   quantidade.value = premio.quantidade;
   criadoPor.value = premio.criadoPor;
-  criadoEm.value = premio.criadoEm.split("T")[0];
-
+  criadoEm.value = `${premio.criadoEm.split("T")[0].split("-").reverse().join("/")} ${premio.criadoEm.split("T")[1].split(".")[0]}`;
   buttonSalvarEditar.textContent = "Salvar alterações";
 
   const buttonDeletar = document.createElement("button");

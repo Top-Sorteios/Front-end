@@ -25,7 +25,7 @@ const createTable = async (item) => {
         let tdCriadoEm = document.createElement('td')
         let txtNome = document.createTextNode(marcas.nome)
         let txtCriadoPor = document.createTextNode(marcas.criadoPor)
-        let txtCriadoEm = document.createTextNode(marcas.criadoEm)
+        let txtCriadoEm = document.createTextNode(`${marcas.criadoEm.replaceAll("-","/")}`)
         let txtEditar = document.createTextNode('Editar')
 
         tr.setAttribute('class', 'filtrarTr')
