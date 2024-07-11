@@ -56,8 +56,12 @@
   border: none;
   cursor: pointer;
   width: max-content;
+display: flex;
+gap: 0.5rem;
 }
-
+.header__nav-dropbtn svg {
+  fill: var(--bg-blue, darkblue);
+}
 .header__nav-dropdown-content {
   display: none;
   position: absolute;
