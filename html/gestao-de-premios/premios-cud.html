@@ -7,6 +7,7 @@
     <title>Cadastro de Prêmioss</title>
     <link rel="stylesheet" href="../../styles/default.css">
     <link rel="stylesheet" href="../../styles/premios-cud.css">
+    <link rel="stylesheet" href="../../styles/footer.css">
     <script type="module" src="../../scripts/admin/checar-autentificacao.js" defer></script>
     <script type="module" src="../../scripts/premios-cud.js" defer></script>
 
@@ -46,7 +47,8 @@
                     <span class="wrong-text"></span>
                 </label>
                 <label class="label" for="descricao" title="Insira uma descrição do sorteio"> Descrição
-                    <textarea class="i txtarea" id="descricao" type="text" placeholder="Insira a descrição do prêmio."></textarea>
+                    <textarea class="i txtarea" id="descricao" type="text"
+                        placeholder="Insira a descrição do prêmio."></textarea>
                     <span class="wrong-text"></span>
                 </label>
 
@@ -54,22 +56,26 @@
                     <input class="i" id="quantidade" type="number" value="0">
                     <span class="wrong-text"></span>
                 </label>
-                <label class="label" for="criadoPor" id="criadoPorLabel" title="Pessoa que criou este prêmio."> Criado por
+                <label class="label" for="criadoPor" id="criadoPorLabel" title="Pessoa que criou este prêmio."> Criado
+                    por
                     <input class="i" id="criadoPor" readonly type="text" value="" placeholder="Nome da Pessoa">
                 </label>
-                <label class="label" for="criadoEm" id="criadoEmLabel" title="Data em que esse prêmio foi criado."> Criado em
+                <label class="label" for="criadoEm" id="criadoEmLabel" title="Data em que esse prêmio foi criado.">
+                    Criado em
                     <input class="i" id="criadoEm" readonly type="datetime" value="">
                 </label>
-
-                <button id="enviar" class="md b" type="submit">Editar prêmio/Salvar alterações</button>
+                <div id="div-button">
+                    <button id="enviar" class="sm b" type="submit">SALVAR</button>
+                    <button id="buttonDeletar" class="sm b button_wrong" type="button">EXCLUIR</button>
+                    <a href="./premios-da-semana.html">
+                        <a href="../gestao-de-premios/premios-da-semana.html"><button type="button" class="sm b button_white cancelar">CANCELAR</button></a>
+                    </a>
+                </div>
             </fieldset>
         </form>
-        <a href="./premios-da-semana.html">
-            <button class="md b button_white cancelar">Cancelar</button>
-        </a>
     </main>
 
-  <footer class="footer txt-size-small">
+    <footer class="footer txt-size-small">
         <div class="footer__container">
             <nav class="footer__nav">
                 <a href="/">
@@ -89,7 +95,8 @@
                 <div class="footer__address">
                     <p>Endereço</p>
                     <a href="https://maps.app.goo.gl/pH4QidJGmgPX5S2fA" target="_blank"
-                        class="footer__link hov__underline">Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros, São
+                        class="footer__link hov__underline">Av. Prof. Fonseca Rodrigues, 835 - Alto de Pinheiros,
+                        São
                         Paulo - SP, 05461-010</a>
                 </div>
                 <div class="footer__contact">
@@ -100,15 +107,21 @@
             <div class="footer__social-media">
                 <p class="footer__social-media-p">Redes Sociais</p>
                 <div class="footer-social-media-container">
-                     <a class="footer__link hov__underline" href="https://www.instagram.com/grupotopoficial/" target="_blank">Instagram</a>
-<a class="footer__link hov__underline" href="https://www.youtube.com/@GrupoTOPOficial" target="_blank">Youtube</a>                </div>
+                    <a class="footer__link hov__underline" href="https://www.instagram.com/grupotopoficial/"
+                        target="_blank">Instagram</a>
+                    <a class="footer__link hov__underline" href="https://www.youtube.com/@GrupoTOPOficial"
+                        target="_blank">Youtube</a>
+                </div>
 
             </div>
             <div class="footer__copyright">
                 <div class="rodape-buttom">
-                                        <a href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
+                    <a href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
 
-                        <button class="b md hov__white footer__button">Participe dos Sorteios</button>
+                        <a href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
+
+                            <button class="b md hov__white footer__button">Participe dos Sorteios</button>
+                        </a>
                     </a>
                 </div>
                 <div class="rodape-inf-empresa">
@@ -118,7 +131,7 @@
             </div>
         </div>
     </footer>
-    
+
 </body>
 
 </html>

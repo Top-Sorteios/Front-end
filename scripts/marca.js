@@ -189,8 +189,7 @@ const editarMarca = async () => {
 
 const deleteMarca = async () => {
   const request = await remove(`marcas/${idMarca}`);
-  const response = await request.json();
-  if (response.status == 200) {
+  if (request.status == 200) {
     alert("Registro excluido com sucesso");
     window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
   } else {
