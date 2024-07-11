@@ -1,4 +1,4 @@
-import { SERVER_NAME, TOKEN } from "./CONSTANTES.js";
+import { ACAO, get, remove, SERVER_NAME, TOKEN } from "./CONSTANTES.js";
 
 const error = document.querySelectorAll(".wrong-text");
 const inputNome = document.getElementById("nome-marca");
@@ -8,21 +8,17 @@ const inputLogo = document.getElementById("upload-logo");
 const inputBanner = document.getElementById("upload-banner");
 const idMarca = sessionStorage.getItem("idMarca");
 const previewBanner = document.getElementById("preview-banner");
-
 const previewLogo = document.getElementById("preview-logo");
+
 const divImgs = document.querySelectorAll(".div-imgs");
+const buttonDelete = document.getElementById("button-remover");
+
+const buttonSave = document.getElementById("button-salvar");
 
 // Recebe os dados da marca
 const getDados = async () => {
-  let url = `${SERVER_NAME}/marcas/obter/${idMarca}`;
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${TOKEN}`,
-      "Content-Type": "application/json",
-    },
-  });
-  const dado = await response.json();
+  const request = await get(`/marcas/obter/${idMarca}`, true);
+  const dado = await request.json();
 
   // adiciona as informações da marca a ser editada no input
   inputNome.value = dado.nome;
@@ -30,12 +26,67 @@ const getDados = async () => {
   inputOrdemExibicao.value = dado.ordemExibicao;
   inputBanner.setAttribute("base64img", dado.banner);
   inputLogo.setAttribute("base64img", dado.logo);
-  previewLogo.src = `data:image/png;base64,${dado.logo}`;
-  previewBanner.src = `data:image/png;base64,${dado.banner}`;
+  previewLogo.src = dado.logo
+    ? `data:image/png;base64,${dado.logo}`
+    : "https://placehold.co/320x240";
 
-  console.log(dado.logo);
-  console.log(inputLogo);
+  previewBanner.src = dado.banner
+    ? `data:image/png;base64,${dado.banner}`
+    : "https://placehold.co/320x240";
 };
+
+inputBanner.addEventListener("change", () => {
+  const reader = new FileReader();
+  const file = inputBanner.files[0];
+  reader.onloadend = () => {
+    const base64String = btoa(
+      String.fromCharCode(...new Uint8Array(reader.result))
+    );
+    previewBanner.src = `data:image/*;base64,${base64String}`;
+    reader.abort();
+  };
+  reader.readAsArrayBuffer(file);
+});
+
+
+inputLogo.addEventListener("change", () => {
+  const reader = new FileReader();
+  const file = inputBanner.files[0];
+  reader.onloadend = () => {
+    const base64String = btoa(
+      String.fromCharCode(...new Uint8Array(reader.result))
+    );
+    previewLogo.src = `data:image/*;base64,${base64String}`;
+    reader.abort();
+  };
+  reader.readAsArrayBuffer(file);
+});
+
+
+
+switch (ACAO) {
+  case "EDITAR":
+    const txtCadastrar = document.querySelector(".txt-cadastrar");
+    txtCadastrar.classList.add("none");
+    getDados();
+    buttonSave.addEventListener("click", () => {
+      editarMarca();
+    });
+    break;
+  case "CRIAR":
+    const txtEditar = document.querySelector(".txt-editar");
+    buttonDelete.style.display = "none";
+    txtEditar.classList.add("none");
+    buttonSave.addEventListener("click", () => {
+      cadastrarMarca();
+    });
+    break;
+
+  default:
+    window.location.replace("./marcas-cadastradas.html");
+    break;
+}
+
 
 // Função que cadastra a marca
 const cadastrarMarca = async () => {
@@ -137,16 +188,8 @@ const editarMarca = async () => {
 };
 
 const deleteMarca = async () => {
-  let url = `${SERVER_NAME}marcas/${idMarca}`;
-
-  let response = await fetch(url, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${TOKEN}`,
-    },
-    mode: "cors",
-  });
-
+  const request = await remove(`marcas/${idMarca}`);
+  const response = await request.json();
   if (response.status == 200) {
     alert("Registro excluido com sucesso");
     window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
@@ -168,21 +211,11 @@ const clearError = () => {
   divImgs[1].classList.remove("wrong");
 };
 
-const buttonDelete = document.getElementById("button-remover");
 buttonDelete.addEventListener("click", () => {
   let container = document.querySelector(".container");
   let containerExcluir = document.querySelector(".container-excluir");
   container.classList.add("none");
   containerExcluir.classList.remove("none");
-});
-
-const buttonSave = document.getElementById("button-salvar");
-buttonSave.addEventListener("click", () => {
-  if (idMarca == null || idMarca == 0) {
-    cadastrarMarca();
-  } else {
-    editarMarca();
-  }
 });
 
 const buttonSim = document.getElementById("button-sim");
@@ -196,48 +229,4 @@ buttonNao.addEventListener("click", () => {
   let containerExcluir = document.querySelector(".container-excluir");
   container.classList.remove("none");
   containerExcluir.classList.add("none");
-});
-
-window.addEventListener("load", () => {
-  if (idMarca == null || idMarca == 0) {
-    newMarca();
-  } else {
-    openMarca();
-  }
-});
-
-const newMarca = () => {
-  // buttonDelete.classList.add('invisible')
-  const txtEditar = document.querySelector(".txt-editar");
-  buttonDelete.style.display = "none";
-  txtEditar.classList.add("none");
-};
-
-const openMarca = () => {
-  const txtCadastrar = document.querySelector(".txt-cadastrar");
-  txtCadastrar.classList.add("none");
-  getDados();
-  sessionStorage.setItem("idMarca", 0);
-};
-
-function previewImage(input, previewId) {
-  const preview = document.getElementById(previewId);
-  const file = input.files[0];
-  const reader = new FileReader();
-
-  reader.onload = function (e) {
-    preview.src = e.target.result;
-  };
-
-  if (file) {
-    reader.readAsDataURL(file);
-  }
-}
-
-inputBanner.addEventListener("change", function () {
-  previewImage(this, "preview-banner");
-});
-
-inputLogo.addEventListener("change", function () {
-  previewImage(this, "preview-logo");
 });

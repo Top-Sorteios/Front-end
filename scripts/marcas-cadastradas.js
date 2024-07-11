@@ -1,6 +1,7 @@
-import { SERVER_NAME, TOKEN } from "./CONSTANTES.js";
+import { SERVER_NAME, SET_ACAO, TOKEN } from "./CONSTANTES.js";
 
 window.addEventListener('load', async () => {
+    sessionStorage.setItem("idMarca", 0);
     const url = SERVER_NAME + 'marcas/obter'
     const response = await fetch(url, {
         method: "GET",
@@ -11,6 +12,12 @@ window.addEventListener('load', async () => {
     })
     const dado = await response.json()
     createTable(dado)
+})
+
+
+document.querySelector("#button-nova-marca").addEventListener("click", ()=>{
+    SET_ACAO("CRIAR")
+    window.location.assign("./marca.html")
 })
 
 const createTable = async (item) => {
@@ -46,6 +53,7 @@ const createTable = async (item) => {
 
         linkEditar.addEventListener('click', () => {
             sessionStorage.setItem('idMarca', marcas.id)
+            SET_ACAO("EDITAR");
             window.location.assign("../gestao-de-marcas/marca.html");
         })
     });
