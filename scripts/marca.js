@@ -29,11 +29,11 @@ const getDados = async () => {
   inputLogo.setAttribute("base64img", dado.logo);
   previewLogo.src = dado.logo
     ? `data:image/png;base64,${dado.logo}`
-    : "https://placehold.co/320x240";
+    : "https://github.com/Top-Sorteios/Front-end/blob/main/assets/images/placeholder-files/placeholder.png?raw=true";
 
   previewBanner.src = dado.banner
     ? `data:image/png;base64,${dado.banner}`
-    : "https://placehold.co/320x240";
+    : "https://github.com/Top-Sorteios/Front-end/blob/main/assets/images/placeholder-files/placeholder.png?raw=true";
 };
 
 // Função para Converter Base64 para Blob

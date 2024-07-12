@@ -15,7 +15,7 @@ const obterMarcasParceiras = async function () {
         "src",
         marca.logo != null
           ? `data:image/png;base64,${marca.logo}`
-          : "https://placehold.co/320x240"
+          : "https://github.com/Top-Sorteios/Front-end/blob/main/assets/images/placeholder-files/placeholder.png?raw=true"
       );
       marcaLogo.setAttribute("alt", marca.nome);
       marcaLogo.setAttribute("title",`Logo da ${marca.nome}`);
@@ -23,7 +23,7 @@ const obterMarcasParceiras = async function () {
       console.log(marca.logo);
 
       marcaLogo.addEventListener("error", ()=>{
-        marcaLogo.setAttribute("src","https://placehold.co/320x240")
+        marcaLogo.setAttribute("src","https://github.com/Top-Sorteios/Front-end/blob/main/assets/images/placeholder-files/placeholder.png?raw=true")
       })
     });
   }

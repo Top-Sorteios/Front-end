@@ -23,10 +23,10 @@ const criarCardHistorico = function (historico) {
     "src",
     historico.premioImagem
       ? `data:image/png;base64,${historico.premioImagem}`
-      : "https://placehold.co/320x240"
+      : "https://github.com/Top-Sorteios/Front-end/blob/main/assets/images/placeholder-files/placeholder.png?raw=true"
   );
   premioImagem.addEventListener("error", ()=>{
-    premioImagem.setAttribute("src", "https://placehold.co/320x240")
+    premioImagem.setAttribute("src", "https://github.com/Top-Sorteios/Front-end/blob/main/assets/images/placeholder-files/placeholder.png?raw=true")
   })
   premioImagem.classList.add("historico__image");
   sectionHistorico.appendChild(premioImagem);
