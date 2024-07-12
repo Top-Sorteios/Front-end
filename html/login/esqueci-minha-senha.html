@@ -57,7 +57,10 @@
                 <label for="email" title="Digite o seu email">E-mail
                     <input class="i" type="email" name="email" id="email">
                 </label>
-                <button class="sm b hov__blue" type="submit">Enviar</button>
+                <div class="button-container">
+                    <button class="sm b hov__black button_wrong" onclick="window.location.href='/html/login/index.html'; return false;">Cancelar</button>
+                    <button class="sm b hov__blue" type="submit">Enviar</button>
+                </div>
                 <span id="message" class="none">Um email com as instruções para recuperar a sua senha foi enviado para sua caixa de entrada.</span>
             </fieldset>
         </form>
