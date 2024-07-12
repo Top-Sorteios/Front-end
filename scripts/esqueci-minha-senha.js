@@ -23,7 +23,7 @@ const requisitarMudancaSenha = async function () {
   if (request.ok) {
     const response = await request.json();
     console.log(response);
-    setMessage("As instruções pra recuperar a senha foram enviadas para sua caixa de entrada!","fail" );
+    setMessage("As instruções pra recuperar a senha foram enviadas para sua caixa de entrada!","ok" );
     // document.querySelector("#message").classList.remove("none")
   }
   document.body.style.cursor = "auto";
