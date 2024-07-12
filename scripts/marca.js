@@ -128,10 +128,12 @@ const cadastrarMarca = async () => {
       body: formData,
     });
     if (response.status == 201) {
-      alert("Marca cadastrada com sucesso");
-      window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      mostrarAlert("Marca cadastrada com sucesso", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      }, 3000);
     } else {
-      alert("Não foi possível cadastrar a marca");
+      mostrarAlert("Não foi possível cadastrar a marca", 'fa-solid fa-circle-xmark');;
     }
   }
 };
@@ -179,10 +181,13 @@ const editarMarca = async () => {
     });
 
     if (response.status == 200) {
-      alert("Registro alterado com sucesso");
-      window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      mostrarAlert("Marca editada com sucesso", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      }, 3000);
+      
     } else {
-      alert("Não foi possível alterar o registro");
+      mostrarAlert("Não foi possível alterar o registro", 'fa-solid fa-circle-xmark');
     }
   }
 };
@@ -190,10 +195,12 @@ const editarMarca = async () => {
 const deleteMarca = async () => {
   const request = await remove(`marcas/${idMarca}`);
   if (request.status == 200) {
-    alert("Registro excluido com sucesso");
-    window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+    mostrarAlert("Marca excluída com sucesso", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      }, 3000);
   } else {
-    alert("Não foi possível excluir o registro");
+    mostrarAlert("Não foi possível excluir a marca", 'fa-solid fa-circle-xmark');
   }
 };
 
@@ -229,3 +236,18 @@ buttonNao.addEventListener("click", () => {
   container.classList.remove("none");
   containerExcluir.classList.add("none");
 });
+
+function mostrarAlert(msg, iconClass){
+  let alertBox = document.getElementById('alert-box');
+  let alert = document.createElement('div');
+  alert.classList.add('alert');
+  alert.innerHTML = `<span class="${iconClass}"></span> ${msg}`;
+  alertBox.appendChild(alert);
+  setTimeout(() => {
+    alert.remove();
+  }, 3000);
+
+  if(msg.includes('Não foi possível')){
+    alert.classList.add('error');
+  }
+}
