@@ -5,6 +5,7 @@ import {
   SERVER_NAME,
   TOKEN,
   get,
+  setMessage,
   post,
   put,
   remove,
@@ -30,6 +31,10 @@ const criadoPorLabel = document.querySelector("#criadoPorLabel");
 const criadoPor = document.querySelector("#criadoPor");
 const criadoEmLabel = document.querySelector("#criadoEmLabel");
 const criadoEm = document.querySelector("#criadoEm");
+const containerExcluir = document.querySelector('.container-excluir')
+const buttonSim = document.getElementById('button-sim')
+const buttonNao = document.getElementById('button-nao')
+
 
 // Função para Converter Base64 para Blob
 const base64ToBlob = (base64String, contentType) => {
@@ -71,7 +76,7 @@ const definirCampos = (premio) => {
     .reverse()
     .join("/")} ${premio.criadoEm.split("T")[1].split(".")[0]}`;
 
-  buttonDeletar.addEventListener("click", (event) => {
+  buttonSim.addEventListener("click", (event) => {
     event.preventDefault();
     removerPremio();
   });
@@ -147,7 +152,11 @@ const cadastrarPremio = async () => {
     document.body.style.cursor = "wait";
     const request = await post("premios/registrar", formData, "formData");
     if (request.status === 201) {
-      window.location.replace("./premios-da-semana.html");
+      setMessage("Prêmio cadastrado com sucesso! Você será redirecionado para a tela anterior", "ok", "./premios-da-semana.html");
+      window.location.assign("#header-premios");
+    } else {
+      setMessage("Não foi possivel cadastrar o prêmio","fail");
+      window.location.assign("#header-premios");
     }
   }
 };
@@ -193,7 +202,11 @@ const editarPremio = async () => {
     const request = await put(`premios/editar/${PREMIO_ID}`, formData);
 
     if (request.status === 200) {
-      window.location.replace("./premios-da-semana.html");
+      setMessage("Prêmio editado com sucesso! Você será redirecionado para a tela anterior", "ok", "./premios-da-semana.html");
+      window.location.assign("#header-premios");
+    } else {
+      setMessage("Não foi possivel editar o prêmio","fail");
+      window.location.assign("#header-premios");
     }
   }
 };
@@ -202,7 +215,11 @@ const editarPremio = async () => {
 const removerPremio = async () => {
   const request = await remove(`premios/${PREMIO_ID}`);
   if (request.status === 200) {
-    window.location.replace("./premios-da-semana.html");
+    setMessage("Prêmio excluido com sucesso! Você será redirecionado para a tela anterior", "ok", "./premios-da-semana.html");
+    window.location.assign("#header-premios");
+  } else {
+    setMessage("Não foi possivel excluir o prêmio","fail");
+    window.location.assign("#header-premios");
   }
 };
 
@@ -250,3 +267,15 @@ form.addEventListener("submit", (event) => {
     editarPremio();
   }
 });
+
+buttonDeletar.addEventListener('click', () => {
+  formFieldset.classList.add('hidden')
+  containerExcluir.classList.remove('hidden')
+  window.location.assign("#header-premios");
+})
+
+buttonNao.addEventListener('click', () => {
+  formFieldset.classList.remove('hidden')
+  containerExcluir.classList.add('hidden')
+  window.location.assign("#header-premios");
+})
