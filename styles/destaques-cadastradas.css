@@ -23,6 +23,7 @@ table td img {
 
 thead {
     background-color: lightgray;
+    padding: 1.5rem;
 }
 
 th,

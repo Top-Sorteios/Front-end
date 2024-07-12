@@ -22,6 +22,7 @@ body {
 
 .table__head {
   background-color: lightgray;
+  padding: 1.5rem;
 }
 
 .hover-cor:hover {
