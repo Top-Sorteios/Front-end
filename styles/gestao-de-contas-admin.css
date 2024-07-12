@@ -61,7 +61,6 @@ cursor: pointer;
 
 .table {
   margin-top: 1rem;
-  border: 1px solid var(--border-color);
   border-collapse: collapse;
   width: 100%;
 }
@@ -73,18 +72,29 @@ cursor: pointer;
 
 .table__head-th,
 .table__body-td {
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: left;
   border: 1px solid black;
 }
 
-.table__body-tr:hover {
+th,
+td {
+    padding: 1rem;
+    border: 1px solid black;
+    text-align: left;
+}
+
+/* .table__body-tr:hover {
   background-color: var(--green);
   color: var(--white);
-}
+} */
 
 .table__body {
   padding: 1rem;
+}
+
+.rowPesquisa:hover {
+  background-color: var(--green);
 }
 
 .table__body-td button {
@@ -171,7 +181,7 @@ td {
   height: 2rem;
 }
 
-tbody tr:nth-child(odd) {
+/* tbody tr:nth-child(odd) {
   background-color: #8a909c;
   color: #fff;
-}
+} */

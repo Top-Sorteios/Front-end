@@ -29,6 +29,7 @@ table {
 
 thead {
     background-color: lightgray;
+    padding: 1.5rem;
 }
 
 th,
