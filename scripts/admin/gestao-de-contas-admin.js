@@ -151,3 +151,9 @@ let inputPesquisa = document.getElementById('input-pesquisa')
 inputPesquisa.addEventListener('keyup', () => {
     pesquisarUser()
 })
+
+const buttonCancelar = document.getElementById('button-cancelar')
+buttonCancelar.addEventListener('click', () => {
+    const modal = document.getElementById('user-modal');
+    modal.classList.add('hidden')
+})
