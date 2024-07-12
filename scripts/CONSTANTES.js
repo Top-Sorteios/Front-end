@@ -118,5 +118,5 @@ export const setMessage = (message, type = "ok", redirect = "#") => {
   setTimeout(() => {
     divMessage.remove();
     window.location.replace(redirect);
-  }, 2000);
+  }, 4000);
 };
