@@ -195,7 +195,6 @@ const editarMarca = async () => {
     if (response.status == 200) {
       setMessage("Marca alterada com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-de-marcas/marcas-cadastradas.html" );
           window.location.assign("#header-marca");
-      // document.querySelector("#message").classList.remove("none")
     } else {
       setMessage("Não foi possivel alterar a marca","fail");
       window.location.assign("#header-marca");
