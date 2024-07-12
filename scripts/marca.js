@@ -1,4 +1,5 @@
 import { ACAO, get, remove, SERVER_NAME, TOKEN } from "./CONSTANTES.js";
+import { mostrarAlert } from "./alerts.js";
 
 const error = document.querySelectorAll(".wrong-text");
 const inputNome = document.getElementById("nome-marca");
@@ -139,10 +140,12 @@ const cadastrarMarca = async () => {
       body: formData,
     });
     if (response.status == 201) {
-      alert("Marca cadastrada com sucesso");
-      window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      mostrarAlert("Marca cadastrada com sucesso", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      }, 3000);
     } else {
-      alert("Não foi possível cadastrar a marca");
+      mostrarAlert("Não foi possível cadastrar a marca", 'fa-solid fa-circle-xmark');;
     }
   }
 };
@@ -192,21 +195,27 @@ const editarMarca = async () => {
     });
 
     if (response.status == 200) {
-      alert("Registro alterado com sucesso");
-      window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      mostrarAlert("Marca editada com sucesso", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      }, 3000);
+      
     } else {
-      alert("Não foi possível alterar o registro");
+      mostrarAlert("Não foi possível alterar o registro", 'fa-solid fa-circle-xmark');
     }
+    document.body.style.cursor = "auto";
   }
 };
 
 const deleteMarca = async () => {
   const request = await remove(`marcas/${idMarca}`);
   if (request.status == 200) {
-    alert("Registro excluido com sucesso");
-    window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+    mostrarAlert("Marca excluída com sucesso", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      }, 3000);
   } else {
-    alert("Não foi possível excluir o registro");
+    mostrarAlert("Não foi possível excluir a marca", 'fas fa-circle-xmark');
   }
 };
 
@@ -228,6 +237,7 @@ buttonDelete.addEventListener("click", () => {
   let containerExcluir = document.querySelector(".container-excluir");
   container.classList.add("none");
   containerExcluir.classList.remove("none");
+  window.location.assign("#header-marca");
 });
 
 const buttonSim = document.getElementById("button-sim");
@@ -242,3 +252,4 @@ buttonNao.addEventListener("click", () => {
   container.classList.remove("none");
   containerExcluir.classList.add("none");
 });
+

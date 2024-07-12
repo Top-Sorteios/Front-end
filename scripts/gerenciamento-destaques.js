@@ -1,4 +1,4 @@
-import { SERVER_NAME, TOKEN } from "./CONSTANTES.js";
+import { SERVER_NAME, setMessage, TOKEN } from "./CONSTANTES.js";
 
 const error = document.querySelectorAll('.wrong-text')
 const inputNome = document.getElementById('nome-destaque')
@@ -69,10 +69,11 @@ const cadastrarDestaque = async () => {
             body: formData
         });
         if (response.status == 201) {
-            alert('Destaque cadastrada com sucesso')
-            window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
+            setMessage("Destaque cadastrado com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-dos-destaques/destaques-cadastradas.html" );
+            window.location.assign("#header-destaques");
         } else {
-            alert('Não foi possível cadastrar o destaque')
+            setMessage("Não foi possível cadastrar o destaque!","fail");
+            window.location.assign("#header-destaques");
         }
     }
 }
@@ -111,10 +112,11 @@ const editarDestaque = async () => {
         });
 
         if (response.status == 200) {
-            alert('Destaque alterado com sucesso')
-            window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
+            setMessage("Destaque editado com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-dos-destaques/destaques-cadastradas.html" );
+            window.location.assign("#header-destaques");
         } else {
-            alert('Não foi possível alterar o destaque')
+            setMessage("Não foi possível editar o destaque!","fail");
+            window.location.assign("#header-destaques");
         }
     }
 }
@@ -132,10 +134,11 @@ const deleteDestaque = async () => {
     })
 
     if (response.status == 200) {
-        alert('Destaque excluido com sucesso')
-        window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
+        setMessage("Destaque excluido com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-dos-destaques/destaques-cadastradas.html" );
+        window.location.assign("#header-destaques");
     } else {
-        alert('Não foi possível excluir o Destaque')
+        setMessage("Não foi possível excluir o destaque!","fail");
+        window.location.assign("#header-destaques");
     }
 }
 
@@ -154,6 +157,7 @@ buttonDelete.addEventListener('click', () => {
     let containerExcluir = document.querySelector('.container-excluir')
     container.classList.add('none')
     containerExcluir.classList.remove('none')
+    window.location.assign("#header-destaques");
 })
 
 const buttonSave = document.getElementById('button-salvar')

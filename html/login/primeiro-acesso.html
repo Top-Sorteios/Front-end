@@ -75,7 +75,10 @@
                     <input class="i" type="password" name="confirmar-senha" id="confirmar-senha">
                     <span class="wrong-text"></span>
                 </label>
-                <button class="b md hov__blue" type="submit">Cadastrar</button>
+                <div class="button-container">
+                    <button class="b md hov__black button_wrong" onclick="window.location.href='/html/login/index.html'; return false;">Cancelar</button>
+                    <button class="b md hov__blue" type="submit">Cadastrar</button>
+                </div>
                 <span class="wrong-text none" id="invalido-ou-feito">Informações inválidas ou primeiro acesso já foi feito. Cheque seus dados.</span>
             </fieldset>
         </form>

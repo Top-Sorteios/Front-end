@@ -37,3 +37,12 @@ input:-webkit-autofill {
 /* span {
   padding-bottom: 1rem;
 } */
+
+.button-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container > button{
+  margin: 0rem 0.4rem 0rem;
+}
