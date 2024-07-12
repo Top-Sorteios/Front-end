@@ -1,4 +1,4 @@
-import { ACAO, get, remove, SERVER_NAME, TOKEN } from "./CONSTANTES.js";
+import { ACAO, get, setMessage, remove, SERVER_NAME, TOKEN } from "./CONSTANTES.js";
 
 const error = document.querySelectorAll(".wrong-text");
 const inputNome = document.getElementById("nome-marca");
@@ -139,10 +139,11 @@ const cadastrarMarca = async () => {
       body: formData,
     });
     if (response.status == 201) {
-      alert("Marca cadastrada com sucesso");
-      window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      setMessage("Marca cadastrada com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-de-marcas/marcas-cadastradas.html" );
+      window.location.assign("#header-marca");
     } else {
-      alert("Não foi possível cadastrar a marca");
+      setMessage("Não foi possivel cadastrar a marca","fail");
+      window.location.assign("#header-marca");
     }
   }
 };
@@ -192,21 +193,25 @@ const editarMarca = async () => {
     });
 
     if (response.status == 200) {
-      alert("Registro alterado com sucesso");
-      window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      setMessage("Marca alterada com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-de-marcas/marcas-cadastradas.html" );
+          window.location.assign("#header-marca");
+      // document.querySelector("#message").classList.remove("none")
     } else {
-      alert("Não foi possível alterar o registro");
+      setMessage("Não foi possivel alterar a marca","fail");
+      window.location.assign("#header-marca");
     }
+    document.body.style.cursor = "auto";
   }
 };
 
 const deleteMarca = async () => {
   const request = await remove(`marcas/${idMarca}`);
   if (request.status == 200) {
-    alert("Registro excluido com sucesso");
-    window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+    setMessage("Marca excluida com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-de-marcas/marcas-cadastradas.html" );
+    window.location.assign("#header-marca");
   } else {
-    alert("Não foi possível excluir o registro");
+    setMessage("Não foi possivel excluir a marca","fail");
+    window.location.assign("#header-marca");
   }
 };
 
@@ -228,6 +233,7 @@ buttonDelete.addEventListener("click", () => {
   let containerExcluir = document.querySelector(".container-excluir");
   container.classList.add("none");
   containerExcluir.classList.remove("none");
+  window.location.assign("#header-marca");
 });
 
 const buttonSim = document.getElementById("button-sim");
