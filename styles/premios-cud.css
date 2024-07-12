@@ -12,6 +12,10 @@ h1 {
   text-align: center;
 }
 
+#form-legend {
+  display: none;
+}
+
 main {
   margin: 20px auto 50px auto;
   width: fit-content;
@@ -40,6 +44,11 @@ button {
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+#preview-premio {
+  width: 320px;
+
 }
 
 

@@ -11,16 +11,17 @@ import {
 } from "./CONSTANTES.js";
 
 const titulo = document.querySelector("#titulo");
-const divButton = document.getElementById('div-button')
+const divButton = document.getElementById("div-button");
 const legend = document.querySelector("#form-legend");
 const buttonSalvarEditar = document.querySelector("#enviar");
-const buttonDeletar = document.getElementById('buttonDeletar')
+const buttonDeletar = document.getElementById("buttonDeletar");
 const textoError = document.querySelectorAll(".wrong-text");
 
 const form = document.querySelector("#form");
 const formFieldset = document.querySelector("#form-fieldset");
 
 const imagem = document.querySelector("#imagem");
+const previewPremio = document.querySelector("#preview-premio");
 const marcaId = document.querySelector("#marcaId");
 const nome = document.querySelector("#nome");
 const codigoSku = document.querySelector("#codigoSku");
@@ -63,11 +64,21 @@ const definirCampos = function (premio) {
 
   nome.value = premio.nome;
   imagem.setAttribute("base64img", premio.imagem);
+  previewPremio.setAttribute(
+    "src",
+    premio.imagem
+      ? `${"data:image/*;base64," + premio.imagem}`
+      : "https://placehold.co/320x240"
+  );
   codigoSku.value = premio.codigoSku;
   descricao.value = premio.descricao;
   quantidade.value = premio.quantidade;
   criadoPor.value = premio.criadoPor;
-  criadoEm.value = `${premio.criadoEm.split("T")[0].split("-").reverse().join("/")} ${premio.criadoEm.split("T")[1].split(".")[0]}`;
+  criadoEm.value = `${premio.criadoEm
+    .split("T")[0]
+    .split("-")
+    .reverse()
+    .join("/")} ${premio.criadoEm.split("T")[1].split(".")[0]}`;
 
   // buttonDeletar.classList.add("sm");
   // buttonDeletar.classList.add("b");
@@ -157,7 +168,6 @@ const removerPremio = async function () {
   }
 };
 
-
 const editarPremio = async function () {
   removerError();
   if (nome.value == "") {
@@ -215,7 +225,6 @@ const removerError = function () {
   textoError[4].innerText = "";
 };
 
-
 //Adiciona as marcas disponiveis no select
 window.addEventListener("load", () => {
   obterMarcasSelect();
@@ -224,7 +233,7 @@ window.addEventListener("load", () => {
 //VERIFICA A AÇÃO A SER FEITA E MOLDA A PÁGINA A PARTIR DELA
 switch (ACAO) {
   case "criar":
-    buttonDeletar.classList.add('hidden')
+    buttonDeletar.classList.add("hidden");
     titulo.textContent = "Adicionar novo prêmio da semana";
     legend.textContent = "Adicionar novo prêmio da semana";
 
@@ -239,6 +248,18 @@ switch (ACAO) {
   default:
     break;
 }
+
+imagem.addEventListener("change", () => {
+  const reader = new FileReader();
+  const file = imagem.files[0];
+  reader.onloadend = () => {
+    const base64String = reader.result
+    previewPremio.setAttribute("src", `${base64String}`);
+    // console.log("image" + base64String)
+    // reader.abort();
+  };
+  reader.readAsDataURL(file);
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
