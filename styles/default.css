@@ -211,6 +211,10 @@ body {
   color: var(--wrong);
 }
 
+.read-only {
+  background-color: #f1f1f1;
+}
+
 .txtarea {
   height: 4rem;
   resize: none;

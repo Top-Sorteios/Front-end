@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 usuarioRow.classList.add('rowPesquisa')
 
                 usuarioRow.innerHTML = `
-                    <td class="tdcriado"><button class="editar-btn" data-email="${usuario.email}">✏️</button></td>
+                    <td class="tdcriado"><span class="editar-btn" data-email="${usuario.email}">Editar</span></td>
                     <td class="userName">${usuario.nome}</td>
                     <td>${usuario.turma ? usuario.turma.nome : 'Nome do criador não especificado'}</td>
                     <td class="tdcriado">${usuario.turma ? new Date(usuario.turma.criadoem).toLocaleDateString() : 'Data de criação não especificada'}</td>

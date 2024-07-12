@@ -140,7 +140,7 @@ const cadastrarPremio = async function () {
       "marcaId",
       parseInt(marcaId.querySelector(`option[value="${marcaId.value}"]`).id)
     );
-
+    document.body.style.cursor = "wait";
     const request = await post("premios/registrar", formData, "formData");
     if (request.status === 201) {
       // const response = await request.json();
@@ -149,6 +149,14 @@ const cadastrarPremio = async function () {
     }
   }
 };
+
+const removerPremio = async function () {
+  const request = await remove(`premios/${PREMIO_ID}`);
+  if (request.status === 200) {
+    window.location.replace("./premios-da-semana.html");
+  }
+};
+
 
 const editarPremio = async function () {
   removerError();
@@ -207,12 +215,6 @@ const removerError = function () {
   textoError[4].innerText = "";
 };
 
-const removerPremio = async function () {
-  const request = await remove(`premios/${PREMIO_ID}`);
-  if (request.status === 200) {
-    window.location.replace("./premios-da-semana.html");
-  }
-};
 
 //Adiciona as marcas disponiveis no select
 window.addEventListener("load", () => {

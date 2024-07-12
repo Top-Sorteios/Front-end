@@ -56,8 +56,9 @@
   border: none;
   cursor: pointer;
   width: max-content;
-display: flex;
-gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 .header__nav-dropbtn svg {
   fill: var(--bg-blue, darkblue);

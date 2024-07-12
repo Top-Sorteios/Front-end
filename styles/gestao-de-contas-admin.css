@@ -34,6 +34,15 @@
   box-shadow: var(--shadow);
 }
 
+.editar-btn {
+color: var(--link-selected);
+cursor: pointer;
+}
+
+.editar-btn:hover{
+  text-decoration: underline;
+}
+
 .hidden {
   display: none !important;
 }
