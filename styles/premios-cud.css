@@ -51,6 +51,35 @@ button {
 
 }
 
+.container-excluir {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150%;
+  gap: 20px;
+  border-radius: 40px;
+  border: 2px solid var(--border-color);
+  padding: 40px 20px;  
+  height: 400px;
+}
+
+.confirm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+  height: 250px;
+}
+
+.confirm-button {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
+}
+
 
 @media (max-width: 720px) {
 

@@ -11,14 +11,16 @@ import {
 } from "./CONSTANTES.js";
 
 const titulo = document.querySelector("#titulo");
-const divButton = document.getElementById("div-button");
 const legend = document.querySelector("#form-legend");
 const buttonSalvarEditar = document.querySelector("#enviar");
 const buttonDeletar = document.getElementById("buttonDeletar");
+const buttonSim = document.getElementById('button-sim')
+const buttonNao = document.getElementById('button-nao')
 const textoError = document.querySelectorAll(".wrong-text");
 
 const form = document.querySelector("#form");
 const formFieldset = document.querySelector("#form-fieldset");
+const containerExcluir = document.querySelector('.container-excluir')
 
 const imagem = document.querySelector("#imagem");
 const previewPremio = document.querySelector("#preview-premio");
@@ -80,17 +82,6 @@ const definirCampos = function (premio) {
     .reverse()
     .join("/")} ${premio.criadoEm.split("T")[1].split(".")[0]}`;
 
-  // buttonDeletar.classList.add("sm");
-  // buttonDeletar.classList.add("b");
-  // buttonDeletar.classList.add("button_wrong");
-  // buttonDeletar.setAttribute('type', 'button')
-
-  // buttonDeletar.textContent = "EXCLUIR";
-  buttonDeletar.addEventListener("click", (event) => {
-    event.preventDefault();
-    removerPremio();
-  });
-  // divButton.appendChild(buttonDeletar);
 };
 
 //FAZ O GET DAS MARCAS CADASTRADAS E EXIBE COMO OPÇÃO NO MENU DROPDOWN
@@ -274,4 +265,21 @@ form.addEventListener("submit", (event) => {
       window.location.replace("./premios-da-semana.html");
       break;
   }
+});
+
+buttonDeletar.addEventListener('click', () => {
+  formFieldset.classList.add('hidden')
+  containerExcluir.classList.remove('hidden')
+  window.location.replace("#header-marca");
+})
+
+
+buttonNao.addEventListener('click', () => {
+  formFieldset.classList.remove('hidden')
+  containerExcluir.classList.add('hidden')
+})
+
+buttonSim.addEventListener("click", (event) => {
+  event.preventDefault();
+  removerPremio();
 });
