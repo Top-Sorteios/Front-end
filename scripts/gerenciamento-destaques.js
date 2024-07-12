@@ -27,6 +27,17 @@ const getDados = async () => {
     previewDestaque.src = `data:image/png;base64,${dado.imagem}`;
 }
 
+// Função para Converter Base64 para Blob
+const base64ToBlob = (base64String, contentType) => {
+    const byteCharacters = atob(base64String);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], { type: contentType });
+  };
+
 // Função que cadastra a marca
 const cadastrarDestaque = async () => {
     const url = `${SERVER_NAME}index/registrar`
@@ -77,20 +88,18 @@ const editarDestaque = async () => {
         error[1].innerText = 'Digite o titulo do destaque'
         inputTitulo.classList.add('wrong')
         inputTitulo.focus()
-    } else if (inputDestaque.files[0] == null) {
-        divImgs.classList.add('wrong')
-        error[2].innerText = 'Adicione uma imagem'
-    } else {
+    }  else {
 
         const formData = new FormData();
         formData.append("nome", inputNome.value);
         formData.append("titulo", inputTitulo.value);
-        formData.append(
-            "imagem",
-            inputDestaque.files.length > 0
-                ? inputDestaque.files[0]
-                : new Blob([inputDestaque.getAttribute("base64img")], { type: "image/*" })
-        );
+        if (inputDestaque.files.length > 0) {
+            formData.append("imagem", inputDestaque.files[0]);
+          } else {
+            const base64String = inputDestaque.getAttribute("base64img");
+            const blob = base64ToBlob(base64String, "image/png");
+            formData.append("imagem", blob, "image.png");
+          }
 
         let url = `${SERVER_NAME}index/editar/${idDestaque}`
         const response = await fetch(url, {

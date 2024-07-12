@@ -35,6 +35,17 @@ const getDados = async () => {
     : "https://placehold.co/320x240";
 };
 
+// Função para Converter Base64 para Blob
+const base64ToBlob = (base64String, contentType) => {
+  const byteCharacters = atob(base64String);
+  const byteNumbers = new Array(byteCharacters.length);
+  for (let i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+  }
+  const byteArray = new Uint8Array(byteNumbers);
+  return new Blob([byteArray], { type: contentType });
+};
+
 inputBanner.addEventListener("change", () => {
   const reader = new FileReader();
   const file = inputBanner.files[0];
@@ -154,18 +165,20 @@ const editarMarca = async () => {
     const formData = new FormData();
     formData.append("nome", inputNome.value);
     formData.append("titulo", inputTitulo.value);
-    formData.append(
-      "logo",
-      inputLogo.files.length > 0
-        ? inputLogo.files[0]
-        : new Blob([inputLogo.getAttribute("base64img")], { type: "image/*" })
-    );
-    formData.append(
-      "banner",
-      inputBanner.files.length > 0
-        ? inputBanner.files[0]
-        : new Blob([inputBanner.getAttribute("base64img")], { type: "image/*" })
-    );
+    if (inputBanner.files.length > 0) {
+      formData.append("banner", inputBanner.files[0]);
+    } else {
+      const base64String = inputBanner.getAttribute("base64img");
+      const blob = base64ToBlob(base64String, "image/png");
+      formData.append("banner", blob, "image.png");
+    }
+    if (inputLogo.files.length > 0) {
+      formData.append("logo", inputLogo.files[0]);
+    } else {
+      const base64String = inputLogo.getAttribute("base64img");
+      const blob = base64ToBlob(base64String, "image/png");
+      formData.append("logo", blob, "image.png");
+    }
     formData.append("ordemExibicao", inputOrdemExibicao.value);
     formData.append("criadoPor", 1561);
 
