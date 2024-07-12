@@ -1,5 +1,41 @@
 @import url("./default.css");
-
-.carousel__item-img {
-    width: 100%;
+.carousel__item {
+  flex: 1 0 100%;
+  display: flex;
+  /* max-height: 773px; */
 }
+    .carousel__item-img {
+        width: 100%; /* Largura ajustável */
+        object-fit: fill; /* Garante que a imagem cubra o espaço especificado */
+    }
+
+    /* Media queries para ajustar a altura das imagens em diferentes larguras de tela */
+    @media (min-width: 320px) and (max-width: 480px) {
+        .carousel__item-img {
+            height: 200px; /* Altura para largura entre 320px e 480px */
+        }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+        .carousel__item-img {
+            height: 300px; /* Altura para largura entre 481px e 768px */
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .carousel__item-img {
+            height: 400px; /* Altura para largura entre 769px e 1024px */
+        }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1440px) {
+        .carousel__item-img {
+            height: 600px; /* Altura para largura entre 1025px e 1440px */
+        }
+    }
+
+    @media (min-width: 1441px) {
+        .carousel__item-img {
+            height: 773px; /* Altura para largura maior que 1440px */
+        }
+    }
