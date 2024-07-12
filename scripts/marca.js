@@ -142,7 +142,7 @@ const cadastrarMarca = async () => {
       setMessage("Marca cadastrada com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-de-marcas/marcas-cadastradas.html" );
       window.location.assign("#header-marca");
     } else {
-      setMessage("Não foi possivel cadastrar a marca","fail");
+      setMessage("Não foi possivel cadastrar a marca!","fail");
       window.location.assign("#header-marca");
     }
   }
@@ -193,10 +193,10 @@ const editarMarca = async () => {
     });
 
     if (response.status == 200) {
-      setMessage("Marca alterada com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-de-marcas/marcas-cadastradas.html" );
+      setMessage("Marca editada com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-de-marcas/marcas-cadastradas.html" );
           window.location.assign("#header-marca");
     } else {
-      setMessage("Não foi possivel alterar a marca","fail");
+      setMessage("Não foi possivel editar a marca!","fail");
       window.location.assign("#header-marca");
     }
     document.body.style.cursor = "auto";
@@ -209,7 +209,7 @@ const deleteMarca = async () => {
     setMessage("Marca excluida com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-de-marcas/marcas-cadastradas.html" );
     window.location.assign("#header-marca");
   } else {
-    setMessage("Não foi possivel excluir a marca","fail");
+    setMessage("Não foi possivel excluir a marca!","fail");
     window.location.assign("#header-marca");
   }
 };

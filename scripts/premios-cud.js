@@ -155,7 +155,7 @@ const cadastrarPremio = async () => {
       setMessage("Prêmio cadastrado com sucesso! Você será redirecionado para a tela anterior", "ok", "./premios-da-semana.html");
       window.location.assign("#header-premios");
     } else {
-      setMessage("Não foi possivel cadastrar o prêmio","fail");
+      setMessage("Não foi possivel cadastrar o prêmio!","fail");
       window.location.assign("#header-premios");
     }
   }
@@ -205,7 +205,7 @@ const editarPremio = async () => {
       setMessage("Prêmio editado com sucesso! Você será redirecionado para a tela anterior", "ok", "./premios-da-semana.html");
       window.location.assign("#header-premios");
     } else {
-      setMessage("Não foi possivel editar o prêmio","fail");
+      setMessage("Não foi possivel editar o prêmio!","fail");
       window.location.assign("#header-premios");
     }
   }
@@ -218,7 +218,7 @@ const removerPremio = async () => {
     setMessage("Prêmio excluido com sucesso! Você será redirecionado para a tela anterior", "ok", "./premios-da-semana.html");
     window.location.assign("#header-premios");
   } else {
-    setMessage("Não foi possivel excluir o prêmio","fail");
+    setMessage("Não foi possivel excluir o prêmio!","fail");
     window.location.assign("#header-premios");
   }
 };

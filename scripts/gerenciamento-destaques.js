@@ -72,7 +72,7 @@ const cadastrarDestaque = async () => {
             setMessage("Destaque cadastrado com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-dos-destaques/destaques-cadastradas.html" );
             window.location.assign("#header-destaques");
         } else {
-            setMessage("Não foi possível cadastrar o destaque","fail");
+            setMessage("Não foi possível cadastrar o destaque!","fail");
             window.location.assign("#header-destaques");
         }
     }
@@ -112,10 +112,10 @@ const editarDestaque = async () => {
         });
 
         if (response.status == 200) {
-            setMessage("Destaque alterado com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-dos-destaques/destaques-cadastradas.html" );
+            setMessage("Destaque editado com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-dos-destaques/destaques-cadastradas.html" );
             window.location.assign("#header-destaques");
         } else {
-            setMessage("Não foi possível alterar o destaque","fail");
+            setMessage("Não foi possível editar o destaque!","fail");
             window.location.assign("#header-destaques");
         }
     }
@@ -137,7 +137,7 @@ const deleteDestaque = async () => {
         setMessage("Destaque excluido com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-dos-destaques/destaques-cadastradas.html" );
         window.location.assign("#header-destaques");
     } else {
-        setMessage("Não foi possível excluir o Destaque","fail");
+        setMessage("Não foi possível excluir o destaque!","fail");
         window.location.assign("#header-destaques");
     }
 }
