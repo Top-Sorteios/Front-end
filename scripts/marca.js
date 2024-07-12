@@ -201,7 +201,7 @@ const deleteMarca = async () => {
         window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
       }, 3000);
   } else {
-    mostrarAlert("Não foi possível excluir a marca", 'fa-solid fa-circle-xmark');
+    mostrarAlert("Não foi possível excluir a marca", 'fas fa-circle-xmark');
   }
 };
 

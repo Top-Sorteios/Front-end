@@ -9,7 +9,7 @@ export function mostrarAlert(msg, iconClass){
       alert.remove();
     }, 3000);
   
-    if(msg.includes('Não foi possível')){
+    if(msg.includes('Não foi possível') || msg.includes('Erro')){
       alert.classList.add('error');
     }
   }
