@@ -1,24 +1,37 @@
+import { post, setMessage } from "./CONSTANTES.js";
+
 const formEsqueciSenha = document.querySelector("#form-esqueci-senha");
 const email = document.querySelector("#email");
 
 const requisitarMudancaSenha = async function () {
-  let url =
-    "https://grupo-top-sorteios.azurewebsites.net/usuarios/esqueci-senha";
+  document.body.style.cursor = "wait";
 
-  const response = await fetch(url, {
-    method: "POST",
-    mode: "cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        email: email.value,
-    }),
-  });
+  // const request = await fetch(url, {
+  //   method: "POST",
+  //   mode: "cors",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify({
+  //       email: email.value,
+  //   }),
+  // });
 
-  const data = await response.json();
-  console.log(data);
+  const request = await post(
+    "usuarios/esqueci-senha",
+    { email: email.value },
+    "json"
+  );
+  if (request.ok) {
+    const response = await request.json();
+    console.log(response);
+    setMessage("As instruções pra recuperar a senha foram enviadas para sua caixa de entrada!","fail" );
+    // document.querySelector("#message").classList.remove("none")
+  }
+  document.body.style.cursor = "auto";
 };
 
 formEsqueciSenha.addEventListener("submit", (event) => {
   event.preventDefault();
   requisitarMudancaSenha();
 });
+
+// setMessage("teste");

@@ -104,3 +104,19 @@ export const post = async function (endpoint, body, contentType) {
   const request = await fetch(SERVER_NAME + endpoint, settings);
   return request;
 };
+
+export const setMessage = (message, type = "ok", redirect = "#") => {
+  const divMessage = document.createElement("div");
+  divMessage.classList.add(
+    "modal__message",
+    type ? `modal__message-${type}` : ""
+  );
+  const pMessage = document.createElement("p");
+  pMessage.innerText = message;
+  divMessage.appendChild(pMessage);
+  document.body.appendChild(divMessage);
+  setTimeout(() => {
+    divMessage.remove();
+    window.location.replace(redirect);
+  }, 2000);
+};

@@ -125,6 +125,11 @@
 body {
   font-family: "Bariol Regular", sans-serif;
 }
+
+textarea, input {
+  font-family: "Bariol Regular", sans-serif;
+}
+
 /* 
 html  {
   font-family: "Bariol Light", sans-serif;
