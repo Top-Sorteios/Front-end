@@ -1,4 +1,5 @@
 import { SERVER_NAME } from "./CONSTANTES.js";
+import { mostrarAlert } from "./alerts.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
     const token = sessionStorage.getItem("token");
@@ -66,11 +67,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const data = await response.json();
             console.log('Resposta do servidor:', data);
-            alert('Participação no sorteio realizada com sucesso!');
+            mostrarAlert('Participação no sorteio realizada com sucesso!', 'fas fa-circle-check')
 
         } catch (error) {
             console.error('Erro ao participar do sorteio:', error);
-            alert('Erro ao participar do sorteio: ' + error.message);
+            mostrarAlert('Erro ao participar do sorteio: ' + error.message, 'fas fa-circle-xmark');
         }
     });
 

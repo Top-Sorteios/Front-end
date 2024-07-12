@@ -3,6 +3,7 @@
 @import url("./nossos-parceiros.css");
 @import url("./instructions.css");
 @import url("./footer.css");
+@import url("./alerts.css");
 
 :root {
   --header-color: #9e9e9e;

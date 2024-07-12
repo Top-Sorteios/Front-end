@@ -1,4 +1,5 @@
-import { ACAO, get, setMessage, remove, SERVER_NAME, TOKEN } from "./CONSTANTES.js";
+import { ACAO, get, remove, SERVER_NAME, TOKEN } from "./CONSTANTES.js";
+import { mostrarAlert } from "./alerts.js";
 
 const error = document.querySelectorAll(".wrong-text");
 const inputNome = document.getElementById("nome-marca");
@@ -139,11 +140,12 @@ const cadastrarMarca = async () => {
       body: formData,
     });
     if (response.status == 201) {
-      setMessage("Marca cadastrada com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-de-marcas/marcas-cadastradas.html" );
-      window.location.assign("#header-marca");
+      mostrarAlert("Marca cadastrada com sucesso", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      }, 3000);
     } else {
-      setMessage("Não foi possivel cadastrar a marca","fail");
-      window.location.assign("#header-marca");
+      mostrarAlert("Não foi possível cadastrar a marca", 'fa-solid fa-circle-xmark');;
     }
   }
 };
@@ -193,11 +195,13 @@ const editarMarca = async () => {
     });
 
     if (response.status == 200) {
-      setMessage("Marca alterada com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-de-marcas/marcas-cadastradas.html" );
-          window.location.assign("#header-marca");
+      mostrarAlert("Marca editada com sucesso", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      }, 3000);
+      
     } else {
-      setMessage("Não foi possivel alterar a marca","fail");
-      window.location.assign("#header-marca");
+      mostrarAlert("Não foi possível alterar o registro", 'fa-solid fa-circle-xmark');
     }
     document.body.style.cursor = "auto";
   }
@@ -206,11 +210,12 @@ const editarMarca = async () => {
 const deleteMarca = async () => {
   const request = await remove(`marcas/${idMarca}`);
   if (request.status == 200) {
-    setMessage("Marca excluida com sucesso! Você será redirecionado para a tela anterior","ok", "../gestao-de-marcas/marcas-cadastradas.html" );
-    window.location.assign("#header-marca");
+    mostrarAlert("Marca excluída com sucesso", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      }, 3000);
   } else {
-    setMessage("Não foi possivel excluir a marca","fail");
-    window.location.assign("#header-marca");
+    mostrarAlert("Não foi possível excluir a marca", 'fas fa-circle-xmark');
   }
 };
 
@@ -247,3 +252,4 @@ buttonNao.addEventListener("click", () => {
   container.classList.remove("none");
   containerExcluir.classList.add("none");
 });
+
