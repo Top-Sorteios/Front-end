@@ -48,7 +48,7 @@ const cadastrarDestaque = async () => {
         inputNome.classList.add('wrong')
         inputNome.focus()
     } else if (inputTitulo.value == '') {
-        error[1].innerText = 'Digite o titulo do destaque'
+        error[1].innerText = 'Digite o título do destaque'
         inputTitulo.classList.add('wrong')
         inputTitulo.focus()
     } else if (inputDestaque.files[0] == null) {
@@ -86,7 +86,7 @@ const editarDestaque = async () => {
         inputNome.classList.add('wrong')
         inputNome.focus()
     } else if (inputTitulo.value == '') {
-        error[1].innerText = 'Digite o titulo do destaque'
+        error[1].innerText = 'Digite o título do destaque'
         inputTitulo.classList.add('wrong')
         inputTitulo.focus()
     }  else {

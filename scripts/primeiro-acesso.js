@@ -76,7 +76,7 @@ const checarErros = function () {
   }
   if (!inputCPF.value) {
     inputCPF.classList.add("wrong");
-    textoError[1].innerText = "Insira o CPF. Sem traços ou pontos.";
+    textoError[1].innerText = "Insira o CPF (apenas números)";
     inputCPF.focus();
   } else if (inputCPF.value.length < 11) {
     inputCPF.classList.add("wrong");
@@ -103,7 +103,7 @@ const checarErros = function () {
 
   if (inputSenha.value != inputConfirmarSenha.value) {
     inputConfirmarSenha.classList.add("wrong");
-    textoError[4].innerText = "As senhas não são iguais.";
+    textoError[4].innerText = "As senhas não correspondem.";
     inputConfirmarSenha.focus();
   }
 };

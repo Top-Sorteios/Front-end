@@ -47,10 +47,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('usuarios-tbody').addEventListener('click', async (event) => {
         if (event.target.classList.contains('editar-btn')) {
             const email = event.target.getAttribute('data-email');
-            console.log('Email do usuário selecionado:', email);
+            console.log('E-mail do usuário selecionado:', email);
 
             if (!email) {
-                console.error('Email do usuário não encontrado');
+                console.error('E-mail do usuário não encontrado');
                 return;
             }
 
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         event.preventDefault();
 
         const email = document.getElementById('email').value;
-        console.log('Email do usuário para edição:', email);
+        console.log('E-mail do usuário para edição:', email);
         const tipoUsuario = document.getElementById('tipo-usuario').value;
         const administrador = tipoUsuario === 'ADMIN';
 

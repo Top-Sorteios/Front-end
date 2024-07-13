@@ -49,7 +49,7 @@ const entrar = async function () {
     } else if (request.status === 404) {
       inputEmail.classList.add("wrong");
       inputSenha.classList.add("wrong");
-      textoError.innerText = 'Email ou senha invalido'
+      textoError.innerText = 'E-mail ou senha inválidos.'
     }
   } catch (error) {
     console.log("O erro foi:" + error.status);

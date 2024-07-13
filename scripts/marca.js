@@ -110,7 +110,7 @@ const cadastrarMarca = async () => {
     inputNome.classList.add("wrong");
     inputNome.focus();
   } else if (inputTitulo.value == "") {
-    error[1].innerText = "Preencha o campo titulo";
+    error[1].innerText = "Preencha o campo título";
     inputTitulo.classList.add("wrong");
     inputTitulo.focus();
   } else if (inputOrdemExibicao.value == "") {
@@ -157,7 +157,7 @@ const editarMarca = async () => {
     inputNome.classList.add("wrong");
     inputNome.focus();
   } else if (inputTitulo.value == "") {
-    error[1].innerText = "Preencha o campo titulo";
+    error[1].innerText = "Preencha o campo título";
     inputTitulo.classList.add("wrong");
     inputTitulo.focus();
   } else if (inputOrdemExibicao.value == "") {
