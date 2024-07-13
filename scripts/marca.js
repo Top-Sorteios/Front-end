@@ -1,5 +1,5 @@
-import { ACAO, get, remove, SERVER_NAME, TOKEN } from "./CONSTANTES.js";
-import { mostrarAlert } from "./alerts.js";
+import { ACAO, get, remove, SERVER_NAME, TOKEN, mostrarAlert } from "./CONSTANTES.js";
+
 
 const error = document.querySelectorAll(".wrong-text");
 const inputNome = document.getElementById("nome-marca");

@@ -5,11 +5,12 @@ import {
   SERVER_NAME,
   TOKEN,
   get,
-  setMessage,
   post,
   put,
   remove,
+  mostrarAlert
 } from "./CONSTANTES.js";
+
 
 // Seletores de Elementos
 const titulo = document.querySelector("#titulo");
@@ -152,11 +153,12 @@ const cadastrarPremio = async () => {
     document.body.style.cursor = "wait";
     const request = await post("premios/registrar", formData, "formData");
     if (request.status === 201) {
-      setMessage("Prêmio cadastrado com sucesso! Você será redirecionado para a tela anterior", "ok", "./premios-da-semana.html");
-      window.location.assign("#header-premios");
+      mostrarAlert("Prêmio cadastrado com sucesso!", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("./premios-da-semana.html");
+      }, 3000);
     } else {
-      setMessage("Não foi possivel cadastrar o prêmio!","fail");
-      window.location.assign("#header-premios");
+      mostrarAlert("Não foi possível cadastrar o prêmio.", 'fas fa-circle-xmark')
     }
   }
 };
@@ -202,11 +204,12 @@ const editarPremio = async () => {
     const request = await put(`premios/editar/${PREMIO_ID}`, formData);
 
     if (request.status === 200) {
-      setMessage("Prêmio editado com sucesso! Você será redirecionado para a tela anterior", "ok", "./premios-da-semana.html");
-      window.location.assign("#header-premios");
+      mostrarAlert("Prêmio editado com sucesso!", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("./premios-da-semana.html");
+      }, 3000);
     } else {
-      setMessage("Não foi possivel editar o prêmio!","fail");
-      window.location.assign("#header-premios");
+      mostrarAlert("Não foi possível editar o prêmio.", 'fas fa-circle-xmark');
     }
   }
 };
@@ -215,11 +218,12 @@ const editarPremio = async () => {
 const removerPremio = async () => {
   const request = await remove(`premios/${PREMIO_ID}`);
   if (request.status === 200) {
-    setMessage("Prêmio excluido com sucesso! Você será redirecionado para a tela anterior", "ok", "./premios-da-semana.html");
-    window.location.assign("#header-premios");
+    mostrarAlert("Prêmio excluído com sucesso!", 'fas fa-circle-check');
+      setTimeout(() => {
+        window.location.assign("./premios-da-semana.html");
+      }, 3000);
   } else {
-    setMessage("Não foi possivel excluir o prêmio!","fail");
-    window.location.assign("#header-premios");
+    mostrarAlert("Não foi possível excluir o prêmio.", 'fas fa-circle-xmark')
   }
 };
 

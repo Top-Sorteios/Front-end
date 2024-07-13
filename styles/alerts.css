@@ -42,7 +42,7 @@
     width: 100%;
     height: 5px;
     background-color: var(--right);
-    animation: anim 3s linear forwards;
+    animation: anim 2.5s linear forwards;
 }
 
 .alert.error span{

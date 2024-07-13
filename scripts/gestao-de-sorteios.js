@@ -1,4 +1,5 @@
-import { EMAIL, SERVER_NAME, TOKEN } from "./CONSTANTES.js";
+
+import { EMAIL, SERVER_NAME, TOKEN, mostrarAlert } from "./CONSTANTES.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const token = TOKEN;
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         : 0;
 
       if (!selectedPremioSku) {
-        alert("Selecione um prêmio para realizar o sorteio");
+        mostrarAlert("Não foi possível realizar o sorteio. Selecione um prêmio para continuar.", 'fas fa-circle-xmark');
         return;
       }
 
@@ -103,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ).textContent = `Aderido: ${resultadoSorteio.nome}`;
       } catch (error) {
         console.error("Erro ao realizar sorteio:", error);
-        alert("Erro ao realizar sorteio: " + error.message);
+        mostrarAlert("Erro ao realizar sorteio", 'fas fa-circle-xmark')
       }
     });
 });

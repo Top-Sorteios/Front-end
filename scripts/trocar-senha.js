@@ -1,4 +1,4 @@
-import { SERVER_NAME } from "./CONSTANTES.js";
+import { SERVER_NAME, mostrarAlert } from "./CONSTANTES.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const token = sessionStorage.getItem("token");
@@ -76,14 +76,14 @@ async function trocarSenha() {
     if (contentType && contentType.includes("application/json")) {
       const data = await response.json();
       console.log("Senha alterada com sucesso:", data);
-      alert("Senha alterada com sucesso!");
+      mostrarAlert("Senha alterada com sucesso!", 'fas fa-circle-check');
     } else {
       console.log("Senha alterada com sucesso");
-      alert("Senha alterada com sucesso!");
+      mostrarAlert("Senha alterada com sucesso!", 'fas fa-circle-check');
     }
   } catch (error) {
     console.error("Erro ao alterar a senha:", error);
-    alert("Erro ao alterar a senha: " + error.message);
+    mostrarAlert("Não foi possível alterar a senha. ", 'fas fa-circle-xmark');
   }
 }
 

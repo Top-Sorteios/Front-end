@@ -105,18 +105,18 @@ export const post = async function (endpoint, body, contentType) {
   return request;
 };
 
-export const setMessage = (message, type = "ok", redirect = "#") => {
-  const divMessage = document.createElement("div");
-  divMessage.classList.add(
-    "modal__message",
-    type ? `modal__message-${type}` : ""
-  );
-  const pMessage = document.createElement("p");
-  pMessage.innerText = message;
-  divMessage.appendChild(pMessage);
-  document.body.appendChild(divMessage);
+
+export function mostrarAlert(msg, iconClass){
+  let alertBox = document.getElementById('alert-box');
+  let alert = document.createElement('div');
+  alert.classList.add('alert');
+  alert.innerHTML = `<span class="${iconClass}"></span> ${msg}`;
+  alertBox.appendChild(alert);
   setTimeout(() => {
-    divMessage.remove();
-    window.location.replace(redirect);
-  }, 4000);
-};
+    alert.remove();
+  }, 2500);
+
+  if(msg.includes('Não foi possível') || msg.includes('Erro')){
+    alert.classList.add('error');
+  }
+}

@@ -1,5 +1,4 @@
-import { SERVER_NAME } from "./CONSTANTES.js";
-import { mostrarAlert } from "./alerts.js";
+import { SERVER_NAME, mostrarAlert } from "./CONSTANTES.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
     const token = sessionStorage.getItem("token");
