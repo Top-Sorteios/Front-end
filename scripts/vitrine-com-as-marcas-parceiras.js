@@ -53,24 +53,24 @@ document.addEventListener('DOMContentLoaded', async () => {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
+                    "Content-Type": "text/plain"
                 },
-                body: JSON.stringify({ email })
+                body: email
             });
 
             if (!response.ok) {
-                const errorResponse = await response.json();
+                const errorResponse = await response.text();
                 console.error('Erro do servidor:', errorResponse);
-                throw new Error('Falha ao participar do sorteio');
+                throw new Error('Você já está participando do sorteio.');
             }
 
-            const data = await response.json();
+            const data = await response.text();
             console.log('Resposta do servidor:', data);
-            mostrarAlert('Participação no sorteio realizada com sucesso!', 'fas fa-circle-check')
+            mostrarAlert('Você foi inscrito(a) no sorteio com sucesso!', 'fas fa-circle-check')
 
         } catch (error) {
             console.error('Erro ao participar do sorteio:', error);
-            mostrarAlert('Erro ao participar do sorteio: ' + error.message, 'fas fa-circle-xmark');
+            mostrarAlert('Não foi possível realizar a ação: ' + error.message, 'fas fa-circle-xmark');
         }
     });
 
