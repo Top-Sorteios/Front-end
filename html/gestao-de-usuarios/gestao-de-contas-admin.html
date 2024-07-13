@@ -10,24 +10,25 @@
 
     <script type="module" src="../../scripts/admin/checar-autentificacao.js" defer></script>
     <script src="../../scripts/admin/gestao-de-contas-admin.js" type="module" defer></script>
-    <script type="module" src="../../scripts/header.js" defer> </script>
+    <script type="module" src="../../scripts/header.js" defer></script>
 </head>
 <body>
     <header class="header" id="header">
         <div class="header-button-container">
- <figure class="header__figure">
+            <figure class="header__figure">
                 <a href="/">
                     <img class="header__figure-img" src="../../assets/images/logo/LOGO-TESTE.png" alt="logo do sorteio top">
                 </a>
             </figure>
-            <button id="mobile-participar-button" class="b md  bold"> Participar dos sorteios</button></a>
+            <button id="mobile-participar-button" class="b md bold"> Participar dos sorteios</button>
         </div>
         <nav class="header__nav" id="header-nav">
             <a class="header__nav-a hov__underline" href="/">Inicio</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-sorteios/historico-de-sorteios.html">Historico de sorteios</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-marcas/marcas-parceiros.html">Parceiros</a>
             <a class="header__nav-a hov__underline" href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
-                <button id="login" class="b md hov__blue bold"> Participar dos sorteios</button></a>
+                <button id="login" class="b md hov__blue bold"> Participar dos sorteios</button>
+            </a>
             <div class="header__nav-dropdown" id="nav-dropdown">
                 <button class="header__nav-dropbtn" id="username">User</button>
                 <div class="header__nav-dropdown-content">
@@ -45,10 +46,9 @@
     </header>
     <main class="main">
         <div class="container">
-
             <h1>Pesquisa de Usuários</h1>
             <input id="input-pesquisa" type="text" placeholder="Pesquisar usuario">
-            <div id="usuarios-container">
+            <div class="table-container">
                 <table class="table">
                     <thead class="table__head">
                         <tr>
@@ -97,6 +97,7 @@
                 </form>
             </div>
         </div>
+    </main>
     <footer class="footer txt-size-small">
         <div class="footer__container">
             <nav class="footer__nav">
@@ -120,13 +121,13 @@
             <div class="footer__social-media">
                 <p class="footer__social-media-p">Redes Sociais</p>
                 <div class="footer-social-media-container">
-                     <a class="footer__link hov__underline" href="https://www.instagram.com/grupotopoficial/" target="_blank">Instagram</a>
-<a class="footer__link hov__underline" href="https://www.youtube.com/@GrupoTOPOficial" target="_blank">Youtube</a>                </div>
+                    <a class="footer__link hov__underline" href="https://www.instagram.com/grupotopoficial/" target="_blank">Instagram</a>
+                    <a class="footer__link hov__underline" href="https://www.youtube.com/@GrupoTOPOficial" target="_blank">Youtube</a>
+                </div>
             </div>
             <div class="footer__copyright">
                 <div class="rodape-buttom">
-                                        <a href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
-
+                    <a href="../gestao-de-marcas/vitrine-com-as-marcas-parceiras.html">
                         <button class="b md hov__white footer__button">Participe dos Sorteios</button>
                     </a>
                 </div>
