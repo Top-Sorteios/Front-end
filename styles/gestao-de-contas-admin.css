@@ -35,11 +35,11 @@
 }
 
 .editar-btn {
-color: var(--link-selected);
-cursor: pointer;
+  color: var(--link-selected);
+  cursor: pointer;
 }
 
-.editar-btn:hover{
+.editar-btn:hover {
   text-decoration: underline;
 }
 
@@ -51,12 +51,16 @@ cursor: pointer;
 .container {
   display: flex;
   margin: 20px auto 500px auto;
-  /* Ajuste conforme necessário */
   border-radius: 50px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 80%;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Adicione esta linha */
 }
 
 .table {
@@ -79,15 +83,10 @@ cursor: pointer;
 
 th,
 td {
-    padding: 1rem;
-    border: 1px solid black;
-    text-align: left;
+  padding: 1rem;
+  border: 1px solid black;
+  text-align: left;
 }
-
-/* .table__body-tr:hover {
-  background-color: var(--green);
-  color: var(--white);
-} */
 
 .table__body {
   padding: 1rem;
@@ -148,31 +147,6 @@ label {
   margin-top: 0.3rem;
 }
 
-@media (max-width: 720px) {
-  .table {
-    overflow-x: auto;
-  }
-
-  .container {
-    width: 100%;
-  }
-
-  .table__head-th,
-  .table__body-td {
-    display: block;
-    width: 100%;
-    border: 1px solid #ddd;
-  }
-
-  .table__body-tr {
-    border: 3px solid var(--border-color);
-  }
-
-  .button-novo-premio {
-    margin-bottom: 100px;
-  }
-}
-
 .tdcriado {
   text-align: center;
 }
@@ -181,7 +155,19 @@ td {
   height: 2rem;
 }
 
-/* tbody tr:nth-child(odd) {
-  background-color: #8a909c;
-  color: #fff;
-} */
+/* Responsividade para a tabela */
+@media (max-width: 720px) {
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        display: block;
+        min-width: 720px; /* Ajuste conforme necessário */
+    }
+
+    .table__head, .table__body, th, td {
+        white-space: nowrap;
+    }
+}
