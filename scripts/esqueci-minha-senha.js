@@ -24,6 +24,9 @@ const requisitarMudancaSenha = async function () {
     const response = await request.json();
     console.log(response);
     mostrarAlert("As instruções pra recuperar a senha foram enviadas para sua caixa de entrada.", 'fas fa-circle-check')
+    setTimeout(() => {
+      window.location.assign("../login/index.html");
+    }, 2500);
     // document.querySelector("#message").classList.remove("none")
   }
   else{
