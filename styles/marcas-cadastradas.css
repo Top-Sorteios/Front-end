@@ -82,7 +82,7 @@ table a:hover {
 
     th,
     td {
-        display: block;
+        /* display: block; */
         width: 100%;
         border: 1px solid #ddd;
     }
