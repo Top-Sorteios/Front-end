@@ -72,7 +72,7 @@ const cadastrarDestaque = async () => {
             mostrarAlert("Destaque cadastrado com sucesso!", 'fas fa-circle-check');
             setTimeout(() => {
                 window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
-              }, 3000);
+              }, 2500);
         } else {
             mostrarAlert("Não foi possível cadastrar o destaque", 'fas fa-circle-xmark');
         }
@@ -115,7 +115,7 @@ const editarDestaque = async () => {
             mostrarAlert("Destaque editado com sucesso!", 'fas fa-circle-check');
             setTimeout(() => {
                 window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
-              }, 3000);
+              }, 2500);
         } else {
             mostrarAlert("Não foi possível editar destaque", 'fas fa-circle-xmark');
         }
@@ -138,7 +138,7 @@ const deleteDestaque = async () => {
         mostrarAlert("Destaque excluído com sucesso!", 'fas fa-circle-check');
         setTimeout(() => {
             window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
-          }, 3000);
+          }, 2500);
     } else {
         mostrarAlert("Não foi possível excluir o destaque", 'fas fa-circle-xmark')
     }

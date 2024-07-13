@@ -143,7 +143,7 @@ const cadastrarMarca = async () => {
       mostrarAlert("Marca cadastrada com sucesso", 'fas fa-circle-check');
       setTimeout(() => {
         window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
-      }, 3000);
+      }, 2500);
     } else {
       mostrarAlert("Não foi possível cadastrar a marca", 'fa-solid fa-circle-xmark');;
     }
@@ -198,7 +198,7 @@ const editarMarca = async () => {
       mostrarAlert("Marca editada com sucesso", 'fas fa-circle-check');
       setTimeout(() => {
         window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
-      }, 3000);
+      }, 2500);
       
     } else {
       mostrarAlert("Não foi possível alterar o registro", 'fa-solid fa-circle-xmark');
@@ -213,7 +213,7 @@ const deleteMarca = async () => {
     mostrarAlert("Marca excluída com sucesso", 'fas fa-circle-check');
       setTimeout(() => {
         window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
-      }, 3000);
+      }, 2500);
   } else {
     mostrarAlert("Não foi possível excluir a marca", 'fas fa-circle-xmark');
   }

@@ -15,8 +15,10 @@ const checarPermissao = async function () {
   const response = await request.json();
 
   if (!response.administrador || response.administrador != true) {
-    alert("você não tem permisssão pra acessar essa página");
-    window.location.replace("../home/");
+    mostrarAlert("Não foi possível acessar a página. Você não possui permissão.", 'fas fa-circle-xmark');
+      setTimeout(() => {
+        window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+      }, 2500);
   }
 };
 

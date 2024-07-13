@@ -1,4 +1,4 @@
-import { SERVER_NAME } from '../CONSTANTES.js';
+import { SERVER_NAME, mostrarAlert } from '../CONSTANTES.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const token = sessionStorage.getItem("token");
@@ -113,13 +113,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 throw new Error(`Falha ao editar usuário: ${errorText}`);
             }
 
-            alert('Usuário atualizado com sucesso!');
+            mostrarAlert("Usuário atualizado com sucesso!", 'fas fa-circle-check');
             document.getElementById('user-modal').classList.add('hidden');
             await obterUsuarios();
 
         } catch (error) {
             console.error('Erro ao editar usuário:', error);
-            alert('Erro ao editar usuário: ' + error.message);
+            mostrarAlert("Não foi possível editar o usuário.", 'fa-solid fa-circle-xmark');;
         }
     });
 

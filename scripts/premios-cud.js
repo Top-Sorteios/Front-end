@@ -156,7 +156,7 @@ const cadastrarPremio = async () => {
       mostrarAlert("Prêmio cadastrado com sucesso!", 'fas fa-circle-check');
       setTimeout(() => {
         window.location.assign("./premios-da-semana.html");
-      }, 3000);
+      }, 2500);
     } else {
       mostrarAlert("Não foi possível cadastrar o prêmio.", 'fas fa-circle-xmark')
     }
@@ -207,7 +207,7 @@ const editarPremio = async () => {
       mostrarAlert("Prêmio editado com sucesso!", 'fas fa-circle-check');
       setTimeout(() => {
         window.location.assign("./premios-da-semana.html");
-      }, 3000);
+      }, 2500);
     } else {
       mostrarAlert("Não foi possível editar o prêmio.", 'fas fa-circle-xmark');
     }
@@ -221,7 +221,7 @@ const removerPremio = async () => {
     mostrarAlert("Prêmio excluído com sucesso!", 'fas fa-circle-check');
       setTimeout(() => {
         window.location.assign("./premios-da-semana.html");
-      }, 3000);
+      }, 2500);
   } else {
     mostrarAlert("Não foi possível excluir o prêmio.", 'fas fa-circle-xmark')
   }
