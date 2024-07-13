@@ -1,5 +1,11 @@
-import { ACAO, get, remove, SERVER_NAME, TOKEN, mostrarAlert } from "./CONSTANTES.js";
-
+import {
+  ACAO,
+  get,
+  remove,
+  SERVER_NAME,
+  TOKEN,
+  mostrarAlert,
+} from "./CONSTANTES.js";
 
 const error = document.querySelectorAll(".wrong-text");
 const inputNome = document.getElementById("nome-marca");
@@ -51,30 +57,23 @@ inputBanner.addEventListener("change", () => {
   const reader = new FileReader();
   const file = inputBanner.files[0];
   reader.onloadend = () => {
-    const base64String = btoa(
-      String.fromCharCode(...new Uint8Array(reader.result))
-    );
-    previewBanner.src = `data:image/*;base64,${base64String}`;
+    const base64String = reader.result;
+    previewBanner.setAttribute("src", `${base64String}`);
     reader.abort();
   };
-  reader.readAsArrayBuffer(file);
+  reader.readAsDataURL(file);
 });
-
 
 inputLogo.addEventListener("change", () => {
   const reader = new FileReader();
-  const file = inputBanner.files[0];
+  const file = inputLogo.files[0];
   reader.onloadend = () => {
-    const base64String = btoa(
-      String.fromCharCode(...new Uint8Array(reader.result))
-    );
-    previewLogo.src = `data:image/*;base64,${base64String}`;
+    const base64String = reader.result;
+    previewLogo.setAttribute("src", `${base64String}`);
     reader.abort();
   };
-  reader.readAsArrayBuffer(file);
+  reader.readAsDataURL(file);
 });
-
-
 
 switch (ACAO) {
   case "EDITAR":
@@ -98,7 +97,6 @@ switch (ACAO) {
     window.location.replace("./marcas-cadastradas.html");
     break;
 }
-
 
 // Função que cadastra a marca
 const cadastrarMarca = async () => {
@@ -140,12 +138,15 @@ const cadastrarMarca = async () => {
       body: formData,
     });
     if (response.status == 201) {
-      mostrarAlert("Marca cadastrada com sucesso", 'fas fa-circle-check');
+      mostrarAlert("Marca cadastrada com sucesso", "fas fa-circle-check");
       setTimeout(() => {
         window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
       }, 2500);
     } else {
-      mostrarAlert("Não foi possível cadastrar a marca", 'fa-solid fa-circle-xmark');;
+      mostrarAlert(
+        "Não foi possível cadastrar a marca",
+        "fa-solid fa-circle-xmark"
+      );
     }
   }
 };
@@ -195,13 +196,15 @@ const editarMarca = async () => {
     });
 
     if (response.status == 200) {
-      mostrarAlert("Marca editada com sucesso", 'fas fa-circle-check');
+      mostrarAlert("Marca editada com sucesso", "fas fa-circle-check");
       setTimeout(() => {
         window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
       }, 2500);
-      
     } else {
-      mostrarAlert("Não foi possível alterar o registro", 'fa-solid fa-circle-xmark');
+      mostrarAlert(
+        "Não foi possível alterar o registro",
+        "fa-solid fa-circle-xmark"
+      );
     }
     document.body.style.cursor = "auto";
   }
@@ -210,12 +213,12 @@ const editarMarca = async () => {
 const deleteMarca = async () => {
   const request = await remove(`marcas/${idMarca}`);
   if (request.status == 200) {
-    mostrarAlert("Marca excluída com sucesso", 'fas fa-circle-check');
-      setTimeout(() => {
-        window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
-      }, 2500);
+    mostrarAlert("Marca excluída com sucesso", "fas fa-circle-check");
+    setTimeout(() => {
+      window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
+    }, 2500);
   } else {
-    mostrarAlert("Não foi possível excluir a marca", 'fas fa-circle-xmark');
+    mostrarAlert("Não foi possível excluir a marca", "fas fa-circle-xmark");
   }
 };
 
@@ -252,4 +255,3 @@ buttonNao.addEventListener("click", () => {
   container.classList.remove("none");
   containerExcluir.classList.add("none");
 });
-
