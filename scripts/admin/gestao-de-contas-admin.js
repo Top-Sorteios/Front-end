@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 usuarioRow.innerHTML = `
                     <td class="tdcriado"><span class="editar-btn" data-email="${usuario.email}">Editar</span></td>
                     <td class="userName">${usuario.nome}</td>
-                    <td class="userName">${usuario.administrador == true ? 'Administrador' : 'Usuário Comum'}</td>
+                    <td>${usuario.administrador == true ? 'Administrador' : 'Usuário Comum'}</td>
                     <td>${usuario.turma ? usuario.turma.nome : 'Nome do criador não especificado'}</td>
                     <td class="tdcriado">${usuario.turma ? new Date(usuario.turma.criadoem).toLocaleDateString() : 'Data de criação não especificada'}</td>
                 `;
