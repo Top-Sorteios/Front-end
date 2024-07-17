@@ -104,8 +104,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         if (!sortearResponse.ok) {
-          const errorData = await sortearResponse.json();
-          console.error("Erro detalhado:", errorData);
+          let errorData;
+          try {
+            errorData = await sortearResponse.json();
+          } catch (jsonError) {
+            const textError = await sortearResponse.text();
+            console.error("Erro detalhado:", textError);
+            mostrarAlert(`Erro: ${textError}`, 'fas fa-circle-xmark');
+            throw new Error("Falha ao realizar sorteio");
+          }
 
           if (errorData.errorCode === 400) {
             mostrarAlert(`Erro: ${errorData.mensagem}`, 'fas fa-circle-xmark');
