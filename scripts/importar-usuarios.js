@@ -10,8 +10,8 @@ const inputImportarXlsx = document.querySelector("#importar-xlsx");
 const textoError = document.querySelector(".wrong-text");
 
 const importarUsuarios = async function () {
-  limarError();
-  resultadosTexto.textContent = "Aguarde...";
+  limparError();
+  
   let url = `${SERVER_NAME}usuarios/importar-usuario`;
   const arquivo = document.querySelector("#importar-xlsx").files[0];
   const formData = new FormData();
@@ -22,6 +22,7 @@ const importarUsuarios = async function () {
     formFieldset.classList.add("wrong");
     textoError.innerText = "Insira um arquivo XLSX";
   } else {
+    resultadosTexto.textContent = "Aguarde...";
     document.body.style.cursor = "wait";
 
     const request = await fetch(url, {
@@ -57,9 +58,10 @@ const importarUsuarios = async function () {
   // const response = await request.json();
 };
 
-const limarError = function () {
+const limparError = function () {
   textoError.innerText = "";
   formFieldset.classList.remove("wrong");
+  resultadosSection.classList.remove("wrong");
 };
 
 formImportarUsuarios.addEventListener("submit", (event) => {
