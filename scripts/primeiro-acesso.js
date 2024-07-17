@@ -17,13 +17,13 @@ const cadastrar = async function () {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      email: inputEmail.value,
-      cpf: inputCPF.value,
+      email: inputEmail.value.toLowerCase(),
+      cpf: inputCPF.value.split(".").join("").split("-").join(""),
       datanascimento: inputDataNascimento.value,
       senha: inputSenha.value,
     }),
   });
-
+ 
   if (request.status === 500 || request.status === 400) {
     document.querySelector("#invalido-ou-feito").classList.remove("none");
   }
