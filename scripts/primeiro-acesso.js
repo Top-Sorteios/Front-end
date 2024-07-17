@@ -39,28 +39,17 @@ const cadastrar = async function () {
 };
 
 const limparErros = function () {
-  if (inputEmail.value) {
-    inputEmail.classList.remove("wrong");
-    textoError[0].innerText = "";
-  }
+  textoError.forEach((error) => {
+    error.innerText = "";
+  });
 
-  if (inputCPF.value && inputCPF.value.length === 11) {
-    inputCPF.classList.remove("wrong");
-    textoError[1].innerText = "";
-  }
-  if (inputSenha.value) {
-    inputSenha.classList.remove("wrong");
-    textoError[2].innerText = "";
-  }
-  if (inputConfirmarSenha.value) {
-    inputConfirmarSenha.classList.remove("wrong");
-    textoError[3].innerText = "";
-  }
-  if (inputSenha.value === inputConfirmarSenha.value) {
-    inputConfirmarSenha.classList.remove("wrong");
-    textoError[4].innerText = "";
-  }
+  inputEmail.classList.remove("wrong");
+  inputCPF.classList.remove("wrong");
+  inputDataNascimento.classList.remove("wrong");
+  inputSenha.classList.remove("wrong");
+  inputConfirmarSenha.classList.remove("wrong");
 };
+
 const limparFormulario = function () {
   const listaInputs = document.querySelectorAll("input");
   listaInputs.forEach((input) => {
@@ -69,64 +58,56 @@ const limparFormulario = function () {
 };
 
 const checarErros = function () {
+  let hasErrors = false;
+
   if (!inputEmail.value) {
     inputEmail.classList.add("wrong");
     textoError[0].innerText = "Digite o email";
-    inputEmail.focus();
+    hasErrors = true;
   }
+
   if (!inputCPF.value) {
     inputCPF.classList.add("wrong");
     textoError[1].innerText = "Insira o CPF (apenas números)";
-    inputCPF.focus();
+    hasErrors = true;
   } else if (inputCPF.value.length < 11) {
     inputCPF.classList.add("wrong");
     textoError[1].innerText = "CPF inválido";
-    inputCPF.focus();
+    hasErrors = true;
   }
 
   if (!inputDataNascimento.value) {
-    textoError[2].innerText = "Insira a data de nascimento";
     inputDataNascimento.classList.add("wrong");
-    inputDataNascimento.focus();
+    textoError[2].innerText = "Insira a data de nascimento";
+    hasErrors = true;
   }
+
   if (!inputSenha.value) {
     inputSenha.classList.add("wrong");
     textoError[3].innerText = "Digite a senha";
-    inputSenha.focus();
+    hasErrors = true;
   }
 
   if (!inputConfirmarSenha.value) {
     inputConfirmarSenha.classList.add("wrong");
-    textoError[4].innerText = "Digite a senha";
-    inputConfirmarSenha.focus();
+    textoError[4].innerText = "Digite a senha novamente";
+    hasErrors = true;
   }
 
-  if (inputSenha.value != inputConfirmarSenha.value) {
+  if (inputSenha.value && inputConfirmarSenha.value && inputSenha.value !== inputConfirmarSenha.value) {
     inputConfirmarSenha.classList.add("wrong");
     textoError[4].innerText = "As senhas não correspondem.";
-    inputConfirmarSenha.focus();
+    hasErrors = true;
   }
+
+  return hasErrors;
 };
 
 formPrimeiroAcesso.addEventListener("submit", (event) => {
   event.preventDefault();
   limparErros();
-  checarErros();
-  if (
-    inputEmail.value &&
-    inputCPF.value &&
-    inputDataNascimento.value &&
-    inputSenha.value &&
-    inputConfirmarSenha.value
-  ) {
+  const hasErrors = checarErros();
+  if (!hasErrors) {
     cadastrar();
   }
 });
-
-// document.getElementById('cpf').addEventListener('input', function (e) {
-//   let value = e.target.value.replace(/\D/g, '');
-//   value = value.replace(/(\d{3})(\d)/, '$1.$2');
-//   value = value.replace(/(\d{3})(\d)/, '$1.$2');
-//   value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-//   e.target.value = value;
-// });
