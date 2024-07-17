@@ -119,7 +119,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("turma-sorteada").textContent = `Turma: ${resultadoSorteio.turma}`;
         document.getElementById("nome-sorteado").textContent = `Aderido: ${resultadoSorteio.nome}`;
 
-        // Atualiza o número de participantes após realizar o sorteio
         await obterNumeroParticipantes();
       } catch (error) {
         console.error("Erro ao realizar sorteio:", error);
