@@ -51,6 +51,11 @@ body {
   grid-template-rows: fit-content auto fit-content;
 }
 
+button{
+  font-family: "Bariol Regular", sans-serif;
+  font-size: 1rem;
+}
+
 .hidden {
   display: none !important;
 }
@@ -108,10 +113,9 @@ body {
 .b {
   /*botão comum*/
   border: none;
-
   border-radius: 1.5rem;
   background-color: var(--green);
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: var(--button-text-color);
   cursor: pointer;
   transition: 0.3s;
