@@ -1,5 +1,6 @@
 import { SERVER_NAME, mostrarAlert, TOKEN } from "./CONSTANTES.js";
 
+var i = 0
 const error = document.querySelectorAll('.wrong-text')
 const inputNome = document.getElementById('nome-destaque')
 const inputTitulo = document.getElementById('titulo-destaque')
@@ -32,14 +33,15 @@ const base64ToBlob = (base64String, contentType) => {
     const byteCharacters = atob(base64String);
     const byteNumbers = new Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i);
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
     }
     const byteArray = new Uint8Array(byteNumbers);
     return new Blob([byteArray], { type: contentType });
-  };
+};
 
 // Função que cadastra a marca
 const cadastrarDestaque = async () => {
+    i = 1
     const url = `${SERVER_NAME}index/registrar`
 
     clearError()
@@ -72,14 +74,16 @@ const cadastrarDestaque = async () => {
             mostrarAlert("Destaque cadastrado com sucesso!", 'fas fa-circle-check');
             setTimeout(() => {
                 window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
-              }, 2500);
+            }, 2500);
         } else {
+            i = 0
             mostrarAlert("Não foi possível cadastrar o destaque", 'fas fa-circle-xmark');
         }
     }
 }
 
 const editarDestaque = async () => {
+    i = 1
     clearError()
     if (inputNome.value == '') {
         error[0].innerText = 'Digite o nome do destaque'
@@ -89,18 +93,18 @@ const editarDestaque = async () => {
         error[1].innerText = 'Digite o título do destaque'
         inputTitulo.classList.add('wrong')
         inputTitulo.focus()
-    }  else {
+    } else {
 
         const formData = new FormData();
         formData.append("nome", inputNome.value);
         formData.append("titulo", inputTitulo.value);
         if (inputDestaque.files.length > 0) {
             formData.append("imagem", inputDestaque.files[0]);
-          } else {
+        } else {
             const base64String = inputDestaque.getAttribute("base64img");
             const blob = base64ToBlob(base64String, "image/png");
             formData.append("imagem", blob, "image.png");
-          }
+        }
 
         let url = `${SERVER_NAME}index/editar/${idDestaque}`
         const response = await fetch(url, {
@@ -115,8 +119,9 @@ const editarDestaque = async () => {
             mostrarAlert("Destaque editado com sucesso!", 'fas fa-circle-check');
             setTimeout(() => {
                 window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
-              }, 2500);
+            }, 2500);
         } else {
+            i = 0
             mostrarAlert("Não foi possível editar destaque", 'fas fa-circle-xmark');
         }
     }
@@ -124,6 +129,7 @@ const editarDestaque = async () => {
 
 
 const deleteDestaque = async () => {
+    i = 1
     let url = `${SERVER_NAME}index/deletar/${idDestaque}`
 
     let response = await fetch(url, {
@@ -138,7 +144,7 @@ const deleteDestaque = async () => {
         mostrarAlert("Destaque excluído com sucesso!", 'fas fa-circle-check');
         setTimeout(() => {
             window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
-          }, 2500);
+        }, 2500);
     } else {
         mostrarAlert("Não foi possível excluir o destaque", 'fas fa-circle-xmark')
     }
@@ -165,15 +171,21 @@ buttonDelete.addEventListener('click', () => {
 const buttonSave = document.getElementById('button-salvar')
 buttonSave.addEventListener('click', () => {
     if (idDestaque == null || idDestaque == 0) {
-        cadastrarDestaque()
+        if (i == 0) {
+            cadastrarDestaque()
+        }
     } else {
-        editarDestaque()
+        if (i == 0) {
+            editarDestaque()
+        }
     }
 })
 
 const buttonSim = document.getElementById('button-sim')
 buttonSim.addEventListener('click', () => {
-    deleteDestaque()
+    if (i == 0) {
+        deleteDestaque()
+    }
 })
 
 const buttonNao = document.getElementById('button-nao')
