@@ -8,6 +8,8 @@ import {
   TOKEN,
   get,
 } from "./CONSTANTES.js";
+
+
 const setNome = async () => {
   const response = await get(`usuarios/obter/${EMAIL}`, true);
   const data = await response.json();

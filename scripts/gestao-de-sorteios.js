@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!token) {
     console.error("Token de autenticação não encontrado.");
-    mostrarAlert("Erro de autenticação. Por favor, faça login novamente.", 'fas fa-circle-xmark');
+    mostrarAlert(
+      "Erro de autenticação. Por favor, faça login novamente.",
+      "fas fa-circle-xmark"
+    );
     return;
   }
 
@@ -61,7 +64,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       const participantesData = await participantesResponse.json();
       const numeroParticipantes = participantesData.total_participando;
 
-      const participantesCount = document.getElementById("numero-participantes");
+      const participantesCount = document.getElementById(
+        "numero-participantes"
+      );
       participantesCount.textContent = `Total de participantes: ${numeroParticipantes}`;
     } catch (error) {
       console.error("Erro ao carregar número de participantes:", error);
@@ -71,17 +76,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   await obterPremios();
   await obterNumeroParticipantes();
 
-  document.getElementById("premio-surpresa").addEventListener("change", obterNumeroParticipantes);
-  document.getElementById("premios-select").addEventListener("change", obterNumeroParticipantes);
+  document
+    .getElementById("premio-surpresa")
+    .addEventListener("change", obterNumeroParticipantes);
+  document
+    .getElementById("premios-select")
+    .addEventListener("change", obterNumeroParticipantes);
 
   document
     .getElementById("realizar-sorteio-btn")
     .addEventListener("click", async () => {
+      mostrarAlert("Sorteio sendo realizado. Aguarde!", "fas fa-circle-check");
       const selectedPremioSku = document.getElementById("premios-select").value;
       const premioSurpresa = document.getElementById("premio-surpresa").checked;
 
       if (!selectedPremioSku) {
-        mostrarAlert("Não foi possível realizar o sorteio. Selecione um prêmio para continuar.", 'fas fa-circle-xmark');
+        mostrarAlert(
+          "Não foi possível realizar o sorteio. Selecione um prêmio para continuar.",
+          "fas fa-circle-xmark"
+        );
         return;
       }
 
@@ -92,8 +105,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       };
 
       try {
+        document.getElementById("realizar-sorteio-btn").disabled = true;
+        document.body.style.cursor = "wait";
         console.log("Dados enviados para o sorteio:", requestBody);
-
         const sortearResponse = await fetch(`${SERVER_NAME}sorteios/sortear`, {
           method: "POST",
           headers: {
@@ -110,25 +124,32 @@ document.addEventListener("DOMContentLoaded", async () => {
           } catch (jsonError) {
             const textError = await sortearResponse.text();
             console.error("Erro detalhado:", textError);
-            mostrarAlert(`Erro: ${textError}`, 'fas fa-circle-xmark');
+            mostrarAlert(`Erro: ${textError}`, "fas fa-circle-xmark");
             throw new Error("Falha ao realizar sorteio");
           }
 
           if (errorData.errorCode === 400) {
-            mostrarAlert(`Erro: ${errorData.mensagem}`, 'fas fa-circle-xmark');
+            mostrarAlert(`Erro: ${errorData.mensagem}`, "fas fa-circle-xmark");
           } else {
-            mostrarAlert("Falha ao realizar sorteio", 'fas fa-circle-xmark');
+            mostrarAlert("Falha ao realizar sorteio", "fas fa-circle-xmark");
           }
           throw new Error("Falha ao realizar sorteio");
         }
 
         const resultadoSorteio = await sortearResponse.json();
-        document.getElementById("turma-sorteada").textContent = `Turma: ${resultadoSorteio.turma}`;
-        document.getElementById("nome-sorteado").textContent = `Aderido: ${resultadoSorteio.nome}`;
+        document.getElementById(
+          "turma-sorteada"
+        ).textContent = `Turma: ${resultadoSorteio.turma}`;
+        document.getElementById(
+          "nome-sorteado"
+        ).textContent = `Aderido: ${resultadoSorteio.nome}`;
 
         await obterNumeroParticipantes();
       } catch (error) {
         console.error("Erro ao realizar sorteio:", error);
+      } finally {
+        document.body.style.cursor = "auto";
+        document.getElementById("realizar-sorteio-btn").disabled = false;
       }
     });
 });
