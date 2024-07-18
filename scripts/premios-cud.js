@@ -13,7 +13,6 @@ import {
 
 
 // Seletores de Elementos
-var i = 0
 const titulo = document.querySelector("#titulo");
 const divButton = document.getElementById("div-button");
 const legend = document.querySelector("#form-legend");
@@ -79,10 +78,8 @@ const definirCampos = (premio) => {
     .join("/")} ${premio.criadoEm.split("T")[1].split(".")[0]}`;
 
   buttonSim.addEventListener("click", (event) => {
-    if (i == 0) {
       event.preventDefault();
       removerPremio();
-    }
   });
 };
 
@@ -116,7 +113,7 @@ const obterMarcasSelect = async () => {
 
 // Função para Cadastrar Prêmio
 const cadastrarPremio = async () => {
-  i = 1
+  buttonSalvarEditar.disabled = true
   removerError();
   let options = document.querySelectorAll("option");
   if (options[0].selected) {
@@ -162,7 +159,7 @@ const cadastrarPremio = async () => {
         window.location.assign("./premios-da-semana.html");
       }, 2500);
     } else {
-      i = 0
+      buttonSalvarEditar.disabled = false
       mostrarAlert("Não foi possível cadastrar o prêmio.", 'fas fa-circle-xmark')
     }
   }
@@ -170,7 +167,7 @@ const cadastrarPremio = async () => {
 
 // Função para Editar Prêmio
 const editarPremio = async () => {
-  i = 1
+  buttonSalvarEditar.disabled = true
   removerError();
   if (nome.value == "") {
     nome.classList.add("wrong");
@@ -215,7 +212,7 @@ const editarPremio = async () => {
         window.location.assign("./premios-da-semana.html");
       }, 2500);
     } else {
-      i = 1
+      buttonSalvarEditar.disabled = true
       mostrarAlert("Não foi possível editar o prêmio.", 'fas fa-circle-xmark');
     }
   }
@@ -223,7 +220,7 @@ const editarPremio = async () => {
 
 // Função para Remover Prêmio
 const removerPremio = async () => {
-  i = 1
+  buttonSim.disabled = true
   const request = await remove(`premios/${PREMIO_ID}`);
   if (request.status === 200) {
     mostrarAlert("Prêmio excluído com sucesso!", 'fas fa-circle-check');
@@ -231,7 +228,7 @@ const removerPremio = async () => {
       window.location.assign("./premios-da-semana.html");
     }, 2500);
   } else {
-    i = 0
+    buttonSim.disabled = false
     mostrarAlert("Não foi possível excluir o prêmio.", 'fas fa-circle-xmark')
   }
 };
@@ -275,13 +272,9 @@ imagem.addEventListener("change", () => {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   if (ACAO === "criar") {
-    if (i == 0) {
-      cadastrarPremio();
-    }
+      cadastrarPremio();  
   } else if (ACAO === "editar") {
-    if (i == 0) {
       editarPremio();
-    }
   }
 });
 
