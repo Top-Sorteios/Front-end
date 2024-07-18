@@ -33,7 +33,6 @@ const cadastrar = async function () {
     const response = await request.json();
     SET_EMAIL(response.email);
     SET_TOKEN(response.token);
-    SET_NOME(response.nome);
     window.location.replace("/");
   }
 };

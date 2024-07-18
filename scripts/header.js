@@ -4,12 +4,25 @@ import {
   REMOVE_EMAIL,
   REMOVE_NOME,
   REMOVE_TOKEN,
+  SET_NOME,
   TOKEN,
   get,
 } from "./CONSTANTES.js";
+const setNome = async () => {
+  const response = await get(`usuarios/obter/${EMAIL}`, true);
+  const data = await response.json();
+  console.log(data);
+  SET_NOME(data.nome);
+};
+
+
+
 
 if (EMAIL != null && TOKEN != null) {
-  console.log(NOME);
+  if (!NOME) {
+   setNome();
+  }
+
   if (NOME) {
     document.querySelector("#username").innerHTML = `${NOME.split(" ")[0]} ${
       NOME.split(" ")[NOME.split(" ").length - 1]
@@ -77,9 +90,9 @@ document.querySelector("#modal-nav-icon").addEventListener("click", () => {
   document.querySelector("body").appendChild(navMobileMenu);
 
   if (NOME) {
-    document.querySelector("#modal-username").textContent = `${NOME.split(" ")[0]} ${
-      NOME.split(" ")[NOME.split(" ").length - 1]
-    }`;
+    document.querySelector("#modal-username").textContent = `${
+      NOME.split(" ")[0]
+    } ${NOME.split(" ")[NOME.split(" ").length - 1]}`;
   } else {
     // window.location.reload();
     document.querySelector("#modal-alterar-senha").classList.add("hidden");
@@ -113,6 +126,8 @@ const sair = function () {
   document.querySelector("#nav-dropdown").classList.remove("hidden");
   window.location.assign("/index.html");
 };
+
+
 
 window.addEventListener("load", () => {
   if (EMAIL != null && TOKEN != null) {
