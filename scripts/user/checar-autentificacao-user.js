@@ -1,4 +1,4 @@
-import {SERVER_NAME} from "../CONSTANTES.js";
+import { mostrarAlert, SERVER_NAME } from "../CONSTANTES.js";
 //TODO Fix redirect
 const checarAutentificacaoUser = async function (email, token) {
   if (!email || !token) {
@@ -6,9 +6,7 @@ const checarAutentificacaoUser = async function (email, token) {
     window.location.replace(
       "https://green-dune-0cd28a70f.5.azurestaticapps.net/"
     );
-    window.location.replace(
-      "../login/index.html"
-    );
+    window.location.replace("../login/index.html");
   } else {
     try {
       let url = `${SERVER_NAME}usuarios/obter/${email}`;
@@ -25,9 +23,9 @@ const checarAutentificacaoUser = async function (email, token) {
         const response = await request.json();
         console.log(response);
       } else {
-        alert("Sessão inválida");
+        mostrarAlert("Sessão inválida", "fas fa-circle-check");
         window.location.replace(
-          "https://green-dune-0cd28a70f.5.azurestaticapps.net/"
+          "https://green-dune-0cd28a70f.5.azurestaticapps.net/html/login/index.html"
         );
       }
     } catch (error) {
