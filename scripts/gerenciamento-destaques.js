@@ -1,6 +1,5 @@
 import { SERVER_NAME, mostrarAlert, TOKEN } from "./CONSTANTES.js";
 
-var i = 0
 const error = document.querySelectorAll('.wrong-text')
 const inputNome = document.getElementById('nome-destaque')
 const inputTitulo = document.getElementById('titulo-destaque')
@@ -8,6 +7,7 @@ const inputDestaque = document.getElementById('upload-destaque')
 const idDestaque = sessionStorage.getItem('idDestaques')
 const previewDestaque = document.getElementById('preview-destaque')
 const divImgs = document.querySelector('.div-imgs')
+const buttonSave = document.getElementById('button-salvar')
 
 // Recebe os dados da marca
 const getDados = async () => {
@@ -41,7 +41,7 @@ const base64ToBlob = (base64String, contentType) => {
 
 // Função que cadastra a marca
 const cadastrarDestaque = async () => {
-    i = 1
+    buttonSave.disabled = true
     const url = `${SERVER_NAME}index/registrar`
 
     clearError()
@@ -76,14 +76,14 @@ const cadastrarDestaque = async () => {
                 window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
             }, 2500);
         } else {
-            i = 0
+            buttonSave.disabled = false
             mostrarAlert("Não foi possível cadastrar o destaque", 'fas fa-circle-xmark');
         }
     }
 }
 
 const editarDestaque = async () => {
-    i = 1
+    buttonSave.disabled = true
     clearError()
     if (inputNome.value == '') {
         error[0].innerText = 'Digite o nome do destaque'
@@ -121,7 +121,7 @@ const editarDestaque = async () => {
                 window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
             }, 2500);
         } else {
-            i = 0
+            buttonSave.disabled = false
             mostrarAlert("Não foi possível editar destaque", 'fas fa-circle-xmark');
         }
     }
@@ -129,7 +129,7 @@ const editarDestaque = async () => {
 
 
 const deleteDestaque = async () => {
-    i = 1
+    buttonSim.disabled = true
     let url = `${SERVER_NAME}index/deletar/${idDestaque}`
 
     let response = await fetch(url, {
@@ -146,6 +146,7 @@ const deleteDestaque = async () => {
             window.location.assign("../gestao-dos-destaques/destaques-cadastradas.html");
         }, 2500);
     } else {
+        buttonSim.disabled = false
         mostrarAlert("Não foi possível excluir o destaque", 'fas fa-circle-xmark')
     }
 }
@@ -168,24 +169,18 @@ buttonDelete.addEventListener('click', () => {
     window.location.assign("#header-destaques");
 })
 
-const buttonSave = document.getElementById('button-salvar')
 buttonSave.addEventListener('click', () => {
     if (idDestaque == null || idDestaque == 0) {
-        if (i == 0) {
             cadastrarDestaque()
-        }
     } else {
-        if (i == 0) {
             editarDestaque()
-        }
     }
 })
 
 const buttonSim = document.getElementById('button-sim')
 buttonSim.addEventListener('click', () => {
-    if (i == 0) {
         deleteDestaque()
-    }
+   
 })
 
 const buttonNao = document.getElementById('button-nao')
