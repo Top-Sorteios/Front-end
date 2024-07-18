@@ -2,8 +2,10 @@ import { post, mostrarAlert } from "./CONSTANTES.js";
 
 const formEsqueciSenha = document.querySelector("#form-esqueci-senha");
 const email = document.querySelector("#email");
+const buttonEnviar = document.getElementById('button-enviar')
 
 const requisitarMudancaSenha = async function () {
+  buttonEnviar.disabled = true
   document.body.style.cursor = "wait";
 
   // const request = await fetch(url, {
@@ -30,6 +32,7 @@ const requisitarMudancaSenha = async function () {
     // document.querySelector("#message").classList.remove("none")
   }
   else{
+    buttonEnviar.disabled = false
     mostrarAlert("Erro ao enviar solicitação. Usuário não encontrado.", "fa-solid fa-circle-xmark")
   }
   document.body.style.cursor = "auto";
