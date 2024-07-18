@@ -1,5 +1,7 @@
 import { SERVER_NAME, mostrarAlert } from '../CONSTANTES.js';
 
+const buttonSalvar = document.getElementById('button-salvar')
+
 document.addEventListener('DOMContentLoaded', async () => {
     const token = sessionStorage.getItem("token");
 
@@ -46,6 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById('usuarios-tbody').addEventListener('click', async (event) => {
         if (event.target.classList.contains('editar-btn')) {
+            buttonSalvar.disabled = false
             const email = event.target.getAttribute('data-email');
             console.log('E-mail do usuário selecionado:', email);
 
@@ -87,6 +90,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     document.getElementById('editar-usuario-form').addEventListener('submit', async (event) => {
+        buttonSalvar.disabled = true
         event.preventDefault();
 
         const email = document.getElementById('email').value;
@@ -109,6 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             if (!response.ok) {
+                buttonSalvar.disabled = false
                 const errorText = await response.text();
                 throw new Error(`Falha ao editar usuário: ${errorText}`);
             }
@@ -118,6 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             await obterUsuarios();
 
         } catch (error) {
+            buttonSalvar.disabled = false
             console.error('Erro ao editar usuário:', error);
             mostrarAlert("Não foi possível editar o usuário.", 'fa-solid fa-circle-xmark');;
         }
