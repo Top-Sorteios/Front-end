@@ -41,7 +41,7 @@ const base64ToBlob = (base64String, contentType) => {
 
 // Função que cadastra a marca
 const cadastrarDestaque = async () => {
-    buttonSave.disabled = true
+    
     const url = `${SERVER_NAME}index/registrar`
 
     clearError()
@@ -57,7 +57,7 @@ const cadastrarDestaque = async () => {
         divImgs.classList.add('wrong')
         error[2].innerText = 'Adicione uma imagem'
     } else {
-
+        buttonSave.disabled = true
         const formData = new FormData();
         formData.append("nome", inputNome.value);
         formData.append("titulo", inputTitulo.value);
@@ -83,7 +83,7 @@ const cadastrarDestaque = async () => {
 }
 
 const editarDestaque = async () => {
-    buttonSave.disabled = true
+    
     clearError()
     if (inputNome.value == '') {
         error[0].innerText = 'Digite o nome do destaque'
@@ -94,7 +94,7 @@ const editarDestaque = async () => {
         inputTitulo.classList.add('wrong')
         inputTitulo.focus()
     } else {
-
+        buttonSave.disabled = true
         const formData = new FormData();
         formData.append("nome", inputNome.value);
         formData.append("titulo", inputTitulo.value);

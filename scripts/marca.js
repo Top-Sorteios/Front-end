@@ -103,7 +103,6 @@ switch (ACAO) {
 
 // Função que cadastra a marca
 const cadastrarMarca = async () => {
-  buttonSave.disabled = true
   const url = `${SERVER_NAME}marcas/registrar`;
 
   clearError();
@@ -126,6 +125,7 @@ const cadastrarMarca = async () => {
     divImgs[1].classList.add("wrong");
     error[4].innerText = "Adicione uma imagem";
   } else {
+    buttonSave.disabled = true
     const formData = new FormData();
     formData.append("nome", inputNome.value);
     formData.append("titulo", inputTitulo.value);
@@ -157,7 +157,7 @@ const cadastrarMarca = async () => {
 };
 
 const editarMarca = async () => {
-  buttonSave.disabled = true
+
   clearError();
   if (inputNome.value == "") {
     error[0].innerText = "Preencha o campo nome";
@@ -172,6 +172,7 @@ const editarMarca = async () => {
     inputOrdemExibicao.classList.add("wrong");
     inputOrdemExibicao.focus();
   } else {
+    buttonSave.disabled = true
     const formData = new FormData();
     formData.append("nome", inputNome.value);
     formData.append("titulo", inputTitulo.value);

@@ -113,7 +113,7 @@ const obterMarcasSelect = async () => {
 
 // Função para Cadastrar Prêmio
 const cadastrarPremio = async () => {
-  buttonSalvarEditar.disabled = true
+  
   removerError();
   let options = document.querySelectorAll("option");
   if (options[0].selected) {
@@ -136,6 +136,7 @@ const cadastrarPremio = async () => {
     textoError[4].innerText = "Digite a quantidade";
     quantidade.focus();
   } else {
+    buttonSalvarEditar.disabled = true
     const formData = new FormData();
     formData.append("nome", nome.value);
     formData.append("codigoSku", codigoSku.value);
@@ -167,7 +168,7 @@ const cadastrarPremio = async () => {
 
 // Função para Editar Prêmio
 const editarPremio = async () => {
-  buttonSalvarEditar.disabled = true
+  
   removerError();
   if (nome.value == "") {
     nome.classList.add("wrong");
@@ -186,6 +187,7 @@ const editarPremio = async () => {
     textoError[4].innerText = "Digite a quantidade";
     quantidade.focus();
   } else {
+    buttonSalvarEditar.disabled = true
     const formData = new FormData();
     formData.append("nome", nome.value);
     formData.append("codigoSku", codigoSku.value);
