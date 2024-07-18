@@ -1,4 +1,4 @@
-import { mostrarAlert, SERVER_NAME } from "../CONSTANTES.js";
+import { EMAIL, mostrarAlert, SERVER_NAME, TOKEN } from "../CONSTANTES.js";
 //TODO Fix redirect
 const checarAutentificacaoUser = async function (email, token) {
   if (!email || !token) {
@@ -37,7 +37,7 @@ const checarAutentificacaoUser = async function (email, token) {
 window.addEventListener("load", () => {
   console.log("working");
   checarAutentificacaoUser(
-    sessionStorage.getItem("email"),
-    sessionStorage.getItem("token")
+    EMAIL,
+    TOKEN
   );
 });
