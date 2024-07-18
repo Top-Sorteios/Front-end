@@ -7,6 +7,7 @@ import {
   mostrarAlert,
 } from "./CONSTANTES.js";
 
+
 const error = document.querySelectorAll(".wrong-text");
 const inputNome = document.getElementById("nome-marca");
 const inputTitulo = document.getElementById("titulo-marca");
@@ -81,7 +82,8 @@ switch (ACAO) {
     txtCadastrar.classList.add("none");
     getDados();
     buttonSave.addEventListener("click", () => {
-      editarMarca();
+        editarMarca()
+
     });
     break;
   case "CRIAR":
@@ -89,7 +91,8 @@ switch (ACAO) {
     buttonDelete.style.display = "none";
     txtEditar.classList.add("none");
     buttonSave.addEventListener("click", () => {
-      cadastrarMarca();
+        cadastrarMarca()
+
     });
     break;
 
@@ -122,6 +125,7 @@ const cadastrarMarca = async () => {
     divImgs[1].classList.add("wrong");
     error[4].innerText = "Adicione uma imagem";
   } else {
+    buttonSave.disabled = true
     const formData = new FormData();
     formData.append("nome", inputNome.value);
     formData.append("titulo", inputTitulo.value);
@@ -143,6 +147,7 @@ const cadastrarMarca = async () => {
         window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
       }, 2500);
     } else {
+      buttonSave.disabled = false
       mostrarAlert(
         "Não foi possível cadastrar a marca",
         "fa-solid fa-circle-xmark"
@@ -152,6 +157,7 @@ const cadastrarMarca = async () => {
 };
 
 const editarMarca = async () => {
+
   clearError();
   if (inputNome.value == "") {
     error[0].innerText = "Preencha o campo nome";
@@ -166,6 +172,7 @@ const editarMarca = async () => {
     inputOrdemExibicao.classList.add("wrong");
     inputOrdemExibicao.focus();
   } else {
+    buttonSave.disabled = true
     const formData = new FormData();
     formData.append("nome", inputNome.value);
     formData.append("titulo", inputTitulo.value);
@@ -201,6 +208,7 @@ const editarMarca = async () => {
         window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
       }, 2500);
     } else {
+      buttonSave.disabled = false
       mostrarAlert(
         "Não foi possível alterar o registro",
         "fa-solid fa-circle-xmark"
@@ -211,6 +219,7 @@ const editarMarca = async () => {
 };
 
 const deleteMarca = async () => {
+  buttonSim.disabled = true
   const request = await remove(`marcas/${idMarca}`);
   if (request.status == 200) {
     mostrarAlert("Marca excluída com sucesso", "fas fa-circle-check");
@@ -218,6 +227,7 @@ const deleteMarca = async () => {
       window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
     }, 2500);
   } else {
+    buttonSim.disabled = false
     mostrarAlert("Não foi possível excluir a marca", "fas fa-circle-xmark");
   }
 };
@@ -245,7 +255,7 @@ buttonDelete.addEventListener("click", () => {
 
 const buttonSim = document.getElementById("button-sim");
 buttonSim.addEventListener("click", () => {
-  deleteMarca();
+    deleteMarca();
 });
 
 const buttonNao = document.getElementById("button-nao");
