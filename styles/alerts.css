@@ -1,7 +1,8 @@
 #alert-box{
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -19,13 +20,13 @@
     display: flex;
     align-items: center;
     position: relative;
-    transform: translateX(100%);
-    animation: moveleft 0.3s linear forwards;
+    transform: translateY(-100%);
+    animation: movedown 0.3s linear forwards;
 }
 
-@keyframes moveleft {
+@keyframes movedown {
     100%{
-        transform: translateX(0);
+        transform: translateY(0);
     }
 }
 
