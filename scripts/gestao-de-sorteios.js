@@ -1,5 +1,5 @@
 import { EMAIL, SERVER_NAME, TOKEN, mostrarAlert } from "./CONSTANTES.js";
-
+const realizarSorteioButton = document.getElementById("realizar-sorteio-btn");
 document.addEventListener("DOMContentLoaded", async () => {
   const token = TOKEN;
   const email = EMAIL;
@@ -86,9 +86,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   document
     .getElementById("realizar-sorteio-btn")
     .addEventListener("click", async () => {
-      document.getElementById("realizar-sorteio-btn").disabled = true;
+      realizarSorteioButton.disabled = true;
+      realizarSorteioButton.style.cursor = "not-allowed"
       document.body.style.cursor = "wait";
-      mostrarAlert("Estamos realizando o sorteio. Aguarde!", "fas fa-circle-check");
+      mostrarAlert(
+        "Estamos realizando o sorteio. Aguarde!",
+        "fas fa-circle-check"
+      );
       const selectedPremioSku = document.getElementById("premios-select").value;
       const premioSurpresa = document.getElementById("premio-surpresa").checked;
 
@@ -148,8 +152,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       } catch (error) {
         console.error("Erro ao realizar sorteio:", error);
       } finally {
-        document.body.style.cursor = "auto";
-        document.getElementById("realizar-sorteio-btn").disabled = false;
+        setTimeout(() => {
+          document.body.style.cursor = "auto";
+          realizarSorteioButton.style.cursor = "auto";
+          realizarSorteioButton.disabled = false;
+        }, 1000);
       }
     });
 });
