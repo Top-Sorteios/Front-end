@@ -95,6 +95,15 @@ h2 {
     display: none;
 }
 
+input.wrong {
+    border: 2px solid red;
+}
+
+.wrong-text {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.25em;
+}
 
 @media (max-width: 720px) {
     .container {
