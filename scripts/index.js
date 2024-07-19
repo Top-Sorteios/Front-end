@@ -29,6 +29,7 @@ const obterMarcasParceiras = async function () {
   }
 };
 
+
 const redirecionar = async function (email, token) {
   console.log(email, token);
   if (email === null || token === null) {
