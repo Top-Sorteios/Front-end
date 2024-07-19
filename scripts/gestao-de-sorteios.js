@@ -86,7 +86,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   document
     .getElementById("realizar-sorteio-btn")
     .addEventListener("click", async () => {
-      mostrarAlert("Sorteio sendo realizado. Aguarde!", "fas fa-circle-check");
+      document.getElementById("realizar-sorteio-btn").disabled = true;
+      document.body.style.cursor = "wait";
+      mostrarAlert("Estamos realizando o sorteio. Aguarde!", "fas fa-circle-check");
       const selectedPremioSku = document.getElementById("premios-select").value;
       const premioSurpresa = document.getElementById("premio-surpresa").checked;
 
@@ -105,8 +107,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       };
 
       try {
-        document.getElementById("realizar-sorteio-btn").disabled = true;
-        document.body.style.cursor = "wait";
         console.log("Dados enviados para o sorteio:", requestBody);
         const sortearResponse = await fetch(`${SERVER_NAME}sorteios/sortear`, {
           method: "POST",
