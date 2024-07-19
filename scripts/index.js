@@ -2,6 +2,7 @@ import { EMAIL, TOKEN, get } from "./CONSTANTES.js";
 
 const marcasParceirasDiv = document.querySelector("#logo-marcas-parceiras");
 
+
 const obterMarcasParceiras = async function () {
   const request = await get("marcas/obter", true);
   if (request.ok) {
