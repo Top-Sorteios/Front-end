@@ -257,7 +257,7 @@ window.addEventListener("load", () => {
 
 const newDestaque = () => {
   const txtEditar = document.querySelector(".txt-editar");
-  buttonDelete.classList.add = "hidden";
+  buttonDelete.classList.add("hidden");
   txtEditar.classList.add("hidden");
   buttonSave.addEventListener("click", () => cadastrarDestaque());
 };
