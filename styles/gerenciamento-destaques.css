@@ -113,4 +113,8 @@ input.wrong {
     .cadastros {
         width: 75%;
     }
+
+    .container-excluir {
+        width: 80%;
+    }
 }

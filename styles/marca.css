@@ -104,4 +104,7 @@ h2 {
     .cadastros {
         width: 75%;
     }
+    .container-excluir {
+        width: 80%;
+    }
 }
