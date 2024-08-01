@@ -77,7 +77,6 @@ const getDados = async () => {
 
 // Função que cadastra a marca
 const cadastrarDestaque = async () => {
-  buttonSave.disabled = true;
   const url = `${SERVER_NAME}/index/registrar`;
 
   clearError();
@@ -85,16 +84,13 @@ const cadastrarDestaque = async () => {
     error[0].innerText = "Digite o nome do destaque";
     inputNome.classList.add("wrong");
     inputNome.focus();
-    buttonSave.disabled = false;
   } else if (inputTitulo.value == "") {
     error[1].innerText = "Digite o título do destaque";
     inputTitulo.classList.add("wrong");
     inputTitulo.focus();
-    buttonSave.disabled = false;
   } else if (inputDestaque.files[0] == null) {
     divImgs.classList.add("wrong");
     error[2].innerText = "Adicione uma imagem";
-    buttonSave.disabled = false;
   } else if (!validateFile(inputDestaque.files[0])) {
     // Validar o tamanho do arquivo e exibir erro
     return;
@@ -114,7 +110,6 @@ const cadastrarDestaque = async () => {
     });
 
     if (response.status == 201) {
-      buttonSave.disabled = true;
       mostrarAlert("Destaque cadastrado com sucesso!", "fas fa-circle-check");
       setTimeout(() => {
         window.location.assign(
@@ -132,18 +127,15 @@ const cadastrarDestaque = async () => {
 };
 
 const editarDestaque = async () => {
-  buttonSave.disabled = true;
   clearError();
   if (inputNome.value == "") {
     error[0].innerText = "Digite o nome do destaque";
     inputNome.classList.add("wrong");
     inputNome.focus();
-    buttonSave.disabled = false;
   } else if (inputTitulo.value == "") {
     error[1].innerText = "Digite o título do destaque";
     inputTitulo.classList.add("wrong");
     inputTitulo.focus();
-    buttonSave.disabled = false;
   } else {
     buttonSave.disabled = true;
     const formData = new FormData();
@@ -171,7 +163,6 @@ const editarDestaque = async () => {
     });
 
     if (response.status == 200) {
-      buttonSave.disabled = true;
       mostrarAlert("Destaque editado com sucesso!", "fas fa-circle-check");
       setTimeout(() => {
         window.location.assign(
@@ -259,7 +250,6 @@ const newDestaque = () => {
   const txtEditar = document.querySelector(".txt-editar");
   buttonDelete.classList.add("hidden");
   txtEditar.classList.add("hidden");
-  buttonSave.addEventListener("click", () => cadastrarDestaque());
 };
 
 const openDestaque = () => {
@@ -267,5 +257,4 @@ const openDestaque = () => {
   txtCadastrar.classList.add("hidden");
   getDados();
   sessionStorage.setItem("idDestaques", 0);
-  buttonSave.addEventListener("click", () => editarDestaque());
 };
