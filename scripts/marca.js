@@ -22,6 +22,9 @@ const previewLogo = document.getElementById("preview-logo");
 const divImgs = document.querySelectorAll(".div-imgs");
 const buttonDelete = document.getElementById("button-remover");
 const buttonSave = document.getElementById("button-salvar");
+const buttonSim = document.getElementById("button-sim");
+const container = document.querySelector(".container");
+const containerExcluir = document.querySelector(".container-excluir");
 
 // Função para Converter Base64 para Blob
 const base64ToBlob = (base64String, contentType) => {
@@ -39,7 +42,8 @@ const handleFileInput = (input, preview, errorIndex) => {
   if (file.size > MAX_FILE_SIZE) {
     error[errorIndex].innerText = "O tamanho da imagem não pode exceder 1 MB";
     input.classList.add("wrong");
-    preview.src = "https://github.com/Top-Sorteios/Front-end/blob/main/assets/images/placeholder-files/placeholder.png?raw=true";
+    preview.src =
+      "https://github.com/Top-Sorteios/Front-end/blob/main/assets/images/placeholder-files/placeholder.png?raw=true";
     buttonSave.disabled = true;
     return false;
   } else {
@@ -57,8 +61,12 @@ const handleFileInput = (input, preview, errorIndex) => {
   }
 };
 
-inputBanner.addEventListener("change", () => handleFileInput(inputBanner, previewBanner, 3));
-inputLogo.addEventListener("change", () => handleFileInput(inputLogo, previewLogo, 4));
+inputBanner.addEventListener("change", () =>
+  handleFileInput(inputBanner, previewBanner, 3)
+);
+inputLogo.addEventListener("change", () =>
+  handleFileInput(inputLogo, previewLogo, 4)
+);
 
 // Recebe os dados da marca
 const getDados = async () => {
@@ -224,19 +232,39 @@ const clearError = () => {
 };
 
 // Remove marca cadastrada
-buttonDelete.addEventListener("click", async () => {
-  const idMarca = sessionStorage.getItem("idMarca");
-  const url = `${SERVER_NAME}marcas/deletar/${idMarca}`;
-  const response = await remove(url);
+buttonSim.addEventListener("click", async () => {
+  buttonSim.disabled = true;
+  const url = `${SERVER_NAME}/marcas/${idMarca}`;
+
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+    },
+    mode: "cors",
+  });
   if (response.status == 200) {
     mostrarAlert("Marca removida com sucesso", "fas fa-circle-check");
     setTimeout(() => {
       window.location.assign("../gestao-de-marcas/marcas-cadastradas.html");
     }, 2500);
   } else {
+    buttonSim.disabled = false;
     mostrarAlert(
       "Não foi possível remover a marca",
       "fa-solid fa-circle-xmark"
     );
   }
+});
+console.log(idMarca);
+
+buttonDelete.addEventListener("click", () => {
+  container.classList.add("hidden");
+  containerExcluir.classList.remove("hidden");
+  window.location.assign("#header-marca");
+});
+
+document.getElementById("button-nao").addEventListener("click", () => {
+  container.classList.remove("hidden");
+  containerExcluir.classList.add("hidden");
 });
