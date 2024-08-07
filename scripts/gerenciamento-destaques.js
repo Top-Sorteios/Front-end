@@ -10,6 +10,25 @@ const idDestaque = sessionStorage.getItem("idDestaques");
 const previewDestaque = document.getElementById("preview-destaque");
 const divImgs = document.querySelector(".div-imgs");
 const buttonSave = document.getElementById("button-salvar");
+const acaoOpcoes = sessionStorage.getItem("acao");
+
+const abrirTela = () => {
+  switch (acaoOpcoes) {
+    case "CRIAR":
+      const txtEditar = document.querySelector(".txt-editar");
+      buttonDelete.classList.add("hidden");
+      txtEditar.classList.add("hidden");
+      buttonSave.addEventListener("click", () => cadastrarDestaque());
+      break;
+    case "EDITAR":
+      const txtCadastrar = document.querySelector(".txt-cadastrar");
+      txtCadastrar.classList.add("hidden");
+      getDados();
+      sessionStorage.setItem("idDestaques", 0);
+      buttonSave.addEventListener("click", () => editarDestaque());
+      break;
+  }
+};
 
 // Função para Converter Base64 para Blob
 const base64ToBlob = (base64String, contentType) => {
@@ -217,14 +236,6 @@ buttonDelete.addEventListener("click", () => {
   window.location.assign("#header-destaques");
 });
 
-buttonSave.addEventListener("click", () => {
-  if (idDestaque == null || idDestaque == 0) {
-    cadastrarDestaque();
-  } else {
-    editarDestaque();
-  }
-});
-
 const buttonSim = document.getElementById("button-sim");
 buttonSim.addEventListener("click", () => {
   deleteDestaque();
@@ -239,22 +250,5 @@ buttonNao.addEventListener("click", () => {
 });
 
 window.addEventListener("load", () => {
-  if (idDestaque != null && idDestaque != 0) {
-    openDestaque();
-  } else {
-    newDestaque();
-  }
+  abrirTela();
 });
-
-const newDestaque = () => {
-  const txtEditar = document.querySelector(".txt-editar");
-  buttonDelete.classList.add("hidden");
-  txtEditar.classList.add("hidden");
-};
-
-const openDestaque = () => {
-  const txtCadastrar = document.querySelector(".txt-cadastrar");
-  txtCadastrar.classList.add("hidden");
-  getDados();
-  sessionStorage.setItem("idDestaques", 0);
-};

@@ -15,12 +15,16 @@ window.addEventListener("load", async () => {
   console.log("dados", dadosDestaque);
 
   buttonNovoDestaque.disabled = dadosDestaque.length < 3 ? false : true;
-  buttonNovoDestaque.title = dadosDestaque.length < 3 ? "Clique para adicionar uma nova imagem em destaque." : "Número máximo de imagens em destaque atingido. Máximo: 3 imagens.";
+  buttonNovoDestaque.title =
+    dadosDestaque.length < 3
+      ? "Clique para adicionar uma nova imagem em destaque."
+      : "Número máximo de imagens em destaque atingido. Máximo: 3 imagens.";
   buttonNovoDestaque.style.cursor = buttonNovoDestaque.disabled
     ? "not-allowed"
     : "pointer";
 
   buttonNovoDestaque.addEventListener("click", () => {
+    sessionStorage.setItem("acao", "CRIAR");
     window.location.assign("./gerenciamento-destaques.html");
   });
 
@@ -73,6 +77,7 @@ const createTableDestaque = async (destaque) => {
 
     linkEditar.addEventListener("click", () => {
       sessionStorage.setItem("idDestaques", itensDestaque.id);
+      sessionStorage.setItem("acao", "EDITAR");
       window.location.assign(
         "../gestao-dos-destaques/gerenciamento-destaques.html"
       );
