@@ -8,7 +8,8 @@ import {
   post,
   put,
   remove,
-  mostrarAlert
+  mostrarAlert,
+  MAX_IMAGE_SIZE
 } from "./CONSTANTES.js";
 
 
@@ -113,29 +114,8 @@ const obterMarcasSelect = async () => {
 
 // Função para Cadastrar Prêmio
 const cadastrarPremio = async () => {
-  
-  removerError();
-  let options = document.querySelectorAll("option");
-  if (options[0].selected) {
-    textoError[0].innerText = "Selecione a marca";
-    marcaId.focus();
-  } else if (nome.value == "") {
-    nome.classList.add("wrong");
-    textoError[1].innerText = "Insira o nome do prêmio";
-    nome.focus();
-  } else if (codigoSku.value == "") {
-    codigoSku.classList.add("wrong");
-    textoError[2].innerText = "Insira o código sku";
-    codigoSku.focus();
-  } else if (descricao.value == "") {
-    descricao.classList.add("wrong");
-    textoError[3].innerText = "Digite a descrição";
-    descricao.focus();
-  } else if (quantidade.value == "") {
-    quantidade.classList.add("wrong");
-    textoError[4].innerText = "Digite a quantidade";
-    quantidade.focus();
-  } else {
+
+    checarErros();
     buttonSalvarEditar.disabled = true
     const formData = new FormData();
     formData.append("nome", nome.value);
@@ -163,30 +143,11 @@ const cadastrarPremio = async () => {
       buttonSalvarEditar.disabled = false
       mostrarAlert("Não foi possível cadastrar o prêmio.", 'fas fa-circle-xmark')
     }
-  }
 };
 
 // Função para Editar Prêmio
 const editarPremio = async () => {
   
-  removerError();
-  if (nome.value == "") {
-    nome.classList.add("wrong");
-    textoError[1].innerText = "Insira o nome do prêmio";
-    nome.focus();
-  } else if (codigoSku.value == "") {
-    codigoSku.classList.add("wrong");
-    textoError[2].innerText = "Insira o código sku";
-    codigoSku.focus();
-  } else if (descricao.value == "") {
-    descricao.classList.add("wrong");
-    textoError[3].innerText = "Digite a descrição";
-    descricao.focus();
-  } else if (quantidade.value == "") {
-    quantidade.classList.add("wrong");
-    textoError[4].innerText = "Digite a quantidade";
-    quantidade.focus();
-  } else {
     buttonSalvarEditar.disabled = true
     const formData = new FormData();
     formData.append("nome", nome.value);
@@ -217,7 +178,6 @@ const editarPremio = async () => {
       buttonSalvarEditar.disabled = true
       mostrarAlert("Não foi possível editar o prêmio.", 'fas fa-circle-xmark');
     }
-  }
 };
 
 // Função para Remover Prêmio
@@ -273,10 +233,17 @@ imagem.addEventListener("change", () => {
 // Adiciona o Evento de Submit ao Formulário
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  removerError();
   if (ACAO === "criar") {
-      cadastrarPremio();  
+    if (checarErros()){
+      return
+    }
+    cadastrarPremio(); 
   } else if (ACAO === "editar") {
-      editarPremio();
+    if (checarErros()){
+      return
+    }
+    editarPremio();
   }
 });
 
@@ -291,3 +258,42 @@ buttonNao.addEventListener('click', () => {
   containerExcluir.classList.add('hidden')
   window.location.assign("#header-premios");
 })
+
+const checarErros = function () {
+  let options = document.querySelectorAll("option");
+  if (!imagem.files[0] || (imagem.files[0].size > MAX_IMAGE_SIZE)){
+    console.log(imagem.files[0])
+    textoError[0].innerText = "Imagem muito grande (Tamanho máximo: 1MB)"
+  }
+
+  if (options[0].selected) {
+    textoError[1].innerText = "Selecione a marca";
+    marcaId.focus();
+  }
+  
+  if (nome.value == "") {
+    nome.classList.add("wrong");
+    textoError[2].innerText = "Insira o nome do prêmio";
+    nome.focus();
+  }
+  
+  if (codigoSku.value == "") {
+    codigoSku.classList.add("wrong");
+    textoError[3].innerText = "Insira o código sku";
+    codigoSku.focus();
+  }
+  
+  if (descricao.value == "") {
+    descricao.classList.add("wrong");
+    textoError[4].innerText = "Digite a descrição";
+    descricao.focus();
+  } 
+  
+  if (quantidade.value == "") {
+    quantidade.classList.add("wrong");
+    textoError[5].innerText = "Digite a quantidade";
+    quantidade.focus();
+  } 
+
+  return ((options[0].selected) || (nome.value == "") || (codigoSku.value == "") || (descricao.value == "") || (quantidade.value == ""))
+}
