@@ -9,9 +9,8 @@ import {
   put,
   remove,
   mostrarAlert,
-  MAX_IMAGE_SIZE
+  MAX_IMAGE_SIZE,
 } from "./CONSTANTES.js";
-
 
 // Seletores de Elementos
 const titulo = document.querySelector("#titulo");
@@ -33,10 +32,9 @@ const criadoPorLabel = document.querySelector("#criadoPorLabel");
 const criadoPor = document.querySelector("#criadoPor");
 const criadoEmLabel = document.querySelector("#criadoEmLabel");
 const criadoEm = document.querySelector("#criadoEm");
-const containerExcluir = document.querySelector('.container-excluir')
-const buttonSim = document.getElementById('button-sim')
-const buttonNao = document.getElementById('button-nao')
-
+const containerExcluir = document.querySelector(".container-excluir");
+const buttonSim = document.getElementById("button-sim");
+const buttonNao = document.getElementById("button-nao");
 
 // Função para Converter Base64 para Blob
 const base64ToBlob = (base64String, contentType) => {
@@ -79,8 +77,8 @@ const definirCampos = (premio) => {
     .join("/")} ${premio.criadoEm.split("T")[1].split(".")[0]}`;
 
   buttonSim.addEventListener("click", (event) => {
-      event.preventDefault();
-      removerPremio();
+    event.preventDefault();
+    removerPremio();
   });
 };
 
@@ -114,84 +112,82 @@ const obterMarcasSelect = async () => {
 
 // Função para Cadastrar Prêmio
 const cadastrarPremio = async () => {
-
-    checarErros();
-    buttonSalvarEditar.disabled = true
-    const formData = new FormData();
-    formData.append("nome", nome.value);
-    formData.append("codigoSku", codigoSku.value);
-    formData.append(
-      "imagem",
-      imagem.files.length > 0
-        ? imagem.files[0]
-        : new Blob([""], { type: "application/octet-stream" })
-    );
-    formData.append("quantidade", quantidade.value);
-    formData.append("descricao", descricao.value);
-    formData.append(
-      "marcaId",
-      parseInt(marcaId.querySelector(`option[value="${marcaId.value}"]`).id)
-    );
-    document.body.style.cursor = "wait";
-    const request = await post("premios/registrar", formData, "formData");
-    if (request.status === 201) {
-      mostrarAlert("Prêmio cadastrado com sucesso!", 'fas fa-circle-check');
-      setTimeout(() => {
-        window.location.assign("./premios-da-semana.html");
-      }, 2500);
-    } else {
-      buttonSalvarEditar.disabled = false
-      mostrarAlert("Não foi possível cadastrar o prêmio.", 'fas fa-circle-xmark')
-    }
-};
-
-// Função para Editar Prêmio
-const editarPremio = async () => {
-  
-    buttonSalvarEditar.disabled = true
-    const formData = new FormData();
-    formData.append("nome", nome.value);
-    formData.append("codigoSku", codigoSku.value);
-
-    if (imagem.files.length > 0) {
-      formData.append("imagem", imagem.files[0]);
-    } else {
-      const base64String = imagem.getAttribute("base64img");
-      const blob = base64ToBlob(base64String, "image/png");
-      formData.append("imagem", blob, "image.png");
-    }
-
-    formData.append("quantidade", quantidade.value);
-    formData.append("descricao", descricao.value);
-    formData.append(
-      "marcaId",
-      parseInt(marcaId.querySelector(`option[value="${marcaId.value}"]`).id)
-    );
-    const request = await put(`premios/editar/${PREMIO_ID}`, formData);
-
-    if (request.status === 200) {
-      mostrarAlert("Prêmio editado com sucesso!", 'fas fa-circle-check');
-      setTimeout(() => {
-        window.location.assign("./premios-da-semana.html");
-      }, 2500);
-    } else {
-      buttonSalvarEditar.disabled = true
-      mostrarAlert("Não foi possível editar o prêmio.", 'fas fa-circle-xmark');
-    }
-};
-
-// Função para Remover Prêmio
-const removerPremio = async () => {
-  buttonSim.disabled = true
-  const request = await remove(`premios/${PREMIO_ID}`);
-  if (request.status === 200) {
-    mostrarAlert("Prêmio excluído com sucesso!", 'fas fa-circle-check');
+  checarErros();
+  buttonSalvarEditar.disabled = true;
+  const formData = new FormData();
+  formData.append("nome", nome.value);
+  formData.append("codigoSku", codigoSku.value);
+  formData.append(
+    "imagem",
+    imagem.files.length > 0
+      ? imagem.files[0]
+      : new Blob([""], { type: "application/octet-stream" })
+  );
+  formData.append("quantidade", quantidade.value);
+  formData.append("descricao", descricao.value);
+  formData.append(
+    "marcaId",
+    parseInt(marcaId.querySelector(`option[value="${marcaId.value}"]`).id)
+  );
+  document.body.style.cursor = "wait";
+  const request = await post("premios/registrar", formData, "formData");
+  if (request.status === 201) {
+    mostrarAlert("Prêmio cadastrado com sucesso!", "fas fa-circle-check");
     setTimeout(() => {
       window.location.assign("./premios-da-semana.html");
     }, 2500);
   } else {
-    buttonSim.disabled = false
-    mostrarAlert("Não foi possível excluir o prêmio.", 'fas fa-circle-xmark')
+    buttonSalvarEditar.disabled = false;
+    mostrarAlert("Não foi possível cadastrar o prêmio.", "fas fa-circle-xmark");
+  }
+};
+
+// Função para Editar Prêmio
+const editarPremio = async () => {
+  buttonSalvarEditar.disabled = true;
+  const formData = new FormData();
+  formData.append("nome", nome.value);
+  formData.append("codigoSku", codigoSku.value);
+
+  if (imagem.files.length > 0) {
+    formData.append("imagem", imagem.files[0]);
+  } else {
+    const base64String = imagem.getAttribute("base64img");
+    const blob = base64ToBlob(base64String, "image/png");
+    formData.append("imagem", blob, "image.png");
+  }
+
+  formData.append("quantidade", quantidade.value);
+  formData.append("descricao", descricao.value);
+  formData.append(
+    "marcaId",
+    parseInt(marcaId.querySelector(`option[value="${marcaId.value}"]`).id)
+  );
+  const request = await put(`premios/editar/${PREMIO_ID}`, formData);
+
+  if (request.status === 200) {
+    mostrarAlert("Prêmio editado com sucesso!", "fas fa-circle-check");
+    setTimeout(() => {
+      window.location.assign("./premios-da-semana.html");
+    }, 2500);
+  } else {
+    buttonSalvarEditar.disabled = true;
+    mostrarAlert("Não foi possível editar o prêmio.", "fas fa-circle-xmark");
+  }
+};
+
+// Função para Remover Prêmio
+const removerPremio = async () => {
+  buttonSim.disabled = true;
+  const request = await remove(`premios/${PREMIO_ID}`);
+  if (request.status === 200) {
+    mostrarAlert("Prêmio excluído com sucesso!", "fas fa-circle-check");
+    setTimeout(() => {
+      window.location.assign("./premios-da-semana.html");
+    }, 2500);
+  } else {
+    buttonSim.disabled = false;
+    mostrarAlert("Não foi possível excluir o prêmio.", "fas fa-circle-xmark");
   }
 };
 
@@ -235,65 +231,73 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   removerError();
   if (ACAO === "criar") {
-    if (checarErros()){
-      return
+    if (checarErros()) {
+      return;
     }
-    cadastrarPremio(); 
+    cadastrarPremio();
   } else if (ACAO === "editar") {
-    if (checarErros()){
-      return
+    if (checarErros()) {
+      return;
     }
     editarPremio();
   }
 });
 
-buttonDeletar.addEventListener('click', () => {
-  formFieldset.classList.add('hidden')
-  containerExcluir.classList.remove('hidden')
+buttonDeletar.addEventListener("click", () => {
+  formFieldset.classList.add("hidden");
+  containerExcluir.classList.remove("hidden");
   window.location.assign("#header-premios");
-})
+});
 
-buttonNao.addEventListener('click', () => {
-  formFieldset.classList.remove('hidden')
-  containerExcluir.classList.add('hidden')
+buttonNao.addEventListener("click", () => {
+  formFieldset.classList.remove("hidden");
+  containerExcluir.classList.add("hidden");
   window.location.assign("#header-premios");
-})
+});
 
 const checarErros = function () {
   let options = document.querySelectorAll("option");
-  if (!imagem.files[0] || (imagem.files[0].size > MAX_IMAGE_SIZE)){
-    console.log(imagem.files[0])
-    textoError[0].innerText = "Imagem muito grande (Tamanho máximo: 1MB)"
+  const file = imagem.files[0];
+  // console.log("FILE:", file.size);
+  if ((file?.size > MAX_IMAGE_SIZE) && !imagem.base64String) {
+    textoError[0].innerText = "Imagem muito grande (Tamanho máximo: 1MB)";
   }
 
   if (options[0].selected) {
     textoError[1].innerText = "Selecione a marca";
     marcaId.focus();
   }
-  
+
   if (nome.value == "") {
     nome.classList.add("wrong");
     textoError[2].innerText = "Insira o nome do prêmio";
     nome.focus();
   }
-  
+
   if (codigoSku.value == "") {
     codigoSku.classList.add("wrong");
     textoError[3].innerText = "Insira o código sku";
     codigoSku.focus();
   }
-  
+
   if (descricao.value == "") {
     descricao.classList.add("wrong");
     textoError[4].innerText = "Digite a descrição";
     descricao.focus();
-  } 
-  
-  if (quantidade.value == "") {
+  }
+
+  if (quantidade.value == "" || quantidade.value < 0) {
     quantidade.classList.add("wrong");
     textoError[5].innerText = "Digite a quantidade";
     quantidade.focus();
-  } 
+  }
 
-  return ((options[0].selected) || (nome.value == "") || (codigoSku.value == "") || (descricao.value == "") || (quantidade.value == ""))
-}
+  return (
+    file?.size > MAX_IMAGE_SIZE ||
+    options[0].selected ||
+    nome.value == "" ||
+    codigoSku.value == "" ||
+    descricao.value == "" ||
+    quantidade.value == ""
+  );
+};
