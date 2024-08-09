@@ -4,6 +4,7 @@ export const ACAO = sessionStorage.getItem("acao");
 export const PREMIO_ID = sessionStorage.getItem("marca-id");
 export const NOME = sessionStorage.getItem("nome");
 export const MARCA_NOME = sessionStorage.getItem("marca-nome");
+export const MAX_IMAGE_SIZE = 1 * 1024 * 1024;
 
 export const SET_ACAO = (acao) => {
   sessionStorage.setItem("acao", acao);
