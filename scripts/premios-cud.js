@@ -11,7 +11,6 @@ import {
   mostrarAlert
 } from "./CONSTANTES.js";
 
-const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1 MB
 
 // Seletores de Elementos
 const titulo = document.querySelector("#titulo");
@@ -33,9 +32,10 @@ const criadoPorLabel = document.querySelector("#criadoPorLabel");
 const criadoPor = document.querySelector("#criadoPor");
 const criadoEmLabel = document.querySelector("#criadoEmLabel");
 const criadoEm = document.querySelector("#criadoEm");
-const containerExcluir = document.querySelector('.container-excluir');
-const buttonSim = document.getElementById('button-sim');
-const buttonNao = document.getElementById('button-nao');
+const containerExcluir = document.querySelector('.container-excluir')
+const buttonSim = document.getElementById('button-sim')
+const buttonNao = document.getElementById('button-nao')
+
 
 // Função para Converter Base64 para Blob
 const base64ToBlob = (base64String, contentType) => {
@@ -48,80 +48,42 @@ const base64ToBlob = (base64String, contentType) => {
   return new Blob([byteArray], { type: contentType });
 };
 
-// Função para lidar com o input de arquivos
-const handleFileInput = (input, preview, errorIndex) => {
-  const file = input.files[0];
-  if (file && file.size > MAX_FILE_SIZE) {
-    if (textoError[errorIndex]) {
-      textoError[errorIndex].innerText = "O tamanho do arquivo não pode exceder 1 MB";
-    }
-    input.classList.add("wrong");
-    preview.src = "https://github.com/Top-Sorteios/Front-end/blob/main/assets/images/placeholder-files/placeholder.png?raw=true";
-    if (buttonSalvarEditar) {
-      buttonSalvarEditar.disabled = true;
-    }
-  } else {
-    if (textoError[errorIndex]) {
-      textoError[errorIndex].innerText = "";
-    }
-    input.classList.remove("wrong");
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      preview.src = `${reader.result}`;
-    };
-    reader.readAsDataURL(file);
-    if (buttonSalvarEditar) {
-      buttonSalvarEditar.disabled = false;
-    }
-  }
-};
-
-// Manipulador de eventos para o input de imagem
-if (imagem) {
-  imagem.addEventListener("change", () => handleFileInput(imagem, previewPremio, 5));
-}
-
-// Função para remover mensagens de erro
+// Função para Remover Mensagens de Erro
 const removerError = () => {
-  if (imagem) imagem.classList.remove("wrong");
-  if (nome) nome.classList.remove("wrong");
-  if (codigoSku) codigoSku.classList.remove("wrong");
-  if (descricao) descricao.classList.remove("wrong");
-  if (quantidade) quantidade.classList.remove("wrong");
-  textoError.forEach((texto) => {
-    if (texto) texto.innerText = "";
-  });
+  nome.classList.remove("wrong");
+  codigoSku.classList.remove("wrong");
+  descricao.classList.remove("wrong");
+  quantidade.classList.remove("wrong");
+  textoError.forEach((texto) => (texto.innerText = ""));
 };
 
-// Função para preencher os campos do formulário
+// Função para Preencher os Campos do Formulário
 const definirCampos = (premio) => {
-  if (titulo) titulo.textContent = "Editar prêmio da semana";
-  if (legend) legend.textContent = "Editar prêmio da semana";
-  if (nome) nome.value = premio.nome;
-  if (imagem) imagem.setAttribute("base64img", premio.imagem);
-  if (previewPremio) previewPremio.setAttribute(
+  titulo.textContent = "Editar prêmio da semana";
+  legend.textContent = "Editar prêmio da semana";
+  nome.value = premio.nome;
+  imagem.setAttribute("base64img", premio.imagem);
+  previewPremio.setAttribute(
     "src",
-    `data:image/*;base64,${imagem ? imagem.getAttribute("base64img") : ''}`
+    `data:image/*;base64,${imagem.getAttribute("base64img")}`
   );
-  if (codigoSku) codigoSku.value = premio.codigoSku;
-  if (descricao) descricao.value = premio.descricao;
-  if (quantidade) quantidade.value = premio.quantidade;
-  if (criadoPor) criadoPor.value = premio.criadoPor;
-  if (criadoEm) criadoEm.value = `${premio.criadoEm
+  codigoSku.value = premio.codigoSku;
+  descricao.value = premio.descricao;
+  quantidade.value = premio.quantidade;
+  criadoPor.value = premio.criadoPor;
+  criadoEm.value = `${premio.criadoEm
     .split("T")[0]
     .split("-")
     .reverse()
     .join("/")} ${premio.criadoEm.split("T")[1].split(".")[0]}`;
 
-  if (buttonSim) {
-    buttonSim.addEventListener("click", (event) => {
+  buttonSim.addEventListener("click", (event) => {
       event.preventDefault();
       removerPremio();
-    });
-  }
+  });
 };
 
-// Função para obter prêmio por ID
+// Função para Obter Prêmio por ID
 const obterPremio = async (id) => {
   const request = await get(`premios/obter/${PREMIO_ID}`, true);
   if (request.ok) {
@@ -130,7 +92,7 @@ const obterPremio = async (id) => {
   }
 };
 
-// Função para obter e preencher marcas no select
+// Função para Obter e Preencher Marcas no Select
 const obterMarcasSelect = async () => {
   const request = await get("marcas/obter", true);
   if (request.ok) {
@@ -140,54 +102,55 @@ const obterMarcasSelect = async () => {
       formOption.value = marca.nome;
       formOption.textContent = marca.nome;
       formOption.id = marca.id;
-      if (marcaId) marcaId.appendChild(formOption);
+      marcaId.appendChild(formOption);
     });
 
-    if (marcaId && marcaId.querySelector(`option[value="${MARCA_NOME}"]`)) {
+    if (marcaId.querySelector(`option[value="${MARCA_NOME}"]`)) {
       marcaId.querySelector(`option[value="${MARCA_NOME}"]`).selected = true;
     }
   }
 };
 
-// Função para cadastrar prêmio
+// Função para Cadastrar Prêmio
 const cadastrarPremio = async () => {
+  
   removerError();
   let options = document.querySelectorAll("option");
-  if (options[0]?.selected) {
-    if (textoError[0]) textoError[0].innerText = "Selecione a marca";
-    if (marcaId) marcaId.focus();
-  } else if (nome?.value === "") {
-    if (nome) nome.classList.add("wrong");
-    if (textoError[1]) textoError[1].innerText = "Insira o nome do prêmio";
-    if (nome) nome.focus();
-  } else if (codigoSku?.value === "") {
-    if (codigoSku) codigoSku.classList.add("wrong");
-    if (textoError[2]) textoError[2].innerText = "Insira o código sku";
-    if (codigoSku) codigoSku.focus();
-  } else if (descricao?.value === "") {
-    if (descricao) descricao.classList.add("wrong");
-    if (textoError[3]) textoError[3].innerText = "Digite a descrição";
-    if (descricao) descricao.focus();
-  } else if (quantidade?.value === "") {
-    if (quantidade) quantidade.classList.add("wrong");
-    if (textoError[4]) textoError[4].innerText = "Digite a quantidade";
-    if (quantidade) quantidade.focus();
+  if (options[0].selected) {
+    textoError[0].innerText = "Selecione a marca";
+    marcaId.focus();
+  } else if (nome.value == "") {
+    nome.classList.add("wrong");
+    textoError[1].innerText = "Insira o nome do prêmio";
+    nome.focus();
+  } else if (codigoSku.value == "") {
+    codigoSku.classList.add("wrong");
+    textoError[2].innerText = "Insira o código sku";
+    codigoSku.focus();
+  } else if (descricao.value == "") {
+    descricao.classList.add("wrong");
+    textoError[3].innerText = "Digite a descrição";
+    descricao.focus();
+  } else if (quantidade.value == "") {
+    quantidade.classList.add("wrong");
+    textoError[4].innerText = "Digite a quantidade";
+    quantidade.focus();
   } else {
-    if (buttonSalvarEditar) buttonSalvarEditar.disabled = true;
+    buttonSalvarEditar.disabled = true
     const formData = new FormData();
-    formData.append("nome", nome?.value || '');
-    formData.append("codigoSku", codigoSku?.value || '');
+    formData.append("nome", nome.value);
+    formData.append("codigoSku", codigoSku.value);
     formData.append(
       "imagem",
-      imagem?.files.length > 0
+      imagem.files.length > 0
         ? imagem.files[0]
         : new Blob([""], { type: "application/octet-stream" })
     );
-    formData.append("quantidade", quantidade?.value || '');
-    formData.append("descricao", descricao?.value || '');
+    formData.append("quantidade", quantidade.value);
+    formData.append("descricao", descricao.value);
     formData.append(
       "marcaId",
-      parseInt(marcaId?.querySelector(`option[value="${marcaId?.value}"]`)?.id) || 0
+      parseInt(marcaId.querySelector(`option[value="${marcaId.value}"]`).id)
     );
     document.body.style.cursor = "wait";
     const request = await post("premios/registrar", formData, "formData");
@@ -197,103 +160,134 @@ const cadastrarPremio = async () => {
         window.location.assign("./premios-da-semana.html");
       }, 2500);
     } else {
-      if (buttonSalvarEditar) buttonSalvarEditar.disabled = false;
-      mostrarAlert("Não foi possível cadastrar o prêmio.", 'fas fa-circle-xmark');
+      buttonSalvarEditar.disabled = false
+      mostrarAlert("Não foi possível cadastrar o prêmio.", 'fas fa-circle-xmark')
     }
   }
 };
 
-// Função para editar prêmio
+// Função para Editar Prêmio
 const editarPremio = async () => {
+  
   removerError();
-  if (nome?.value === "") {
-    if (nome) nome.classList.add("wrong");
-    if (textoError[1]) textoError[1].innerText = "Insira o nome do prêmio";
-    if (nome) nome.focus();
-  } else if (codigoSku?.value === "") {
-    if (codigoSku) codigoSku.classList.add("wrong");
-    if (textoError[2]) textoError[2].innerText = "Insira o código sku";
-    if (codigoSku) codigoSku.focus();
-  } else if (descricao?.value === "") {
-    if (descricao) descricao.classList.add("wrong");
-    if (textoError[3]) textoError[3].innerText = "Digite a descrição";
-    if (descricao) descricao.focus();
-  } else if (quantidade?.value === "") {
-    if (quantidade) quantidade.classList.add("wrong");
-    if (textoError[4]) textoError[4].innerText = "Digite a quantidade";
-    if (quantidade) quantidade.focus();
+  if (nome.value == "") {
+    nome.classList.add("wrong");
+    textoError[1].innerText = "Insira o nome do prêmio";
+    nome.focus();
+  } else if (codigoSku.value == "") {
+    codigoSku.classList.add("wrong");
+    textoError[2].innerText = "Insira o código sku";
+    codigoSku.focus();
+  } else if (descricao.value == "") {
+    descricao.classList.add("wrong");
+    textoError[3].innerText = "Digite a descrição";
+    descricao.focus();
+  } else if (quantidade.value == "") {
+    quantidade.classList.add("wrong");
+    textoError[4].innerText = "Digite a quantidade";
+    quantidade.focus();
   } else {
-    if (buttonSalvarEditar) buttonSalvarEditar.disabled = true;
+    buttonSalvarEditar.disabled = true
     const formData = new FormData();
-    formData.append("nome", nome?.value || '');
-    formData.append("codigoSku", codigoSku?.value || '');
-    if (imagem?.files.length > 0) {
-      const blob = await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(new Blob([reader.result], { type: "image/jpeg" }));
-        reader.onerror = reject;
-        reader.readAsArrayBuffer(imagem.files[0]);
-      });
-      formData.append("imagem", blob);
-    } else if (imagem?.getAttribute("base64img")) {
+    formData.append("nome", nome.value);
+    formData.append("codigoSku", codigoSku.value);
+
+    if (imagem.files.length > 0) {
+      formData.append("imagem", imagem.files[0]);
+    } else {
       const base64String = imagem.getAttribute("base64img");
-      const blob = base64ToBlob(base64String, "image/jpeg");
-      formData.append("imagem", blob);
+      const blob = base64ToBlob(base64String, "image/png");
+      formData.append("imagem", blob, "image.png");
     }
-    formData.append("quantidade", quantidade?.value || '');
-    formData.append("descricao", descricao?.value || '');
+
+    formData.append("quantidade", quantidade.value);
+    formData.append("descricao", descricao.value);
     formData.append(
       "marcaId",
-      parseInt(marcaId?.querySelector(`option[value="${marcaId?.value}"]`)?.id) || 0
+      parseInt(marcaId.querySelector(`option[value="${marcaId.value}"]`).id)
     );
-    document.body.style.cursor = "wait";
-    const request = await put(`premios/editar/${PREMIO_ID}`, formData, "formData");
-    if (request.ok) {
+    const request = await put(`premios/editar/${PREMIO_ID}`, formData);
+
+    if (request.status === 200) {
       mostrarAlert("Prêmio editado com sucesso!", 'fas fa-circle-check');
       setTimeout(() => {
         window.location.assign("./premios-da-semana.html");
       }, 2500);
     } else {
-      if (buttonSalvarEditar) buttonSalvarEditar.disabled = false;
+      buttonSalvarEditar.disabled = true
       mostrarAlert("Não foi possível editar o prêmio.", 'fas fa-circle-xmark');
     }
   }
 };
 
-// Função para deletar prêmio
+// Função para Remover Prêmio
 const removerPremio = async () => {
-  document.body.style.cursor = "wait";
-  const request = await remove(`premios/remover/${PREMIO_ID}`);
-  if (request.ok) {
+  buttonSim.disabled = true
+  const request = await remove(`premios/${PREMIO_ID}`);
+  if (request.status === 200) {
     mostrarAlert("Prêmio excluído com sucesso!", 'fas fa-circle-check');
     setTimeout(() => {
       window.location.assign("./premios-da-semana.html");
     }, 2500);
   } else {
-    mostrarAlert("Não foi possível excluir o prêmio.", 'fas fa-circle-xmark');
+    buttonSim.disabled = false
+    mostrarAlert("Não foi possível excluir o prêmio.", 'fas fa-circle-xmark')
   }
 };
 
-// Função para inicializar o formulário
-const inicializarFormulario = async () => {
-  await obterMarcasSelect();
-  if (PREMIO_ID !== undefined) {
-    document.body.style.cursor = "wait";
-    await obterPremio(PREMIO_ID);
-    if (buttonSalvarEditar) buttonSalvarEditar.addEventListener("click", editarPremio);
-    if (buttonDeletar) buttonDeletar.addEventListener("click", (event) => {
-      event.preventDefault();
-      if (containerExcluir) containerExcluir.classList.add("show");
-    });
-  } else {
-    if (buttonSalvarEditar) buttonSalvarEditar.addEventListener("click", cadastrarPremio);
-  }
-};
+// Adiciona as Marcas Disponíveis no Select
+window.addEventListener("load", () => {
+  obterMarcasSelect();
+});
 
-// Inicializar
-inicializarFormulario();
+// Verifica a Ação a Ser Feita e Molde a Página a Partir Dela
+switch (ACAO) {
+  case "criar":
+    buttonDeletar.classList.add("hidden");
+    titulo.textContent = "Adicionar novo prêmio da semana";
+    legend.textContent = "Adicionar novo prêmio da semana";
+    criadoEmLabel.remove();
+    criadoPorLabel.remove();
+    break;
 
-// Manipulador de eventos para o input de imagem
-if (imagem) {
-  imagem.addEventListener("change", () => handleFileInput(imagem, previewPremio, 5));
+  case "editar":
+    obterPremio(PREMIO_ID);
+    break;
+
+  default:
+    break;
 }
+
+// Event Listener para Carregar a Imagem no Preview
+imagem.addEventListener("change", () => {
+  const reader = new FileReader();
+  const file = imagem.files[0];
+  reader.onloadend = () => {
+    const base64String = reader.result;
+    previewPremio.setAttribute("src", `${base64String}`);
+    reader.abort();
+  };
+  reader.readAsDataURL(file);
+});
+
+// Adiciona o Evento de Submit ao Formulário
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (ACAO === "criar") {
+      cadastrarPremio();  
+  } else if (ACAO === "editar") {
+      editarPremio();
+  }
+});
+
+buttonDeletar.addEventListener('click', () => {
+  formFieldset.classList.add('hidden')
+  containerExcluir.classList.remove('hidden')
+  window.location.assign("#header-premios");
+})
+
+buttonNao.addEventListener('click', () => {
+  formFieldset.classList.remove('hidden')
+  containerExcluir.classList.add('hidden')
+  window.location.assign("#header-premios");
+})
